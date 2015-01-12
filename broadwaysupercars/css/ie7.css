@@ -1,0 +1,66 @@
+body
+{
+	font-family: 'arial';
+}
+.menu
+{
+	float:left;
+	margin-left:80px;
+}
+.tariff_cost
+{
+	margin-bottom:40px;
+}
+.add_cat_link
+{
+	background:url(../images/add_cat_link.png) no-repeat 0 0px;
+}
+.lk_payment_type_block .checkbox_block
+{
+	float:left;
+}
+.payment_type_block_icon img
+{
+	margin-top:40px;
+}
+.lk_payment_type_block
+{
+	overflow:hidden;
+	padding-bottom:5px;
+}
+.analysis_nav_item
+{
+	float:left;
+	margin-right:1px;
+}
+.analysis_nav_item span
+{
+	padding:10px 25px;
+}
+.analysis_nav_item i
+{
+	display:none !important;
+}
+.table_block  input_block
+{
+	margin:0px;
+}
+.table_block input
+{
+	width:50px !important;
+	margin:0px !important;
+	
+}
+.input_block
+{
+	left:0px;
+}
+.datapieker_block i
+{
+	left:5px;
+}
+.table_block .datapieker_block i
+{
+	left:25px;
+	top:10px;
+}

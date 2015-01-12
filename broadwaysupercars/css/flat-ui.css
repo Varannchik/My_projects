@@ -1,0 +1,275 @@
+
+.checkbox,
+.radio {
+  margin-bottom: 7px;
+  padding-left: 23px;
+  position: relative;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; }
+  .checkbox:hover,
+  .radio:hover {
+    color: #f2725c; }
+  .checkbox input,
+  .radio input {
+    outline: none !important;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    zoom: 1; }
+  .radio.checked .icon {
+    background-position: -60px -30px;
+    opacity: 1;
+    display: block\9; }
+  .checkbox.checked .icon {
+    background-position: -59px -29px;
+    opacity: 1;
+    display: block\9; }	
+  .checkbox.checked .icon-to-fade,
+  .radio.checked .icon-to-fade {
+    opacity: 0;
+    display: none\9; }
+  .checkbox.disabled,
+  .radio.disabled {
+    color: #d7dddd;
+    cursor: default; }
+    .checkbox.disabled .icon,
+    .radio.disabled .icon {
+      opacity: 0;
+      display: none\9; }
+    .checkbox.disabled .icon-to-fade,
+    .radio.disabled .icon-to-fade {
+      background-position: -30px -60px;
+      opacity: 1;
+      display: block\9; }
+    .checkbox.disabled.checked .icon,
+    .radio.disabled.checked .icon {
+      background-position: 0 -90px;
+      opacity: 1;
+      display: block\9; }
+    .checkbox.disabled.checked .icon-to-fade,
+    .radio.disabled.checked .icon-to-fade {
+      opacity: 0;
+      display: none\9; }
+  .checkbox .icon,
+  .checkbox .icon-to-fade {
+    background: url("../images/checkbox.png") -88px 0 no-repeat;
+    display: block;
+    height: 22px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 22px;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
+    -webkit-backface-visibility: hidden; }
+  .radio .icon,
+  .radio .icon-to-fade {
+    background: url("../images/checkbox.png") -90px 0 no-repeat;
+    display: block;
+    height: 20px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    width: 20px;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
+    -webkit-backface-visibility: hidden; }	
+  .checkbox .icon,
+  .radio .icon {
+    opacity: 0;
+    top: 0;
+    z-index: 2;
+    display: none\9; }
+
+.radio .icon,
+.radio .icon-to-fade {
+  background-image: url("../images/radio.png"); }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 2) {
+  .checkbox .icon {
+    background-image: url("../images/checkbox-2x.png");
+    background-size: 110px 110px; }
+
+  .radio .icon {
+    background-image: url("../images/radio-2x.png");
+    background-size: 110px 110px; } }
+	
+	.toggle {
+  background-color: #222222;
+  border-radius: 60px;
+  border:1px solid #111111;
+  box-shadow:0px 0px 0px 1px #222222;
+  color: #00acc8;
+  height: 34px;
+  margin: 2px 12px 0 0;
+  overflow: hidden;
+  *zoom: 1;
+  display: inline-block;
+  position:relative;
+  width:100%;
+  zoom: 1;
+  *display: inline;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; }
+  .toggle:before, .toggle:after {
+    display: table;
+    content: ""; }
+  .toggle:after {
+    clear: both; }
+  .toggle.toggle-off {
+    background-color: #333333; color:#bdc3c7 }
+    .toggle.toggle-off .toggle-radio {
+      background-image: url("../images/icon-off.png");
+      background-position: 3px 3px;
+      color: #d3d2d2;
+      left: 0;
+		padding: 7px 20px 5px 30px;
+		text-align:right;	  
+      margin-left: 0.5px;
+      /*margin-right: -13px;*/
+      z-index: 1; }
+      .toggle.toggle-off .toggle-radio:first-child {
+        left: -120%; }
+  .toggle label.toggle-radio {
+    background: url("../images/icon-on.png") 71px 3px no-repeat;
+    color: #00acc8;
+    display: block;
+    font-weight: 700;
+	margin-top:0px;
+	margin-right:0px;
+    height: 21px;
+    left: 120%;
+    /*margin-left: -13px;*/
+    padding: 7px 30px 5px 20px;
+	width:50px;
+	text-align:left;
+    position: absolute;
+	line-height:18px;
+	font-size:16px;
+	text-transform:uppercase;
+    z-index: 2;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+    -webkit-backface-visibility: hidden; }
+
+    .toggle label.toggle-radio:first-child {
+      margin-bottom: -29px;
+      left: 0; }
+  .toggle input {
+    display: none;
+    position: absolute;
+    outline: none !important;
+    display: block\9;
+    opacity: 0.01;
+    filter: alpha(opacity=1);
+    zoom: 1; }
+  .toggle.toggle-icon {
+    border-radius: 6px 7px 7px 6px; }
+    .toggle.toggle-icon.toggle-off {
+      border-radius: 7px 6px 6px 7px; }
+      .toggle.toggle-icon.toggle-off .toggle-radio {
+        background-image: url("../images/block-off.png");
+        background-position: 0 0; }
+    .toggle.toggle-icon .toggle-radio {
+      background-image: url("../images/block-on.png");
+      background-position: 62px 0;
+      border-radius: 6px;
+      min-width: 27px;
+      text-align: right; }
+      .toggle.toggle-icon .toggle-radio:first-child {
+        text-align: left; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 2) {
+  .toggle.toggle-off .toggle-radio {
+    background-image: url("../images/toggle/icon-off-2x.png");
+    background-size: 30px 29px; }
+  .toggle .toggle-radio {
+    background-image: url("../images/toggle/icon-on-2x.png");
+    background-size: 30px 29px; } }
+	
+	
+	.progress, .ui-slider {
+  background: #ececec;
+  border-radius: 32px;
+  height: 12px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  .progress .bar, .ui-slider .bar {
+    background: #1abc9c;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  .progress .bar-success, .ui-slider .bar-success {
+    background-color: #2ecc71;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  .progress .bar-warning, .ui-slider .bar-warning {
+    background-color: #f1c40f;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  .progress .bar-danger, .ui-slider .bar-danger {
+    background-color: #e74c3c;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  .progress .bar-info, .ui-slider .bar-info {
+    background-color: #3498db;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.ui-slider {
+    margin-bottom: 0px;
+    position: relative;
+    top: 12px; 
+	cursor:pointer;
+}
+
+.ui-slider-handle {
+  background-color: #1ba99e;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 18px;
+  margin-left: -9px;
+  position: absolute;
+  top: -3px;
+  width: 18px;
+  z-index: 2;
+  -webkit-transition: background 0.25s;
+  -moz-transition: background 0.25s;
+  -o-transition: background 0.25s;
+  transition: background 0.25s;
+  -webkit-backface-visibility: hidden; }
+  .ui-slider-handle[style*='100'] {
+    margin-left: -15px; }
+  .ui-slider-handle:hover, .ui-slider-handle:focus {
+    background-color: #2fe2bf;
+    outline: none; }
+  .ui-slider-handle:active {
+    background-color: #16a085; }
+
+.ui-slider-range {
+  background-color: #bdc3c7;
+  border-radius: 30px 0 0 30px;
+  display: block;
+  height: 100%;
+  position: absolute;
+  z-index: 1; }
+
+.ui-slider-segment {
+  background-color: #bdc3c7;
+  border-radius: 50%;
+  float: left;
+  height: 6px;
+  margin: 3px -6px 0 33%;
+  width: 6px; }
