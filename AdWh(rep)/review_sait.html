@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE ]><link rel="stylesheet" href="css/ie9.css" type="text/css" media="screen" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+    <title>Search</title>
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+
+    <script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript" src="js/ui/jquery-ui.custom.js"></script>
+    <script src="js/ui/jquery.ui.core.js"></script>
+    <script src="js/ui/jquery.ui.widget.js"></script>
+    <script src="js/ui/jquery.ui.slider.js"></script>
+    <script src="js/ui/jquery.ui.mouse.js"></script>
+
+    <link href="css/core-ui-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/jquery.scrollpane.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.scrollpane.js"></script>
+    <script src="js/jquery.core-ui-select.js"></script>
+
+
+    <script type="text/javascript"  src="js/placeholder.js"></script>
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+            if($('input[type="radio"]').size()>0) $('input[type="radio"]').uniform();
+        });
+
+
+    </script>
+
+    <!-- Слайдеры -->
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider_search, #main_page_slider_search2, #main_page_slider_search3, #main_page_slider_search4').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 420,
+                autoScaleSliderHeight: 340,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: false,
+                    pauseOnHover: false,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+        });
+    </script>
+    <!-- end Слайдеры -->
+
+</head>
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="wrapper">
+    <div class="header_first_line"></div>
+    <header>
+        <div class="container_16">
+            <div class="grid_3 "><img class="logo" src="images/logo.png" alt="logo"/></div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="news.html">Hoвости</a></li>
+                        <li><a href="How%20it%20works.html">Как это работает</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <div class="gray_line_thin"></div>
+    <div class="gray_line"></div>
+
+    <div class="nav_reg">
+        <div class=" container_16">
+            <div class="grid_3 ">
+                <div class="user">
+                    <img src="images/user.png"  class="fl" alt=""/>
+                    <span class="name_user">Петр Петров</span>
+                </div>
+            </div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="panel_control.html">Панель управления</a></li>
+                        <li><a href="#" class="active">Поиск</a></li>
+                        <li><a href="#">Корзина</a></li>
+                        <li><a href="#">Аккаунт</a></li>
+                        <li><a href="history.html">История</a></li>
+                        <li><a href="settings.html">Настройки</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+        <div class="content">
+            <div class="container_16">
+                <div class="grid_8 suffix_1 ">
+                    <div class="title fl">Карточка площадки</div> <img src="images/icon_see_sait.png" class="icon_faq" alt="icon"/>
+                    <div class="clear"></div>
+                    <h4>Название сайта</h4>
+                    <p class="name_user">www.website.com</p>
+                    <div class="clear30"></div>
+                    <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в </p>
+                </div>
+                <div class="grid_7">
+                    <div class="picture_news picture_news_review">
+                        <div class="img_content">
+                            <img src="images/picture_sait.png" alt="picture_news"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear50"></div>
+                <div class="clearfix"></div>
+
+
+                <div class=" grid_16 gray_line_thin"></div>
+                <div class="clearfix"></div>
+
+                <div class="grid_16">
+                    <div class="title fl">Статистика</div> <img src="images/icon_statistic.png" class="icon_faq" alt="icon"/>
+                    <table class="table_reviev">
+                        <tr>
+                            <td>№</td>
+                            <td>Название</td>
+                            <td>Значение</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="size_td">Просмотров в месяц</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="size_td">Возрастная категория</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="size_td">Целевая аудитория</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="size_td"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="size_td"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class=" grid_16 gray_line_thin"></div>
+                <div class="clearfix"></div>
+
+                <div class="grid_16">
+                    <div class="title fl">Выбор рекламных мест</div> <img src="images/icon_select_reclama.png" class="icon_select " alt="icon"/>
+                    <div class="content_slider_review">
+
+                        <div id="main_page_slider_search" class="royalSlider heroSlider rsMinW">
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#" class="fl"><img src="images/banner.jpg" alt="" ></a>
+                                    <a href="#" class="main_link">Главная</a>
+                                    <div class="select_slider fl">
+                                        <table class="table_reviev_slaider">
+                                            <tr>
+                                                <th colspan="4">Баннер 300х450</th>
+                                            </tr>
+                                            <tr class="center big_text bg_white">
+                                                <td>Тип размещения</td>
+                                                <td>Стоимость</td>
+                                                <td>Условие</td>
+                                                <td>Кол-во</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type91" name="#3"><label for="type91" >По кликам</label>
+
+                                                    </div>
+                                                </td>
+                                                <td>0,20 р.</td>
+                                                <td>До 2 000 р.</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type90" name="#3"><label for="type90" >По просмотрам</label>
+                                                    </div>
+                                                </td>
+                                                <td>200 р.</td>
+                                                <td>До 5 000 р.</td>
+                                                <td>2 000</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#" class="fl"><img src="images/banner.jpg" alt="" ></a>
+                                    <a href="#" class="main_link">Главная</a>
+                                    <div class="select_slider fl">
+                                        <table class="table_reviev_slaider">
+                                            <tr>
+                                                <th colspan="4">Баннер 300х450</th>
+                                            </tr>
+                                            <tr class="center big_text bg_white">
+                                                <td>Тип размещения</td>
+                                                <td>Стоимость</td>
+                                                <td>Условие</td>
+                                                <td>Кол-во</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type92" name="#1"><label for="type92" >По кликам</label>
+
+                                                    </div>
+                                                </td>
+                                                <td>0,20 р.</td>
+                                                <td>До 2 000 р.</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type93" name="#1"><label for="type93" >По просмотрам</label>
+                                                    </div>
+                                                </td>
+                                                <td>200 р.</td>
+                                                <td>До 5 000 р.</td>
+                                                <td>2 000</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#" class="fl"><img src="images/banner.jpg" alt="" ></a>
+                                    <a href="#" class="main_link">Главная</a>
+                                    <div class="select_slider fl">
+                                        <table class="table_reviev_slaider">
+                                            <tr>
+                                                <th colspan="4">Баннер 300х450</th>
+                                            </tr>
+                                            <tr class="center big_text bg_white">
+                                                <td>Тип размещения</td>
+                                                <td>Стоимость</td>
+                                                <td>Условие</td>
+                                                <td>Кол-во</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type94" name="#2"><label for="type94" >По кликам</label>
+
+                                                    </div>
+                                                </td>
+                                                <td>0,20 р.</td>
+                                                <td>До 2 000 р.</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td>
+                                                    <div class="block_radio">
+                                                        <input type="radio" id="type95" name="#2"><label for="type95" >По просмотрам</label>
+                                                    </div>
+                                                </td>
+                                                <td>200 р.</td>
+                                                <td>До 5 000 р.</td>
+                                                <td>2 000</td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td>
+
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_color">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="bg_white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clear30"></div>
+                <button class="green_bg btn bag"><img src="images/bag_white_small.png" alt=""/> Корзина</button>
+                <div class="clear80"></div>
+            </div>
+
+        </div>
+
+        <div class="footer_back"></div>
+    </div>
+<footer>
+    <div class="footer_body">
+        <div class="container_16 min_size">
+            <div class="grid_5">
+                <h4>О нас</h4>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу </p>
+
+            </div>
+            <div class="grid_6 ">
+                <div class="contact">
+                    <h4>Контакты</h4>
+                    <p>г. Город, ул. Название улицы, д. 00, офис 105</p>
+                    <p>+0 (000) 000 00 00</p>
+                    <a href="mailto:adwh@mail.com" class="mail">adwh@mail.com</a>
+                </div>
+            </div>
+            <div class="grid_5">
+                <h4>Следуйте за нами</h4>
+                <div class="facebook"></div>
+                <div class="twitter"></div>
+                <div class="vk"></div>
+                <div class="google"></div>
+                <div class="in"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="container_16">
+            <div class="grid_16">
+                <span class="copyrait">&copy; 2013 AdWh.com. Все права защищены</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

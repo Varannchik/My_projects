@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE ]><link rel="stylesheet" href="css/ie9.css" type="text/css" media="screen" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title>Main</title>
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+        });
+    </script>
+
+    <!-- Слайдеры -->
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider1').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 420,
+                autoScaleSliderHeight: 340,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: true,
+                    pauseOnHover: true,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+
+            $('#main_page_slider2').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 270,
+                autoScaleSliderHeight: 220,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: true,
+                    pauseOnHover: true,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+        });
+    </script>
+    <!-- end Слайдеры -->
+
+
+
+    
+</head>
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="background_window"></div>
+
+<div class="popup_ok">
+    <div class="close"></div>
+    <div class="clear10"></div>
+    <p>Регистрация прошла успешно.</p>
+    <p>На ваш адрес электронной почты
+        выслано письмо с указаниями
+        для завершения.</p>
+    <h6>Спасибо за регистрацию!</h6>
+</div>
+
+<div class="wrapper">
+    <div class="header_first_line"></div>
+    <header>
+        <div class="container_16">
+            <div class="grid_3 "><img class="logo" src="images/logo.png" alt="logo"/></div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Главная</a></li>
+                        <li><a href="news.html">Hoвости</a></li>
+                        <li><a href="How%20it%20works.html">Как это работает</a></li>
+                        <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li id="enter">
+                            <a href="#" >Вход</a>
+
+                        </li>
+                    </ul>
+
+                    <!-- popap регистрации/входа -->
+                    <div class="popap_regestration">
+                        <div class="close"></div>
+                        <div class="title">
+                            <span  class="active_popup enter_window">Вход | </span>
+                            <span class="regestration_window" >Регистрация</span>
+                        </div>
+
+                        <div class="enter_window_content">
+                            <div class="some_input_block">
+                                <div class="name_input fl">E-mail:<span>*</span></div><div class="error fr">неверный e-mail</div>
+                                <div class="clear"></div>
+                                <div class="some_input ">
+                                    <input type="text" placeholder="mail@gmail.com" class="placeholder some_input_error">
+                                </div>
+                            </div>
+
+                            <div class="some_input_block">
+                                <div class="name_input fl">Пароль:<span>*</span></div><div class="error fr"></div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="password" placeholder="********" class="placeholder">
+                                </div>
+                            </div>
+                            <div class="checkbox_block fl">
+                                <input type="checkbox" id="check1" class="styled">
+                                <label for="check1">Запомнить меня</label>
+                            </div>
+
+                            <a href="#" class="fr" id="rem_pass">Вспомнить пароль</a>
+                            <div class="clear"></div>
+
+                            <button class="green_bg btn fr btn_enter">Вход</button>
+                            <div class="clear30"></div>
+
+                            <div class="remember_password">
+                                <h4>Восстановление доступа</h4>
+                                <div class="some_input_block">
+                                    <div class="name_input ">Введите ваш e-mail:</div>
+                                    <div class="clear"></div>
+                                    <div class="some_input ">
+                                        <input type="text" placeholder="mail@gmail.com" class="placeholder">
+                                    </div>
+                                </div>
+                                <button class="green_bg btn fr ">Напомнить пароль </button>
+                                <div class="clear"></div>
+                                <p>На ваш e-mail отправлен
+                                    новый пароль</p>
+                                <div class="error">Данный e-mail не зарегистрирован в
+                                    нашей системе. Пожалуйста, зарегистрируйтесь. </div>
+                            </div>
+
+                        </div>
+
+                        <div class="regestration_window_content">
+                            <div class="some_input_block">
+                                <div class="name_input fl">Телефон:<span>*</span></div><div class="error fr">Сообщение об ошибке</div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="text" placeholder="+0 (000) 000 00 00" class="placeholder some_input_error">
+                                </div>
+                            </div>
+
+                            <div class="some_input_block">
+                                <div class="name_input fl">Название кампании:<span>*</span></div><div class="error fr"></div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="text" placeholder="Название" class="placeholder">
+                                </div>
+                            </div>
+
+                            <div class="some_input_block">
+                                <div class="name_input fl">E-mail::<span>*</span></div><div class="error fr"></div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="text" placeholder="mail@gmail.com" class="placeholder">
+                                </div>
+                            </div>
+
+                            <div class="some_input_block">
+                                <div class="name_input fl">Пароль:<span>*</span></div><div class="error fr"></div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="password" placeholder="********" class="placeholder">
+                                </div>
+                            </div>
+
+                            <div class="some_input_block">
+                                <div class="name_input fl">Повторите пароль:<span>*</span></div><div class="error fr"></div>
+                                <div class="clear"></div>
+                                <div class="some_input">
+                                    <input type="password" placeholder="********" class="placeholder">
+                                </div>
+                            </div>
+                            <div class="checkbox_block fl">
+                                <input type="checkbox" id="check2" class="styled">
+                                <label for="check2">Я продавец</label>
+                            </div>
+                            <div class="clear30"></div>
+
+                            <button class="green_bg btn fr" id="regestration_btn">Регистрация</button>
+                        </div>
+
+
+                    </div>
+                    <!-- end popap регистрации/входа -->
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <div class="gray_line_thin"></div>
+    <div class="gray_line"></div>
+
+
+
+        <div class="content">
+            <div class="container_16">
+                <div class="block_underline">
+                    <div class="grid_9 suffix_1">
+                        <h1>Добро пожаловать</h1>
+                        <h2>на генератор рыбных текстов!</h2>
+                        <p> <img src="images/arrow.png" alt="arrow"/>Здесь абсолютно комфортно вы можете генерировать тексты-«рыбы» </p>
+                        <a href="#" class="green_bg btn">Узнать больше</a>
+                    </div>
+
+                    <div class="grid_6">
+                        <img class="picture" src="images/iMac.png" alt="iMac"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 gray_line_thin"></div>
+                <div class="clearfix"></div>
+
+                <div class="block_underline">
+                    <div class="grid_7">
+                        <div class="title">Рекламные площадки / <a href="#"> Все</a></div>
+                        <div id="main_page_slider1" class="royalSlider heroSlider rsMinW">
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid_2 ">
+                        <img src="images/vertical_line.png" class="vertical_line" alt=""/>
+                    </div>
+
+                    <div class="grid_7 ">
+                        <div class="title">Агентства / <a href="#"> Все</a></div>
+                        <div id="main_page_slider2" class="royalSlider heroSlider rsMinW">
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <a href="#"><img src="images/logo_slider.png" alt="" ></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 gray_line_thin"></div>
+                <div class="clearfix"></div>
+
+                <div class="grid_16 title">Новости / <a href="#"> Все</a></div>
+                <div class="clearfix"></div>
+                <div class="block_news">
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                           <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 dot_line"></div>
+                <div class="clearfix"></div>
+
+                <div class="block_news">
+                    <div class="clearfix"></div>
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                            <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 dot_line"></div>
+                <div class="clearfix"></div>
+
+                <div class="block_news">
+                    <div class="clearfix"></div>
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                          <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    <div class="clear30"></div>
+
+        <div class="footer_back"></div>
+    </div>
+    <footer>
+        <div class="footer_body">
+            <div class="container_16 min_size">
+                <div class="grid_5">
+                    <h4>О нас</h4>
+                    <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу </p>
+
+                </div>
+                <div class="grid_6 ">
+                    <div class="contact">
+                        <h4>Контакты</h4>
+                        <p>г. Город, ул. Название улицы, д. 00, офис 105</p>
+                        <p>+0 (000) 000 00 00</p>
+                        <a href="mailto:adwh@mail.com" class="mail">adwh@mail.com</a>
+                    </div>
+                </div>
+                <div class="grid_5">
+                    <h4>Следуйте за нами</h4>
+                    <div class="facebook"></div>
+                    <div class="twitter"></div>
+                    <div class="vk"></div>
+                    <div class="google"></div>
+                    <div class="in"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container_16">
+                <div class="grid_16">
+                    <span class="copyrait">&copy; 2013 AdWh.com. Все права защищены</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

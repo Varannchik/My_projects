@@ -1,0 +1,44 @@
+.background_window{
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#33000000',GradientType=1 ); /* IE6-9 */
+}
+.slider_content a img{
+    border: none;
+}
+.some_input{
+    line-height: 13px;
+
+
+}
+input{
+    line-height: 40px;
+}
+.paginator ul .first-child, .paginator ul .last-child{
+    width: 65px;
+    border: none;
+}
+.bg_row{
+    background: #eff7ed;
+}
+.price_table .some_input_block .some_input input{
+    width: 100%;
+    position: relative;
+    left: -5px;
+}
+.content_platform_1 .some_input_block  .some_input input, .content_platform_2 .some_input_block  .some_input input{
+    line-height: 26px;
+}
+.block_select{
+    margin-top: 7px;
+}
+.public .checkbox_block_big {
+    margin: 7px 22px 10px 4px;
+}
+.btn_enter {
+    line-height: 20px!important;
+}
+.second_content .slider_content .dark_block {
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#33000000',GradientType=1 ); /* IE6-9 */
+}
+article a img{
+    border: none;
+}

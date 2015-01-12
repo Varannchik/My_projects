@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE ]><link rel="stylesheet" href="css/ie9.css" type="text/css" media="screen" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <title>History</title>
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+    <script src="Jcrop/js/jquery.Jcrop.js"></script>
+
+
+    <link rel="stylesheet" href="Jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+    <link href="css/core-ui-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/jquery.scrollpane.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.scrollpane.js"></script>
+    <script src="js/jquery.core-ui-select.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+
+    <script src="drag_and_drop/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+        });
+    </script>
+    <script>
+        $(window).load(function() {
+
+
+            $('.fine_select').coreUISelect({
+                jScrollPane : {
+                    verticalDragMinHeight: 20,
+                    verticalDragMaxHeight: 20,
+                    showArrows : true
+                }
+            });
+
+
+             $("#draggable1").draggable({
+                 containment:"#container_drag1",
+                 scroll:false
+             });
+             $("#draggable2").draggable({
+                 containment:"#container_drag2",
+                 scroll:false
+             });
+
+
+
+        });
+
+    </script>
+
+
+</head>
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="background_window"></div>
+<div class="delete_scrin_popup">
+    <div class="close"></div>
+    <div class="clear10"></div>
+    <p>Вы уверены, что хотите удалить скриншот?</p>
+    <div class="clear10"></div>
+    <button class="gray_bg btn fl btn_small yes">Да</button>
+    <button class="gray_bg btn fr btn_small no">Нет</button>
+
+</div>
+
+<div class="wrapper">
+    <div class="header_first_line"></div>
+    <header>
+        <div class="container_16">
+            <div class="grid_3 "><img class="logo" src="images/logo.png" alt="logo"/></div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#">Hoвости</a></li>
+                        <li><a href="How%20it%20works.html">Как это работает</a></li>
+                        <li><a href="#" class="active">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <div class="gray_line_thin"></div>
+    <div class="gray_line"></div>
+    <div class="nav_reg">
+        <div class=" container_16">
+            <div class="grid_3 ">
+                <div class="user">
+                    <img src="images/user.png"  class="fl" alt=""/>
+                    <span class="name_user">Петр Петров</span>
+                </div>
+            </div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Панель управления</a></li>
+                        <li><a href="search.html" >Поиск</a></li>
+                        <li><a href="basket.html">Корзина</a></li>
+                        <li><a href="#" >Аккаунт</a></li>
+                        <li><a href="history.html">История</a></li>
+                        <li><a href="settings.html">Настройки</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+            <div class="container_16">
+                <div class="grid_16">
+                    <div class="title fl">Создание площадки</div> <img src="images/pen.png" class="icon_green_people" alt="icon"/>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="grid_16">
+                    <div class="title_platform">
+                        <span  class="platform platform_1 active_title">Основная информация</span><span>  | </span>
+                        <span class="platform platform_2 " >Скриншоты</span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+
+                <div class="content_platform_1 content_platform_visible">
+                    <div class="grid_4">
+                        <p class="name_input fl">Название сайта:<span>*</span></p>
+                    </div>
+                    <div class="grid_12">
+                        <div class="some_input_block">
+                            <div class="some_input">
+                                <div class="error fr">Обязательно поле для ввода</div>
+                                <input type="text" placeholder="Название сайта" class="placeholder some_input_error">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="grid_4">
+                        <p class="name_input fl">Адрес сайта:<span>*</span></p>
+                    </div>
+                    <div class="grid_12">
+                        <div class="some_input_block">
+                            <div class="some_input">
+                                <div class="error fr"></div>
+                                <input type="text" placeholder="Адрес сайта" class="placeholder">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="grid_4">
+                        <p class="name_input fl">Описание:</p>
+                    </div>
+                    <div class="grid_12">
+                        <div class="textarea_block">
+                            <div class="some_textarea">
+                                <textarea class="plaseholder"  placeholder="Текст сообщения:"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="grid_4">
+                        <p class="name_input fl">Загрузка скриншота</p>
+                    </div>
+                    <div class="grid_6">
+                        <div class="some_input_block">
+                            <div class="some_input">
+
+                                <input type="text" placeholder="image.png" class="placeholder">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_6">
+                       <div class="block_select download_file">
+                           <input type="file"/>
+                            <img src="images/icon_select_file.png"  class="fl" alt="icon"/>
+                            <span class="select_file">Выбрать файл</span>
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="grid_4">
+                        <p class="name_input fl">Логин “Liveinternet”:</p>
+                    </div>
+                    <div class="grid_6 suffix_6">
+                        <div class="some_input_block">
+                            <div class="some_input">
+                                <input type="text" placeholder="login" class="placeholder">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="grid_4">
+                        <p class="name_input fl">Пароль “Liveinternet”:</p>
+                    </div>
+                    <div class="grid_6">
+                        <div class="some_input_block">
+                            <div class="some_input">
+
+                                <input type="password" placeholder="*******" class="placeholder">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_6 public">
+                        <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                            <input type="checkbox" id="check50" class="styled ">
+                            <label for="check50" class="fl">Без пароля (публичный просмотр)</label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="grid_4">
+                        <p class="name_input fl">Тип сайта:</p>
+                    </div>
+                    <div class="grid_6">
+                        <div  class="select_block select_block_filter fl">
+                            <select class="fine_select">
+                                <option>В месяц</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid_6">
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="clear30"></div>
+                    <div class=" grid_16 gray_line_thin"></div>
+                    <div class="clearfix"></div>
+                    <div class="grid_16">
+                        <div class="title fl">Прайс-лист</div> <img src="images/icon_price_list.png" class="icon_green_people" alt="icon"/>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="grid_16">
+                        <table class="price_table">
+                            <tr>
+                                <td>Скидка для рекламных агенств</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <div class="error fr">Недопустимое значение </div>
+                                            <input type="text" placeholder="df| %" class="placeholder some_input_error">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Скидка для прямых покупателей</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00 %" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="center">Сезонный коэффициент</td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Январь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Февраль</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Март</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Апрель</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Май</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Июнь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Июль</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Август</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Сентябрь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Октябрь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg_row">
+                                <td>Ноябрь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Декабрь</td>
+                                <td>
+                                    <div class="some_input_block">
+                                        <div class="some_input">
+                                            <input type="text" placeholder="00" class="placeholder ">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="grid_4 prefix_12">
+                        <div class="next_platform ">
+                            <span class="next_arrow fr"></span>
+                            <h3 class="fr">Вперед</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="clear80"></div>
+                </div>
+
+                <div class="content_platform_2">
+                    <article>
+                        <div class="grid_6 suffix_1">
+                            <p class="fl">Загрузите скриншот</p>
+                            <div class="green_bg btn fr download_file"><input type="file"/><img src="images/icon_save_small.png" alt="icon"/>Обзор</div>
+                            <div class="clear"></div>
+                            <div class="download">
+                                <div class="progress">
+                                    <div class="progress_bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </article>
+
+                    <div class=" grid_16 gray_line_dash"></div>
+                    <div class="clearfix"></div>
+
+                    <article>
+                        <div class="grid_6 suffix_1">
+                            <p class="fl">Загрузите скриншот</p>
+                            <div class="green_bg btn fr download_file"><input type="file"/><img src="images/icon_save_small.png" alt="icon"/>Обзор</div>
+                            <div class="clear"></div>
+                            <img src="images/skrepka.png" alt="icon" class="fl skrepka"/><span class="link_photo">img.png</span>
+                            <div class="clear"></div>
+                            <p>Название страницы</p>
+                            <div class="some_input_block">
+                                <div class="some_input">
+                                    <input type="text" placeholder="Название страницы" class="placeholder">
+                                </div>
+                            </div>
+                            <p class="fr delete_scrin">Удалить скриншот<span class="delete"></span> </p>
+                            <div class="clear10"></div>
+
+
+
+                            <button class="green_bg btn  btn_new open_popup_size"><img src="images/plus_small.png" alt="icon"/>Новые условия </button>
+                            <div class="clear"></div>
+                            <a href="#" class="copy_text"><span class="copy fl"></span>Дублировать скриншот </a>
+                        </div>
+
+                        <div class="grid_9 block_picture_resize " id="container_drag1">
+                            <div class="popup_size" id="draggable1">
+                                <div class="close"></div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Разрешение баннера:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="200х1200" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Тип размещения:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="Тип" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Условие:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="Условие" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Цена:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="000" class="placeholder">
+                                    </div>
+                                </div>
+                                <div class="clear10"></div>
+                                <button class="green_bg btn  btn_new close_popup" >Ok</button>
+                            </div>
+                            <div class="jcrop_example">
+                                    <div class="sample_1">
+
+                                        <img src="images/picture.jpg" id="cropbox1" alt="icon"/>
+
+                                        <form action="Jcrop/index.php" method="post" onsubmit="return checkCoords();">
+                                            <div class="form_point">
+                                                <label>X1 <input type="text" name="x" class="x" size="4"/></label>
+                                                <label>Y1 <input type="text" name="y" class="y" size="4"/></label>
+                                                <label>X2 <input type="text" name="x2" class="x2" size="4"/></label>
+                                                <label>Y2 <input type="text" name="y2" class="y2" size="4"/></label>
+                                                <label>Ш <input type="text" name="w" class="w" size="4"/></label>
+                                                <label>В <input type="text" name="h" class="h" size="4"/></label>
+                                            </div>
+                                            <div class="select_areal">
+                                                <div> "Выделить область баннера"</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </article>
+                    <div class=" grid_16 gray_line_dash"></div>
+                    <div class="clearfix"></div>
+                    <article>
+                        <div class="grid_6 suffix_1">
+                            <p class="fl">Загрузите скриншот</p>
+                            <div class="green_bg btn fr download_file"><input type="file"/><img src="images/icon_save_small.png" alt="icon"/>Обзор</div>
+                            <div class="clear"></div>
+                            <img src="images/skrepka.png" alt="icon" class="fl skrepka"/><span class="link_photo">img.png</span>
+                            <div class="clear"></div>
+                            <p>Название страницы</p>
+                            <div class="some_input_block">
+                                <div class="some_input">
+                                    <input type="text" placeholder="Название страницы" class="placeholder">
+                                </div>
+                            </div>
+                            <p class="fr delete_scrin">Удалить скриншот<span class="delete"></span> </p>
+                            <div class="clear10"></div>
+
+                            <div class="condition">
+                                <p class="fl text_price">1000 показов – до 100 000 рублей – 600 рублей</p>
+                                <span class="delete fr"></span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="condition">
+                                <p class="fl text_price">Цена 5 000 рублей</p>
+                                <span class="delete fr"></span>
+                                <div class="clear"></div>
+                            </div>
+
+                            <button class="green_bg btn  btn_new open_popup_size"><img src="images/plus_small.png" alt="icon"/>Новые условия </button>
+                            <div class="clear"></div>
+                            <a href="#" class="copy_text"><span class="copy fl"></span>Дублировать скриншот </a>
+                        </div>
+                        <div class="grid_9 block_picture_resize" id="container_drag2">
+                            <div class="popup_size" id="draggable2">
+                                <div class="close"></div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Разрешение баннера:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="200х1200" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Тип размещения:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="Тип" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Условие:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="Условие" class="placeholder">
+                                    </div>
+                                </div>
+
+                                <div class="some_input_block">
+                                    <div class="name_input fl">Цена:</div>
+                                    <div class="some_input fl">
+                                        <input type="text" placeholder="000" class="placeholder">
+                                    </div>
+                                </div>
+                                <div class="clear10"></div>
+                                <button class="green_bg btn  btn_new close_popup" >Ok</button>
+
+                            </div>
+
+                            <div class="jcrop_example">
+
+                                <div class="sample_1">
+
+                                    <img src="images/picture.jpg" id="cropbox2" alt="icon"/>
+
+                                    <form action="Jcrop/index.php" method="post" onsubmit="return checkCoords();">
+                                        <div  class="form_point">
+                                            <label>X1 <input type="text" name="x" class="x" size="4"/></label>
+                                            <label>Y1 <input type="text" name="y" class="y" size="4"/></label>
+                                            <label>X2 <input type="text" name="x2" class="x2" size="4"/></label>
+                                            <label>Y2 <input type="text" name="y2" class="y2" size="4"/></label>
+                                            <label>Ш <input type="text" name="w" class="w" size="4"/></label>
+                                            <label>В <input type="text" name="h" class="h" size="4"/></label>
+                                        </div>
+                                        <div class="select_areal">
+                                            <div> "Выделить область баннера"</div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </article>
+                    <div class=" grid_16 gray_line_thin"></div>
+                    <div class="clearfix"></div>
+                    <div class="clear30"></div>
+                    <div class="grid_6">
+                        <img src="images/green_plus.png" alt="icon" class="fl"/>
+                        <a href="" class="add_text">Добавить еще скриншот</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="clear80"></div>
+                    <div class="grid_3 prev_platform">
+                        <span class="prew_arrow fl"></span>
+                        <h3>Назад</h3>
+                    </div>
+                    <div class="grid_5  prefix_8 fr">
+                       <button class="save_platform fr">
+                            <img src="images/green_save.png" alt="icon" class="fl green_save"/>
+                            <span class="h3 save">Сохранить</span>
+                       </button>
+                    </div>
+
+
+
+                    <div class="clear80"></div>
+                </div>
+            </div>
+
+
+        <div class="footer_back"></div>
+    </div>
+    <footer>
+        <div class="footer_body">
+            <div class="container_16 min_size">
+                <div class="grid_5">
+                    <h4>О нас</h4>
+                    <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу </p>
+
+                </div>
+                <div class="grid_6 ">
+                    <div class="contact">
+                        <h4>Контакты</h4>
+                        <p>г. Город, ул. Название улицы, д. 00, офис 105</p>
+                        <p>+0 (000) 000 00 00</p>
+                        <a href="mailto:adwh@mail.com" class="mail">adwh@mail.com</a>
+                    </div>
+                </div>
+                <div class="grid_5">
+                    <h4>Следуйте за нами</h4>
+                    <div class="facebook"></div>
+                    <div class="twitter"></div>
+                    <div class="vk"></div>
+                    <div class="google"></div>
+                    <div class="in"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container_16">
+                <div class="grid_16">
+                    <span class="copyrait">&copy; 2013 AdWh.com. Все права защищены</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

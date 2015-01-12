@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE ]><link rel="stylesheet" href="css/ie9.css" type="text/css" media="screen" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title>News</title>
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+        });
+    </script>
+
+    <!-- Слайдеры -->
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider_arhiv').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 420,
+                autoScaleSliderHeight: 340,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled:false,
+                    pauseOnHover: false,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+
+        });
+    </script>
+    <!-- end Слайдеры -->
+
+
+
+    
+</head>
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="background_window"></div>
+
+
+
+<div class="wrapper">
+    <div class="header_first_line"></div>
+    <header>
+        <div class="container_16">
+            <div class="grid_3 "><img class="logo" src="images/logo.png" alt="logo"/></div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#">Hoвости</a></li>
+                        <li><a href="How%20it%20works.html">Как это работает</a></li>
+                        <li><a href="FAQ.html" >FAQ</a></li>
+                        <li><a href="contacts.html" class="active">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <div class="gray_line_thin"></div>
+    <div class="gray_line"></div>
+
+    <div class="nav_reg">
+        <div class=" container_16">
+            <div class="grid_3 ">
+                <div class="user">
+                    <img src="images/user.png"  class="fl" alt=""/>
+                    <span class="name_user">Петр Петров</span>
+                </div>
+            </div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="panel_control.html">Панель управления</a></li>
+                        <li><a href="search.html">Поиск</a></li>
+                        <li><a href="#">Корзина</a></li>
+                        <li><a href="#">Аккаунт</a></li>
+                        <li><a href="history.html">История</a></li>
+                        <li><a href="settings.html">Настройки</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+        <div class="content">
+            <div class="container_16">
+
+                <div class="grid_16 title">Новости <img src="images/icon_news.png" class="icon_news" alt="icon"/></div>
+                <div class="clearfix"></div>
+
+                <div class="grid_13">
+                    <div class="some_input some_input_search">
+                        <input type="text" placeholder="Поиск новостей" class="placeholder">
+                    </div>
+                </div>
+                <div class="grid_3">
+                    <button class="green_bg btn btn_search"><span class="icon_search"></span>Поиск</button>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="grid_16 block_popup">
+                    <img src="images/icon_arhiv.png" alt="icon" class="fl icon_arhiv"/>
+                    <span class="text_arhiv" id="arhiv">Архив новостей</span>
+
+                    <!-- popap архив новостей -->
+                    <div class="popap_arhiv">
+                        <div class="close"></div>
+                        <div class="title">
+                            <span>Архив</span>
+                        </div>
+                        <h4 class="fl">Год:</h4>
+                        <div id="main_page_slider_arhiv" class="royalSlider heroSlider rsMinW fl">
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <p>2010</p>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <p>2011</p>
+                                </div>
+                            </div>
+
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                   <p>2012</p>
+                                </div>
+                            </div>
+                            <div class="rsContent">
+                                <div class="slider_content">
+                                    <p>2013</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <h4>Месяц:</h4>
+                        <div class="month_block month_block_first">
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check50" class="fl">Январь</label>
+                                <input type="checkbox" id="check50" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check51" class="fl">Февраль</label>
+                                <input type="checkbox" id="check51" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check52" class="fl">Март </label>
+                                <input type="checkbox" id="check52" class="styled fr">
+                            </div>
+                        </div>
+
+                        <div class="month_block">
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check53" class="fl">Апрель</label>
+                                <input type="checkbox" id="check53" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check54" class="fl">Май</label>
+                                <input type="checkbox" id="check54" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check55" class="fl">Июнь</label>
+                                <input type="checkbox" id="check55" class="styled fr">
+                            </div>
+                        </div>
+
+                        <div class="month_block ">
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check56" class="fl">Июль</label>
+                                <input type="checkbox" id="check56" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check57" class="fl">Август</label>
+                                <input type="checkbox" id="check57" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check58" class="fl">Сентябрь</label>
+                                <input type="checkbox" id="check58" class="styled fr">
+                            </div>
+                        </div>
+
+                        <div class="month_block month_block_last">
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check59" class="fl">Октябрь</label>
+                                <input type="checkbox" id="check59" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check60" class="fl">Ноябрь</label>
+                                <input type="checkbox" id="check60" class="styled fr">
+                            </div>
+                            <div class="clear10"></div>
+                            <div class="checkbox_block checkbox_block_big checkbox_arhiv">
+                                <label for="check61" class="fl">Декабрь</label>
+                                <input type="checkbox" id="check61" class="styled fr">
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <button class="green_bg btn fr btn_enter">Ok</button>
+
+
+
+                    </div>
+                    <!-- end popap архив новостей -->
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="block_news">
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                            <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 dot_line"></div>
+                <div class="clearfix"></div>
+
+                <div class="block_news">
+                    <div class="clearfix"></div>
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                           <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class=" grid_16 dot_line"></div>
+                <div class="clearfix"></div>
+
+                <div class="block_news">
+                    <div class="clearfix"></div>
+                    <div class="grid_5 ">
+                        <div class="picture_news">
+                           <div class="img_content">
+                                <img src="images/img_content.jpg" alt="picture_news"/>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="grid_11">
+                        <span class="data_green"><span class="icon_calendar"></span>30/11/2013</span>
+                        <h3>Здесь абсолютно комфортно вы можете </h3>
+                        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... </p>
+                        <p class="hide_text">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране... Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных.Далеко-далеко за словесными горами в стране...</p>
+
+                        <div class="read_all  down">Читать полностью</div>
+                        <div class="read_all  up">Свернуть</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    <div class="clear30"></div>
+
+        <div class="footer_back"></div>
+    </div>
+<footer>
+    <div class="footer_body">
+        <div class="container_16 min_size">
+            <div class="grid_5">
+                <h4>О нас</h4>
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу </p>
+
+            </div>
+            <div class="grid_6 ">
+                <div class="contact">
+                    <h4>Контакты</h4>
+                    <p>г. Город, ул. Название улицы, д. 00, офис 105</p>
+                    <p>+0 (000) 000 00 00</p>
+                    <a href="mailto:adwh@mail.com" class="mail">adwh@mail.com</a>
+                </div>
+            </div>
+            <div class="grid_5">
+                <h4>Следуйте за нами</h4>
+                <div class="facebook"></div>
+                <div class="twitter"></div>
+                <div class="vk"></div>
+                <div class="google"></div>
+                <div class="in"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="container_16">
+            <div class="grid_16">
+                <span class="copyrait">&copy; 2013 AdWh.com. Все права защищены</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

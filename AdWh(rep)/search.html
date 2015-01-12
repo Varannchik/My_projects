@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE ]><link rel="stylesheet" href="css/ie9.css" type="text/css" media="screen" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700&amp;subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+    <title>Search</title>
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+
+    <script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript" src="js/ui/jquery-ui.custom.js"></script>
+    <script src="js/ui/jquery.ui.core.js"></script>
+    <script src="js/ui/jquery.ui.widget.js"></script>
+    <script src="js/ui/jquery.ui.slider.js"></script>
+    <script src="js/ui/jquery.ui.mouse.js"></script>
+
+    <link href="css/core-ui-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/jquery.scrollpane.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.scrollpane.js"></script>
+    <script src="js/jquery.core-ui-select.js"></script>
+
+
+    <script type="text/javascript"  src="js/placeholder.js"></script>
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+            if($('input[type="radio"]').size()>0) $('input[type="radio"]').uniform();
+        });
+
+        $(window).load(function() {
+            $('.select_banner').bind('click',function(){
+                $(this).closest('article').find('.second_content').slideDown(300);
+
+            });
+            $('.arrow_close').bind('click',function(){
+                $(this).closest('article').find('.second_content').slideUp(300);
+            })
+            $('.add_bag').bind('click',function(){
+                $(this).closest('.slider_content').find('.dark_block').show();
+                $(this).hide();
+                $(this).closest('.slider_content').find('.delete_bag').show();
+
+            });
+            $('.delete_bag').bind('click',function(){
+                $(this).closest('.slider_content').find('.dark_block').hide();
+                $(this).hide();
+                $(this).closest('.slider_content').find('.add_bag').show();
+
+            });
+
+
+
+            $('.fine_select').coreUISelect({
+                jScrollPane : {
+                    verticalDragMinHeight: 20,
+                    verticalDragMaxHeight: 20,
+                    showArrows : true
+                }
+            });
+
+
+            $( "#price_scroll" ).slider({
+                range: true,
+                min: 100,
+                max: 20000,
+                values: [600, 12000 ],
+                slide: function( event, ui ) {
+                    $("#price1").val( ui.values[ 0 ]);
+                    $("#price2").val(ui.values[ 1 ] );
+                }
+            });
+            $( "#price1" ).val( $( "#price_scroll" ).slider( "values", 0 ));
+            $( "#price2" ).val( $( "#price_scroll" ).slider( "values", 1 ) );
+
+            $( "#price_scroll2" ).slider({
+                range: true,
+                min: 1,
+                max: 100,
+                values: [1, 12 ],
+                slide: function( event, ui ) {
+                    $("#price1_2").val( ui.values[ 0 ]);
+                    $("#price2_2").val( ui.values[ 1 ] );
+                }
+            });
+            $( "#price1_2" ).val( $( "#price_scroll2" ).slider( "values", 0 ));
+            $( "#price2_2" ).val( $( "#price_scroll2" ).slider( "values", 1 ) );
+        });
+    </script>
+
+    <!-- Слайдеры -->
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider_search, #main_page_slider_search2, #main_page_slider_search3, #main_page_slider_search4').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 420,
+                autoScaleSliderHeight: 340,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: false,
+                    pauseOnHover: false,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+        });
+    </script>
+    <!-- end Слайдеры -->
+
+</head>
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="wrapper">
+    <div class="header_first_line"></div>
+    <header>
+        <div class="container_16">
+            <div class="grid_3 "><img class="logo" src="images/logo.png" alt="logo"/></div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="news.html">Hoвости</a></li>
+                        <li><a href="How%20it%20works.html">Как это работает</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </header>
+    <div class="gray_line_thin"></div>
+    <div class="gray_line"></div>
+
+    <div class="nav_reg">
+        <div class=" container_16">
+            <div class="grid_3 ">
+                <div class="user">
+                    <img src="images/user.png"  class="fl" alt=""/>
+                    <span class="name_user">Петр Петров</span>
+                </div>
+            </div>
+            <div class="grid_13">
+                <nav>
+                    <ul>
+                        <li><a href="panel_control.html">Панель управления</a></li>
+                        <li><a href="#" class="active">Поиск</a></li>
+                        <li><a href="#">Корзина</a></li>
+                        <li><a href="#">Аккаунт</a></li>
+                        <li><a href="history.html">История</a></li>
+                        <li><a href="settings.html">Настройки</a></li>
+                        <li><a href="#">Выход</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+        <div class="content">
+            <div class="container_16">
+                <div class="grid_16">
+                    <div class="title fl">Поиск</div> <img src="images/search.png" class="icon_faq" alt="icon"/>
+                    <div class="clear"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="grid_13">
+                    <div class="some_input some_input_search">
+                        <input type="text" placeholder="Поиск сайта" class="placeholder">
+                    </div>
+                </div>
+                <div class="grid_3">
+                    <button class="green_bg btn btn_search"><span class="icon_search"></span>Поиск</button>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="grid_5 ">
+                    <h6>Фильтры</h6>
+                    <div class="filters">
+                        <h4>Цена</h4>
+                        <div class="cost ">
+                            <div id="price_scroll"></div>
+                            От
+                            <div class="input_block ">
+                                <input type="text" value="1500" class="blue_text" id="price1">
+                            </div>
+                            До
+                            <div class="input_block">
+                                <input type="text" value="6500" class="blue_text" id="price2">
+                            </div>
+
+                        </div>
+                        <div class="clear30"></div>
+
+
+
+                        <h4>Просмотры (тыс.):</h4>
+                        <div class="block_value fl">
+                            <span class="label_small_input fl">От</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="1" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block_value_last">
+                            <span class="label_small_input fl">До</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="6" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="select_block select_block_filter fl">
+                            <select class="fine_select">
+                                <option>В месяц</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="clear30"></div>
+
+
+
+                        <h4>Посетители (тыс.):</h4>
+                        <div class="block_value fl">
+                            <span class="label_small_input fl">От</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="1" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block_value_last">
+                            <span class="label_small_input fl">До</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="3" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="select_block select_block_filter fl">
+                            <select class="fine_select">
+                                <option>В месяц</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="clear30"></div>
+
+
+
+                        <h4>Глубина просмотра:</h4>
+                        <div class="cost ">
+                            <div id="price_scroll2"></div>
+                            От
+                            <div class="input_block ">
+                                <input type="text" value="1" class="blue_text" id="price1_2">
+                            </div>
+                            До
+                            <div class="input_block">
+                                <input type="text" value="6500" class="blue_text" id="price2_2">
+                            </div>
+
+                        </div>
+                        <div class="clear30"></div>
+
+
+
+                        <h4>Пол:</h4>
+                        <div class="checkbox_block checkbox_block_big fl">
+                            <input type="checkbox" id="check3" class="styled fl">
+                            <label for="check3" class="fl">М</label>
+                        </div>
+
+                        <div class="checkbox_block checkbox_block_big fl">
+                            <input type="checkbox" id="check4" class="styled fl">
+                            <label for="check4" class="fl">Ж</label>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="checkbox_block checkbox_block_big checkbox_block_big_last fl">
+                            <input type="checkbox" id="check93" class="styled fl">
+                            <label for="check93" class="fl">Неважно</label>
+                        </div>
+                        <div class="clear30"></div>
+
+                        <h4>География:</h4>
+                        <div  class="select_block select_block_filter fl">
+                            <select class="fine_select">
+                                <option>Центральный округ</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+                        <div class="clear30"></div>
+
+
+
+                        <h4>Возраст:</h4>
+                        <div class="block_value fl">
+                            <span class="label_small_input fl">От</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="25" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block_value_last">
+                            <span class="label_small_input fl">До</span>
+                            <div class="some_input_block some_input_block_small fl">
+                                <div class="some_input ">
+                                    <input type="text" placeholder="45" class="placeholder">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear30"></div>
+
+                        <button class="green_bg btn btn_search search_filter"><span class="icon_search"></span>Поиск</button>
+                        <div class="clear30"></div>
+                    </div>
+                </div>
+                <div class="grid_10 prefix_1 ">
+                    <div class="otstup">
+                        <h6>Результаты поиска / <span>15 сайтов</span></h6>
+                    <div class="result">
+                       <div class="result_filter">
+                            <h4 class="fl">Сортировать</h4>
+                            <div  class="select_block select_block_result fl">
+                                <select class="fine_select">
+                                    <option>По посещениям</option>
+                                    <option>По цене</option>
+                                    <option>По алфавиту</option>
+                                    <option>По посещениям </option>
+                                    <option>По просмотрам</option>
+
+                                </select>
+                            </div>
+                       </div>
+
+                       <div class="result_filter result_filter_last">
+                            <h4 class="fl">Выводить по </h4>
+                            <div  class="select_block  select_block_result fl">
+                                <select class="fine_select">
+                                    <option>10 страниц</option>
+                                    <option>20 страниц</option>
+                                    <option>25 страниц</option>
+                                </select>
+                            </div>
+                       </div>
+
+                       <article>
+                           <span class="number_list fl">1</span>
+                           <a href="#" class="picture_sait fl"><img src="images/picture_sait.png" alt=""/></a>
+                           <div class="first_content">
+                               <a href="#" class="name_sait_green">Название сайта</a>
+                               <a href="#" class="link_sait">www.website.com</a>
+                               <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. </p>
+                               <div class="fl">
+                                   <span class="small_text">Просмотров: <span class="green_small_text">1 600 тыс/мес</span></span>
+                                   <span class="small_text">Посещений: <span class="green_small_text">200 тыс/мес</span></span>
+                               </div>
+                               <button class="gray_bg btn gray_btn fr select_banner" >Выбрать баннер</button>
+                           </div>
+                           <div class="clear"></div>
+                           <div class="second_content">
+                               <div class="arrow_close fl"></div>
+                               <div id="main_page_slider_search" class="royalSlider heroSlider rsMinW">
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio" >
+                                                   <input type="radio" id="type1" name="name1"><label for="type1" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type2" name="name1"><label for="type2" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type3" name="name1"><label for="type3" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type4" name="name2"><label for="type4" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type5"  name="name2"><label for="type5" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type6"  name="name2"><label for="type6" >Цена за время: 4 грн</label>
+                                               </div>
+
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type7" name="name3" ><label for="type7" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type8" name="name3"><label for="type8" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type9" name="name3"><label for="type9" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <div class="clear"></div>
+                       </article>
+                       <div class="dot_line"></div>
+
+                       <article>
+                           <span class="number_list fl">2</span>
+                           <a href="#" class="picture_sait fl"><img src="images/picture_sait.png" alt=""/></a>
+                           <div class="first_content">
+                               <a href="#" class="name_sait_green">Название сайта</a>
+                               <a href="#" class="link_sait">www.website.com</a>
+                               <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. </p>
+                               <div class="fl">
+                                   <span class="small_text">Просмотров: <span class="green_small_text">1 600 тыс/мес</span></span>
+                                   <span class="small_text">Посещений: <span class="green_small_text">200 тыс/мес</span></span>
+                               </div>
+                               <button class="gray_bg btn gray_btn fr select_banner" >Выбрать баннер</button>
+                           </div>
+                           <div class="clear"></div>
+                           <div class="second_content">
+                               <div class="arrow_close fl"></div>
+                               <div id="main_page_slider_search2" class="royalSlider heroSlider rsMinW">
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type36" name="name4"><label for="type36" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type35" name="name4"><label for="type35" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type34" name="name4"><label for="type34" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type31" name="name5"><label for="type31" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type32"  name="name5"><label for="type32" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type33"  name="name5"><label for="type33" >Цена за время: 4 грн</label>
+                                               </div>
+
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type30" name="name6" ><label for="type30" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type29" name="name6"><label for="type29" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type28" name="name6"><label for="type28" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <div class="clear"></div>
+                       </article>
+                       <div class="dot_line"></div>
+
+                       <article>
+                           <span class="number_list fl">3</span>
+                           <a href="#" class="picture_sait fl"><img src="images/picture_sait.png" alt=""/></a>
+                           <div class="first_content">
+                               <a href="#" class="name_sait_green">Название сайта</a>
+                               <a href="#" class="link_sait">www.website.com</a>
+                               <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. </p>
+                               <div class="fl">
+                                   <span class="small_text">Просмотров: <span class="green_small_text">1 600 тыс/мес</span></span>
+                                   <span class="small_text">Посещений: <span class="green_small_text">200 тыс/мес</span></span>
+                               </div>
+                               <button class="gray_bg btn gray_btn fr select_banner" >Выбрать баннер</button>
+                           </div>
+                           <div class="clear"></div>
+                           <div class="second_content">
+                               <div class="arrow_close fl"></div>
+                               <div id="main_page_slider_search3" class="royalSlider heroSlider rsMinW">
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type25" name="name7"><label for="type25" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type27" name="name7"><label for="type27" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type26" name="name7"><label for="type26" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type24" name="name8"><label for="type24" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type23"  name="name8"><label for="type23" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type22"  name="name8"><label for="type22" >Цена за время: 4 грн</label>
+                                               </div>
+
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type21" name="name9" ><label for="type21" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type20" name="name9"><label for="type20" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type19" name="name9"><label for="type19" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <div class="clear"></div>
+                       </article>
+                       <div class="dot_line"></div>
+
+                       <article>
+                           <span class="number_list fl">4</span>
+                           <a href="#" class="picture_sait fl"><img src="images/picture_sait.png" alt=""/></a>
+                           <div class="first_content">
+                               <a href="#" class="name_sait_green">Название сайта</a>
+                               <a href="#" class="link_sait">www.website.com</a>
+                               <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных. </p>
+                               <div class="fl">
+                                   <span class="small_text">Просмотров: <span class="green_small_text">1 600 тыс/мес</span></span>
+                                   <span class="small_text">Посещений: <span class="green_small_text">200 тыс/мес</span></span>
+                               </div>
+                               <button class="gray_bg btn gray_btn fr select_banner" >Выбрать баннер</button>
+                           </div>
+                           <div class="clear"></div>
+                           <div class="second_content">
+                               <div class="arrow_close fl"></div>
+                               <div id="main_page_slider_search4" class="royalSlider heroSlider rsMinW">
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type10" name="name10"><label for="type10" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type11" name="name10"><label for="type11" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type12" name="name10"><label for="type12" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type13" name="name11"><label for="type13" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type14"  name="name11"><label for="type14" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type15"  name="name11"><label for="type15" >Цена за время: 4 грн</label>
+                                               </div>
+
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="rsContent">
+                                       <div class="slider_content">
+                                           <a href="#" class="fl"><div class="dark_block"><img src="images/bag.png" alt=""/>Добавлено в корзину</div><img src="images/picture_sait.png" alt="" ></a>
+                                           <a href="#" class="main_link">Главная</a>
+                                           <div class="select_slider fl">
+                                               <div  class="select_block ">
+                                                   <select class="fine_select">
+                                                       <option>10 страниц</option>
+                                                       <option>20 страниц</option>
+                                                       <option>25 страниц</option>
+                                                   </select>
+                                               </div>
+
+                                               <div class="block_radio">
+                                                   <input type="radio" id="type16" name="name12" ><label for="type16" >Цена за клик: 2,5 грн</label>
+                                                   <input type="radio" id="type17" name="name12"><label for="type17" >Цена за просмотр: 0,05 грн</label>
+                                                   <input type="radio" id="type18" name="name12"><label for="type18" >Цена за время: 4 грн</label>
+                                               </div>
+
+                                               <button class="green_bg btn gray_btn white_text fr add_bag">Добавить в корзину</button>
+                                               <button class="green_bg btn gray_btn white_text fr delete_bag">Отмена</button>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <div class="clear"></div>
+                       </article>
+                    </div>
+
+
+                    </div>
+
+                <div class="paginator fr">
+                    <ul>
+                        <li class="next first-child">&laquo; Назад</li>
+                        <li>1</li>
+                        <li class="active">2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li class="next last-child">Вперед &raquo;</li>
+                    </ul>
+                </div>
+
+                </div>
+                <div class="clearfix"></div>
+
+
+            </div>
+            <div class="clear30"></div>
+        </div>
+
+        <div class="footer_back"></div>
+    </div>
+    <footer>
+        <div class="footer_body">
+            <div class="container_16 min_size">
+                <div class="grid_5">
+                    <h4>О нас</h4>
+                    <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу </p>
+
+                </div>
+                <div class="grid_6 ">
+                    <div class="contact">
+                        <h4>Контакты</h4>
+                        <p>г. Город, ул. Название улицы, д. 00, офис 105</p>
+                        <p>+0 (000) 000 00 00</p>
+                        <a href="mailto:adwh@mail.com" class="mail">adwh@mail.com</a>
+                    </div>
+                </div>
+                <div class="grid_5">
+                    <h4>Следуйте за нами</h4>
+                    <div class="facebook"></div>
+                    <div class="twitter"></div>
+                    <div class="vk"></div>
+                    <div class="google"></div>
+                    <div class="in"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container_16">
+                <div class="grid_16">
+                    <span class="copyrait">&copy; 2013 AdWh.com. Все права защищены</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
