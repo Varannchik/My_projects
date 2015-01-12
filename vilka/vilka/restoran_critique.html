@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+    <title>Ресторанная критика</title>
+	
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/style_afisha.css">
+    <link rel="stylesheet" href="css/and_style.css">
+    <link rel="stylesheet" href="css/reviews_style.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+	<!--
+		Подключаем API карт
+		Параметры:
+			- load=package.standard - основные компоненты;
+			- lang=ru-RU - язык русский.
+	-->
+	<script src="http://api-maps.yandex.ru/2.0/?load=package.standard&amp;lang=ru-RU" type="text/javascript"></script>
+
+
+	<script src="js/jquery-1.7.2.js"></script>
+	<script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+	<script type="text/javascript"  src="js/placeholder.js"></script>
+
+	<!-- optionally include helper plugins -->
+	<script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+
+    <script src="js/common.js"></script>
+
+	<script src="js/main_page.js"></script>
+
+      <script src="js/and_js.js"></script>
+      <script src="js/popup.js"></script>
+
+      <script type="text/javascript" src="js/jquery.uniform.js"></script>
+      <script>
+          $(window).load(function() {
+              if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+
+              $(".nano").nanoScroller();
+
+              <!-- Изменение размера картинки -->
+              $('.one_reviews').each(function(){
+                  var h_block=$(this).height();
+                      h_img=$(this).find('img').height();
+                      mrg= (h_block-h_img)/2;
+
+                  $(this).find('img').css('margin-top',mrg+"px");
+              });
+
+              <!-- end Изменение размера картинки -->
+
+              $('.city ul li a').on('click',function(){
+                  var val = $(this).text();
+                  $(this).closest('.city').find('.name_city').text(val);
+                  $(this).closest('.city').find('input').val(val);
+                  $(this).closest('.city').find('ul').hide();
+                  return false;
+              });
+
+              <!--рейтинг-->
+              $('.crit_rating_restoran ul li').on('click',function(){
+                  $('.crit_rating_restoran ul li').removeClass('active');
+                  $(this).addClass('active');
+              });
+              <!--END рейтинг-->
+
+
+
+          });
+
+
+		  
+      </script>
+
+      <script>
+          $(function(){              $('.list_carousel .news_item ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+110;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			                $('.list_carousel .events_block ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+108;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			  			  			  $('.restoran_promo_slider_active').live('click',function(){					$(this).html('').hide();			  });
+              $('.search_select_block').hover(function(){
+                  $('.search_select_block ul').stop(true,true).slideDown(200);
+              },function(){
+                  $('.search_select_block ul').stop(true,true).slideUp(200);
+              })
+
+              $('.search_select_block ul a').live('click',function(){
+                  var val=$(this).text();
+                  $('.search_select_val').text(val);
+                  return false;
+              })
+          });
+      </script>
+
+
+      <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+      <script src="js/ui/jquery.ui.core.js"></script>
+      <script src="js/ui/jquery.ui.widget.js"></script>
+
+    <!--[if IE 8]>
+      <script src="js/ie8.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+  <!--[if lt IE 8]>
+      <style>
+          #wrapper{display:none;}
+      </style>
+      <div style='text-align:center;'>
+          <br><br>
+          <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+          <br><br><br>
+          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+              <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+          </a>
+      </div>
+  <![endif]-->
+
+<div class="popover_bg"></div>
+
+  <div id="wrapper">
+  <!-- HEADER -->
+  <header class="wrapper header">
+      <div class="container container_restoran">
+
+          <div class="free_order_block restoran_order">
+              <div class="free_order">
+                  <a href="#" class="close"></a>
+                  <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                  <div class="phone">+7 495 221 22 22</div>
+              </div>
+          </div>
+
+          <div class="header_logo header_logo_restoran">
+              <a href="#">
+                  <img src="css/img/logo.png"  alt="logo"/>
+              </a>
+              <div class="header_lang">
+                  <a href="#">Eng</a>
+              </div>
+              <div class="city">
+                  <div class="name_city">
+                      <div class="blur_bg"></div>
+                      Архангельск
+                  </div>
+                  <ul>
+                      <li><a href="#">Москва</a></li>
+                      <li><a href="#">Белгород</a></li>
+                      <li><a href="#">Ставрополь</a></li>
+                      <li><a href="#">Курск</a></li>
+                      <li><a href="#">Железногорск</a></li>
+                  </ul>
+              </div>
+              <div class="clear"></div>
+
+          </div>
+          <div class="header_rigth_info header_righ_info_restoran">
+              <p class="text1">+7 495 221 22 22</p>
+              <p class="text2">8 800 221 22 22</p>
+              <a href="#" class="header_btn float_fr" >Вход / Регистрация</a>
+          </div>
+          <div class="header_center_small">
+              <div class="float_fl header_center_block first"><img src="css/img/tarelka.png" alt="ico"/> <a href="" class="header_center_link"><span>Забронировать <br>Столик</span></a></div>
+              <div class="float_fl header_center_block"><img src="css/img/bokal.png" alt="ico"/> <a href="" class="header_center_link"><span>Заказать<br>Банкет</span></a></div>
+              <div class="float_fl header_center_block"><img src="css/img/comment_smile.png" alt="ico"/> <a href="" class="header_center_link"><span>Бесплатная<br>Консультация
+                </span></a></div>
+          </div>
+
+      </div>
+      <div class="clear"></div>
+      <nav class="container services_nav">
+          <ul>
+              <li class="restaurant">
+                  <a href="#"><span>Рестораны</span></a>
+              </li>
+              <li class="feast">
+                  <a href="#"><span>Банкеты</span></a>
+              </li>
+              <li class="wedding">
+                  <a href="#"><span>Свадьбы</span></a>
+              </li>
+              <li class="night_life">
+                  <a href="#"><span>Ночная жизнь</span></a>
+              </li>
+          </ul>
+      </nav>
+      <div class="container restoran_nav_2">
+          <nav class="header_nav-2">
+              <ul>
+                  <li><a href="#">Афиша</a></li>
+                  <li><a href="#">Рейтинги</a></li>
+                  <li><a href="#">Отзывы</a></li>
+                  <li><a href="#">Обзоры</a></li>
+                  <li><a href="#">Критика</a></li>
+                  <li><a href="#">Новости</a></li>
+                  <li><a href="#">Фото-отчеты</a></li>
+                  <li><a href="#">Рецепт от Шефа</a></li>
+                  <li><a href="#">Полезное</a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  <!-- END HEADER -->
+
+  <div class="banner">
+      <a href="#" class="banner_1"></a>
+  </div>
+  <div class="clear"></div>
+
+     <section class="wrapper">
+          <div class="container">
+          <!-- Реклама -->
+          <aside class="sidebar_right_reclama">
+          <div class="block_caption_restoran float_fl">Реклама</div>
+          <a class="float_fr link_reklama" href="">Разместить рекламу</a>
+          <div class="clear"></div>
+          <div class="ad">
+          <article class="catalog_item bordered">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          Арбатский
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                          <span class="info">?</span>
+                      </div>
+                  </header>
+                  <div class="fade_text">
+                      Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                  </div>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating">
+                      <div class="value"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+
+          <article class="catalog_item bordered">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          Арбатский
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                          <span class="info">?</span>
+                      </div>
+                  </header>
+                  <div class="fade_text">
+                      Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                  </div>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating">
+                      <div class="value"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+
+          <article class="catalog_item_reklama">
+              <header>
+                  <h1>Где едят звезды</h1>
+              </header>
+
+              <div class="content_reklama ">
+                  <div class="content_img float_fl">
+                      <img  class="ava" src="css/img/Kirk.png" alt=""/>
+                      <img class="circle" src="css/img/circle_star.png" alt=""/>
+                  </div>
+                  <div class="name_persone">
+                      <h2>Филипп Киркоров</h2>
+                      <h3>Шоумен<br>Актер<br>Певец</h3>
+                  </div>
+                  <div class="clear"></div>
+                  <p>Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга...</p>
+              </div>
+              <div class="line_gray"></div>
+              <div class="content_reklama ">
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img src="css/img/ico_1_vera.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Вера Брежнева</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img class="icon_star float_fl" src="css/img/ico_2_vasya.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Василий Уткин</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img class="icon_star float_fl" src="css/img/ico_3_sema.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Семен Слепаков</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="clear"></div>
+
+          </article>
+
+          <article class="catalog_item_reklama">
+              <header>
+                  <h1>Рецепты от шеф-повара</h1>
+              </header>
+
+              <div class="content_reklama ">
+                  <div class="content_img float_fl">
+                      <img class="ava" src="css/img/povar.png" alt=""/>
+                      <img class="circle" src="css/img/circle_kok.png" alt=""/>
+                  </div>
+                  <div class="name_persone">
+                      <h2>Анатолий Поваренок</h2>
+                      <h3>Шеф-повар<br>ресторана<br>«Москва»</h3>
+                  </div>
+                  <div class="clear"></div>
+                  <p>Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга...</p>
+              </div>
+              <div class="line_gray"></div>
+              <div class="content_reklama ">
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img src="css/img/ico_1_vera.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Анастасия Ушанкина</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img class="icon_star float_fl" src="css/img/ico_2_vasya.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Александр Петров</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+                  <div class="stars_show">
+                      <div class="icon_star float_fl">
+                          <img class="icon_star float_fl" src="css/img/ico_3_sema.png" alt=""/>
+                      </div>
+                      <div class="star_text">
+                          <a href="">Василий Николо</a>
+                          <p>Ресторан-бар Облака предлагает удобно...</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="clear"></div>
+
+          </article>
+
+          <div class="clear"></div>
+
+          <div class="float_fr right_side_bunner right_side_bunner_restoran">
+              <a href="#">
+                  <img src="images/banner-2.jpg"  alt="banner-2"/>
+              </a>
+          </div>
+          <div class="clear"></div>
+
+          <article class="catalog_item bordered">
+              <a href="#">
+                  <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          Арбатский
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                          <span class="info">?</span>
+                      </div>
+                  </header>
+                  <div class="fade_text">
+                      Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                  </div>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating">
+                      <div class="value"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+
+          <article class="catalog_item bordered">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          Арбатский
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                          <span class="info">?</span>
+                      </div>
+                  </header>
+                  <div class="fade_text">
+                      Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                  </div>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating">
+                      <div class="value"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+
+          </div>
+          </aside>
+          <!-- End -->
+
+              <div class="reviews reviews_critique">
+                 <div class="review_in">
+                      <div class="caption float_fl">Критика — объективный взгляд</div>
+
+                  <div class="sort float_fr">
+                      <div class=" caption float_fl">Показывать:</div>
+                      <div class="header_logo">
+                          <div class="city">
+                              <div class="name_city">
+                                  100
+                                  <input type="hidden">
+                              </div>
+                              <ul>
+                                  <li><a href="#">200</a></li>
+                                  <li><a href="#">300</a></li>
+                                  <li><a href="#">350</a></li>
+                                  <li><a href="#">360</a></li>
+                                  <li><a href="#">370</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="clear"></div>
+
+                  <div class="header_center header_center_restoran header_center_critiqua float_fl">
+                      <div class="header_search">
+                          <div class="search">
+                              <form>
+                                  <div class="float_fl">
+                                      <input type="submit">
+                                  </div>
+                                  <div class="search_select_block">
+                                      <div class="search_select_val">
+                                          По ресторанам
+                                      </div>
+                                      <ul>
+                                          <li class="active"><a href="#">По ресторанам</a></li>
+                                          <li><a href="#">По городам</a></li>
+                                          <li><a href="#">По ресторанам</a></li>
+                                          <li><a href="#">По городам</a></li>
+                                          <li><a href="#">По ресторанам</a></li>
+                                          <li><a href="#">По городам</a></li>
+                                      </ul>
+                                  </div>
+                                  <div class="search_input_right">
+                                      <input type="text" placeholder="Например, ресторан Булгакова" class="placeholder">
+                                  </div>
+                              </form>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+                  </div>
+                  <div class="show_rating float_fr">
+                      <div class="crit_rating_restoran float_fr">
+                          <ul>
+                              <li class="active"><div class="rating_1"><div class="float_fr hint"><i><div class="rating_number rating_number2">1</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_2"><div class="float_fr hint"><i><div class="rating_number rating_number2">2</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_3"><div class="float_fr hint"><i><div class="rating_number rating_number3">3</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_4"><div class="float_fr hint"><i><div class="rating_number rating_number4">4</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_5"><div class="float_fr hint"><i><div class="rating_number rating_number5">5</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_6"><div class="float_fr hint"><i><div class="rating_number rating_number6">6</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_7"><div class="float_fr hint"><i><div class="rating_number rating_number7">7</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_8"><div class="float_fr hint"><i><div class="rating_number rating_number8">8</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_9"><div class="float_fr hint"><i><div class="rating_number rating_number9">9</div>Так себе</i></div></div></li>
+                              <li ><div class="rating_10"><div class="float_fr hint"><i><div class="rating_number rating_number10">10</div>Так себе</i></div></div></li>
+                          </ul>
+                      </div>
+                      <p class="float_fr">По оценке:</p>
+
+                  </div>
+                  <div class="clear"></div>
+
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item crit_item_last">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <div class="clear10"></div>
+
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item crit_item_last">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <div class="clear10"></div>
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <article class="float_fl">
+                      <a href="#">
+                          <div class="text_article crit_item crit_item_last">
+                              <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                              <div class="date">
+                                  <div class="crit_rating val-7"></div>
+                                  10 янв 2013
+                              </div>
+                              <div class="text">
+                                  <div class="name">
+                                      Figure of Food
+                                      <br>
+                                      <span class="blue">Великолепный интерьер</span>
+                                  </div>
+                                  <p>
+                                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                  </p>
+                              </div>
+                          </div>
+                      </a>
+                  </article>
+                  <div class="clear10"></div>
+
+
+                  <div class="main_comment_expand">
+                      <a href="#"><span>Показать еще</span></a>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="paginator paginator_center">
+                      <ul>
+                          <li class="active">1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                          <li><img src="images/paginator_arrow.png" alt=""/></li>
+                          <li class="none">...</li>
+                          <li>70</li>
+                      </ul>
+                  </div>
+                 </div>
+             </div>
+          </div>
+          <div class="clear"></div>
+</section>
+  <div class="clear"></div>
+
+	  <!-- FOOTER -->
+      <footer class="wrapper footer">
+        <div class="container">
+          <div class="footer_logo">
+            <a href="#">
+              <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+            </a>
+          </div>
+          <nav class="footer_nav">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Полезное</a></li>
+              <li><a href="#">Критика</a></li>
+            </ul>
+          </nav>
+          <nav class="footer_services_nav">
+            <ul>
+              <li><a href="#">Рестораны</a></li>
+              <li><a href="#">Банкеты</a></li>
+              <li><a href="#">Свадьбы</a></li>
+              <li><a href="#">Мероприятия</a></li>
+            </ul>
+          </nav>
+          <div class="project_owner">
+            Project of company
+            <a href="#">
+              <img src="css/img/project_owner.png"  alt="project_owner"/>
+            </a>
+          </div>
+          <div class="footer_contacts">
+            <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+            <ul>
+              <li>
+                <a href="#">Реклама на сайте</a>
+              </li>
+              <li>
+                <a href="#">Контакты</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+        </div>
+      </footer>
+	  <!-- END FOOTER -->
+    </div>
+    
+  </body>
+</html>

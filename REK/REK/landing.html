@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,   user-scalable=false" />
+    <link href="images/favicon.png" type="image/png" rel="icon">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style_for_landing.css" rel="stylesheet" type="text/css" />
+	<!--[if IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+    <title>РЕК | landing</title>
+
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery.localscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollto.js"></script>
+
+    <script type="text/javascript">
+        $(function($) {
+            $.localScroll({
+                duration: 1000,
+                hash: false
+            });
+
+            $('.add_brif').on('click', function(){
+                $('.brif_upl').click();
+                return false;
+            })
+
+
+
+            $('.you_tube_popup').on('click', function(){
+                $('.you_pop_over').fadeIn(200);
+                return false;
+            });
+
+            $('.video_x_btn').on('click', function(){
+                $('.you_pop_over').fadeOut(200);
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body class="main_page">
+  	<!--[if lt IE 8]> 
+		<style>
+			.wrapper,footer{display:none;}
+		</style>
+		<div style='text-align:center;'>
+            <header style="text-align:center;padding:20px"><a href="index.html" class="logo" style="float:none;"><img src="images/logo.png" alt=""></a></header>
+			<br><br><br>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+				<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+	<![endif]-->
+
+
+	<div class="wrapper">
+        <header>
+            <div class="header_body">
+                <a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+                <div class="header_btn">
+                    <div class="search_block landing">
+                        <div id="sb-search" class="sb-search">
+                            <form>
+                                <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div>
+                    <!--<div class="btn red login_btn">Вход</div>-->
+                </div>
+
+                <div class="menu">
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="index.html">Новости</a></li>
+                            <li><a href="#">Услуги</a></li>
+                            <li><a href="#">Портфолио</a></li>
+                            <li><a href="#">Дикторы</a></li>
+                            <li><a href="#">Студии</a></li>
+                            <li><a href="#">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+
+        <!--=== блок с большой картинкой ===-->
+        <div class="block_with_img">
+            <img src="images/lalding_img.jpg" alt="" class="bg_img">
+            <div class="contant on_background">
+                <div class="big_title_wrapper">
+                    <span class="rob_normal_40 white">ПОЧЕМУ</span>
+                    <span class="rob_black_90 white">С 2008</span>
+                    <span class="rob_black_40 white">ГОДА</span><br>
+                    <span class="rob_normal_30 white">БОЛЕЕ</span>
+                    <span class="rob_bold_70 white">160 КЛИЕНТОВ</span>
+                    <span class="rob_medium_30 white">ЗАКАЗЫВАЮТ У НАС</span><br>
+                    <span class="rob_bold_35 white">ПРОИЗВОДСТВО</span>
+                    <span class="rob_black_70 red_text">РАДИОРОЛИКОВ?</span>
+                </div>
+
+                <div class="black_landing_block">
+                    <div class="black_landing_content">
+                        <ul>
+                            <li>
+                                <span class="add"></span>
+                                <span class="text white">Mы знаем что такое дедлайн.</span>
+                            </li>
+                            <li>
+                                <span class="add"></span>
+                                <span class="text white two_ln">
+                                    Мы знаем особенности радиостанций/телерадиокомпаний
+                                    и учитываем это в производстве роликов.
+                                </span>
+                            </li>
+                            <li class="pos_rel">
+
+                                <div class="you_pop_over">
+                                    <i></i>
+                                    <div class="you_pop_over_block">
+                                        <div class="video_caption">Название видео Название видео Название видео Название видео Название видео Название видео</div>
+                                        <span class="video_x_btn"></span>
+                                        <iframe width="467" height="304"
+                                                src="http://www.youtube.com/embed/XGSy3_Czz8k">
+                                        </iframe>
+                                    </div>
+                                </div>
+
+                                <span class="add"></span>
+                                <span class="text white two_ln">
+                                    Контроль, прозрачность, гибкость производственного процесса
+                                    (<a href="#" class="red_text you_tube_popup link">режиссура</a> дикторов, <a href="#" class="red_text link">широкий выбор качественного музоформления</a>).
+                                </span>
+                            </li>
+                            <li>
+                                <span class="add"></span>
+                                <span class="text white two_ln">
+                                    Нам доверяют телерадиокомпании, доверяя нам производство промороликов, заказываемых у них напрямую (беря нас на аутсорс).
+                                </span>
+                            </li>
+                            <li>
+                                <span class="add"></span>
+                                <span class="text white two_ln">
+                                    Мы работаем по самым высоким стандартам качества, привлекая лучших звукорежиссеров, <a href="#" class="red_text link">дикторов, актеров, вокалистов</a> и переводчиков.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="#brif"><div class="btn red brif">Заполнить бриф</div></a>
+            </div>
+        </div>
+        <!--=== End блок с большой картинкой ===-->
+
+        <!--=== УСЛУГИ ОТДЕЛА АУДИОПРОИЗВОДСТВА ===-->
+        <div class="contant">
+            <div class="services_title">Услуги отдела аудиопроизводства RECsquare</div>
+
+            <div class="services_block_wrapper">
+                <div class="landing_services_block">
+                    <img src="images/red_roun_service.png" alt="" class="service_image">
+                    <span class="landing_services_block_title">Рекламные аудиоролики</span> <br>
+                    <span class="landing_services_block_text">для размещения на радиостанциях</span>
+                </div>
+
+                <div class="landing_services_block">
+                    <img src="images/yellow_roun_service.png" alt="" class="service_image">
+                    <span class="landing_services_block_title">Озвучивание систем</span> <br>
+                    <span class="landing_services_block_text">голосового интерфейса IVR</span>
+                </div>
+
+                <div class="landing_services_block">
+                    <img src="images/blue_roun_service.png" alt="" class="service_image">
+                    <span class="landing_services_block_title">Производство саундтрэков</span> <br>
+                    <span class="landing_services_block_text">для видеороликов, анимации, презентаций</span>
+                </div>
+
+                <div class="landing_services_block">
+                    <img src="images/green_roun_service.png" alt="" class="service_image">
+                    <span class="landing_services_block_title">Локализация аудиовидеороликов</span> <br>
+                    <span class="landing_services_block_text">(перевод с иностранных языков и обратно)</span>
+                </div>
+            </div>
+        </div>
+        <!--=== END УСЛУГИ ОТДЕЛА АУДИОПРОИЗВОДСТВА ===-->
+
+        <!--=== СХЕМА РАБОТЫ ===-->
+        <div class="contant">
+            <div class="services_title">Схема работы</div>
+            
+            <img src="images/line.png" alt="" class="working_skhem_line">
+
+            <div class="fist_line">
+                <img src="images/downl.png" alt="" class="img_in_working_skhem">
+                <div class="step_line">
+                    <span class="line_step_num">1</span>
+                    <span class="line_step_text"><a href="#" class="link">Скачайте</a> и заполните бриф</span>
+                </div>
+                <img src="images/red-arrow.png" alt="" class="working_skhem_vert_line">
+            </div>
+
+
+
+            <div class="second_line">
+                <img src="images/fill_brif.png" alt=""  class="img_in_working_skhem">
+                <div class="step_line second">
+                    <span class="line_step_num">2</span>
+                    <span class="line_step_text">
+                        В <a href="#" class="link">контактную форму</a> введите необходимые <br class="br_hide">
+                        <span class="line_step_text_second">данные, прикрепите к ней бриф и</span> <br  class="br_hide">
+                        <span class="line_step_text_second">нажмите кнопку “отправить”</span>
+                    </span>
+                </div>
+                <img src="images/red-arrow.png" alt="" class="working_skhem_vert_line">
+            </div>
+
+            <div class="third_line">
+                <img src="images/contact.png" alt=""  class="img_in_working_skhem">
+                <div class="step_line third">
+                    <span class="line_step_num">3</span>
+                    <span class="line_step_text">
+                        С вами свяжется наш специалист, <br  class="br_hide">
+                        <span class="line_step_text_second">уточнит детали</span> <br  class="br_hide">
+                    </span>
+                </div>
+                <img src="images/red-arrow.png" alt="" class="working_skhem_vert_line">
+            </div>
+
+            <div class="fourth_line">
+                <img src="images/deadlines.png" alt=""  class="img_in_working_skhem">
+                <div class="step_line fourth">
+                    <span class="line_step_num">4</span>
+                    <span class="line_step_text">
+                        Сроки производства: <br>
+                        <span class="line_step_text_second"><b>- обычная срочность</b> (от 1рабочего дня)</span> <br>
+                        <span class="line_step_text_second"><b>- экстремальная срочность</b> (приоритетное</span> <br  class="br_hide">
+                        <span class="line_step_text_second">производство ролика за пару часов)</span> <br  class="br_hide">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!--=== END СХЕМА РАБОТЫ ===-->
+
+        <!--=== КОНТАКТНАЯ ФОРМА ===-->
+        <div class="contact_form_wrapper">
+            <div class="contant">
+                <a name="brif"></a>
+                <span class="sending_form_logo"></span>
+                <div class="contact_form_text white">
+                    Заполните контактную форму, прикрепите <br>
+                    бриф  и отправьте нам. Мы ответим Вам в течение <br>
+                    нескольких часов!
+                </div>
+
+                <div class="btn brif_downl">Скачать бриф</div>
+
+                <div class="clear"></div>
+
+                <div class="brif_form_wrapper">
+                    <div class="brif_form">
+                        <span class="placeholder">Ваше имя (обязательно)</span>
+                        <div class="input_block input_in_brif_form">
+                            <input type="text">
+                        </div>
+
+                        <span class="placeholder">Ваш Emali (обязательно)</span>
+                        <div class="input_block">
+                            <input type="text">
+                        </div>
+
+                        <div class="in_brif_form">
+                            <input type="file" class="disp_none brif_upl">
+                            <a href="#" class="blue_link add_brif">Прикрепить бриф</a> <span class="light_placeholder">(max размер загружаемого файла 25 Мб)</span>
+                        </div>
+
+                        <div class="ac">
+                            <div class="btn red">Отправить</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--=== END КОНТАКТНАЯ ФОРМА ===-->
+
+		<div class="footer_back landing"></div>
+	</div>
+
+	<footer>
+		<div class="footer_body footer_content">
+            <div class="footer_text">
+                <div class="footer_title">Услуги</div>
+                <ul>
+                    <li>Производство рекламных аудио/видео роликов</li>
+                    <li>Копирайт: рекламные ролики, слоганы, тексты презентаций</li>
+                    <li>Запись дикторов, актёров, вокалистов, музыки. </li>
+                    <li>Студия звукозаписи в аренду</li>
+                    <li>Видеостудия в аренду</li>
+                </ul>
+            </div>
+            <div class="footer_contacts">
+                <div class="footer_title">Контакты</div>
+                <div class="footer_address">
+                    <strong>Address:</strong><br>
+                    103 N. Lakeshore Blvd <br>
+                    Marquette, Michigan 49855<br>
+                </div>
+                <div class="footer_phone">
+                    <strong>Phone:</strong><br>
+                    000-000-000-00
+                </div>
+                <div class="footer_email">
+                    <strong>Email:</strong><br>
+                    <a href="#">mail@mail.com</a>
+                </div>
+            </div>
+            <div class="footer_social">
+                <div class="footer_title">Будьте с нами</div>
+                <a href="" class="social_vkontakte"></a>
+                <a href="" class="social_facebook"></a>
+                <a href="" class="social_twitter"></a>
+            </div>
+            <div class="clear"></div>
+		</div>
+        <div class="footer_copyright"><div class="footer_body">Copyright © 2013. RecSquare. Все права защищены.</div></div>
+	</footer>
+
+    <script src="js/classie.js"></script>
+    <script src="js/uisearch.js"></script>
+    <script>
+        new UISearch( document.getElementById( 'sb-search' ) );
+    </script>
+
+</body>
+</html>

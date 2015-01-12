@@ -1,0 +1,16 @@
+.wrapper{
+    background-color: #000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30); /* IE 5.5+*/
+}
+.wrapper_light{
+    background-color: #fff;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80); /* IE 5.5+*/
+
+}
+.button{
+    margin: 0 10px 10px 0;
+    
+}
+.menu a{
+    width: 130px;
+}

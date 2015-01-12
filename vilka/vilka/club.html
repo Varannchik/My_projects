@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <title>Club</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
+      <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style_afisha.css">
+
+
+      <link rel="stylesheet" href="css/and_style.css">
+
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+
+      <script src="js/jquery-1.7.2.js"></script>
+      <script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+      <script type="text/javascript"  src="js/placeholder.js"></script>
+
+      <!-- optionally include helper plugins -->
+      <script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+    <script src="js/common.js"></script>
+
+    <script src="js/and_js.js"></script>
+      <script src="js/popup.js"></script>
+
+    <script src="js/main_page.js"></script>
+
+
+    <!--[if IE 8]>
+      <script src="js/ie8.js"></script>
+    <![endif]-->
+
+      <script>
+          $(function(){              $('.list_carousel .news_item ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+110;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			                $('.list_carousel .events_block ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+108;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			  			  			  $('.restoran_promo_slider_active').live('click',function(){					$(this).html('').hide();			  });			  
+             $('.search_select_block').hover(function(){
+                 $('.search_select_block ul').stop(true,true).slideDown(200);
+             },function(){
+                 $('.search_select_block ul').stop(true,true).slideUp(200);
+             })
+
+              $('.search_select_block ul a').live('click',function(){
+                  var val=$(this).text();
+                  $('.search_select_val').text(val);
+                  return false;
+              });
+
+
+
+              $('.rating_text').nanoScroller();
+
+              <!--Слайдер с датами-->
+
+              var size_specials_slider=Math.floor($(".main_page_slider_afisha").width()/300);
+              $(".main_page_slider_afisha").carouFredSel({
+                  responsive: false,
+                  auto:false,
+                  width: '100%',
+                  scroll: 7,
+                  circular: false,
+                  infinite: false,
+                  prev: {
+                      button:$('#recipes-prev'),
+                      onBefore:function(e){
+                          var scroll_num=e.scroll['items'];
+                          console.log(scroll_num);
+                          var left_li=$('.months').css('margin-left');
+                          if(parseInt(left_li,10)!=0){
+                              position_month_text(-scroll_num);
+                              $('.months').animate({marginLeft:parseInt(left_li,10)+scroll_num*66 + "px"},500);
+                          }
+                      }
+                  },
+                  next:  {
+                      button:$('#recipes-next'),
+                      onBefore:function(e){
+                          var scroll_num=e.scroll['items'];
+                          console.log(scroll_num);
+                          var left_li=$('.months').css('margin-left');
+                          var w_m=$('.months').css('width');
+                          if($('.caroufredsel_wrapper').width()-parseInt(left_li,10)+7*66<parseInt(w_m,10)){
+                              position_month_text(scroll_num);
+                              $('.months').animate({marginLeft:parseInt(left_li,10)-scroll_num*66 + "px"},500);
+                          }
+                          else
+                          {
+                              position_month_text(scroll_num);
+                              $('.months').animate({marginLeft:-(parseInt(w_m,10)-$('.all_months').width()) + "px"},500);
+                          }
+                      }
+                  },
+                  items: {
+                      visible: {
+                          min: 8,
+                          max: 15
+                      }
+                  }
+              });
+              resize_month_block();
+              position_month_text(0);
+
+
+              <!--месяца в слайдере-->
+
+              $('.main_page_slider_afisha li').on('click',function(){
+                  $('.main_page_slider_afisha li').removeClass('active')
+                  $(this).addClass('active');
+
+              });
+
+
+
+              function position_month_text(nav){
+                  var w_one=nav*66;
+                  $('.months li').each(function(){
+                      var w_li=$(this).width();
+                      var left_li=$(this).offset().left-w_one;
+
+                      var w_parent=$('.all_months').width();
+                      var left_parent=$('.all_months').offset().left;
+
+                      var w_v;
+                      var left_month;
+                      if(left_li<left_parent && w_li+left_li<=left_parent){
+                          left_month=0;
+                          w_v=0;
+                      }
+                      else if(left_li<=left_parent && w_li+left_li>=left_parent && w_li+left_li<=left_parent+w_parent) {
+                          w_v=w_li-(left_parent-left_li);
+                          left_month=w_li/2-($(this).find('span').width()+20)/2+(left_parent-left_li)/2;
+                      }
+                      else if(left_li>=left_parent && w_li+left_li<=left_parent+w_parent){
+                          w_v=w_li;
+                          left_month=w_li/2-($(this).find('span').width()+20)/2;
+                      }
+                      else if(left_li>=left_parent && w_li+left_li>left_parent+w_parent && left_li<left_parent+w_parent){
+                          w_v=(w_li-(w_li+left_li-(left_parent+w_parent)));
+                          left_month=(w_li-(w_li+left_li-(left_parent+w_parent)))/2-($(this).find('span').width()+20)/2;
+                      }
+                      else if(left_li>=left_parent+w_parent && w_li+left_li>left_parent+w_parent){
+                          w_v=0;
+                          left_month=0;
+                      }
+                      else if(left_li<left_parent && w_li+left_li>left_parent+w_parent){
+                          w_v=w_li-(w_li+left_li-(left_parent+w_parent))-(left_parent-left_li);
+                          left_month=(w_li-(w_li+left_li-(left_parent+w_parent)))/2-($(this).find('span').width()+20)/2+(left_parent-left_li)/2;
+                      }
+                      if(w_v<$(this).find('span').width()+30){$(this).find('span').stop(true,true).fadeOut(200);}
+                      else{$(this).find('span').stop(true,true).animate({left:left_month},500).fadeIn(200);}
+
+                  })
+              }
+
+				$('.one_afisha_parent').removeClass('active');
+				$('.afisha_picture').live('click',function(){
+					$('.one_afisha_parent').toggleClass('active');
+				})
+
+          });
+		  
+
+              $(window).resize(function(){
+                  resize_month_block();
+                  position_month_text(0);
+              });
+
+              function resize_month_block(){
+                  <!--месяца в слайдере-->
+                  var size_data=$('.caroufredsel_wrapper').width();
+                  var left=$('.main_page_slider_afisha').css('left');
+
+                  $('.all_months').width(size_data - (parseInt(left,10))*2);
+                  $('.all_months').css('overflow','hidden');
+                  $('.all_months').css('left',(parseInt(left,10))+40 +9+ "px");
+
+                  var width_month=0;
+                  $('.months li').each(function(){
+                      var attr=$(this).attr('data-href');
+                      var size=$('.main_page_slider_afisha li[data-href="'+attr+'"]').size();
+                      $(this).css('width',size*66-6+"px");
+                      width_month+=size*66;
+
+                  });
+                  $('.months').width(width_month);
+              }
+
+              <!--end Слайдер с датами-->		  
+		  
+		  $(window).load(function(){
+			  <!-- Изменение размера картинки -->
+              $('.content_tab_afisha').each(function(){
+                  var h_block=$(this).height();
+                  h_img=$(this).find('img').height();
+                  mrg= (h_block-h_img)/2;
+
+                  $(this).find('img').css('margin-top',mrg+"px");
+              });
+
+              $('.one_afisha').each(function(){
+                  var h_block=$(this).height();
+                  h_img=$('.afisha_picture').find('img').height();
+                  mrg= (h_block-h_img)/2;
+
+                  $('.afisha_picture').find('img').css('margin-top',mrg+"px");
+
+
+              });
+
+              <!-- end Изменение размера картинки -->
+		  })
+      </script>
+
+
+
+      <script src="//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full" type="text/javascript"></script>
+      <style type="text/css">
+          #YMapsID {
+              width: 100%;
+              height: 59px;
+          }
+      </style>
+
+      <style type="text/css">
+          #YMapsID_big {
+              width: 100%;
+              height: 300px;
+              display: none;
+          }
+      </style>
+
+
+      <script type="text/javascript">
+          ymaps.ready(function () {
+              var myMap = new ymaps.Map('YMapsID', {
+                  center: [55.733835, 37.588227],
+                  zoom: 12,
+                  // Обратите внимание, что в API 2.1 по умолчанию карта создается с элементами управления.
+                  // Если вам не нужно их добавлять на карту, в ее параметрах передайте пустой массив в поле controls.
+                  controls: []
+              });
+          });
+      </script>
+
+      <script type="text/javascript">
+          ymaps.ready(function () {
+              var myMap = new ymaps.Map('YMapsID_big', {
+                  center: [55.733835, 37.588227],
+                  zoom: 12,
+                  // Обратите внимание, что в API 2.1 по умолчанию карта создается с элементами управления.
+                  // Если вам не нужно их добавлять на карту, в ее параметрах передайте пустой массив в поле controls.
+                  controls: []
+              });
+          });
+      </script>
+
+  </head>
+
+  <body>
+
+  <!--[if lt IE 8]>
+      <style>
+          #wrapper{display:none;}
+          body{background:url(images/back.jpg) repeat 0 0;}
+      </style>
+      <div style='text-align:center;'>
+          <br><br>
+          <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+          <br><br><br>
+          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+              <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+          </a>
+      </div>
+  <![endif]-->
+
+
+
+  <!--==== ADD REVIEW pop_up ====-->
+
+  <div class="modal add_review_popup">
+      <div class="add_review_popup_head">
+          <div class="comment_head">
+              <div class="ava_wrapper">
+                  <img src="images/ava.jpg" alt="">
+              </div>
+              <div class="inline_block">
+                  <span class="date no_margin">18 окт 2013</span> <br>
+                  <span class="bottom_line">
+                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                      <span class="elite_label float_fl">ELITE</span>
+                      <span class="blue_comment">25</span>
+                  </span>
+              </div>
+              <button class="big_close_popup_btn"></button>
+          </div>
+      </div>
+
+      <div class="add_review_popup_body">
+          <span class="add_review_title">Добавление отзыва</span>
+          <div class="fr inline_block">
+              <button class="review_type_btn good"><span class="review_btn_icon"></span> <span class="review_btn_text">Положительный</span></button>
+              <button class="review_type_btn bad"><span class="review_btn_icon"></span> <span class="review_btn_text">Отрицательный</span></button>
+          </div>
+          <div class="clear"></div>
+
+
+          <div class="rating_line">
+              <span class="add_review_text">Ваша оценка</span>
+
+              <div class="stars_rating_wrapper ml10 add_review_stars">
+                  <div class="stars_rating float_fl">
+                      <div class="value"></div>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                  </div>
+              </div>
+
+              <span class="add_review_text m_kitchen">Кухня</span> <input class="rating_line_input">
+              <span class="add_review_text m_serv">Сервис</span> <input class="rating_line_input">
+              <span class="add_review_text m_intr">Интерьер</span> <input class="rating_line_input">
+          </div>
+
+          <span class="add_review_caption">Слишком короткие или неубедительные отзывы, не подкрепленные фактами, будут удалены.</span>
+
+          <div class="fl in_add_rev_popup">
+              <input placeholder="Тема отзыва">
+              <textarea placeholder="Текст отзыва"></textarea>
+          </div>
+          <div class="fr in_add_rev_popup">
+              <div class="block_with_hint">
+                  <i></i>
+                  Текст отзыва должен быть не меньше 30 и не более 10000 знаков. Это обязательное поле.<br>
+
+                  <div class="other_line_height">
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Опишите вашу ситуацию</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Укажите точные факты, даты, цены услуг</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Расскажите о преимуществах и недостатка</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Отметьте моменты, на которые следует обратить внимание</span> <br>
+                      </div>
+
+                  </div>
+              </div>
+
+              <button class="recommend_for_btn"><span class="plus_blue"></span> Рекомендовать для</button>
+
+
+              <button class="add_photo"><span class="add_photo_span"></span><span class="add_photo_btn_text">Добавить фото</span></button>
+              <input type="file" class="hide_input_type_file">
+
+              <button class="publish">Опубликовать</button>
+          </div>
+
+          <div class="clear"></div>
+
+
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+      </div>
+  </div>
+
+  <div class="background_window"></div>
+
+  <!--==== End ADD REVIEW pop_up ====-->
+
+
+
+
+    <div id="wrapper">
+        <div class="free_order_block">
+            <div class="free_order">
+                <a href="#" class="close"></a>
+                <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                <div class="phone">+7 495 221 22 22</div>
+            </div>
+        </div>
+      <header class="wrapper header header_promo">
+        <div class="container">
+          <div class="header_logo">
+            <a href="#">
+              <img src="css/img/logo_promo.png"  alt="logo"/>
+            </a>
+            <div class="header_promo_logo_text">
+                <a href="" class="header_promo_logo_lang">In English</a><br>
+                <a href="" class="header_promo_logo_login">Войти</a>
+            </div>
+          </div>
+
+
+		  <div class="header_rigth_info">
+				<p class="text1">+7 495 221 22 22</p>
+				<a class="text3" href="#">Забронировать Столик</a>
+		  </div>
+
+          <div class="header_center">
+              <div class="header_search">
+                  <div class="search">
+                      <form>
+                         <div class="float_fl">
+                              <input type="submit">
+                         </div>
+                          <div class="search_select_block">
+                              <div class="search_select_val">
+                                  По ресторанам
+                              </div>
+                              <ul>
+                                  <li class="active"><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                                  <li><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                                  <li><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                              </ul>
+                          </div>
+
+
+                          <div class="search_input_right">
+                              <input type="text" placeholder="Например, ресторан Булгакова" class="placeholder">
+                          </div>
+                      </form>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+
+          </div>
+
+        </div>
+        <nav class="container services_nav">
+          <ul>
+            <li class="restaurant">
+              <a href="#"><span>Рестораны</span></a>
+            </li>
+            <li class="feast">
+              <a href="#"><span>Банкеты</span></a>
+            </li>
+            <li class="wedding">
+              <a href="#"><span>Свадьбы</span></a>
+            </li>
+            <li class="night_life">
+                <a href="#"><span>Ночная жизнь</span></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container">
+          <nav class="header_nav-2">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Критика</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Полезное</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+
+      <section class="wrapper">
+			<div class="rest_promo_main_slider_block">
+
+                <span class="blue_arrow_left">
+                    <span class="arrow"></span></span>
+                <span class="blue_arrow_right">
+                    <span class="arrow"></span>
+                </span>
+
+
+                <div class="like_block">
+                    <div class="owner_logo">
+                        <img src="images/ginza_project.png" alt="">
+                    </div>
+                    <div class="like_dislike_block">
+                        <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                        <div class="vertical_line"></div>
+                        <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                    </div>
+                </div>
+
+
+                <div class="promo_restaurant_main_block_top">
+
+
+                    <div class="promo_restaurant_top_right">
+
+                    </div>
+                    <div class="promo_restaurant_top_left">
+                        <p class="title"><span>English Breakfast</span> Фееричное место для метросексуалов</p>
+                        <div class="stars_rating big">
+                            <div class="value"></div>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                            <a href="#"></a>
+                        </div>
+
+                        <div class="inline_block rating_caption">
+                            <span class="el">Кухня <span class="yellow_bold">4.5</span></span>
+                            <span class="el">Сервис <span class="yellow_bold">4.5</span></span>
+                            <span class="el">Интерьер <span class="yellow_bold">4.5</span></span>
+
+
+                            <span class="el recomend">Рекомендуют <span class="blue_num">673</span></span>
+                        </div>
+
+                        <div class="promo_restaurant_top_nav">
+                            <a href="#" class="promo_restaurant_top_links">Описание</a>
+                            <a href="#" class="promo_restaurant_top_links">Фотоотчеты</a>
+                            <a href="#" class="promo_restaurant_top_links">Меню</a>
+                            <a href="#" class="promo_restaurant_top_links">События</a>
+                            <a href="#" class="promo_restaurant_top_links">Новости</a>
+                            <a href="#" class="promo_restaurant_top_links">Видео</a>
+                            <a href="#" class="promo_restaurant_top_links">3D-тур</a>
+                            <a href="#" class="promo_restaurant_top_links">Отзывы <span class="blue_num">57</span></a>
+                        </div>
+                        <a href="#" class="btn blue_btn">Забронировать столик</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="promo_restaurant_main_block_bottom_wrapper">
+                    <div class="promo_restaurant_main_block_bottom">
+                        <div class="top_line">
+                            <span class="el">
+                                <span class="wi-fi"></span>
+                                <span class="not_logo">Wi-Fi</span>
+                            </span>
+
+                            <span class="el">
+                                <span class="kalyan"></span>
+                                <span class="not_logo">Кальян</span>
+                            </span>
+
+                            <span class="el">
+                                <span class="parking"></span>
+                                <span class="not_logo">Парковка</span>
+                            </span>
+
+                            <span class="el">
+                                <span class="working_time"></span>
+                                <span class="not_logo">Круглосуточно</span>
+                            </span>
+
+                            <span class="el">
+                                <span class="dance_hall"></span>
+                                <span class="not_logo">Танпол</span>
+                            </span>
+                        </div>
+
+                        <div class="address_block inline_block club">
+                            <span class="music_styles">Hard Rock</span> <span class="music_styles">Hip-Hop</span> <span class="music_styles">Trance</span> <span class="music_styles">House</span><br>
+                            <div class="address_title club">
+                                <span class="adress"></span><span class="not_logo">ул. Новокузнецкая, д. 11, 5 этаж</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="kitchen">
+                            <span class="fork_and_kinfe"></span>
+                            <span class="title">Кухня</span><br>
+                            <span class="kitchen_type">Европейская</span> <span class="kitchen_type">Русская</span> <span class="kitchen_type">Авторская</span>
+                        </div>
+
+                        <div class="bill_cost">
+                            <span class="ruble_symbol"></span>
+                            <span class="title">Стоймость столика</span><br>
+                            <span class="min_bill">10000 - 30000 руб.</span>
+
+                            <div class="bill_hint_wrapper club">
+                                <div class="bill_hint club">
+                                    За столик помещяется <br>
+                                    4 человека. <br>
+                                    В входит алкоголь.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list_carousel">
+                  <ul class="rest_promo_main_slider">
+                      <li>
+                          <img src="images/club.jpg" alt="">
+                      </li>
+
+                      <li>
+                          <img src="images/promo_restaurant_main_block.jpg" alt="">
+                      </li>
+
+                      <li>
+                          <img src="images/club.jpg" alt="">
+                      </li>
+
+                      <li>
+                          <img src="images/promo_restaurant_main_block.jpg" alt="">
+                      </li>
+
+                  </ul>
+              </div>
+            </div>
+
+          <div class="map_wrapper">
+              <div id="YMapsID"></div>
+              <div id="YMapsID_big"></div>
+              <button class="place_in_map"><i>&nbsp;</i>English Breakfast на карте</button>
+              <div class="map_screen_btn map_screen_btn_up" id="rest_promo"><img src="images/map_screen_btn_up.png" alt="">Свернуть</div>
+          </div>
+
+
+          <!--==== Описание ====-->
+          <div class="container with_border not_bottom_border">
+              <div class="details_top">
+                  <span class="part_title">Описание</span>
+                  <div class="fr">
+                      <a href="#" class="btn_new blue ml10 add_review club">Добавить отзыв</a>
+                      <a href="#" class="btn_new maroon ml10 add_review club">Рекомендую</a>
+                      <div class="stars_rating_wrapper ml10">
+                          <div class="stars_rating float_fl">
+                              <div class="value"></div>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                          </div>
+                          Проголосовать
+                      </div>
+                  </div>
+              </div>
+
+              <div class="block_with_scroll nano">
+                  <div class="content">
+                      Ресторан расположен в самом центре столицы с великолепным видом на Москву-реку. Дизайн проекта ресторана
+                      был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет являлся художественным
+                      оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый шеф-повар Мишель Ломбарди
+                      (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона, Милана и Торонто. Меню
+                      ресторана сочетает в себе лучшие блюда европейской и японской кухни. Уверены, что Reka Moscow restaurant
+                      & lounge, станет обязательным пунктом в расписании как гурманов, так и любителей ночной жизни столицы.
+
+                      Дизайн проекта ресторана был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет
+                      являлся художественным оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый
+                      шеф-повар Мишель Ломбарди (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона,
+                      Милана и Торонто.
+
+                      Дизайн проекта ресторана был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет
+                      являлся художественным оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый
+                      шеф-повар Мишель Ломбарди (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона,
+                      Милана и Торонто.
+
+                      Ресторан расположен в самом центре столицы с великолепным видом на Москву-реку. Дизайн проекта ресторана
+                      был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет являлся художественным
+                      оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый шеф-повар Мишель Ломбарди
+                      (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона, Милана и Торонто. Меню
+                      ресторана сочетает в себе лучшие блюда европейской и японской кухни. Уверены, что Reka Moscow restaurant
+                      & lounge, станет обязательным пунктом в расписании как гурманов, так и любителей ночной жизни столицы.
+
+                      Ресторан расположен в самом центре столицы с великолепным видом на Москву-реку. Дизайн проекта ресторана
+                      был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет являлся художественным
+                      оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый шеф-повар Мишель Ломбарди
+                      (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона, Милана и Торонто. Меню
+                      ресторана сочетает в себе лучшие блюда европейской и японской кухни. Уверены, что Reka Moscow restaurant
+                      & lounge, станет обязательным пунктом в расписании как гурманов, так и любителей ночной жизни столицы.
+                  </div>
+              </div>
+          </div>
+          <!--==== End Описание ====-->
+
+          <!--=== Мнение редакции ===-->
+          <div class="redaction_opinion">
+              <div class="fl redaction_rating">
+                  <header>
+                      <span class="logo_red_24"></span>
+                      <span>Мнение редакции</span>
+                  </header>
+
+                  <footer>
+                      <div class="top_rating_block_left">
+                          <span class="rating">Рейтинг</span><br>
+                          <span class="num">9.5</span><br>
+                      </div>
+                      <div class="top_rating_block_right">
+                          <div class="ya_share">
+                          <span id="ya_share1"></span>
+                          <script type="text/javascript" src="//yandex.st/share/share.js"
+                                  charset="utf-8"></script>
+                          <div class="yashare-auto-init" data-yashareL10n="ru"
+                               data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,twitter,facebook,lj"
+
+                                  ></div>
+
+                      </div>
+                      </div>
+                  </footer>
+              </div>
+
+              <div class="redaction_review">
+                  <div class="redaction_review_title">Лучший клуб для животных</div>
+                  <div class="block_with_scroll club nano">
+                      <div class="content">
+                          Ресторан расположен в самом центре столицы с великолепным видом на Москву-реку. Дизайн проекта ресторана
+                          был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет являлся художественным
+                          оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый шеф-повар Мишель Ломбарди
+                          (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона, Милана и Торонто. Меню
+                          ресторана сочетает в себе лучшие блюда европейской и японской кухни. Уверены, что Reka Moscow restaurant
+                          & lounge, станет обязательным пунктом в расписании как гурманов, так и любителей ночной жизни столицы.
+
+                          Дизайн проекта ресторана был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет
+                          являлся художественным оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый
+                          шеф-повар Мишель Ломбарди (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона,
+                          Милана и Торонто.
+
+                          Дизайн проекта ресторана был доверен Винченцо Казини (Vincenzo Casini), который на протяжении 15 лет
+                          являлся художественным оформителем бутиков Prada по всему миру. За кухню ресторана отвечает знаменитый
+                          шеф-повар Мишель Ломбарди (Michel Lombardi), который долгие годы работал в известных ресторанах Лондона,
+                          Милана и Торонто.
+                      </div>
+                  </div>
+              </div>
+              <div class="clear"></div>
+
+
+              <div class="redaction_recomend_for">
+                  <span class="recommend_for_star"></span> <span class="recommend_for_title">Рекомендуем для:</span>
+
+                  <div class="inline_block">
+                      <span class="recomend_ok"></span><span class="recomend_for_what">After-party</span>
+                  </div>
+
+                  <div class="inline_block">
+                      <span class="recomend_ok"></span><span class="recomend_for_what">Тусовка с друзьями</span>
+                  </div>
+
+                  <div class="inline_block">
+                      <span class="recomend_ok"></span><span class="recomend_for_what">Любителям кальяна</span>
+                  </div>
+
+                  <div class="inline_block">
+                      <span class="recomend_ok"></span><span class="recomend_for_what">Деловые встречи</span>
+                  </div>
+
+              </div>
+
+          </div>
+          <!--=== Мнение редакции ===-->
+
+          <!--==== Параметры ====-->
+          <div class="container with_border p15">
+              <div class="params fl">
+                  <div class="el">
+                      <div class="param_name">Тип:</div>
+                      <div class="param_val">Ресторан, Бар, Клуб, Банкетный зал</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Шеф-повар:</div>
+                      <div class="param_val">Махов Андрей</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Кухня:</div>
+                      <div class="param_val">Европейская, Русская</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Музыка:</div>
+                      <div class="param_val">Фоновая, Живая музыка, DJ</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Предложения:</div>
+                      <div class="param_val">Сигары, Винная карта, Кальян, Гриль</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Вход, FaceControl:</div>
+                      <div class="param_val">Круглосуточно, свободный</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Парковка:</div>
+                      <div class="param_val">Бесплатная, охраняемая</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Предварительный заказ:</div>
+                      <div class="param_val">Желателен</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Специальные:</div>
+                      <div class="param_val">Vip-зал, Wi-fi, банкет</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">События:</div>
+                      <div class="param_val">День рождения, свадьба</div>
+                  </div>
+              </div>
+
+              <div class="params fr">
+                  <div class="el">
+                      <div class="param_name">Адм. округ:</div>
+                      <div class="param_val">Центральный</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Время работы:</div>
+                      <div class="param_val">вс-чт 12:00—24:00; пт-сб 12:00—06:00</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Кол-во залов:</div>
+                      <div class="param_val">2 этажа, 3 зала</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Адрес:</div>
+                      <div class="param_val">ул. Новокузнецкая, д. 11, 5 этаж</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Сайт:</div>
+                      <div class="param_val"><a href="ginzaproject.ru" target="_blank">ginzaproject.ru</a></div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Телефон:</div>
+                      <div class="param_val tell">+7 (495) 234-34-34</div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Кредитные карты: </div>
+                      <div class="param_val cards"><span class="visa"></span> <span class="master_card"></span> <span class="maestro"></span></div>
+                  </div>
+                  <div class="el">
+                      <div class="param_name">Дополнительно: </div>
+                      <div class="param_val">Скидки для постоянных гостей
+                          Подарок на День Рождения</div>
+                  </div>
+              </div>
+
+              <div class="clear"></div>
+          </div>
+          <!--==== End Параметры ====-->
+
+
+
+          <!--==== Слайдер ====-->
+          <div class="container with_ads_left">
+
+              <div class="main_interesting promo_date">
+              <div class="section_selection for49">
+                  <div class="section_selector for49">
+                      <div class="selector_body">
+                          <header>
+                              <input type="hidden">
+                              <input type="text" placeholder="Выберите фотоотчет" class="placeholder">
+                          </header>
+                          <div class="drop_down">
+                              <div class="drop_down-slider nano">
+                                  <div class="content promo_page">
+                                      <ul class="change_caption" data-caption_id="#main_interesting_caption" id="main_interesting_category">
+                                          <li class="placeholder">Выберите фотоотчет</li>
+
+
+                                          <li class="active" data-caption="<strong>17 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>18 октября</strong> — Большая премьера в The Сад.  Концерт Лаймы Вайкуле Концерт Лаймы Вайкуле Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>19 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>20 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>25 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>222 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>1 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>1 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>17 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>17 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>17 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+                                          <li data-caption="<strong>17 октября</strong> — Большая премьера в The Сад. Концерт Лаймы Вайкуле"><span class="date">17 октября</span> Большая премьера в The Сад. Концерт Лаймы...</li>
+
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+              </div>
+                  <div class="caption black"><span id="main_interesting_caption"><strong>17 октября</strong>  — Большая премьера в The Сад. Концерт Лаймы Вайкуле</span></div>
+                  <div class="slider_buttons size-h39 drop_down-buttons for_data" data-caption_id="#main_interesting_caption" data-category_id="#main_interesting_category">
+                      <a href="#" class="prev btn_slider"></a>
+                      <a href="#" class="next btn_slider"></a>
+                  </div>
+
+              </div>
+                  <div class="clear"></div>
+
+                  <div class="main_page_slider4_body selection49 change_photo_report">
+                      <div class="list_carousel">
+                          <ul class="forPromo">
+                              <li>
+                                  <article>
+                                      <a href="#">
+                                          <div class="image_slider_item no_radius">
+                                              <img src="images/promo_restaurant_main_block.jpg"  alt="review_restaurant-1"/>
+                                              <div class="image_slider_item_top"></div>
+                                              <div class="text promo_slide">
+                                                  Now that we know who you are, I know who I am. I'm not a mistake! It all
+                                                  makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we
+                                                  know who you are, I know who I am. I'm not a mistake! It all makes sense! In
+                                                  a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                                  I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                              </div>
+                                          </div>
+                                      </a>
+                                  </article>
+                              </li>
+                              <li>
+                                  <article>
+                                      <a href="#">
+                                          <div class="image_slider_item no_radius">
+                                              <img src="images/promo_restaurant_main_block.jpg"  alt="review_restaurant-1"/>
+                                              <div class="image_slider_item_top"></div>
+                                              <div class="text promo_slide">
+                                                  Now that we know who you are, I know who I am. I'm not a mistake! It all
+                                                  makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we
+                                                  know who you are, I know who I am. I'm not a mistake! It all makes sense! In
+                                                  a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                                  I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                              </div>
+                                          </div>
+                                      </a>
+                                  </article>
+                              </li>
+                              <li>
+                                  <article>
+                                      <a href="#">
+                                          <div class="image_slider_item no_radius">
+                                              <img src="images/promo_restaurant_main_block.jpg"  alt="review_restaurant-1"/>
+                                              <div class="image_slider_item_top"></div>
+                                              <div class="text promo_slide">
+                                                  Now that we know who you are, I know who I am. I'm not a mistake! It all
+                                                  makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we
+                                                  know who you are, I know who I am. I'm not a mistake! It all makes sense! In
+                                                  a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                                  I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                              </div>
+                                          </div>
+                                      </a>
+                                  </article>
+                              </li>
+                          </ul>
+                          <div class="slider_buttons size81">
+                              <a href="#" class="prev" id="review_restaurant-prev"></a>
+                              <a href="#" class="next" id="review_restaurant-next"></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+
+              <!--==== Меню ====-->
+              <div class="part_title with_margin menu">Меню</div>
+              <div class="container menu">
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+
+              <!-- Элемент меню -->
+              <div class="top_toggle_el_wrapper">
+                  <div class="top_toggle_el">
+                      <div class="menu_text">Бизнес ланчи</div>
+                      <span class="toggle_menu_nav"></span>
+                  </div>
+
+                  <!-- подменю -->
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Шпаргалка</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Минимальный набор</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Роллы 1/2</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Супы</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sub_toggle_el">
+                      <div class="clickable">
+                          <div class="menu_text">Салаты</div>
+                          <span class="sub_toggle_menu_nav"></span>
+                      </div>
+                      <div class="sub_toggle_more">
+                          <div class="blue_line"></div>
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+
+                          <div class="el">
+                              <span class="name">Ясай сарада (105 гр.)</span> <span class="price">70 руб.</span>
+                              <div class="clear"></div>
+                              <span class="more">Свежие томаты черри, сладкий перец, огурец, красный лук, салат айсберг и кориандр под лёгким соусом юзу.</span>
+                              <div class="lite_blue_line"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- подменю -->
+              </div>
+              <!-- End Элемент меню -->
+              </div>
+              <!--==== End Меню ====-->
+
+
+
+              <!--==== Афиша ====-->
+              <!--<div class="container">-->
+
+
+              <div class="afisha no_m_p">
+
+                  <div class="part_title with_margin">Афиша</div>
+                  <div class="celendar">
+                      <div class="slider_data">
+                          <div class="recipes">
+                              <header>
+                                  <div class="slider_buttons size-h21">
+                                      <a href="#" class="prev" id="recipes-prev"></a>
+                                      <a href="#" class="next" id="recipes-next"></a>
+                                  </div>
+                              </header>
+
+                              <div class="main_page_slider6_body months_slider">
+                                  <div class="list_carousel">
+                                      <ul class="main_page_slider_afisha">
+                                          <li data-href="september">ПН <span>25</span></li>
+                                          <li data-href="september">ВТ <span>26</span></li>
+                                          <li data-href="september">СР <span>27</span></li>
+                                          <li data-href="september">ЧТ <span>28</span></li>
+                                          <li data-href="september" class="red">ПТ <span>29</span></li>
+                                          <li data-href="september" class="red">СБ <span>30</span></li>
+                                          <li data-href="october" class="red active">ВС <span>1</span></li>
+                                          <li data-href="october">ПН <span>2</span></li>
+                                          <li data-href="october">ВТ <span>3</span></li>
+                                          <li data-href="october">СР <span>4</span></li>
+                                          <li data-href="october">ЧТ <span>5</span></li>
+                                          <li data-href="october" class="red">ПТ <span>6</span></li>
+                                          <li data-href="october" class="red">СБ <span>7</span></li>
+                                          <li data-href="october" class="red">ВС <span>8</span></li>
+                                          <li data-href="october">ПН <span>9</span></li>
+                                          <li data-href="october">ВТ <span>10</span></li>
+                                          <li data-href="october">СР <span>11</span></li>
+                                          <li data-href="october">ЧТ <span>12</span></li>
+                                          <li data-href="october" class="red">ПТ <span>13</span></li>
+                                          <li data-href="october" class="red">СБ <span>14</span></li>
+                                          <li data-href="october" class="red">ВС <span>15</span></li>
+                                          <li data-href="october">Пн <span>16</span></li>
+                                          <li data-href="october">Вт <span>17</span></li>
+                                          <li data-href="october">СР <span>18</span></li>
+                                          <li data-href="october">ЧТ <span>19</span></li>
+                                          <li data-href="october" class="red">ПТ <span>20</span></li>
+                                          <li data-href="october" class="red">СБ <span>21</span></li>
+                                          <li data-href="october" class="red">ВС <span>22</span></li>
+                                      </ul>
+
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <div class="all_months">
+                          <ul class="months">
+                              <li data-href="september"><span>Сентябрь</span></li>
+                              <li data-href="october"><span>Октябрь</span></li>
+                          </ul>
+                      </div>
+                  </div>
+				  </div>
+					
+				  <div class="one_afisha_parent active">
+					  <div class="one_afisha">
+						  <div class="time_afisha">
+							  <div class="data float_fl">10/08</div>
+							  <div class="data data_time float_fr">20:00</div>
+							  <div class="clear"></div>
+
+
+							  <div class="club_afisha_title">
+								  Осталось <b>18 часов</b>
+							  </div>
+
+
+							  <div class="club_afisha_wrapper">
+								  <div class="im_go_block fl">
+									  <div class="im_go">Я иду!</div>
+									  <div class="go_with_me">Идут 15</div>
+								  </div>
+
+
+								  <div class="ya_share club fl">
+									  <span id="ya_share2"></span>
+									  <script type="text/javascript" src="//yandex.st/share/share.js"
+											  charset="utf-8"></script>
+									  <div class="yashare-auto-init" data-yashareL10n="ru"
+										   data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,twitter,facebook,lj"
+
+											  ></div>
+								  </div>
+							  </div>
+
+						  </div>
+						  <div class="afisha_picture">
+							  <img src="images/afisha.jpg" alt=""/>
+							  <div class="comment">Вечеринка в стиле Чикаго</div>
+							  <div class="btn_one_afisha">
+								  <a class="pink_btn" href="">Ресторан</a>
+								  <a class="blue_btn_afisha" href="">Дегустации</a>
+							  </div>
+						  </div>
+						  <div class="clear"></div>
+
+						</div>
+												  <div class="rating_big_block">
+							  <div class="fl rating_block with_margin">
+								  <div class="booking_table_btn_and_tell">
+									  <a href="#" class="btn purple_btn">Забронировать столик</a>
+									  <div class="tell_and_caption">
+										  <span class="tellephone">+7 495 221 22 22</span><br>
+										  <span class="caption">Бесплатная консультация</span>
+									  </div>
+								  </div>
+							  </div>
+
+
+
+							  <div class="club_afisha_text ">
+								  <div class="block_with_scroll nano">
+									  <div class="content">
+											  <p>
+												  В четверг, 31 октября, в ресторане «Лодка» состоится завораживающее неоновое шоу в честь Хеллоуина. Окунитесь в атмосферу волшебства и под ритмы танцевальной музыки позвольте себе расслабиться и дать волю эмоциям!
+											  </p>
+
+											  <p>
+												  Хэллоуин, или канун Дня всех святых, отмечают по всему свету в конце октября, в последний день месяца. Корни праздника Хеллоуин восходят к верованиям древних кельтов, проживавших на территории современной Ирландии.
+											  </p>
+
+											  <p>
+												  В отличие от многих других дохристианских праздников, этот типичный языческий праздник с богатой историей не канул в Лету. Напротив, он распространился по всему миру, и широко отмечается современной публикой.
+											  </p>
+
+											  <p class="event_time">
+												  Сбор гостей — в 20.00. <br>
+												  Начало — в 21.00
+											  </p>
+									  </div>
+								  </div>					  
+
+							  </div>
+							  <div class="clear"></div>
+					  </div>
+					</div>
+                  <div class="clear"></div>
+
+
+              <!--==== End Афиша ====-->
+
+
+
+          </div>
+          <!--==== End Слайдер ====-->
+
+
+
+
+            <!-- Реклама -->
+            <aside class="sidebar_right ad_hide">
+            <div class="ad_wrapper">
+            <div class="ad">
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered in_promo_page">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+            </div>
+            </div>
+            </aside>
+            <!-- End -->
+
+
+            <div class="clear"></div>
+
+            <!--==== Новости ====-->
+            <div class="container news_in_club">
+                <div class="part_title with_margin">Новости</div>
+                <div class="news no_margin">
+                    <div class="slide_right_buttons nw">
+                        <a href="#" class="restaurant_promo_news_nav_r" id="next"></a>
+                        <a href="#" class="restaurant_promo_news_nav_l" id="prev"></a>
+                    </div>
+                    <div class="main_page_slider2_body news restoran_promo_slider_block">
+                        <div class="restoran_promo_slider_active"></div>
+                        <div class="list_carousel">
+                            <ul   class="restaurant_promo_news_slider">
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-1.jpg"  alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Открылся новый ресторан Figure of Food</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano">
+                                                    <div class="content">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who
+                                                        you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I
+                                                        am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake!
+                                                        It all makes sense! In a comic
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-2.jpg" alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Ресторан в центре Москвы Lines Lines Lines</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano">
+                                                    <div class="content">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know
+                                                        who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know
+                                                        who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a
+                                                        mistake! It all makes sense! In a comic
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-3.jpg" alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Ресторан молекулярной кухни Molecular</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake!
+                                                    It all makes sense! In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano">
+                                                    <div class="content">Now that we know who you are, I know who I am. I'm not a mistake!
+                                                        It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake!
+                                                        It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                        In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that
+                                                        we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-1.jpg"  alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Открылся новый ресторан Figure of Food</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano">
+                                                    <div class="content">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know
+                                                        who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are,
+                                                        I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I am.
+                                                        I'm not a mistake! It all makes sense! In a comic
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-2.jpg"  alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Ресторан в центре Москвы Lines Lines Lines</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake!
+                                                    It all makes sense! In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano"> Now that we know who you are, I know who I am. I'm not a mistake!
+                                                    It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that
+                                                    we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are,
+                                                    I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <div class="text_article news_item big">
+                                            <img src="images/news_item-3.jpg" alt="news_item-1"/>
+                                            <div class="date">10 янв 2013</div>
+                                            <div class="text">
+                                                <div class="name">Ресторан молекулярной кухни Molecular</div>
+                                                <p class="restoran_promo_slider_short_text">Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic
+                                                </p>
+                                                <div class="restoran_promo_slider_text nano"> Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are,
+                                                    I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic
+                                                    Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic  Now that we know who you are, I know who I am. I'm not a mistake! It
+                                                    all makes sense! In a comic
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--==== End Новости ====-->
+
+
+
+
+          <!--==== Видео ====-->
+          <div class="container with_border video">
+              <div class="part_title with_margin">Видео</div>
+              <div class="video_container">
+                  <div class="video_container_nav"><span class="video_icon"></span></div>
+                  <img src="images/promo_restaurant_main_block.jpg" alt="">
+                  <textarea class="disp_none">
+                      <object width="640" height="360" id="video1">
+                          <param name="movie" value="https://www.youtube.com/v/M7lc1UVf-VE?version=3"></param>
+                          <param name="allowFullScreen" value="true"></param>
+                          <param name="allowScriptAccess" value="always"></param>
+                          <embed id="video_embed1" src="https://www.youtube.com/v/M7lc1UVf-VE?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="360"></embed>
+                      </object>
+                  </textarea>
+              </div>
+              <div class="video_description">
+                  <span class="title">Интерьер ресторана</span><br>
+                  <span>Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.Now
+                      that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                      Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                  </span>
+              </div>
+              <div class="clear"></div>
+          </div>
+          <!--==== End Видео ====-->
+
+          <!--==== Отзывы ====-->
+          <div class="container last">
+              <div class="details_top">
+                  <span class="part_title fl">Описание</span>
+                  <div class="fl comments_label">
+                      <a href="#" class="btn_new blue ml10 add_review">Добавить отзыв</a>
+                      <div class="stars_rating_wrapper ml10">
+                          <div class="stars_rating float_fl">
+                              <div class="value"></div>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                          </div>
+                          Проголосовать
+                      </div>
+                  </div>
+              </div>
+              <div class="clear"></div>
+
+              <!-- Отзыв -->
+              <div class="comment_block_wrapper">
+                  <div class="comment_head">
+                      <div class="ava_wrapper">
+                          <img src="images/ava.jpg" alt="">
+                      </div>
+                      <div class="inline_block">
+                          <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                      </div>
+                      <div class="fr">
+                          <a href="#" class="subscribe">Подписаться</a>
+                          <div class="like_dislike_block with_border">
+                              <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                              <div class="vertical_line"></div>
+                              <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="comment_block">
+                      <div class="comment_triangle"></div>
+
+                      <span class="caption positive rp">Ресторан шикарный!</span>
+                      <div class="fr">
+                          <div class="stars_rating big float_fl in_big_comment_block">
+                              <div class="value"></div>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                          </div>
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li>Кухня <span class="value negative">1</span></li>
+                                  <li>Сервис <span class="value neutral">4</span></li>
+                                  <li>Интерьер <span class="value positive">5</span></li>
+                              </ul>
+                          </div>
+                      </div>
+
+
+                      <div class="clear"></div>
+
+                      <div class="comment">
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                          It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                          I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                          It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                          In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                          makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                          a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                      </div>
+
+
+                      <div class="comment_down_block">
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                  <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                  <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                              </ul>
+                          </div>
+                          <div class="main_comment_buttons float_fr">
+                              <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- End Отзыв-->
+
+              <!-- Отзыв (со слайдером) -->
+              <div class="comment_block_wrapper">
+                  <div class="comment_head">
+                      <div class="ava_wrapper">
+                          <img src="images/ava.jpg" alt="">
+                      </div>
+                      <div class="inline_block">
+                          <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                      </div>
+                      <div class="fr">
+                          <a href="#" class="subscribe">Подписаться</a>
+                          <div class="like_dislike_block with_border">
+                              <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                              <div class="vertical_line"></div>
+                              <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="comment_block">
+                      <div class="comment_triangle"></div>
+
+                      <span class="caption positive rp">Ресторан шикарный!</span>
+                      <div class="fr">
+                          <div class="stars_rating big float_fl in_big_comment_block">
+                              <div class="value"></div>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                          </div>
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li>Кухня <span class="value negative">1</span></li>
+                                  <li>Сервис <span class="value negative">2</span></li>
+                                  <li>Интерьер <span class="value positive">5</span></li>
+                              </ul>
+                          </div>
+                      </div>
+
+
+                      <div class="clear"></div>
+
+                      <div class="comment">
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                          It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                          I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                          It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                          In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                          makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                          a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                      </div>
+
+                      <!--========   Слайдер   =========-->
+                      <div class="slide_right_buttons ev">
+                          <a href="#" class="comment_arrow_r" id="comment-next"></a>
+                          <a href="#" class="comment_arrow_l" id="comment-prev"></a>
+                      </div>
+
+
+                      <div class="main_page_slider2_body comment_sl">
+                          <div class="list_carousel">
+                              <ul class="restaurant_promo_comment_slider">
+
+                                  <li>
+                                      <div class="comment_slider_block">
+                                          <img src="images/events.jpg"  alt=""/>
+                                      </div>
+                                  </li>
+
+                                  <li>
+                                      <div class="comment_slider_block">
+                                          <img src="images/events.jpg"  alt=""/>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="comment_slider_block">
+                                          <img src="images/events.jpg"  alt=""/>
+                                      </div>
+                                  </li>
+                                  <li>
+                                      <div class="comment_slider_block">
+                                          <img src="images/events.jpg"  alt=""/>
+                                      </div>
+                                  </li>
+
+                              </ul>
+                          </div>
+                      </div>
+
+                      <!--========   End Слайдер   =========-->
+
+                      <div class="comment_down_block">
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                  <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                  <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                              </ul>
+                          </div>
+                          <div class="main_comment_buttons float_fr">
+                              <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <!-- End Отзыв(со слайдером) -->
+
+
+              <!-- Отзыв(с ответами) -->
+              <div class="comment_block_wrapper">
+                  <div class="comment_head">
+                      <div class="ava_wrapper">
+                          <img src="images/ava.jpg" alt="">
+                      </div>
+                      <div class="inline_block">
+                          <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                      </div>
+                      <div class="fr">
+                          <a href="#" class="subscribe">Подписаться</a>
+                          <div class="like_dislike_block with_border">
+                              <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                              <div class="vertical_line"></div>
+                              <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="comment_block with_answers">
+                      <div class="comment_triangle"></div>
+
+                      <span class="caption positive rp">Ресторан шикарный!</span>
+                      <div class="fr">
+                          <div class="stars_rating big float_fl in_big_comment_block">
+                              <div class="value"></div>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                              <a href="#"></a>
+                          </div>
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li>Кухня <span class="value negative">1</span></li>
+                                  <li>Сервис <span class="value negative">2</span></li>
+                                  <li>Интерьер <span class="value positive">5</span></li>
+                              </ul>
+                          </div>
+                      </div>
+
+
+                      <div class="clear"></div>
+
+                      <div class="comment">
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                          It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                          I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                          It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                          In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                          makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                          a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                      </div>
+
+
+                      <div class="comment_down_block">
+                          <div class="rating float_fl">
+                              <ul>
+                                  <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                  <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                  <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                              </ul>
+                          </div>
+                          <div class="main_comment_buttons float_fr">
+                              <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                          </div>
+                      </div>
+
+
+                      <div class="answer first">
+                          <div class="comment_head">
+                              <div class="ava_wrapper">
+                                  <img src="images/ava.jpg" alt="">
+                              </div>
+                              <div class="inline_block">
+                                  <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                              </div>
+                          </div>
+
+                          <div class="comment">
+                              Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                              I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                              It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                              I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                              Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                              It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          </div>
+                      </div>
+
+                      <div class="answer">
+                      <div class="comment_head">
+                          <div class="ava_wrapper">
+                              <img src="images/ava.jpg" alt="">
+                          </div>
+                          <div class="inline_block">
+                              <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                          </div>
+                      </div>
+
+                      <div class="comment">
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                          It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                          I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                          Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                          It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                      </div>
+                  </div>
+
+                      <div class="answer">
+                          <div class="comment_head">
+                              <div class="ava_wrapper">
+                                  <img src="images/ava.jpg" alt="">
+                              </div>
+                              <div class="inline_block">
+                                  <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                              </div>
+                          </div>
+
+                          <div class="comment">
+                              Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                              I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                              It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                              I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                              Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                              It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+              <!-- End Отзыв(с ответами) -->
+
+          </div>
+          <!--==== End Отзывы ====-->
+      </section>
+
+      <footer class="wrapper footer">
+        <div class="container">
+          <div class="footer_logo">
+            <a href="#">
+              <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+            </a>
+          </div>
+          <nav class="footer_nav">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Полезное</a></li>
+              <li><a href="#">Критика</a></li>
+            </ul>
+          </nav>
+          <nav class="footer_services_nav">
+            <ul>
+              <li><a href="#">Рестораны</a></li>
+              <li><a href="#">Банкеты</a></li>
+              <li><a href="#">Свадьбы</a></li>
+              <li><a href="#">Мероприятия</a></li>
+            </ul>
+          </nav>
+          <div class="project_owner">
+            Project of company
+            <a href="#">
+              <img src="css/img/project_owner.png"  alt="project_owner"/>
+            </a>
+          </div>
+          <div class="footer_contacts">
+            <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+            <ul>
+              <li>
+                <a href="#">Реклама на сайте</a>
+              </li>
+              <li>
+                <a href="#">Контакты</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+        </div>
+      </footer>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,774 @@
+/* страница "Афиша" */
+/*===== 07.11.13 11:51 =====*/
+/*=========================*/
+.afisha{
+    margin-right: 25%;
+    padding-right:25px ;
+    overflow:hidden;
+}
+.afisha > .caption {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 400;
+    color: #2a2a2a;
+    margin: 0 25px 18px 0;
+    float: left;
+}
+.one_afisha{
+    border:1px solid #348efd;
+    border-radius: 8px;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom:15px;
+}
+.one_afisha img{
+
+}
+.time_afisha{
+    float: left;
+    width: 247px;
+    border-radius: 8px 0px 0px 8px;
+    background: #fff;
+    font-size: 15px;
+    padding: 15px 13px 15px 15px;
+
+}
+.afisha_picture{
+    margin-left: 275px;
+}
+.afisha_picture img{
+    width: 100%;
+}
+.time_afisha > h1{
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: -3px;
+
+}
+.one_afisha .stars_rating{
+    margin-top: 5px;
+
+}
+.one_afisha .stars_rating {
+    width: 77px;
+    height: 17px;
+    background: url(../css/img/star_raiting_small.png) left top no-repeat;
+    position: relative;
+}
+.one_afisha .stars_rating .value {
+    background: url(img/star_raiting_small_val.png) left top no-repeat;
+    top: 0;
+    left: 0;
+    height: 17px;
+    width: 0;
+    position: absolute;
+}
+.data{
+    width: 116px;
+    height: 45px;
+    border:1px solid #dadada;
+    box-shadow: 1px 1px 2px #dfe8f3;
+    font-size: 33px;
+    border-radius: 10px;
+    text-align: center;
+
+    display: inline-block;
+    margin-bottom: 13px;
+
+}
+.data_time{
+    color:#348efd;
+}
+.one_afisha .black_link {
+    text-decoration: none;
+    border-bottom:1px dotted #000;
+    font-size: 13px;
+    color: #000;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: -5px;
+
+}
+.afisha_picture > .comment{
+    font-size: 22px;
+    background: rgba(0,0,0,0.8);
+    padding: 12px;
+    position: absolute;
+    bottom: 0px;
+    left: 275px;
+    font-weight: 600;
+    right: 0px;
+    color: #fff;
+}
+.btn_one_afisha{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+.afisha .pink_btn{
+    width: auto;
+    height: 31px;
+    padding: 5px 15px;
+    color: #fff;
+    margin-right: 10px;
+    background: rgba(157, 31, 98, 0.8);
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.afisha .blue_btn_afisha{
+    width: auto;
+    height: 31px;
+    padding: 5px 15px;
+    color: #fff;
+
+    background: rgba(50, 130, 230, 0.8);
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.afisha .main_comment_expand{
+    margin-top: 50px;
+}
+.paginator{
+    margin: 15px 0px 16px 275px;
+}
+.paginator_center {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+.paginator .next{
+    color:#9d1f62 ;
+    font-size: 22px;
+    font-weight: 600;
+}
+.paginator ul li img{
+    margin-top: 2px;
+    margin-left: 4px;
+}
+.paginator ul li{
+    display: inline-block;
+    margin-right: 5px;
+    border:1px solid #c8daf7;
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 30px;
+    cursor: pointer;
+}
+.paginator ul li.none{
+    border:none;
+
+}
+.paginator ul .active{
+    border:1px solid #9d1f62;
+    background: #9d1f62;
+    padding: 2px 0px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+}
+.afisha .section_selector .selector_body {
+    border:1px solid  #dadada;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px #dde7f2;
+}
+.afisha .section_selector header input {
+    width: 80%;
+
+}
+.afisha .section_selector header {
+    padding: 4px 0 0 12px;
+    height: 27px;
+}
+.afisha .restaurant_selector{
+    margin-right: 10px;
+    height: 30px;
+}
+.afisha .restaurant_selector_date{
+    width: 15%;
+}
+.afisha .restaurant_selector_type{
+    width: 23%;
+}
+.afisha .header_search {
+    padding: 0px 0 0 0px;
+    width: 26%;
+    height: 30px;
+}
+.afisha .header_search .search {
+    height: 30px;
+
+}
+.afisha .header_search .search input[type=text] {
+    line-height: 23px;
+    font-size: 15px;
+    padding: 3px 33px;
+    margin: 1px 0px;
+    background: transparent;
+
+
+}
+.afisha .arrow_input{
+    background: url("../css/img/bg-dd_arrow-mgt-medium.png") no-repeat;
+    width: 16px;
+    height: 9px;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+input::-webkit-input-placeholder {color: #141414;}
+input:-moz-placeholder {color: #141414;}
+
+.afisha > .header_search .search {
+    margin-right: 10px;
+    border: solid 1px #dadada;
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    box-shadow: 1px 1px 1px #dde7f2;
+}
+.header_search .search input[type=text] {
+    background: #fff;
+}
+.afisha_pink{
+    width: 8%;
+    height: 31px;
+    color: #fff;
+    background: #bf1a65;
+    border-radius: 3px;
+    font-size: 17px;
+    border:none;
+    margin-bottom: 0px;
+    position: relative;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+
+.afisha .rating ul{
+    font-size: 14px;
+    margin-top: 4px;
+}
+.afisha .rating li {
+    margin: 0 0 0 8px;
+    float: left;
+}
+.afisha .section_selector header input.search{
+    background: url("../css/img/bg-search.png")no-repeat;
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    margin-right: 7px;
+    color: transparent;
+}
+.afisha .section_selector header:after {
+    top: 12px;
+}
+.afisha .data_icon{
+    background: url("../css/img/data.png")no-repeat;
+    width: 18px;
+    height: 20px;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+}
+.afisha .search_input_right {
+    margin-left: 0px;
+}
+.afisha .header_search_data{
+    position: relative;
+    width: 15%;
+    cursor: pointer;
+}
+.afisha .header_search_data .search_input_right {
+    padding-left: 0px;
+    cursor: pointer;
+    position: relative;
+}
+.slider_data .list_carousel {
+    position: relative;
+    padding: 0 9px;
+    height: 103px;
+
+}
+
+.afisha .months_slider .caroufredsel_wrapper{
+    height: 95px!important;
+}
+.slider_data .list_carousel li {
+    color: #a2a2a2;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    height: 69px;
+    padding: 8px 0px 0px 0;
+    margin-right: 4px;
+    position: relative;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 1px #dde7f2;
+    width: 60px;
+    cursor: pointer;
+}
+.slider_data .list_carousel .main_page_slider_afisha .red {
+    color: #cf1867;
+}
+.slider_data .list_carousel .main_page_slider_afisha .red  span{
+    color: #cf1867;
+}
+.slider_data .list_carousel .main_page_slider_afisha .active {
+    background: #cf1867;
+    color: #fff;
+    position: relative;
+}
+.slider_data .list_carousel .main_page_slider_afisha .active:after {
+   content: '';
+    position:absolute ;
+    background: url(img/arrow_data_pink.png);
+    width: 20px;
+    height: 13px;
+    bottom: -13px;
+    right: 20px;
+}
+.slider_data .list_carousel li span {
+    color: #1a1a1a;
+    font-size: 30px;
+    font-weight: 800;
+    display: block;
+}
+.slider_data .list_carousel li.active span {
+    color: #fff !important;
+
+}
+.slider_data .list_carousel li.active span.holliday {
+    color: #fff;
+
+}
+.slider_data .list_carousel li span.holliday {
+    color: #cf1867;
+    font-size: 30px;
+    font-weight: 800;
+    display: block;
+}
+
+
+.afisha .section_selector header:after {
+    content: '';
+    background: url(img/bg-dd_arrow-mgt-medium.png) left top no-repeat;
+    width: 21px;
+    height: 13px;
+    top: 13px;
+    right: 7px;
+    position: absolute;
+}
+.afisha .recipes .slider_buttons a {
+    width: 28px;
+    height: 107px;
+    background-color: #348efd;
+    padding: 0 10px 0 0;
+}
+.afisha .slider_buttons .prev {
+    left: 0;
+    border-radius: 8px;
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 1px #dde7f2;
+}
+.afisha .slider_buttons .next {
+    right: 0;
+    border-radius: 8px;
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 1px #dde7f2;
+}
+.afisha .slider_buttons.size-h21 .prev {
+    background-image: url(img/arrow_data.png);
+}
+.afisha .slider_buttons.size-h21 .next {
+    background-image: url(img/arrow_data_next.png);
+}
+.slider_data{
+    width:100%;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.afisha .recipes{
+    position: relative;
+    padding: 0 0px 0 0;
+    width: 100%;
+}
+.afisha .recipes .slider_buttons {
+    width: 100%;
+    height: 37px;
+    float: right;
+    box-shadow: none;
+    position: absolute;
+}
+
+.afisha .main_page_slider6_body {
+    margin: 2px 0px;
+    padding: 0 40px;
+}
+
+.afisha .recipes header {
+    margin: 0 0 0px;
+}
+.afisha_tab_block{
+    width: 100%;
+    min-height:193px;
+    border-radius: 7px;
+    border: 1px solid #d84b97;
+    margin-top: 16px;
+}
+.content_tab_afisha{
+    position: relative;
+    margin-left: 274px;
+    overflow: hidden;
+    height: 193px;
+}
+.content_tab_afisha .visible{
+    display: block;
+    overflow: hidden;
+    height: 193px;
+    border-radius: 0 6px 6px 0;
+}
+.tab_afisha{
+    width: 257px;
+    padding: 8px;
+}
+.tab_afisha li{
+    height: 48px;
+    border: 1px solid #348efd;
+    padding: 2px 12px;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 24px;
+}
+.tab_afisha li:first-child{
+    margin-top: 0px;
+}
+.tab_afisha li span{
+    display: block;
+    color:#9b1f62;
+    font-weight: 800;
+    line-height: 23px;
+}
+.tab_afisha .active{
+    background: #9b1f62;
+    border: 1px solid #9b1f62;
+    color: #fff;
+    position: relative;
+}
+.tab_afisha .active span{
+    color: #fff;
+}
+.tab_afisha .active:after{
+    content: '';
+    position: absolute;
+    border-left: 7px solid #9b1f62;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    right: -8px;
+    top: 20px;
+}
+.content_tab_afisha img{
+    width: 100%;
+    border-radius: 0px 6px 6px 0px;
+}
+.comment_afisha{
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    bottom: 0px;
+    padding: 9px 16px;
+    left: 0px;
+    border-radius: 0px 0px 6px 0px;
+}
+.celendar{
+    position: relative;
+}
+.all_months{
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+.months{
+   position: relative;
+   overflow: hidden;
+   height: 30px;
+
+}
+.all_months:after{
+    content: '';
+    position: absolute;
+    background:url(../images/afisha_date_left.png) no-repeat 0 0;
+	width: 12px;
+	height: 17px;
+	top: 4px;
+	left: 0px;
+	z-index: 1;
+}
+.all_months:before{
+    content: '';
+	position: absolute;
+	background: url(../images/afisha_date_right.png) no-repeat 0 0;
+	width: 12px;
+	height: 17px;
+	top: 4px;
+	right: -2px;
+	z-index: 1;
+}
+.afisha .months li{
+    border: none;
+    box-shadow: none;
+    height: 15px;
+    float: left;
+    border-bottom: 1px solid #ffb8d7;
+	border-left:1px solid #ffb8d7;
+	border-right:1px solid #ffb8d7;
+    padding: 0px;
+    display: inline-block;
+    border-radius: 0px 0px 9px 9px;
+    position: relative;
+	margin-top:5px;
+	margin-right:4px;
+}
+.afisha .months li span{
+    font-weight: 600;
+    font-size: 13px;
+    color: #2e2e2e;
+    padding: 0px 10px;
+    border: 1px solid #ffb8d7;
+    border-radius: 13px;
+    background: #fff;
+    text-transform: uppercase;
+    position: absolute;
+    top: 5px;
+    left: 50px;
+
+}
+.left_comment{
+    width: 320px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 29px;
+}
+.left_comment span{
+    display: block;
+    font-weight:800;
+}
+.afisha .blue_line{
+    position: absolute;
+    border-left: 2px solid #348efd;
+    width: 2px;
+    top:15px;
+    bottom: 15px;
+    left: 336px;
+    border-bottom: none;
+    margin: 0 ;
+}
+.right_comment{
+    padding-left: 15px;
+    font-size: 14px;
+    color: #fff;
+    overflow:hidden;
+    line-height: 19px;
+    color: #bcbcbc;
+}
+ .ui-widget{
+    width: 180px!important;
+    z-index: 999!important;
+}
+.afisha .afisha_search{
+     width: 29%;
+ }
+.afisha .afisha_search .search input[type=text] {
+    padding: 3px 15px;
+}
+.afisha .afisha_search .search.active
+{
+    border-color:#348efd;
+}
+
+
+/* Синий динамичный блок */
+/*===== 20.11.13 8:28 =====*/
+/*=========================*/
+.ads_for_you_blue{
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    color: #191818;
+    padding: 7px 0 7px 15px;
+    border: 1px solid #348efd;
+}
+.more_ad_text_blue{
+    float: right;
+    margin-right: 8px;
+    color: #ababab;
+}
+.more_ads_blue{
+    width: 34px;
+    height: 37px;
+    background-color: #f0f7ff;
+    float: right;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    top: -7px;
+}
+.more_ads_next_blue{
+    background: url("../css/img/more_ads_blue.png")11px 8px no-repeat;
+    position: relative;
+    width: 34px;
+    height: 37px;
+    display: inline-block;
+}
+/* end Синий динамичный блок */
+
+/* Красный динамичный блок */
+/*===== 20.11.13 9:33 =====*/
+/*=========================*/
+.ads_for_you_red{
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    color: #191818;
+    padding: 7px 0 7px 15px;
+    border: 1px solid #d11767;
+}
+.more_ad_text_red{
+    float: right;
+    margin-right: 8px;
+    color: #ababab;
+}
+.more_ads_red{
+    width: 34px;
+    height: 37px;
+    background-color: #fff0f6;
+    float: right;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    top: -7px;
+}
+.more_ads_next_red{
+    background: url("../css/img/more_ads_pink.png")11px 8px no-repeat;
+    position: relative;
+    width: 34px;
+    height: 37px;
+    display: inline-block;
+}
+.catalog_item.bordered_big {
+     border: solid 1px #348efd;
+     height: 273px;
+ }
+.afisha_date{
+    background: #4b4b4c;
+    color: #d9d9d9;
+    border-radius: 3px;
+    padding: 9px 11px;
+    font-size: 15px;
+    font-weight: 400;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.afisha_name{
+    background: #bf175f;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 11px;
+    font-size: 21px;
+    font-weight: 400;
+    display: inline-block;
+}
+.catalog_item header.black_head_red{
+   background: transparent;
+   padding:13px 16px ;
+
+}
+.sidebar_right_reclama .ad .catalog_item footer.footer_blue{
+    padding:13px 16px ;
+    background: transparent;
+    display: block;
+
+}
+.sidebar_right_reclama .ad .footer_blue span{
+    background: #3581e1;
+    opacity:0.9;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    font-size: 19px;
+    line-height: 28px;
+    color: #fff;
+    display: block;
+    border-radius: 3px;
+    padding: 17px 19px;
+    font-weight: 600;
+}
+/* end Красный динамичный блок */
+
+
+/* правый блок с ссылками */
+/*===== 20.11.13 8:41 =====*/
+/*=========================*/
+.right_link_blue{
+    border: 2px solid #348efd;
+    border-radius: 7px;
+    padding:7px 18px 7px 18px;
+    margin-bottom: 15px;
+    font-size: 11px;
+    color: #8b8b8b;
+    font-weight: 600;
+    line-height: 33px;
+	min-height:180px;
+}
+.right_link_blue_tag
+{
+	display:inline-block;
+}
+.right_link_blue span{
+    margin: 0 12px 0 8px;
+}
+.right_link_blue a{
+    font-size: 18px;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dotted #1a1a1a;
+}
+.right_link_blue a:hover{
+    border-bottom: 1px dotted transparent;
+    color: #348efd;
+
+}
+/* end правый блок с ссылками */
+
+
+
+
+
+/* end страница "Афиша" */
+
+
+@media (max-width:1420px){
+    .afisha .header_search {
+        width: 16%;
+    }
+    .afisha .afisha_search{
+        width: 27%;
+    }
+}
+

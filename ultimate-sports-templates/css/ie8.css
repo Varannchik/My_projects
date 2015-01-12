@@ -1,0 +1,81 @@
+a img{
+    border: none;
+}
+a.logo{
+    border:none;
+}
+.footer_content{
+    color: #ebebeb;
+}
+.first_footer{
+    background: none;
+
+}
+.small_video_comment{
+    background: rgb(0,0,0);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+
+}
+.small_video:before{
+    background: rgb(0,0,0);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+.data_comment{
+    margin-top: 0px;
+}
+/*.content_video{*/
+    /*background: rgb(255,255,255);*/
+    /*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10);*/
+/*}*/
+.first_footer{
+    background: url("../images/opasity.png");
+    /*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10);*/
+    color: #ebebeb;
+}
+
+/*.content_block a {*/
+    /*color:#fff;*/
+    /*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);*/
+/*}*/
+.text_slider{
+    background: rgb(0,0,0);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+.text_block_carousel{
+    background: rgb(255,255,255);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}
+#tiles li .comment_picture{
+    background: rgb(255,255,255);
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+.select_name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #373737;
+    line-height: 35px;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+.input_block input{
+    line-height: 37px;
+}
+.small_video_comment {
+    position: absolute;
+    bottom: 0;
+    padding: 8px;
+    line-height: 20px;
+    background: #000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    font-size: 11px;
+}
+.small_video:before {
+    background: #000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+
+}
+.block_img div {
+    background: #fff;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+
+}

@@ -1,0 +1,796 @@
+@footer:#6a3200;
+@header:#fedbb4;
+@text_nav_active:#cfa177;
+@color_left_menu:#a38a74;
+@yellow:#f9ad01;
+
+
+
+@font-face {
+  font-family: Calibri; /* Гарнитура шрифта */
+  src: url(../calibri/CALIBRI.TTF); /* Путь к файлу со шрифтом */
+}
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  margin: 0 auto;
+  font-family: Calibri,"Arial",sans-serif;
+}
+html,body{height:100%}
+
+ul{list-style:none;}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+.fl{float:left;}
+
+.fr{float:right;}
+
+.clear{clear: both;}
+
+.clear10
+{
+  clear: both;
+  height:10px;
+}
+.wrapper{
+  min-height:100%;
+}
+.content{
+  margin: 20px auto;
+  position: relative;
+}
+.footer_back
+{
+  height:180px;
+}
+
+header{
+  background: @header;
+  height: 230px;
+  width: 220px;
+  padding: 0 20px;
+}
+
+.logo{
+  display: inline-block;
+  margin: 50px auto 0;
+
+
+}
+.content_slider{
+  height: 230px;
+  position: relative;
+  .slider_social{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    .vk{
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-left: 12px;
+      cursor: pointer;
+      background: url("../images/icon_vk.png") 0 0 no-repeat;
+      &:hover{
+        background: url("../images/icon_vk.png") 0 -24px no-repeat;
+      }
+    }
+    .facebook{
+      display: inline-block;
+      width: 24px;
+      cursor: pointer;
+      height: 24px;
+      background: url("../images/icon_facebook.png") 0 0 no-repeat;
+      &:hover{
+
+        background: url("../images/icon_facebook.png") 0 -24px no-repeat;
+      }
+    }
+  }
+}
+.royalSlider{
+  img{
+    width: 100%;
+  }
+}
+
+
+/* главное меню */
+/*===== 03.02.14 14:02 =====*/
+/*=========================*/
+nav{
+  min-height: 15px;
+  padding: 22px 0;
+
+  background: @footer;
+  a{
+    color: @text_nav_active;
+    text-decoration: none;
+    &:hover{
+      color: @header;
+    }
+  }
+  ul{
+    display: table;
+    width: 100%;
+    font-family: Calibri;
+    font-size: 14px;
+    text-transform: uppercase;
+    li{
+      display: table-cell;
+      text-align: center;
+      width: 134px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .active{
+      a{
+        color: @header;
+      }
+    }
+  }
+}
+/* end главное меню */
+
+
+
+/* навигация слайдера */
+/*===== 03.02.14 13:57 =====*/
+/*=========================*/
+.rsArrowRight {
+  top: 100px;
+  right: 20px;
+  background: url(../images/arrow_slider_right.png) 0 0 no-repeat;
+  &:hover{
+    background: url(../images/arrow_slider_right.png) 0 -36px no-repeat;
+  }
+}
+.rsArrowLeft {
+  top: 100px;
+  left: 20px;
+  background: url(../images/arrow_slider_left.png) 0 0 no-repeat;
+  &:hover{
+    background: url(../images/arrow_slider_left.png) 0 -36px no-repeat;
+  }
+}
+.rsArrow {
+  position: absolute;
+  width: 12px;
+  height: 36px;
+  margin-top: 0px;
+  padding-top: 0px;
+  display: block;
+  z-index: 101;
+  overflow: hidden;
+}
+/* end навигация слайдера */
+#main_page_slider2{
+  margin-bottom: 20px;
+  position: relative;
+}
+.content_slider2{
+  position: relative;
+}
+
+
+
+/* левая навигация */
+/*===== 03.02.14 14:03 =====*/
+/*=========================*/
+.left_nav{
+  font-size:18px;
+  text-transform: uppercase;
+  font-family: Calibri;
+  li{
+    display: block;
+    border-bottom: 1px solid @footer;
+  }
+  a{
+    display: block;
+    padding: 0 20px;
+    line-height: 59px;
+    color:@color_left_menu;
+    text-decoration: none;
+    &:hover{
+      color: @header;
+    }
+  }
+  .active_left_menu{
+    background: @footer;
+    a{
+      color: @header;
+    }
+  }
+}
+/* end левая навигация */
+
+.left_content{
+  width: 240px;
+}
+.right_content{
+  width: 720px;
+  margin-left: 240px;
+}
+
+.yellow_text{
+  color: @yellow;
+}
+.banner{
+  margin: 20px 0;
+}
+
+article{
+  background: @header;
+  color: @footer;
+  padding: 20px;
+  height: 200px;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: Calibri;
+  .text_block{
+    word-wrap: normal;
+    width: 210px;
+    padding: 0px 0 0 15px;
+    &:first-child{
+      padding: 0;
+    }
+  }
+  p{
+    margin-bottom: 15px;
+  }
+}
+.block_news{
+  display: block;
+  text-decoration: none;
+  color: @footer;
+  border-bottom: 1px solid @footer;
+  padding: 18px 0;
+  cursor: pointer;
+  img{
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    margin: 0 0 10px 0;
+  }
+  span{
+    display: block;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: Calibri;
+    text-transform: uppercase;
+    height: 30px;
+    overflow: hidden;
+  }
+}
+h1{
+  font-size: 18px;
+  color: @footer;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 15px;
+  font-family: Calibri;
+}
+h2{
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Calibri;
+  color: @footer;
+  text-transform: uppercase;
+}
+
+
+.arhiv{
+  display: block;
+  font-size: 15px;
+  text-align: right;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: @footer;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+
+
+/* footer */
+/*===== 03.02.14 21:34 =====*/
+/*=========================*/
+footer{
+  height: 100px;
+  padding: 40px;
+  width: 860px;
+  margin: 0 auto;
+  margin-top:-180px;
+  position:relative;
+  background: @footer;
+  color: @header;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: Calibri;
+  p{
+    margin-top: 10px;
+  }
+  .vk{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 12px;
+    background: url("../images/icon_vk.png") 0 -24px no-repeat;
+    &:hover{
+      background: url("../images/icon_vk.png") 0 0 no-repeat;
+    }
+  }
+  .facebook{
+    display: inline-block;
+    width: 24px;
+    cursor: pointer;
+    height: 24px;
+    background: url("../images/icon_facebook.png") 0 -24px no-repeat;
+    &:hover{
+      background: url("../images/icon_facebook.png") 0 0 no-repeat;
+    }
+  }
+  .social{
+    margin-left: 30px;
+  }
+}
+.footer_nav{
+  margin-bottom: 40px;
+  margin-left: -15px;
+  margin-right: 20px;
+  a{
+    color:@text_nav_active;
+    text-decoration: none;
+    &:hover{
+      color: @header;
+    }
+  }
+
+  ul{
+    display: table;
+    width: 100%;
+    font-family: Calibri;
+    font-size: 12px;
+    text-transform: uppercase;
+    li{
+      display: table-cell;
+      text-align: center;
+      width: 90px;
+      vertical-align: middle;
+    }
+    .active{
+        color:@header;
+      }
+  }
+}
+
+.icon_search{
+  display: inline-block;
+  width:15px;
+  height:14px;
+  margin-right: 5px;
+  background: url("../images/icon_footer_search.png") no-repeat;
+}
+.icon_phone{
+  display: inline-block;
+  width:15px;
+  height:15px;
+  margin-right: 5px;
+  background: url("../images/icon_footer_phone.png") no-repeat;
+}
+.icon_world{
+  display: inline-block;
+  width:15px;
+  height:14px;
+  margin-right: 5px;
+  background: url("../images/icon_footer_word.png") no-repeat;
+}
+.icon_mail{
+  display: inline-block;
+  width:15px;
+  height:9px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background: url("../images/icon_footer_mail.png") no-repeat;
+}
+/* end footer */
+
+
+
+
+/* страница афиша */
+/*===== 04.02.14 10:05 =====*/
+/*=========================*/
+.afisha{
+  p{
+    font-family: Calibri;
+    font-size: 14px;
+    color: @footer;
+    margin-top: 10px;
+  }
+}
+/* end страница афиша */
+
+
+
+
+/* страница услуги */
+/*===== 04.02.14 10:05 =====*/
+/*=========================*/
+.block_usluga{
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  min-height: 155px;
+  span{
+    display: block;
+    width:60px;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .active{
+    display: none;
+  }
+}
+
+.uslugi{
+  p{
+    font-size: 14px;
+    font-family: Calibri;
+    margin-top: 20px;
+     color: @footer;
+  }
+}
+.stars{
+  width:41px;
+  height: 28px;
+  display: block;
+  margin: 0 auto;
+  background: url("../images/stars.png") no-repeat;
+}
+.title{
+  position: relative;
+  text-align: center;
+  margin: 14px 0;
+  span{
+    font-family: Calibri;
+    font-size:14px;
+    color: @footer;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    background: #fff;
+    padding: 0 20px;
+    margin: 0 auto;
+    display: inline-block;
+    position: relative;
+    z-index: 10;
+
+  }
+
+  &:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: @footer;
+    z-index: 0;
+  }
+}
+/* end страница услуги */
+
+/*к странице ресторанов и партнеров */
+/*===== 04.02.14 12:36 =====*/
+/*=========================*/
+.restoran, .partners{
+  a{
+    display: block;
+    margin: 40px 0 80px 0;
+    text-align: center;
+    min-height: 120px;
+    vertical-align: middle;
+  }
+}
+/* end *к странице ресторанов и партнеров */
+
+/* страница ресторанов */
+/*===== 04.02.14 12:44 =====*/
+/*=========================*/
+
+.galery{
+    display: block;
+    width: 220px;
+    height: 180px;
+    overflow: hidden;
+    margin-top: 20px;
+    position: relative;
+  img{
+    width: 100%;
+  }
+}
+.video_arrow{
+  position: absolute;
+  top:33%;
+  left: 33%;
+  border-top:40px solid transparent;
+  border-left:80px solid #fff;
+  border-bottom: 40px solid transparent;
+  opacity: 0.6;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+  cursor: pointer;
+}
+.nav_slider{
+  min-height: 15px;
+  line-height: 40px;
+  width: 700px;
+//  background: @header;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  a{
+    color: @footer;
+    text-decoration: none;
+    display: block;
+    width: 140px;
+    line-height: 40px;
+  }
+  ul{
+    display: table;
+    font-family: Calibri;
+    font-size: 14px;
+    background: @header;
+    li{
+      display: table-cell;
+      width: 140px;
+      text-align: center;
+      position: relative;
+      &:hover,.active_nav_slider{
+        background: @footer;
+        position: relative;
+        a{
+          color: @header;
+          position: relative;
+          &:after{
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 45%;
+            border-bottom: 10px solid @footer;
+            border-left:7px solid transparent ;
+            border-right: 7px solid transparent;
+
+          }
+        }
+
+      }
+    }
+    .active_nav_slider{
+      background: @footer;
+      a{
+        color: @header;
+        position: relative;
+        &:after{
+          content: '';
+          position: absolute;
+          top: -10px;
+          left: 45%;
+          border-bottom: 10px solid @footer;
+          border-left:7px solid transparent ;
+          border-right: 7px solid transparent;
+
+        }
+      }
+
+    }
+  }
+}
+/* end страница ресторанов */
+.contact{
+  border: 1px solid @footer;
+  margin: 18px 0 0 0;
+  display: table;
+}
+.contact_content{
+  text-align: center;
+  font-size: 14px;
+  font-family: Calibri;
+  height: 105px;
+  width: 340px;
+  display: table-cell;
+  vertical-align: middle;
+  color: @footer;
+  a{
+    color: @footer;
+    text-decoration: none;
+  }
+}
+.main_contact{
+  background: @footer;
+  color: @header;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px 0;
+}
+.paginator{
+  li{
+    display: inline-block;
+    color: #966436;
+    a{
+      color: #966436;
+      text-decoration: none;
+    }
+    .under{
+      text-decoration: underline;
+    }
+  }
+}
+.img_block{
+  width: 220px;
+  overflow: hidden;
+  img{
+    width: 100%;
+  }
+}
+.content_block_proekt{
+  margin-bottom: 20px;
+}
+.proekt_block{
+  min-height: 160px;
+  width: 460px;
+  margin-left: 240px;
+  position: relative;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid @footer;
+  p{
+    font-family: Calibri;
+    font-size:14px;
+    color: @footer;
+  }
+  h2{
+    margin-bottom: 20px;
+  }
+
+}
+.add_text{
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-family: Calibri;
+  font-size:14px;
+  color: @footer;
+  cursor: pointer;
+}
+.save_text{
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  font-family: Calibri;
+  font-size:14px;
+  color: @footer;
+  cursor: pointer;
+}
+.hide_text{
+   display: none;
+ }
+.content_block_vakansii{
+  position: relative;
+  line-height: 40px;
+  border-bottom: 1px solid @footer;
+  margin-bottom: 20px;
+  font-family: Calibri;
+  font-size: 14px;
+  color: @footer;
+  .add_text{
+    bottom: 0;
+  }
+  .save_text{
+    bottom: 0;
+  }
+  .big{
+    text-transform: uppercase;
+    line-height: 18px;
+    margin: 20px 0 0 0;
+  }
+  p{
+    line-height: 18px;
+  }
+}
+.bg{
+  background: @footer;
+  position: relative;
+}
+.logo_error{
+  position: relative;
+  width: 230px;
+  top: 20px;
+  left: 20px;
+}
+.picture_error{
+  display: block;
+  margin: 0 auto;
+  width:590px ;
+  height: 605px;
+  background: url("../images/error.png") center no-repeat;
+}
+.picture_no_page{
+  display: block;
+  margin: 0 auto;
+  width:400px ;
+  height: 605px;
+  background: url("../images/no_page.png") center no-repeat;
+}
+.afisha_block{
+  padding: 20px 0 0 0;
+  margin-left: 240px;
+  p{
+    margin-top:20px;
+    font-size: 14px;
+    color: @footer;
+    font-family: Calibri;
+  }
+
+}
+.afisha-img{
+  margin-right: 20px;
+}
+.book{
+  height: 500px;
+  margin-top: 20px;
+}
+#magazine{
+  width:702px;
+  height:498px;
+  margin: 0 auto;
+
+}
+#magazine .turn-page{
+  width:351px;
+  height:498px;
+  background-color:#ccc;
+}
+.page-wrapper{
+img{
+  width: 351px;
+}
+}
+.small_article{
+  width: 420px;
+  margin-right: 20px;
+}
+.map_container{
+  position: relative;
+  width: 220px;
+  float: left;
+  span{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    padding: 20px;
+    width: 180px;
+    background: @footer;
+    color: @header;
+    font-family: Calibri;
+    font-size: 14px;
+  }
+}
+

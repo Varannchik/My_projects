@@ -1,0 +1,41 @@
+
+.scrollbar_horizontal {
+    width: 100%;
+}
+.scrollbar_horizontal > .viewport {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.scrollbar_horizontal > .viewport > .overview {
+    list-style: none;
+    width: 1100px;
+    overflow: hidden;
+    padding: 0 11px;
+    margin: 0;
+    position: absolute;
+    left: 0;
+}
+
+.scrollbar_horizontal > .scrollbar{
+    position: absolute;
+    clear: both;
+    height: 5px;
+    top: auto;
+    bottom: 3px;
+}
+.scrollbar_horizontal  > .scrollbar .thumb {
+    background-color: #939393;
+    height: 5px;
+    width: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.scrollbar_horizontal  > .scrollbar.disable {
+    display: none;
+}

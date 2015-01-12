@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <title>Title</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">    <link rel="stylesheet" href="css/main.css">
+
+
+      <link rel="stylesheet" href="css/and_style.css">
+
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+
+      <script src="js/jquery-1.7.2.js"></script>
+      <script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+      <script type="text/javascript"  src="js/placeholder.js"></script>
+
+      <!-- optionally include helper plugins -->
+      <script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+      <script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+    <script src="js/common.js"></script>
+
+    <script src="js/and_js.js"></script>
+      <script src="js/popup.js"></script>
+
+    <script src="js/main_page.js"></script>
+
+
+    <!--[if IE 8]>
+      <script src="js/ie8.js"></script>
+    <![endif]-->
+
+      <script>
+          $(function(){              $('.list_carousel .news_item ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+110;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			                $('.list_carousel .events_block ').live('click',function(){					$('.restoran_promo_slider_active').html('').hide();					var width=$(this).width()+12;					var height=$(this).height()+108;					var left=$(this).offset().left-$('.restoran_promo_slider_block').offset().left;					var clone=$(this).clone();					var active_block=$(this).closest('.restoran_promo_slider_block').find('.restoran_promo_slider_active');					active_block.show().html('').append(clone).css({'width':width,'height':height,'left':left});					active_block.find('img').height($(this).height());					active_block.find('.restoran_promo_slider_text').nanoScroller();              })	;			  			  			  $('.restoran_promo_slider_active').live('click',function(){					$(this).html('').hide();			  });			  
+             $('.search_select_block').hover(function(){
+                 $('.search_select_block ul').stop(true,true).slideDown(200);
+             },function(){
+                 $('.search_select_block ul').stop(true,true).slideUp(200);
+             })
+
+              $('.search_select_block ul a').live('click',function(){
+                  var val=$(this).text();
+                  $('.search_select_val').text(val);
+                  return false;
+              })
+
+
+              /* Смена 2 рекламных блоков справа */
+              $('.more_ads_next').on('click', function(){
+                  var visible = $('.visible_add_block');
+                  var hidden = $('.hidden_add_block');
+                  var tmp = visible;
+
+                  visible.find('.black_head').slideUp(200, function(){
+
+                      visible.hide();
+                      // hidden.show();
+                      hidden.find('img').show();
+                      hidden.fadeIn(300, function(){
+                          hidden.find('.black_head').slideDown(200);
+
+                          visible.removeClass('visible_add_block');
+                          visible.addClass('hidden_add_block');
+
+                          hidden.removeClass('hidden_add_block');
+                          hidden.addClass('visible_add_block');
+                      });
+
+
+                  });
+
+                  return false;
+              });
+              /* END Смена 2 рекламных блоков справа */
+
+          });
+
+      </script>
+
+
+
+      <script src="//api-maps.yandex.ru/2.1-dev/?lang=ru-RU&load=package.full" type="text/javascript"></script>
+      <style type="text/css">
+          #YMapsID {
+              width: 100%;
+              height: 59px;
+          }
+      </style>
+
+      <style type="text/css">
+          #YMapsID_big {
+              width: 100%;
+              height: 300px;
+              display: none;
+          }
+      </style>
+
+
+      <script type="text/javascript">
+          ymaps.ready(function () {
+              var myMap = new ymaps.Map('YMapsID', {
+                  center: [55.733835, 37.588227],
+                  zoom: 12,
+                  // Обратите внимание, что в API 2.1 по умолчанию карта создается с элементами управления.
+                  // Если вам не нужно их добавлять на карту, в ее параметрах передайте пустой массив в поле controls.
+                  controls: []
+              });
+          });
+      </script>
+
+      <script type="text/javascript">
+          ymaps.ready(function () {
+              var myMap = new ymaps.Map('YMapsID_big', {
+                  center: [55.733835, 37.588227],
+                  zoom: 12,
+                  // Обратите внимание, что в API 2.1 по умолчанию карта создается с элементами управления.
+                  // Если вам не нужно их добавлять на карту, в ее параметрах передайте пустой массив в поле controls.
+                  controls: []
+              });
+          });
+      </script>
+
+  </head>
+
+  <body>
+
+  <!--[if lt IE 8]>
+      <style>
+          #wrapper{display:none;}
+          body{background:url(images/back.jpg) repeat 0 0;}
+      </style>
+      <div style='text-align:center;'>
+          <br><br>
+          <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+          <br><br><br>
+          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+              <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+          </a>
+      </div>
+  <![endif]-->
+
+
+
+  <!--==== ADD REVIEW pop_up ====-->
+
+  <div class="modal add_review_popup">
+      <div class="add_review_popup_head">
+          <div class="comment_head">
+              <div class="ava_wrapper">
+                  <img src="images/ava.jpg" alt="">
+              </div>
+              <div class="inline_block">
+                  <span class="date no_margin">18 окт 2013</span> <br>
+                  <span class="bottom_line">
+                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                      <span class="elite_label float_fl">ELITE</span>
+                      <span class="blue_comment">25</span>
+                  </span>
+              </div>
+              <button class="big_close_popup_btn"></button>
+          </div>
+      </div>
+
+      <div class="add_review_popup_body">
+          <span class="add_review_title">Добавление отзыва</span>
+          <div class="fr inline_block">
+              <button class="review_type_btn good"><span class="review_btn_icon"></span> <span class="review_btn_text">Положительный</span></button>
+              <button class="review_type_btn bad"><span class="review_btn_icon"></span> <span class="review_btn_text">Отрицательный</span></button>
+          </div>
+          <div class="clear"></div>
+
+
+          <div class="rating_line">
+              <span class="add_review_text">Ваша оценка</span>
+
+              <div class="stars_rating_wrapper ml10 add_review_stars">
+                  <div class="stars_rating float_fl">
+                      <div class="value"></div>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                      <a href="#"></a>
+                  </div>
+              </div>
+
+              <span class="add_review_text m_kitchen">Кухня</span> <input class="rating_line_input">
+              <span class="add_review_text m_serv">Сервис</span> <input class="rating_line_input">
+              <span class="add_review_text m_intr">Интерьер</span> <input class="rating_line_input">
+          </div>
+
+          <span class="add_review_caption">Слишком короткие или неубедительные отзывы, не подкрепленные фактами, будут удалены.</span>
+
+          <div class="fl in_add_rev_popup">
+              <input placeholder="Тема отзыва">
+              <textarea placeholder="Текст отзыва"></textarea>
+          </div>
+          <div class="fr in_add_rev_popup">
+              <div class="block_with_hint">
+                  <i></i>
+                  Текст отзыва должен быть не меньше 30 и не более 10000 знаков. Это обязательное поле.<br>
+
+                  <div class="other_line_height">
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Опишите вашу ситуацию</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Укажите точные факты, даты, цены услуг</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Расскажите о преимуществах и недостатка</span> <br>
+                      </div>
+                      <div class="inline_block">
+                          <span class="blue_point"></span> <span class="hint_hint">Отметьте моменты, на которые следует обратить внимание</span> <br>
+                      </div>
+
+                  </div>
+              </div>
+
+              <button class="recommend_for_btn"><span class="plus_blue"></span> Рекомендовать для</button>
+
+
+              <button class="add_photo"><span class="add_photo_span"></span><span class="add_photo_btn_text">Добавить фото</span></button>
+              <input type="file" class="hide_input_type_file">
+
+              <button class="publish">Опубликовать</button>
+          </div>
+
+          <div class="clear"></div>
+
+
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+          <div class="add_image_block">
+              <span class="remove_img"></span>
+              <img src="images/remove_img.png" alt="">
+          </div>
+
+      </div>
+  </div>
+
+  <div class="background_window"></div>
+
+  <!--==== End ADD REVIEW pop_up ====-->
+
+
+
+
+    <div id="wrapper">
+        <div class="free_order_block">
+            <div class="free_order">
+                <a href="#" class="close"></a>
+                <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                <div class="phone">+7 495 221 22 22</div>
+            </div>
+        </div>
+      <header class="wrapper header header_promo and_new_comments_header">
+        <div class="container">
+          <div class="header_logo">
+            <a href="#">
+              <img src="css/img/logo_promo.png"  alt="logo"/>
+            </a>
+            <div class="header_promo_logo_text">
+                <a href="" class="header_promo_logo_lang">In English</a><br>
+                <a href="" class="header_promo_logo_login">Войти</a>
+            </div>
+          </div>
+
+
+		  <div class="header_rigth_info">
+				<p class="text1">+7 495 221 22 22</p>
+				<a class="text3" href="#">Забронировать Столик</a>
+		  </div>
+
+          <div class="header_center">
+              <div class="header_search">
+                  <div class="search">
+                      <form>
+                         <div class="float_fl">
+                              <input type="submit">
+                         </div>
+                          <div class="search_select_block">
+                              <div class="search_select_val">
+                                  По ресторанам
+                              </div>
+                              <ul>
+                                  <li class="active"><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                                  <li><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                                  <li><a href="#">По ресторанам</a></li>
+                                  <li><a href="#">По городам</a></li>
+                              </ul>
+                          </div>
+
+
+                          <div class="search_input_right">
+                              <input type="text" placeholder="Например, ресторан Булгакова" class="placeholder">
+                          </div>
+                      </form>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+
+          </div>
+
+        </div>
+        <nav class="container services_nav">
+          <ul>
+            <li class="restaurant">
+              <a href="#"><span>Рестораны</span></a>
+            </li>
+            <li class="feast">
+              <a href="#"><span>Банкеты</span></a>
+            </li>
+            <li class="wedding">
+              <a href="#"><span>Свадьбы</span></a>
+            </li>
+            <li class="night_life">
+                <a href="#"><span>Ночная жизнь</span></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container">
+          <nav class="header_nav-2">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Критика</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Полезное</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+
+      <section class="wrapper" style="position: relative">
+        <div class="and_new_comments"></div>
+        <div class="container">
+              <!-- Реклама -->
+              <aside class="sidebar_right_reclama and_sidebar_right_reclama">
+
+              <div class="ads_for_you">
+                  <span>Подборка для Вас</span>
+
+
+                  <a href="#" class="more_ads"><span class="more_ads_next"></span></a>
+                  <span class="more_ad_text">Еще</span>
+              </div>
+
+
+              <div class="clear"></div>
+              <div class="ad">
+              <article class="catalog_item bordered">
+                  <div class="visible_add_block">
+                      <a href="#">
+                          <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                          <header class="black_head">
+                              <div>
+                                  Лучшие места для мальчишника
+                                  с Русланом и Черным джеком
+                              </div>
+                          </header>
+                      </a>
+                  </div>
+                  <div class="hidden_add_block">
+                      <a href="#">
+                          <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                          <header class="black_head">
+                              <div>
+                                  Лучшие места для мальчишника
+                                  с Русланом и Черным джеком Воробьем
+                              </div>
+                          </header>
+                      </a>
+                  </div>
+
+              </article>
+
+              <article class="catalog_item bordered">
+                  <div class="visible_add_block">
+                      <a href="#">
+                          <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                          <header class="black_head">
+                              <div>
+                                  Лучшие места для девичника
+                                  с Александром
+                              </div>
+                          </header>
+                      </a>
+                  </div>
+                  <div class="hidden_add_block">
+                      <a href="#">
+                          <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                          <header class="black_head">
+                              <div>
+                                  Лучшие места для девичника
+                                  с Александром Черным джеком Воробьем
+                              </div>
+                          </header>
+                      </a>
+                  </div>
+
+              </article>
+
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+
+                  <div class="clear"></div>
+
+                  <div class="float_fr right_side_bunner right_side_bunner_restoran">
+                      <a href="#">
+                          <img src="images/banner-2.jpg"  alt="banner-2"/>
+                      </a>
+                  </div>
+                  <div class="clear"></div>
+
+                  <article class="catalog_item bordered">
+                      <a href="#">
+                          <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                          <header>
+                              <div>
+                                  Арбатский
+                                  <small>ул. Арбат, д. 9, 2 этаж</small>
+                                  <span class="info">?</span>
+                              </div>
+                          </header>
+                          <div class="fade_text">
+                              Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                          </div>
+                          <div class="blur_darck_bg"></div>
+                          <div class="stars_rating">
+                              <div class="value"></div>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </div>
+                          <footer>
+                              <div class="rating">
+                                  <ul>
+                                      <li>Кухня <span class="value">4.5</span></li>
+                                      <li>Сервис <span class="value">4.5</span></li>
+                                      <li>Интерьер <span class="value">4.5</span></li>
+                                  </ul>
+                              </div>
+                          </footer>
+                      </a>
+                  </article>
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+              <div class="clear"></div>
+
+              <div class="float_fr right_side_bunner right_side_bunner_restoran">
+                  <a href="#">
+                      <img src="images/banner-2.jpg"  alt="banner-2"/>
+                  </a>
+              </div>
+              <div class="clear"></div>
+
+              </div>
+              </aside>
+              <!-- End -->
+
+              <!-- Отзывы -->
+              <div class="restorany">
+                <div class="container">
+
+
+                    <div class="main_comments new_main_comments">
+                        <div class="header and_comments_header">
+                            <div class="caption">Отзывы</div>
+
+                            <div class="restaurant_selector section_selector and_comments">
+                                <div class="selector_body">
+                                    <header>
+                                        <input type="hidden">
+                                        <input type="text" placeholder="Выберите ресторан" class="placeholder">
+                                    </header>
+                                    <div class="drop_down">
+                                  <div class="drop_down-slider nano">
+                                      <div class="content">
+                                          <ul>
+                                              <li class="placeholder">Выберите ресторан</li>
+                                              <li class="active">Пушкинский</li>
+                                              <li>Пушной</li>
+                                              <li>Пушники</li>
+                                              <li>ПушПушник</li>
+                                              <li>Пушкино</li>
+                                              <li>Пушики</li>
+                                              <li>Пушанцок</li>
+                                              <li>Амэт</li>
+                                              <li>Мальорум</li>
+                                              <li>Атоморюм</li>
+                                              <li>Докэндё</li>
+                                              <li>Лорэм</li>
+                                              <li>Бонорюм</li>
+                                              <li>Льюкяльиюч</li>
+                                              <li>Дэлььиката</li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                                  <footer><a href="#">Все фотоотчеты</a></footer>
+                              </div>
+                                </div>
+                            </div>
+
+                            <div class="and_comment_new_comment float_fl">
+                                <a href="#" class="btn purple_btn float_fl">Добавить отзыв</a>
+                            </div>
+                            <div class="rating float_fl and_new_comments_sort">
+                                <ul>
+                                    <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span></li>
+                                    <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span></li>
+                                    <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- ОДИН КОММЕНТ -->
+                        <div class="main_comment">
+                        <div class="main_comment_container">
+
+                        <ul class="main_comment_body_content">
+                        <li   class="active">
+                            <article class="text_article main_comment_article and_new_comments_head and_small_article">
+                                <div class="raiting_block_number raiting_block_number7">7</div>
+                                <a href="#"><img src="images/main_comments_item-1.jpg" alt="main_comments_item-1"/></a>
+                                <header>Figure of Food <div class="more_comments"><a href="#">Отзывы</a> <span class="blue">(7)</span></div></header>
+                                <a href="#">
+                                    <div class="text">
+                                        <p class="title">ул. Новокузнецкая, д. 7</p>
+                                        <div class="rating and_new_comments_rating">
+                                            <ul>
+                                                <li>Кухня <span class="value">4.5</span></li>
+                                                <li>Сервис <span class="value">4.5</span></li>
+                                                <li>Интерьер <span class="value">4.5</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                            <div class="main_comment_body">
+                                <header>
+                                    <img class="ava" src="css/img/icon_ava.jpg" alt=""/>
+                                    <div class="text_header">
+                                        <span class="date float_fl">18 окт 2013</span>
+                                        <div class="stars_rating float_fl">
+                                            <div class="value"></div>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="rating float_fl and_comments_rating_top">
+                                            <ul>
+                                                <li>Кухня <span class="value negative">1</span></li>
+                                                <li>Сервис <span class="value negative">2</span></li>
+                                                <li>Интерьер <span class="value positive">5</span></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                        <span class="elite_label float_fl">ELITE</span>
+                                        <span class="caption blue_caption float_fl">25</span>
+                                    </div>
+
+                                    <div class="rating float_fl comments_new_answers_btn and_hz_comments and_show_comments">
+                                        <ul>
+                                            <li>Комментарии <span class="value blue">5</span></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="clear"></div>
+                                    <span class="caption negative">Отвратительный ресторан!</span>
+                                </header>
+                                <div class="clear"></div>
+                                <div class="main_comment_text and_small_main_comment_text">
+                                    <div class="inner">
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                        In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am.
+                                        In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+
+                                        <!--========   Слайдер   =========-->
+                                        <div class="and_new_comments_slider">
+                                            <div class="slide_right_buttons ev">
+                                                <a href="#" class="comment_arrow_r" id="comment-next"></a>
+                                                <a href="#" class="comment_arrow_l" id="comment-prev"></a>
+                                            </div>
+
+
+                                            <div class="main_page_slider2_body comment_sl">
+                                                <div class="list_carousel">
+                                                    <ul class="restaurant_promo_comment_slider">
+
+                                                        <li>
+                                                            <div class="comment_slider_block">
+                                                                <img src="images/events.jpg"  alt=""/>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="comment_slider_block">
+                                                                <img src="images/events.jpg"  alt=""/>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="comment_slider_block">
+                                                                <img src="images/events.jpg"  alt=""/>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="comment_slider_block">
+                                                                <img src="images/events.jpg"  alt=""/>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--========   End Слайдер   =========-->
+
+
+
+                                        I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                    </div>
+                                </div>
+                                <div class="main_comment_expand and_comments_main_comment_expand">
+                                    <a href="#"><span>Развернуть</span></a>
+                                </div>
+
+                                <div class="rating float_fl">
+                                    <ul>
+                                        <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                        <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                        <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </li>
+                        </ul>
+
+                        <div class="main_comment_buttons float_fr and_new_add_com">
+                            <a href="#" class="btn purple_btn float_fl">Ответить</a>
+                        </div>
+                        </div>
+						<div class="comments_new_answers">
+							<div class="clear10"></div>
+							<div class="comment_block with_answers">
+								  <div class="comment_triangle"></div>
+
+								  <div class="answer first">
+									  <div class="comment_head">
+										  <div class="ava_wrapper">
+											  <img src="images/ava.jpg" alt="">
+										  </div>
+										  <div class="inline_block">
+											  <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+										  </div>
+									  </div>
+
+									  <div class="comment">
+										  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+										  I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+										  It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+										  I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+										  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+										  It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+									  </div>
+								  </div>
+
+								  <div class="answer">
+								  <div class="comment_head">
+									  <div class="ava_wrapper">
+										  <img src="images/ava.jpg" alt="">
+									  </div>
+									  <div class="inline_block">
+										  <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+									  </div>
+								  </div>
+
+								  <div class="comment">
+									  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+									  I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+									  It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+									  I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+									  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+									  It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+								  </div>
+							  </div>
+
+								  <div class="answer">
+									  <div class="comment_head">
+										  <div class="ava_wrapper">
+											  <img src="images/ava.jpg" alt="">
+										  </div>
+										  <div class="inline_block">
+											  <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+										  </div>
+									  </div>
+
+									  <div class="comment">
+										  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+										  I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+										  It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+										  I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+										  Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+										  It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+									  </div>
+								  </div>
+
+							</div>		
+						
+						</div>
+ 						
+                        </div>
+                       <!-- ОДИН КОММЕНТ -->
+
+                        <div class="and_one_comment_devider"></div>
+
+
+                        <!-- ОДИН КОММЕНТ -->
+                        <div class="main_comment">
+                        <div class="main_comment_container">
+
+                            <ul class="main_comment_body_content">
+                                <li   class="active">
+                                    <article class="text_article main_comment_article and_new_comments_head and_small_article">
+                                        <div class="raiting_block_number raiting_block_number7">7</div>
+                                        <a href="#"><img src="images/main_comments_item-1.jpg" alt="main_comments_item-1"/></a>
+                                        <header>Figure of Food <div class="more_comments"><a href="#">Отзывы</a> <span class="blue">(7)</span></div></header>
+                                        <a href="#">
+                                            <div class="text">
+                                                <p class="title">ул. Новокузнецкая, д. 7</p>
+                                                <div class="rating and_new_comments_rating">
+                                                    <ul>
+                                                        <li>Кухня <span class="value">4.5</span></li>
+                                                        <li>Сервис <span class="value">4.5</span></li>
+                                                        <li>Интерьер <span class="value">4.5</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                    <div class="main_comment_body">
+                                        <header>
+                                            <img class="ava" src="css/img/icon_ava.jpg" alt=""/>
+                                            <div class="text_header">
+                                                <span class="date float_fl">18 окт 2013</span>
+                                                <div class="stars_rating float_fl">
+                                                    <div class="value"></div>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                    <a href="#"></a>
+                                                </div>
+                                                <div class="rating float_fl and_comments_rating_top">
+                                                    <ul>
+                                                        <li>Кухня <span class="value negative">1</span></li>
+                                                        <li>Сервис <span class="value negative">2</span></li>
+                                                        <li>Интерьер <span class="value positive">5</span></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="clear"></div>
+                                                <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                                <span class="elite_label float_fl">ELITE</span>
+                                                <span class="caption blue_caption float_fl">25</span>
+                                            </div>
+
+                                            <div class="rating float_fl comments_new_answers_btn and_hz_comments and_show_comments">
+                                                <ul>
+                                                    <li>Комментарии <span class="value blue">5</span></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="clear"></div>
+                                            <span class="caption negative">Отвратительный ресторан!</span>
+                                        </header>
+                                        <div class="clear"></div>
+                                        <div class="main_comment_text and_small_main_comment_text">
+                                            <div class="inner">
+                                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am.
+                                                In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                            </div>
+                                        </div>
+                                        <div class="main_comment_expand and_comments_main_comment_expand">
+                                            <a href="#"><span>Развернуть</span></a>
+                                        </div>
+
+                                        <div class="rating float_fl">
+                                            <ul>
+                                                <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                                <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                                <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="main_comment_buttons float_fr and_new_add_com">
+                                <a href="#" class="btn purple_btn float_fl">Ответить</a>
+                            </div>
+                        </div>
+                        <div class="comments_new_answers">
+                            <div class="clear10"></div>
+                            <div class="comment_block with_answers">
+                                <div class="comment_triangle"></div>
+
+                                <div class="answer first">
+                                    <div class="comment_head">
+                                        <div class="ava_wrapper">
+                                            <img src="images/ava.jpg" alt="">
+                                        </div>
+                                        <div class="inline_block">
+                                            <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment">
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                        It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                        I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                        It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                    </div>
+                                </div>
+
+                                <div class="answer">
+                                    <div class="comment_head">
+                                        <div class="ava_wrapper">
+                                            <img src="images/ava.jpg" alt="">
+                                        </div>
+                                        <div class="inline_block">
+                                            <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment">
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                        It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                        I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                        It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                    </div>
+                                </div>
+
+                                <div class="answer">
+                                    <div class="comment_head">
+                                        <div class="ava_wrapper">
+                                            <img src="images/ava.jpg" alt="">
+                                        </div>
+                                        <div class="inline_block">
+                                            <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment">
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                        It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                        I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                        It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        </div>
+                        <!-- ОДИН КОММЕНТ -->
+
+                        <div class="and_one_comment_devider"></div>
+
+                        <!-- ОДИН КОММЕНТ -->
+                        <div class="main_comment">
+                            <div class="main_comment_container">
+
+                                <ul class="main_comment_body_content">
+                                    <li   class="active">
+                                        <article class="text_article main_comment_article and_new_comments_head and_small_article">
+                                            <div class="raiting_block_number raiting_block_number7">7</div>
+                                            <a href="#"><img src="images/main_comments_item-1.jpg" alt="main_comments_item-1"/></a>
+                                            <header>Figure of Food <div class="more_comments"><a href="#">Отзывы</a> <span class="blue">(7)</span></div></header>
+                                            <a href="#">
+                                                <div class="text">
+                                                    <p class="title">ул. Новокузнецкая, д. 7</p>
+                                                    <div class="rating and_new_comments_rating">
+                                                        <ul>
+                                                            <li>Кухня <span class="value">4.5</span></li>
+                                                            <li>Сервис <span class="value">4.5</span></li>
+                                                            <li>Интерьер <span class="value">4.5</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </article>
+                                        <div class="main_comment_body">
+                                            <header>
+                                                <img class="ava" src="css/img/icon_ava.jpg" alt=""/>
+                                                <div class="text_header">
+                                                    <span class="date float_fl">18 окт 2013</span>
+                                                    <div class="stars_rating float_fl">
+                                                        <div class="value"></div>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                        <a href="#"></a>
+                                                    </div>
+                                                    <div class="rating float_fl and_comments_rating_top">
+                                                        <ul>
+                                                            <li>Кухня <span class="value negative">1</span></li>
+                                                            <li>Сервис <span class="value negative">2</span></li>
+                                                            <li>Интерьер <span class="value positive">5</span></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                                    <span class="elite_label float_fl">ELITE</span>
+                                                    <span class="caption blue_caption float_fl">25</span>
+                                                </div>
+
+                                                <div class="rating float_fl comments_new_answers_btn and_hz_comments and_show_comments">
+                                                    <ul>
+                                                        <li>Комментарии <span class="value blue">5</span></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="clear"></div>
+                                                <span class="caption negative">Отвратительный ресторан!</span>
+                                            </header>
+                                            <div class="clear"></div>
+                                            <div class="main_comment_text and_small_main_comment_text">
+                                                <div class="inner">
+                                                    Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am.
+                                                    In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                                                    I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                                    Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                                </div>
+                                            </div>
+                                            <div class="main_comment_expand and_comments_main_comment_expand">
+                                                <a href="#"><span>Развернуть</span></a>
+                                            </div>
+
+                                            <div class="rating float_fl">
+                                                <ul>
+                                                    <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                                    <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                                    <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                                </ul>
+                                            </div>
+
+
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="main_comment_buttons float_fr and_new_add_com">
+                                    <a href="#" class="btn purple_btn float_fl">Ответить</a>
+                                </div>
+                            </div>
+                            <div class="comments_new_answers">
+                                <div class="clear10"></div>
+                                <div class="comment_block with_answers">
+                                    <div class="comment_triangle"></div>
+
+                                    <div class="answer first">
+                                        <div class="comment_head">
+                                            <div class="ava_wrapper">
+                                                <img src="images/ava.jpg" alt="">
+                                            </div>
+                                            <div class="inline_block">
+                                                <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="comment">
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        </div>
+                                    </div>
+
+                                    <div class="answer">
+                                        <div class="comment_head">
+                                            <div class="ava_wrapper">
+                                                <img src="images/ava.jpg" alt="">
+                                            </div>
+                                            <div class="inline_block">
+                                                <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="comment">
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        </div>
+                                    </div>
+
+                                    <div class="answer">
+                                        <div class="comment_head">
+                                            <div class="ava_wrapper">
+                                                <img src="images/ava.jpg" alt="">
+                                            </div>
+                                            <div class="inline_block">
+                                                <span class="date">18 окт 2013</span> <br>
+											  <span class="bottom_line">
+												  <span class="otsuv_name float_fl">Руслан Александрович</span>
+											  </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="comment">
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- ОДИН КОММЕНТ -->
+
+
+                    </div>
+                </div>
+              </div>
+
+
+
+
+
+              <!-- End -->
+
+        </div>
+
+      </section>
+
+      <footer class="wrapper footer">
+        <div class="container">
+          <div class="footer_logo">
+            <a href="#">
+              <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+            </a>
+          </div>
+          <nav class="footer_nav">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Полезное</a></li>
+              <li><a href="#">Критика</a></li>
+            </ul>
+          </nav>
+          <nav class="footer_services_nav">
+            <ul>
+              <li><a href="#">Рестораны</a></li>
+              <li><a href="#">Банкеты</a></li>
+              <li><a href="#">Свадьбы</a></li>
+              <li><a href="#">Мероприятия</a></li>
+            </ul>
+          </nav>
+          <div class="project_owner">
+            Project of company
+            <a href="#">
+              <img src="css/img/project_owner.png"  alt="project_owner"/>
+            </a>
+          </div>
+          <div class="footer_contacts">
+            <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+            <ul>
+              <li>
+                <a href="#">Реклама на сайте</a>
+              </li>
+              <li>
+                <a href="#">Контакты</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+        </div>
+      </footer>
+    </div>
+    
+  </body>
+</html>

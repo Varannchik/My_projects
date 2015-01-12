@@ -1,0 +1,130 @@
+#wrapper {
+	border-left:1px solid #e3e2e2;
+	border-right:1px solid #e3e2e2;
+}
+.slider_buttons a
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#33ffffff',GradientType=0 ); /* IE6-9 */
+}
+.catalog_item header ,.catalog_item footer,.catalog_item .fade_text,.text_article .date ,.text_article .text,.crit_item .date,.image_slider_item .tex,.recipes_item .name,.recipes_item .text
+{
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2ffffff', endColorstr='#f2ffffff',GradientType=0 ); /* IE6-9 */
+}
+.main_page_slider4_body .slider_buttons a ,.main_page_slider5_body .slider_buttons a
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#99ffffff',GradientType=0 ); /* IE6-9 */
+}
+.new_restaurant .catalog_item 
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#80ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.comment_afisha{
+   filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+   background:#000;
+}
+.afisha_picture > .comment {
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#000;
+}
+.afisha .pink_btn {
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#a02d67;
+}
+.afisha .blue_btn_afisha {
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#408dee;
+}
+.afisha .rating {
+    font-size: 13px;
+    margin-top: 4px;
+}
+.afisha .section_selector header input.search {
+    background-image: url("../css/img/bg-search.png");
+
+}
+.afisha .data_icon {
+    background-image: url("../css/img/data.png");
+   
+}
+.catalog_item header.black_head_red{
+    background:transparent ;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+.sidebar_right_reclama .ad .catalog_item footer.footer_blue{
+    background: transparent;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+
+}
+.hint i
+{
+	display:none;
+	border:1px solid #bf1a65;
+	background:#ffffff;
+}
+.hint:hover  i
+{
+	display:block;
+}
+.one_restoran.banket_restoran_block:hover .one_banket_slider_top
+{
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e64092fa', endColorstr='#e64192fa',GradientType=1 ); /* IE6-9 */
+}
+.one_banket_slider_top,.white_text
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2ffffff', endColorstr='#f2ffffff',GradientType=0 ); /* IE6-9 */
+}
+.black_text
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#91000000', endColorstr='#91000000',GradientType=1 ); /* IE6-9 */
+}
+.one_restoran.banket_restoran_block:hover .some_restoran header {
+	
+	background: #348efd;
+	filter:none;  
+}
+.one_page_header_back
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#33000000',GradientType=1 ); /* IE6-9 */
+}
+
+.article2 .articles_nav ul.big_nav>li:hover {
+
+    background:#000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+
+}
+.big_nav ul{
+    background:#000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+}
+.background_window
+{
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#33000000',GradientType=1 ); /* IE6-9 */
+}
+.photo_report_popup_top_nav
+{
+	border:1px solid #bbbbbb;
+}
+
+
+.button_one_review{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#a02d67;
+}
+.rating_review{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#fff;
+}
+.black_footer{
+    background:#000;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+.right_reviev_block .pink_name{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#a02d67;
+}
+.right_reviev_block .blue_name{
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    background:#408dee;
+}

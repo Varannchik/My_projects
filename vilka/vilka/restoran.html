@@ -1,0 +1,2754 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+    <title>Restorany</title>
+	
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	
+    <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/and_style.css">
+      <link rel="stylesheet" href="css/popup_style.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+      <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+
+	<!--
+		Подключаем API карт
+		Параметры:
+			- load=package.standard - основные компоненты;
+			- lang=ru-RU - язык русский.
+	-->
+	<script src="http://api-maps.yandex.ru/2.0/?load=package.standard&amp;lang=ru-RU" type="text/javascript"></script>
+
+
+	<script src="js/jquery-1.7.2.js"></script>
+
+      <script src="js/ui/jquery.ui.core.js"></script>
+      <script src="js/ui/jquery.ui.widget.js"></script>
+      <script src="js/ui/jquery.ui.datepicker.js"></script>
+      <script src="js/ui/jquery.ui.mouse.js"></script>
+      <script src="js/ui/jquery.ui.slider.js"></script>
+
+
+	<script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+	<script type="text/javascript"  src="js/placeholder.js"></script>
+
+	<!-- optionally include helper plugins -->
+	<script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+	
+    <script src="js/common.js"></script>
+	
+	<script src="js/main_page.js"></script>
+
+      <script src="js/popup.js"></script>
+
+      <script src="js/and_js.js"></script>
+
+      <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+
+      <script>
+          $(window).load(function() {
+              $('.tel_show').click(function(){
+                  $(this).closest('.blur').hide(100)
+              });
+
+          });
+      </script>
+
+      <script>
+          $(window).load(function(){
+             $(".nano").nanoScroller();
+
+          });
+      </script>
+
+
+      <script>
+          $(function(){
+
+              $('.select_restoran').on('click',function(){
+                  popup_open('.popover_select_restoran');
+                  return false;
+              });
+
+              $('.close').on('click',function(){
+                  $('.popover_select_restoran').hide();
+                  popup_close();
+              });
+
+
+              $('.checkbox_block').on('click',function(){
+                  if ($(this).find('input').prop('checked')){
+                      $(this).children('.login_remember label').css('color','#991e62');
+                      $(this).children('.login_remember label').css('font-weight','600');
+                  }
+                  else{
+                      $(this).children('.login_remember label').css('color','#000');
+                      $(this).children('.login_remember label').css('font-weight','400');
+                  }
+              });
+
+              $('.checkbox_block').on('click',function(){
+                  $(this).children('.services .services_select_options .checkbox_block label').css('color','#000');
+                  $(this).children('.tab5 .collum1 .checkbox_block label').css('color','#000');
+                  $(this).children('.tab5 .collum1 .checkbox_block label').css('font-weight','400');
+              });
+          })
+      </script>
+
+      <!--<script type="text/javascript" src="js/jquery.uniform.js"></script>-->
+      <script>
+          $(window).load(function() {
+              if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+              if($('input[type="radio"]').size()>0) $('input[type="radio"]').uniform();
+          });
+      </script>
+
+      <script>
+          (function($) {
+              $(function() {
+                  $('.all_tab ul.tabs li, .to_next_step_restoran').click(function(){
+                      var attr=$(this).attr('data-href');
+                      $('.all_tab ul.tabs li').removeClass('active');
+                      $(this).addClass('active');
+                      $('div.all_tab').find('div.box').hide();
+                      $('div.all_tab').find('div.box.'+attr).fadeIn();
+
+                      $('div.box').each(function(){
+                          var tab=$(this).attr('data-href');
+                          if ($(this).find('input[type=checkbox]:checked').size() > 0){
+                             $('ul.tabs li[data-href="'+tab+'"] .checked_ok').css('display','block');
+                            if( $('ul.tabs li').hasClass('active')){
+                                $('ul.tabs li.active .checked_ok').css('display','none');
+                            };
+                         };
+                      });
+                  });
+
+                  $('.to_next_step_restoran').click(function(){
+                      var attr=$(this).attr('data-href');
+                      $('.all_tab ul.tabs li').removeClass('active');
+                      $('ul.tabs li[data-href="'+attr+'"]').addClass('active');
+                      $('div.all_tab').find('div.box').hide();
+                      $('div.all_tab').find('div.box.'+attr).show();
+
+                      $('div.box').each(function(){
+                          var tab=$(this).attr('data-href');
+                          if ($(this).find('input[type=checkbox]:checked').size() > 0){
+                              $('ul.tabs li[data-href="'+tab+'"] .checked_ok').css('display','block');
+                              if( $('ul.tabs li').hasClass('active')){
+                                  $('ul.tabs li.active .checked_ok').css('display','none');
+                              };
+                          };
+                      });
+                  });
+
+
+
+
+                  $('.all_tab ul.tabs li[data-href=tab3], .to_next_step_restoran[data-href=tab3]').click(function(){
+                      $('div.tab7').css('display','block');
+
+                  });
+
+                  $('.all_tab .location_tabs ul.tabs_loc li').click(function(){
+                      var attr=$(this).attr('data-href');
+                      $('.all_tab .location_tabs ul.tabs_loc li').removeClass('active');
+                      $(this).addClass('active');
+                      $('div.location_tabs').find('div.box').hide();
+                      $('div.location_tabs').find('div.box.'+attr).fadeIn();
+                      return false
+                  });
+              })
+          })(jQuery)
+      </script>
+      <script >
+          $(window).load(function() {
+             $('.map_screen_btn_down').click(function(){
+                 $('.blue_block').css('height','360px')
+                 $('.text_blue_block').css('height','300px')
+                 $(".nano").nanoScroller();
+             });
+              $('.map_screen_btn_up').click(function(){
+                  $('.blue_block').css('height','179px')
+                  $('.text_blue_block').css('height','120px')
+                  $(".nano").nanoScroller();
+              });
+          });
+      </script>
+
+      <script>
+          $(window).load(function() {
+              $('div.box').each(function(){
+                  $('.link1').click(function(){
+                      $(this).closest('.control1').find(function(){
+                          $('.hidden_block1').show(100);
+                          $('.btn_popover_pink').css('margin-top','-10px');
+                          $('.btn_popover_blue').css('margin-top','-10px');
+                          $('.link1').hide(100);
+                          $('.clear25').hide(100);
+                      });
+
+                  });
+                  $('.link2').click(function(){
+                      $(this).closest('.control2').find(function(){
+                          $('.hidden_block2').show(100);
+                          $('.btn_popover_pink').css('margin-top','-10px');
+                          $('.btn_popover_blue').css('margin-top','-10px');
+                          $('.link2').hide(100);
+                          $('.clear25').hide(100);
+                      });
+
+                  });
+              });
+
+
+              <!-- изменение счета на попапе-->
+              $( "#banket_price_scroll" ).slider({
+                  range: true,
+                  min: 1000,
+                  max: 7000,
+                  values: [ 1500, 6500 ],
+                  slide: function( event, ui ) {
+                      $( "#banket_price1" ).val( $( "#banket_price_scroll" ).slider( "values", 0 ));
+                      $( "#banket_price2" ).val( $( "#banket_price_scroll" ).slider( "values", 1 ) );
+                  }
+              });
+              $( "#banket_price1" ).val( $( "#banket_price_scroll" ).slider( "values", 0 ));
+              $( "#banket_price2" ).val( $( "#banket_price_scroll" ).slider( "values", 1 ) );
+
+              $( "#banket_price_scroll2" ).slider({
+                  range: true,
+                  min: 150,
+                  max: 700,
+                  values: [ 200, 650 ],
+                  slide: function( event, ui ) {
+                      $( "#banket_price1_2" ).val( $( "#banket_price_scroll2" ).slider( "values", 0 ));
+                      $( "#banket_price2_2" ).val( $( "#banket_price_scroll2" ).slider( "values", 1 ) );
+                  }
+              });
+              $( "#banket_price1_2" ).val( $( "#banket_price_scroll2" ).slider( "values", 0 ));
+              $( "#banket_price2_2" ).val( $( "#banket_price_scroll2" ).slider( "values", 1 ) );
+
+              $( "#banket_price_scroll3" ).slider({
+                  range: true,
+                  min: 150,
+                  max: 700,
+                  values: [ 200, 650 ],
+                  slide: function( event, ui ) {
+                      $( "#banket_price1_3" ).val( $( "#banket_price_scroll3" ).slider( "values", 0 ));
+                      $( "#banket_price2_3" ).val( $( "#banket_price_scroll3" ).slider( "values", 1 ) );
+                  }
+              });
+              $( "#banket_price1_3" ).val( $( "#banket_price_scroll3" ).slider( "values", 0 ));
+              $( "#banket_price2_3" ).val( $( "#banket_price_scroll3" ).slider( "values", 1 ) );
+              <!-- END изменение счета на попапе-->
+
+              <!-- выбор события на попапе-->
+              $('.event').on('click',function(){
+                  if($(this).hasClass('event_active')){
+                      $(this).removeClass('event_active');
+                      $(this).find('.event_active_check').hide();
+                  }
+                  else{
+                      $(this).addClass('event_active');
+                      $(this).find('.event_active_check').show();
+                  }
+              });
+              <!-- END выбор события на попапе-->
+
+              <!-- выбор сервиса на попапе-->
+
+              $('.some_services').on('click',function(){
+                  $('.services_select_options').hide();
+                  $(this).closest('.services').find('.services_select_options').show();
+              });
+              $('.small_btn_blue').on('click',function(){
+                  $(this).closest('.services').find('.services_select').hide();
+                  $('.all_select_services').empty();
+                  $('input[type=checkbox]:checked').each(function(){
+                     var text=$('.checkbox_block label[for="'+$(this).attr('id')+'"]').text();
+                     $(this).closest('.services').find('.all_select_services').append(('<div class="services_check"><span class="services_check_icon"></span>'+text+'</div>'));
+                  });
+
+                  $(this).closest('.services').find('.services_select_options').hide();
+              });
+
+
+              <!-- END выбор  сервиса на попапе-->
+
+              $('.city ul li a').on('click',function(){
+                  var val = $(this).text();
+                  $(this).closest('.city').find('.name_city').text(val);
+                  $(this).closest('.city').find('input').val(val);
+                  $(this).closest('.city').find('ul').hide();
+                  return false;
+              });
+
+              <!--Имя категории-->
+                $('.select_restoran').on('click',function(){
+                   var attr_cat=$(this).closest('.category').find('.caption').attr('data-href');
+                   $('.all_tab ul.tabs li').removeClass('active');
+                   $('.all_tab ul.tabs li[data-href="'+attr_cat+'"]').addClass('active');
+                   $('.all_tab ul.tabs li[data-href="'+attr_cat+'"]').click();
+				   
+                });
+              <!--END Имя категории-->
+
+          });
+      </script>
+    <!--[if IE 8]>
+      <script src="js/ie8.js"></script>
+    <![endif]-->
+
+
+      <script>
+          $(function() {
+
+              $( "#datepicker" ).datepicker({
+                  autoSize: true,
+                  dateFormat: "DD, d MM"
+              });
+
+//              $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
+          });
+      </script>
+
+  </head>
+
+  <body>
+
+  <!--[if lt IE 8]>
+      <style>
+          #wrapper{display:none;}
+      </style>
+      <div style='text-align:center;'>
+          <br><br>
+          <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+          <br><br><br>
+          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+              <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+          </a>
+      </div>
+  <![endif]-->
+
+
+  <!--==== pop_up ====-->
+  <div class="modal table_booking">
+  <button class="close_popup_btn"></button>
+  <div class="pop_up_top_caption">
+      <div class="fl">
+          Услуга бронирования
+          предоставляется бесплатно
+      </div>
+      <div class="fr">
+          <a href="#" class="how_its_work">Как это работает?</a>
+      </div>
+  </div>
+
+  <div class="clear"></div>
+
+  <div class="pop_up_steps">
+      <div class="pop_up_step step1 active">
+          <i class="triangle"></i>
+          <div class="step_number fl">1</div>
+          <div class="step_text fl">Выбор <br>заведения</div>
+      </div>
+
+      <div class="pop_up_step step2">
+          <i class="triangle"></i>
+          <div class="step_number fl">2</div>
+          <div class="step_text fl">Контактная <br> информация</div>
+      </div>
+
+      <div class="pop_up_step step3">
+          <i class="triangle"></i>
+          <i class="finish"></i>
+          <div class="step_number fl">3</div>
+          <div class="step_text fl">Заявка <br> принята</div>
+      </div>
+
+      <div class="clear"></div>
+  </div>
+
+  <div class="step1_block">
+
+      <div class="fl fl_in_popup">
+          <!-- select -->
+          <div class="section_selection for49 in_popup">
+              <div class="section_selector for49">
+                  <div class="selector_body">
+                      <header>
+                          <input type="hidden">
+                          <input type="text" placeholder="Выберите ресторан" class="placeholder">
+                      </header>
+                      <div class="drop_down">
+                          <div class="drop_down-slider nano">
+                              <div class="content promo_page">
+                                  <ul class="change_caption" data-caption_id="#main_interesting_caption" id="main_interesting_category">
+                                      <li class="placeholder">Выберите ресторан</li>
+                                      <li class="active" data-caption="">Ресторан1</li>
+                                      <li data-caption="">Ресторан2</li>
+                                      <li data-caption="">Ресторан3</li>
+                                      <li data-caption="">Ресторан4</li>
+                                      <li data-caption="">Ресторан5</li>
+                                      <li data-caption="">Ресторан6</li>
+                                      <li data-caption="">Ресторан7</li>
+                                      <li data-caption="">Ресторан8</li>
+                                      <li data-caption="">Ресторан9</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- End select -->
+
+          <!-- calendar block -->
+          <div class="calendar_block">
+              <div class="popup_sub_title">Дата брони</div>
+
+              <div class="datepicker_block lite_placeholder">
+                  <i class="datepicker_block_arrow"></i>
+                  <i class="datepicker_block_calendar"></i>
+                  <input type="text" id="datepicker" class="change_booking_data" placeholder="Выберите дату">
+              </div>
+
+          </div>
+          <!-- End calendar block -->
+
+          <!-- person block -->
+          <div class="calendar_block">
+              <div class="popup_sub_title person_num_etc">Количество персон</div><div class="popup_sub_title fr person_num_etc">Время</div>
+              <div class="clear"></div>
+
+
+              <div class="input_with_plus_minus">
+                  <input placeholder="0" value="0">
+                  <div class="input_val_plus"></div>
+                  <div class="input_val_minus"></div>
+              </div>
+              <div class="pop_up_radio_block">
+                  <!--<input type="radio" name="smoking_type" class="table_type_input"> <label class="table_type_label"><span class="smoking"></span></label>-->
+                  <input type="radio" name="smoking_type" id="type1"> <label for="type1" class="table_type_label"><span class="smoking"></span></label>
+                  <input type="radio" name="smoking_type" id="type2"> <label for="type2" class="table_type_label"><span class="no_smoking"></span></label>
+              </div>
+
+
+
+              <div class="time">
+                  <input placeholder="16" class="time_inputs placeholder" val="00"> <span>:</span> <input placeholder="00" class="minutes time_inputs placeholder">
+              </div>
+          </div>
+          <!-- End person block -->
+      </div>
+
+      <div class="fr">
+          <article class="catalog_item bordered in_popup">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          <span class="rest_name_in_popup">English Breakfast</span>
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                      </div>
+                  </header>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating small static stars_in_popup">
+                      <div class="value" style="width: 72%"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="tell_and_nav">
+          <div class="inline_block">
+              <span class="popup_down_caption">Забронировать по телефону:</span><br>
+              <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+          </div>
+          <div class="inline_block fr">
+              <a href="#" class="popup_btn next" id="to_step2"><i></i>Далее</a>
+          </div>
+      </div>
+  </div>
+
+  <div class="step2_block">
+
+      <div class="fl fl_in_popup">
+
+          <!-- form block -->
+          <div class="calendar_block lite_placeholder">
+              <input class="input_for_popup" placeholder="ФИО">
+              <input class="input_for_popup" placeholder="Телефон">
+              <textarea class="textarea_for_popup" placeholder="Пожелание к заказу"></textarea>
+
+              <div class="checkbox_block big">
+                  <input type="checkbox" id="check1" class="styled">
+                  <label for="check1">Я хочу получать уведомления о статусе заказа по смс</label>
+              </div>
+          </div>
+          <!-- End form block -->
+      </div>
+
+      <div class="fr">
+          <article class="catalog_item bordered in_popup">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          <span class="rest_name_in_popup">English Breakfast</span>
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                      </div>
+                  </header>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating small static stars_in_popup">
+                      <div class="value" style="width: 72%"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="tell_and_nav">
+          <div class="inline_block">
+              <span class="popup_down_caption">Забронировать по телефону:</span><br>
+              <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+          </div>
+          <div class="inline_block fr">
+              <a href="#" class="popup_btn prev" id="back_to_step1"><i></i>Назад</a>
+              <a href="#" class="popup_btn next" id="to_step3"><i></i>Далее</a>
+          </div>
+      </div>
+  </div>
+
+  <div class="step3_block">
+
+      <div class="fl fl_in_popup">
+
+          <!-- form block -->
+          <div class="calendar_block lite_placeholder">
+              <span class="popup_down_caption no_margin">Дата брони</span><br>
+              <span class="popup_itog_date">Понедельник, 30 сентября</span>
+
+              <div class="fl itog_block small">
+                  <span class="popup_down_caption no_margin in_popup_small_itog">Кол-во персон</span><br>
+                  <span class="itog_huge_text">3</span>
+              </div>
+              <div class="fl itog_block small left">
+                  <span class="popup_down_caption no_margin in_popup_small_itog">Время</span><br>
+                  <span class="itog_huge_text">16:00</span>
+              </div>
+
+              <div class="clear"></div>
+
+              <div class="itog_block big">
+                  <span class="smoking"></span>
+                  <span class="popup_down_caption t1">Зал для курящих</span>
+              </div>
+
+
+          </div>
+          <!-- End form block -->
+      </div>
+
+      <div class="fr">
+          <article class="catalog_item bordered in_popup">
+              <a href="#">
+                  <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                  <header>
+                      <div>
+                          <span class="rest_name_in_popup">English Breakfast</span>
+                          <small>ул. Арбат, д. 9, 2 этаж</small>
+                      </div>
+                  </header>
+                  <div class="blur_darck_bg"></div>
+                  <div class="stars_rating small static stars_in_popup">
+                      <div class="value" style="width: 72%"></div>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <footer>
+                      <div class="rating">
+                          <ul>
+                              <li>Кухня <span class="value">4.5</span></li>
+                              <li>Сервис <span class="value">4.5</span></li>
+                              <li>Интерьер <span class="value">4.5</span></li>
+                          </ul>
+                      </div>
+                  </footer>
+              </a>
+          </article>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="tell_and_nav">
+          <div class="inline_block">
+              <span class="popup_down_caption">Забронировать по телефону:</span><br>
+              <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+          </div>
+          <div class="inline_block fr">
+              <button class="popup_booking_finish_btn">Забронировать</button>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+  <div class="modal finish_table_booking">
+      <button class="finish_table_booking_btn"><span class="finish_booking_ok"></span> <span class="btn_name">Ваша заявка принята</span></button>
+  </div>
+
+  <div class="background_window"></div>
+  <!--==== end pop_up ====-->
+
+  <!-- POPOVER RERESTORAN -->
+  <div class="popover_select_restoran">
+  <div class="content_popover">
+      <div class="close"><img src="css/img/close.png" alt=""/></div>
+      <header>
+          <p class="float_fl">Бесплатный сервис по бронированию ресторанов</p>
+          <a href="#" class="float_fr">Как это работает?</a>
+      </header>
+  </div>
+  <div class="clear"></div>
+  <div class="all_tab">
+  <ul class="tabs">
+      <li class="active" data-href="tab1">Кухня <div class="checked_ok"></div></li>
+      <li data-href="tab2">Категория <div class="checked_ok"></div></li>
+      <li data-href="tab3">Район <div class="checked_ok"></div></li>
+      <li data-href="tab4">Событие <div class="checked_ok"></div></li>
+      <li data-href="tab5">Услуги <div class="checked_ok"></div></li>
+      <li data-href="tab6">Стоимость <div class="checked_ok"></div></li>
+  </ul>
+
+
+  <div class="content_tab">
+  <div class="tab1 visible box " data-href="tab1">
+
+  <div class="collum1 float_fl ">
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check1" class="styled">
+      <label for="check1">Австрийская</label>
+  </div>
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check16" class="styled">
+      <label for="check16">Европейская</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check31" class="styled">
+      <label for="check31" class="float_fl">Паназиатская</label>
+      <div class="hint_popup question_popup"><i >Кабаны, лоси, блины с кунжутом</i></div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check2" class="styled">
+      <label for="check2">Авторская</label>
+  </div>
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check17" class="styled">
+      <label for="check17">Индийская</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check32" class="styled">
+      <label for="check32">Русская</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check3" class="styled">
+      <label for="check3">Азербайджанская</label>
+  </div>
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check18" class="styled">
+      <label for="check18">Ирландская</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check33" class="styled">
+      <label for="check33">Смешанная</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check4" class="styled">
+      <label for="check4">Азиатская</label>
+  </div>
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check19" class="styled">
+      <label for="check19">Испанская</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check34" class="styled">
+      <label for="check34" class="float_fl">Средиземноморская </label>
+
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check5" class="styled">
+      <label for="check5">Американская</label>
+  </div>
+  <div class="checkbox_block login_remember float_fl">
+      <input type="checkbox" id="check20" class="styled">
+      <label for="check20">Итальянская</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check35" class="styled">
+      <label for="check35">Тайская</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="hidden_block hidden_block1">
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check6" class="styled">
+          <label for="check6">Английская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check21" class="styled">
+          <label for="check21">Кавказская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check36" class="styled">
+          <label for="check36">Татарская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check7" class="styled">
+          <label for="check7">Арабская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check22" class="styled">
+          <label for="check22">Китайская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check37" class="styled">
+          <label for="check37">Турецкая</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check8" class="styled">
+          <label for="check8">Аргентинская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check23" class="styled">
+          <label for="check23">Корейская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check38" class="styled">
+          <label for="check38">Узбекская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check9" class="styled">
+          <label for="check9">Армянская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check24" class="styled">
+          <label for="check24">Кубинская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check39" class="styled">
+          <label for="check39">Украинская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check10" class="styled">
+          <label for="check10">Бельгийская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check25" class="styled">
+          <label for="check25">Латиноамериканская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check40" class="styled">
+          <label for="check40">Фаст-фуд</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check11" class="styled">
+          <label for="check11">Восточная</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check26" class="styled">
+          <label for="check26">Ливанская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check41" class="styled">
+          <label for="check41">Французская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check12" class="styled">
+          <label for="check12">Вьетнамская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check27" class="styled">
+          <label for="check27">Международная</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check42" class="styled">
+          <label for="check42">Чешская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check13" class="styled">
+          <label for="check13">Грузинская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check28" class="styled">
+          <label for="check28">Мексиканская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check43" class="styled">
+          <label for="check43">Японская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check14" class="styled">
+          <label for="check14">Домашняя</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check29" class="styled">
+          <label for="check29">Немецкая</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check15" class="styled">
+          <label for="check15">Еврейская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check30" class="styled">
+          <label for="check30">Осетинская</label>
+      </div>
+  </div>
+  <div class="control control1">
+      <div class="clear25"></div>
+      <div class="link_hidden_block float_fl link1" >Показать все кухни</div>
+      <button class="btn_popover_pink float_fr to_next_step_restoran" data-href="tab2" >Далее</button>
+      <button class="btn_popover_blue float_fr">Все О’кей!</button>
+  </div>
+  <div class="clear"></div>
+  </div>
+  </div>
+
+  <div class="tab2 box" data-href="tab2">
+  <div class="collum1 float_fl ">
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check45" class="styled">
+      <label for="check45">Банкетный зал</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check46" class="styled">
+      <label for="check46">Банкетный зал</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check47" class="styled">
+      <label for="check47">Банкетный зал</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check48" class="styled">
+      <label for="check48">Бар</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check49" class="styled">
+      <label for="check49">Бар</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check50" class="styled">
+      <label for="check50">Бар</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check51" class="styled">
+      <label for="check51">Загородный ресторан</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check52" class="styled">
+      <label for="check52">Загородный ресторан</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check53" class="styled">
+      <label for="check53">Загородный ресторан</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check54" class="styled">
+      <label for="check54" class="float_fl">Караоке-бар</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check55" class="styled">
+      <label for="check55" class="float_fl">Караоке-бар</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check56" class="styled">
+      <label for="check57" class="float_fl">Караоке-бар</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check57" class="styled">
+      <label for="check57">Кафе</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check58" class="styled">
+      <label for="check58">Кафе</label>
+  </div>
+  <div class="checkbox_block login_remember">
+      <input type="checkbox" id="check59" class="styled">
+      <label for="check59">Кафе</label>
+  </div>
+  <div class="clear"></div>
+
+  <div class="hidden_block hidden_block2">
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check60" class="styled">
+          <label for="check60">Кейтеринг</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check61" class="styled">
+          <label for="check61">Кейтеринг</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check62" class="styled">
+          <label for="check62">Кейтеринг</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check63" class="styled">
+          <label for="check63">Клуб</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check64" class="styled">
+          <label for="check64">Клуб</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check65" class="styled">
+          <label for="check65">Клуб</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check66" class="styled">
+          <label for="check66">Кофейня/Кондитерская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check67" class="styled">
+          <label for="check67">Кофейня/Кондитерская</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check68" class="styled">
+          <label for="check68">Кофейня/Кондитерская</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check69" class="styled">
+          <label for="check69">Паб</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check70" class="styled">
+          <label for="check70">Паб</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check71" class="styled">
+          <label for="check71">Паб</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check72" class="styled">
+          <label for="check72">Пивной ресторан</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check73" class="styled">
+          <label for="check73">Пивной ресторан</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check74" class="styled">
+          <label for="check74">Пивной ресторан</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check75" class="styled">
+          <label for="check75">Ресторан</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check76" class="styled">
+          <label for="check76">Ресторан</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check87" class="styled">
+          <label for="check87">Ресторан</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check77" class="styled">
+          <label for="check77">Суши-бар</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check78" class="styled">
+          <label for="check78">Суши-бар</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check79" class="styled">
+          <label for="check79">Суши-бар</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check80" class="styled">
+          <label for="check80">Теплоход/Дебаркадер</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check81" class="styled">
+          <label for="check81">Теплоход/Дебаркадер</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check82" class="styled">
+          <label for="check82">Теплоход/Дебаркадер</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check83" class="styled">
+          <label for="check83">Халяльный ресторан</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check84" class="styled">
+          <label for="check84">Халяльный ресторан</label>
+      </div>
+      <div class="clear"></div>
+
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check85" class="styled">
+          <label for="check85">Центр развлечений</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check86" class="styled">
+          <label for="check86">Центр развлечений</label>
+      </div>
+
+  </div>
+
+  <div class="control control2">
+      <div class="clear25"></div>
+      <div class="link_hidden_block float_fl link2" >Показать все категории</div>
+      <button class="btn_popover_pink float_fr to_next_step_restoran" data-href="tab3">Далее</button>
+      <button class="btn_popover_blue float_fr" >Все О’кей!</button>
+  </div>
+  <div class="clear"></div>
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="tab3 box" data-href="tab3">
+      <div class="map restoran_map_popup float_fl">
+          <!-- Map -->
+          <div class="yamap_section" data-maxheight='403' data-minheight='403'>
+              <div id="main_page_map_popup"></div>
+
+          </div>
+          <!-- End -->
+      </div>
+      <div class="location float_fr">
+          <a href="">Рядом со мной</a>
+          <div class="location_tabs">
+              <ul class="tabs_loc">
+                  <li class="active" data-href="tab7">Районы</li>
+                  <li data-href="tab8">Метро</li>
+              </ul>
+
+              <div class="content_tab">
+                  <div class="tab7 visible box ">
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check90" class="styled">
+                          <label for="check90">ЦАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check91" class="styled">
+                          <label for="check91">САО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check92" class="styled">
+                          <label for="check92">СВАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check93" class="styled">
+                          <label for="check93">ВАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check94" class="styled">
+                          <label for="check94">ЮВАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check101" class="styled">
+                          <label for="check101">ЮАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check102" class="styled">
+                          <label for="check102">ЮЗАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check103" class="styled">
+                          <label for="check103">ЗАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check104" class="styled">
+                          <label for="check104">СЗАО</label>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check105" class="styled">
+                          <label for="check105">ЗелАО</label>
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+                  <div class="clear"></div>
+
+                  <div class="tab8 box">
+                      <div class="header_search">
+                          <div class="search">
+                              <form>
+                                  <div class="float_fl">
+                                      <input type="submit">
+                                  </div>
+                                  <div class="search_input_right">
+                                      <input type="text" placeholder="Введите" class="placeholder">
+                                  </div>
+                              </form>
+                          </div>
+                          <div class="clear"></div>
+                      </div>
+
+                      <div class="checkbox_block checkbox_block_first login_remember ">
+                          <input type="checkbox" id="check95" class="styled">
+                          <label for="check95">Шоссе Энтуз</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check96" class="styled">
+                          <label for="check96">Щелковская</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check97" class="styled">
+                          <label for="check97">Арбатская</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check98" class="styled">
+                          <label for="check98">Таганская</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check99" class="styled">
+                          <label for="check99">Электрозаво</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                      <div class="checkbox_block login_remember">
+                          <input type="checkbox" id="check100" class="styled">
+                          <label for="check100">Дубровка</label>
+                          <div class="blur_bg_popup"></div>
+                      </div>
+                      <div class="clear"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+
+
+      <div class="control">
+          <div class="clear25"></div>
+          <button class="btn_popover_pink float_fr to_next_step_restoran" data-href="tab4">Далее</button>
+          <button class="btn_popover_blue float_fr" >Все О’кей!</button>
+      </div>
+
+  </div>
+
+  <div class="tab4 box" data-href="tab4">
+
+      <div class="row_icon">
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon1"></div>
+              <span>Свидание</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon2"></div>
+              <span>Деловая встреча</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon3"></div>
+              <span>Завтрак</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon4"></div>
+              <span>Бизнес-ланч</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon5"></div>
+              <span>Бранч</span>
+          </div>
+          <div class="clear"></div>
+      </div>
+      <div class="row_icon">
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon6"></div>
+              <span>Гости столицы</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon7"></div>
+              <span>Отдых с детьми</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon8"></div>
+              <span>Праздник</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon9"></div>
+              <span>Для беременных</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon10"></div>
+              <span>Светская жизнь</span>
+          </div>
+          <div class="clear"></div>
+      </div>
+      <div class="row_icon_last">
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon11"></div>
+              <span>Для болельщиков</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon12"></div>
+              <span>Pre-party</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon13"></div>
+              <span>After-party</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon14"></div>
+              <span>Gay-friendly</span>
+          </div>
+          <div class="event float_fl">
+              <div class="event_active_check"></div>
+              <div class="events_icon15 "></div>
+              <span>Общение</span>
+          </div>
+          <div class="clear"></div>
+      </div>
+      <div class="control">
+          <button class="btn_popover_pink float_fr to_next_step_restoran" data-href="tab5">Далее</button>
+          <button class="btn_popover_blue float_fr">Все О’кей!</button>
+      </div>
+      <div class="clear"></div>
+  </div>
+
+
+  <div class="tab5 box" data-href="tab5">
+  <div class="row_icon">
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon1 services_icon"></div>
+              <span>Курение</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon1 services_icon1_hover"></div>
+              <p>Курение</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check140" class="styled">
+                  <label for="check140">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check141" class="styled">
+                  <label for="check141">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check142" class="styled">
+                  <label for="check142">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check143" class="styled">
+                  <label for="check143">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check144" class="styled">
+                  <label for="check144">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon2 services_icon"></div>
+              <span>Уровень шума</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon2 services_icon2_hover"></div>
+              <p>Уровень шума</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check145" class="styled">
+                  <label for="check145">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check146" class="styled">
+                  <label for="check146">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check147" class="styled">
+                  <label for="check147">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check148" class="styled">
+                  <label for="check148">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check149" class="styled">
+                  <label for="check149">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon3 services_icon"></div>
+              <span>Парковка</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon3 services_icon3_hover"></div>
+              <p>Парковка</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check150" class="styled">
+                  <label for="check150">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check151" class="styled">
+                  <label for="check151">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check152" class="styled">
+                  <label for="check152">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check153" class="styled">
+                  <label for="check153">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check154" class="styled">
+                  <label for="check154">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon4 services_icon"></div>
+              <span>Музыка</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon4 services_icon4_hover"></div>
+              <p>Музыка</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check155" class="styled">
+                  <label for="check155">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check156" class="styled">
+                  <label for="check156">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check157" class="styled">
+                  <label for="check157">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check158" class="styled">
+                  <label for="check158">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check159" class="styled">
+                  <label for="check159">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon5 services_icon"></div>
+              <span>Детям</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon5 services_icon5_hover"></div>
+              <p>Детям</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check130" class="styled">
+                  <label for="check130">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check129" class="styled">
+                  <label for="check129">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check128" class="styled">
+                  <label for="check128">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check127" class="styled">
+                  <label for="check127">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check126" class="styled">
+                  <label for="check126">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="clear"></div>
+  </div>
+  <div class="row_icon">
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon6 services_icon"></div>
+              <span>Развлечения</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon6 services_icon6_hover"></div>
+              <p>Развлечения</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check180" class="styled">
+                  <label for="check180">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check181" class="styled">
+                  <label for="check181">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check182" class="styled">
+                  <label for="check182">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check183" class="styled">
+                  <label for="check183">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check184" class="styled">
+                  <label for="check184">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon7 services_icon"></div>
+              <span>Напитки</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon7 services_icon7_hover"></div>
+              <p>Напитки</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check125" class="styled">
+                  <label for="check125">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check124" class="styled">
+                  <label for="check124">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check123" class="styled">
+                  <label for="check123">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check122" class="styled">
+                  <label for="check122">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check121" class="styled">
+                  <label for="check121">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon8 services_icon"></div>
+              <span>Dress Code</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon8 services_icon8_hover"></div>
+              <p>Dress Code</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check120" class="styled">
+                  <label for="check120">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check119" class="styled">
+                  <label for="check119">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check118" class="styled">
+                  <label for="check118">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check117" class="styled">
+                  <label for="check117">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check116" class="styled">
+                  <label for="check116">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+              <div class="services_icon9 services_icon"></div>
+              <span>Credit Cards</span>
+              <div class="services_select">Выбрать</div>
+              <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon9 services_icon9_hover"></div>
+              <p>Credit Cards</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check115" class="styled">
+                  <label for="check115">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check114" class="styled">
+                  <label for="check114">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check113" class="styled">
+                  <label for="check113">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check112" class="styled">
+                  <label for="check112">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check111" class="styled">
+                  <label for="check111">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="services float_fl">
+          <div class="some_services">
+                 <div class="services_icon10 services_icon"></div>
+                 <span>Скидки</span>
+                 <div class="services_select">Выбрать</div>
+                 <div class="all_select_services"></div>
+          </div>
+          <div class="services_select_options">
+              <div class="services_icon10 services_icon10_hover"></div>
+              <p>Скидки</p>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check110" class="styled">
+                  <label for="check110">White Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check106" class="styled">
+                  <label for="check106">Black Tie </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check107" class="styled">
+                  <label for="check107">Cocktail </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check108" class="styled">
+                  <label for="check108">Smart Casual </label>
+              </div>
+              <div class="clear"></div>
+              <div class="checkbox_block login_remember">
+                  <input type="checkbox" id="check109" class="styled">
+                  <label for="check109">Отсутствует</label>
+              </div>
+              <div class="clear"></div>
+              <button class="btn_popover_blue float_fr small_btn_blue">О’кей!</button>
+              <div class="clear"></div>
+          </div>
+      </div>
+      <div class="clear"></div>
+
+
+  </div>
+  <div class="collum1 float_fl ">
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check131" class="styled">
+          <label for="check131">Круглосуточно</label>
+      </div>
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check132" class="styled">
+          <label for="check132">Wi-Fi</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check133" class="styled">
+          <label for="check133" class="float_fl">Панорамный вид</label>
+      </div>
+      <div class="clear"></div>
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check134" class="styled">
+          <label for="check134">Мангал</label>
+      </div>
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check135" class="styled">
+          <label for="check135">VIP-зал</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check136" class="styled">
+          <label for="check136" class="float_fl">Chill-out / Lounge</label>
+      </div>
+      <div class="clear"></div>
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check137" class="styled">
+          <label for="check137">Кальян</label>
+      </div>
+      <div class="checkbox_block login_remember float_fl">
+          <input type="checkbox" id="check138" class="styled">
+          <label for="check138">Веранда</label>
+      </div>
+      <div class="checkbox_block login_remember">
+          <input type="checkbox" id="check139" class="styled">
+          <label for="check139" class="float_fl">Вход с домашними животными</label>
+      </div>
+      <div class="clear"></div>
+      <div class="control">
+          <div class="clear25"></div>
+          <button class="btn_popover_pink float_fr to_next_step_restoran" data-href="tab6">Далее</button>
+          <button class="btn_popover_blue float_fr" >Все О’кей!</button>
+      </div>
+      <div class="clear"></div>
+  </div>
+  </div>
+
+
+  <div class="tab6 box" data-href="tab6">
+      <div class="collum6 float_fl">
+          <div class="banket_cat_cost border_bottom">
+              <p >Средняя стоимость счета</p>
+              От
+              <div class="input_block inline">
+                  <input type="text" value="1500" class="blue_text" id="banket_price1">
+              </div>
+              До
+              <div class="input_block inline">
+                  <input type="text" value="6500" class="blue_text" id="banket_price2">
+              </div>
+              <div id="banket_price_scroll"></div>
+              <div class="coast">
+                  <div class="coast1 float_fl">1000</div>
+                  <div class="coast2 float_fl">2500</div>
+                  <div class="coast2 float_fl">4000</div>
+                  <div class="coast2 float_fl">5500</div>
+                  <div class="coast3 float_fr">7000</div>
+              </div>
+              <div class="clear"></div>
+              <div class="gray_line"></div>
+              <div class="clear"></div>
+          </div>
+
+          <div class="float_fl coast_breakfast">
+              <div class="banket_cat_cost breakfast border_bottom">
+                  <p >Cтоимость завтрака</p>
+                  От
+                  <div class="input_block inline">
+                      <input type="text" value="200" class="blue_text" id="banket_price1_2">
+                  </div>
+                  До
+                  <div class="input_block inline">
+                      <input type="text" value="650" class="blue_text" id="banket_price2_2">
+                  </div>
+                  <div id="banket_price_scroll2"></div>
+                  <div class="coast">
+                      <div class="coast1 float_fl">150</div>
+                      <div class="coast2 float_fl">300</div>
+                      <div class="coast2 float_fl">500</div>
+                      <div class="coast3 float_fr">700</div>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+          </div>
+          <div class="float_fr coast_breakfast">
+              <div class="banket_cat_cost breakfast border_bottom">
+                  <p >Cтоимость бизнес-ланча</p>
+                  От
+                  <div class="input_block inline">
+                      <input type="text" value="200" class="blue_text" id="banket_price1_3">
+                  </div>
+                  До
+                  <div class="input_block inline">
+                      <input type="text" value="650" class="blue_text" id="banket_price2_3">
+                  </div>
+                  <div id="banket_price_scroll3"></div>
+                  <div class="coast">
+                      <div class="coast1 float_fl">150</div>
+                      <div class="coast2 float_fl">300</div>
+                      <div class="coast2 float_fl">500</div>
+                      <div class="coast3 float_fr">700</div>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+          </div>
+          <div class="clear"></div>
+          <button class="btn_popover_blue float_fr">Все О’кей!</button>
+      </div>
+  </div>
+
+  </div>
+
+  </div>
+  </div>
+  <!-- end POPOVER RESTORAN -->
+
+<div class="popover_bg"></div>
+
+  <div id="wrapper">
+      <!-- HEADER -->
+	  <header class="wrapper header">
+        <div class="container container_restoran">
+
+            <div class="free_order_block restoran_order">
+                <div class="free_order">
+                    <a href="#" class="close"></a>
+                    <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                    <div class="phone">+7 495 221 22 22</div>
+                </div>
+            </div>
+
+            <div class="header_logo header_logo_restoran">
+            <a href="#">
+              <img src="css/img/logo.png"  alt="logo"/>
+            </a>
+            <div class="header_lang">
+              <a href="#">Eng</a>
+            </div>
+            <div class="city">
+                <div class="name_city">
+                    <div class="blur_bg"></div>
+                    Архангельск
+              </div>
+                <ul>
+                <li><a href="#">Москва</a></li>
+                <li><a href="#">Белгород</a></li>
+                <li><a href="#">Ставрополь</a></li>
+                <li><a href="#">Курск</a></li>
+                <li><a href="#">Железногорск</a></li>
+              </ul>
+            </div>
+              <div class="clear"></div>
+
+          </div>
+            <div class="header_rigth_info header_righ_info_restoran">
+                <p class="text1">+7 495 221 22 22</p>
+                <p class="text2">8 800 221 22 22</p>
+                <a href="#" class="header_btn float_fr" >Вход / Регистрация</a>
+             </div>
+            <div class="header_center_small">
+                <div class="float_fl header_center_block first"><img src="css/img/tarelka.png" alt="ico"/> <a href="" class="header_center_link"><span>Забронировать <br>Столик</span></a></div>
+                <div class="float_fl header_center_block"><img src="css/img/bokal.png" alt="ico"/> <a href="" class="header_center_link"><span>Заказать<br>Банкет</span></a></div>
+                <div class="float_fl header_center_block"><img src="css/img/comment_smile.png" alt="ico"/> <a href="" class="header_center_link"><span>Бесплатная<br>Консультация
+                </span></a></div>
+            </div>
+
+        </div>
+          <div class="clear"></div>
+        <nav class="container services_nav">
+          <ul>
+            <li class="restaurant">
+              <a href="#"><span>Рестораны</span></a>
+            </li>
+            <li class="feast">
+              <a href="#"><span>Банкеты</span></a>
+            </li>
+            <li class="wedding">
+              <a href="#"><span>Свадьбы</span></a>
+            </li>
+            <li class="night_life">
+              <a href="#"><span>Ночная жизнь</span></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container restoran_nav_2">
+          <nav class="header_nav-2">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Критика</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Полезное</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- END HEADER -->
+
+     <section class="wrapper">
+          <div class="container">
+              <!-- Реклама -->
+              <aside class="sidebar_right_reclama">
+              <div class="block_caption_restoran float_fl">Реклама</div>
+              <a class="float_fr link_reklama" href="">Разместить рекламу</a>
+              <div class="clear"></div>
+              <div class="ad">
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+              <article class="catalog_item_reklama">
+                  <header>
+                      <h1>Где едят звезды</h1>
+                  </header>
+
+                  <div class="content_reklama ">
+                      <div class="content_img float_fl">
+                          <img  class="ava" src="css/img/Kirk.png" alt=""/>
+                          <img class="circle" src="css/img/circle_star.png" alt=""/>
+                      </div>
+                      <div class="name_persone">
+                          <h2>Филипп Киркоров</h2>
+                          <h3>Шоумен<br>Актер<br>Певец</h3>
+                      </div>
+                      <div class="clear"></div>
+                      <p>Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга...</p>
+                  </div>
+                  <div class="line_gray"></div>
+                  <div class="content_reklama ">
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img src="css/img/ico_1_vera.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Вера Брежнева</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img class="icon_star float_fl" src="css/img/ico_2_vasya.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Василий Уткин</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img class="icon_star float_fl" src="css/img/ico_3_sema.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Семен Слепаков</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="clear"></div>
+
+              </article>
+
+              <article class="catalog_item_reklama">
+                  <header>
+                      <h1>Рецепты от шеф-повара</h1>
+                  </header>
+
+                  <div class="content_reklama ">
+                      <div class="content_img float_fl">
+                          <img class="ava" src="css/img/povar.png" alt=""/>
+                          <img class="circle" src="css/img/circle_kok.png" alt=""/>
+                      </div>
+                      <div class="name_persone">
+                          <h2>Анатолий Поваренок</h2>
+                          <h3>Шеф-повар<br>ресторана<br>«Москва»</h3>
+                      </div>
+                      <div class="clear"></div>
+                      <p>Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга...</p>
+                  </div>
+                  <div class="line_gray"></div>
+                  <div class="content_reklama ">
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img src="css/img/ico_1_vera.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Анастасия Ушанкина</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img class="icon_star float_fl" src="css/img/ico_2_vasya.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Александр Петров</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                      <div class="stars_show">
+                          <div class="icon_star float_fl">
+                              <img class="icon_star float_fl" src="css/img/ico_3_sema.png" alt=""/>
+                          </div>
+                          <div class="star_text">
+                              <a href="">Василий Николо</a>
+                              <p>Ресторан-бар Облака предлагает удобно...</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="clear"></div>
+
+              </article>
+
+              <div class="clear"></div>
+
+              <div class="float_fr right_side_bunner right_side_bunner_restoran">
+                  <a href="#">
+                      <img src="images/banner-2.jpg"  alt="banner-2"/>
+                  </a>
+              </div>
+              <div class="clear"></div>
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+              <article class="catalog_item bordered">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              Арбатский
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                              <span class="info">?</span>
+                          </div>
+                      </header>
+                      <div class="fade_text">
+                          Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                      </div>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating">
+                          <div class="value"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+
+              </div>
+              </aside>
+              <!-- End -->
+
+              <div class="restorany">
+				<div>
+                  <div class="header_search ">
+                      <div class="detail_text float_fr ">Подобрано <a href="#" class="link_pink">37 заведений</a></div>
+                      <div class="search search_restoran ">
+                          <form>
+                              <div class="float_fl">
+                                  <input type="submit">
+                              </div>
+                              <div class="search_input_right ">
+                                  <input type="text" placeholder="Например, ресторан Булгакова" class="placeholder">
+                                  <button class="search_pink">Найти</button>
+                              </div>
+                          </form>
+                      </div>
+
+                  </div>
+                  <div class="clear"></div>
+
+                  <div class=" right_content">
+                      <div class="category ">
+                          <img class="float_fl" src="css/img/maska.png" alt=""/>
+                          <a href="" class="link_people float_fl">Тайный посетитель</a>
+                      </div>
+                      <div class="blue_block">
+                          <div class="header_search">
+                              <div class="search">
+                                  <form>
+                                      <div class="float_fl">
+                                          <input type="submit">
+                                      </div>
+                                      <div class="search_input_right">
+                                          <input type="text" placeholder="Интересные места" class="placeholder">
+                                      </div>
+                                  </form>
+                              </div>
+                              <div class="clear"></div>
+                          </div>
+
+                          <div class="for_scroll">
+                              <div class="text_blue_block nano">
+                                  <div class="content">
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                      <p>Места для встречи с родственниками</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+                  <div class="left_content">
+
+					  <div class="category_block">
+						  <div class="category">
+								<div class="caption float_fl" data-href="tab1">Кухня</div>
+							  <div class="float_fr hint question_label"><i >Подсказка </i></div>
+								<a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+					  <div class="category_block mar_left">
+						  <div class="category ">
+							  <div class="caption float_fl" data-href="tab2">Категория</div>
+							  <div class="float_fr hint question_label"><i >Подсказка Подсказка </i></div>
+							  <a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+					  <div class="category_block mar_left">
+						  <div class="category ">
+							  <div class="caption float_fl" data-href="tab3">Район</div>
+							  <div class="float_fr hint question_label"><i >Подсказка </i></div>
+							  <a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+				      <div class="category_block">
+						  <div class="category ">
+							  <div class="caption float_fl" data-href="tab4">Событие</div>
+							  <div class="float_fr hint question_label"><i >Подсказка </i></div>
+							  <a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+					  <div class="category_block mar_left">
+						  <div class="category ">
+							  <div class="caption float_fl" data-href="tab5">Услуги</div>
+							  <div class="float_fr hint question_label"><i >Подсказка Подсказка Подсказка Подсказка</i></div>
+							  <a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+					  <div class="category_block mar_left">
+						  <div class="category ">
+							  <div class="caption float_fl" data-href="tab6">Стоимость</div>
+							  <div class="float_fr hint question_label"><i >Подсказка </i></div>
+							  <a href="" class="link_pink float_fr select_restoran">Выбрать</a>
+						  </div>
+					  </div>
+					  
+
+                      <div class="map restoran_map">
+                          <!-- Map -->
+                          <div class="yamap_section" data-maxheight='300' data-minheight='120'>
+                              <div class="map_screen_btn map_screen_btn_down"><img src="images/map_screen_btn.png" alt="">Большая карта</div>
+                              <div class="map_screen_btn map_screen_btn_up"><img src="images/map_screen_btn_up.png" alt="">Свернуть</div>
+                              <div id="main_page_map_small"></div>
+                              <div id="main_page_map_big"></div>
+                          </div>
+                          <!-- End -->
+                      </div>
+                  </div>
+
+
+                  <div class="clear"></div>
+                  <div class="banner">
+                      <a href="#" class="banner_1"></a>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="sort float_fl">
+                      <div class=" caption float_fl">Сортировать по:  </div>
+                     <div class="bg_sort_link float_fl active">
+                          <a class=" sort_link" href="">Популярности </a>
+
+                     </div>
+                      <div class="bg_sort_link float_fl">
+                          <a class=" sort_link" href="">Рейтингу</a>
+                      </div>
+                      <div class="bg_sort_link float_fl">
+                          <a class=" sort_link" href="">Алфавиту</a>
+                      </div>
+                      <div class="bg_sort_link float_fl">
+                          <a class=" sort_link" href="">Стоимости</a>
+                      </div>
+                  </div>
+
+                  <div class="sort float_fr">
+                      <div class=" caption float_fl">Показывать:</div>
+                      <div class="header_logo">
+                          <div class="city">
+                              <div class="name_city">
+                                 100
+                              <input type="hidden">
+                              </div>
+                              <ul>
+                                  <li><a href="#">200</a></li>
+                                  <li><a href="#">300</a></li>
+                                  <li><a href="#">350</a></li>
+                                  <li><a href="#">360</a></li>
+                                  <li><a href="#">370</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+
+
+                  <div class="clear"></div>
+                    <div class="one_restoran">
+                        <div class="some_restoran float_fl">
+                            <article class="catalog_item ">
+                                <a href="#"><img src="images/new_restaurant-1.jpg" alt="new_restaurant-1"/></a>
+                                <img class="logo_restoran" src="css/img/logo_restoran.png" alt=""/>
+                            <header>
+                                <div>
+                                    <a href="#">English Breakfast</a>
+                                    <div class="clear"></div>
+                                    <small class="float_fl">ул. Новокузнецкая, д. 11, 5 этаж</small>
+                                    <div class="point_arrow float_fl"></div>
+                                    <small class="gray_text">Ресторан, Караоке, Банкетный зал, Бар</small>
+                                    <a href="" class="restoran_btn">Забронировать</a>
+                                </div>
+                            </header>
+                            <div class="fade_text">
+                                Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+
+                            </div>
+                            <footer>
+                                <div class="stars_rating float_fl">
+                                    <div class="value"></div>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </div>
+                                <div class="rating ">
+                                    <ul>
+                                        <li>Кухня <span class="value">4.5</span></li>
+                                        <li>Сервис <span class="value">4.5</span></li>
+                                        <li>Интерьер <span class="value">4.5</span></li>
+                                    </ul>
+                                </div>
+                                <div class="float_fr catalog_item_big_right">
+                                    <a href="#" class="catalog_item_otzuv_link">
+                                        Отзывы
+                                    </a>
+                                    <span class="blue_text"> (7)</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="text">
+                                    <div>
+                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am.
+
+                                    </div>
+                                </div>
+                            </footer>
+                        </article>
+                        </div>
+
+                        <div class="vertical_block float_fr">
+                            <div class="restoran-icon1"></div>
+                            <div class="restoran-icon2"></div>
+                            <div class="restoran-icon3"></div>
+                            <div class="restoran-icon4"></div>
+                            <div class="restoran-icon5"></div>
+                            <div class="restoran-icon6"></div>
+                            <div class="restoran-icon7"></div>
+                            <div class="restoran-icon8"></div>
+                        </div>
+
+                        <div class="about_restoran float_fr">
+                            <span class="title">Кухня</span>
+                            <span>Европейская</span>
+                            <span>Русская</span>
+                            <span>Авторская</span>
+                            <span class="title">Счет</span>
+                            <span class="mrg_span">1000 — 3000 р.</span>
+                            <span class="mrg_span"> <img src="css/img/red_m.png" alt=""/>Октябрьская</span>
+                            <span class="mrg_span"> <img src="css/img/blue_m.png" alt=""/>Щелковская</span>
+                            <span class="mrg_span"> <img src="css/img/green_m.png" alt=""/>Полянка</span>
+
+                            <span class="tel">+7 495 221 22 22</span>
+                            <div class="blur">
+                                <div class="blur_bg_restoran"></div>
+                                <div class="show_link"><span class="black_link tel_show" >Показать</span></div>
+                            </div>
+                            <a href="#" class="bold_text booking_btn">Заказ и Бронирование</a>
+                        </div>
+                     <div class="clear"></div>
+                    </div>
+                  <div class="clear"></div>
+                    <div class="one_restoran">
+                        <div class="some_restoran float_fl">
+                            <article class="catalog_item ">
+                                <a href="#"><img src="images/new_restaurant-1.jpg" alt="new_restaurant-1"/></a>
+                                <img class="logo_restoran" src="css/img/logo_restoran.png" alt=""/>
+                                <header>
+                                    <div>
+                                        <a href="#">English Breakfast</a>
+                                        <div class="clear"></div>
+                                        <small class="float_fl">ул. Новокузнецкая, д. 11, 5 этаж</small>
+                                        <div class="point_arrow float_fl"></div>
+                                        <small class="gray_text">Ресторан, Караоке, Банкетный зал, Бар</small>
+                                        <a href="" class="restoran_btn">Забронировать</a>
+                                    </div>
+                                </header>
+                                <div class="fade_text">
+                                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                                </div>
+                                <footer>
+                                    <div class="stars_rating float_fl">
+                                        <div class="value"></div>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                    </div>
+                                    <div class="rating ">
+                                        <ul>
+                                            <li>Кухня <span class="value">4.5</span></li>
+                                            <li>Сервис <span class="value">4.5</span></li>
+                                            <li>Интерьер <span class="value">4.5</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="float_fr catalog_item_big_right">
+                                        <a href="#" class="catalog_item_otzuv_link">
+                                            Отзывы
+                                        </a>
+                                        <span class="blue_text"> (7)</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="text">
+                                        <div>
+                                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am.
+                                        </div>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                        <div class="about_restoran float_fr">
+                            <span class="title">Кухня</span>
+                            <span>Европейская</span>
+                            <span>Русская</span>
+                            <span>Авторская</span>
+                            <span class="title">Счет</span>
+                            <span class="mrg_span">1000 — 3000 р.</span>
+                            <span class="mrg_span"> <img src="css/img/red_m.png" alt=""/>Октябрьская</span>
+                            <span class="mrg_span"> <img src="css/img/blue_m.png" alt=""/>Щелковская</span>
+                            <span class="mrg_span"> <img src="css/img/green_m.png" alt=""/>Полянка</span>
+
+                            <span class="tel">+7 495 221 22 22</span>
+                            <div class="blur">
+                                <div class="blur_bg_restoran"></div>
+                                <div class="show_link"><span class="black_link tel_show" >Показать</span></div>
+                            </div>
+                            <a href="#" class="bold_text booking_btn">Заказ и Бронирование</a>
+                        </div>
+                        <div class="vertical_block float_fr">
+                            <div class="restoran-icon1"></div>
+                            <div class="restoran-icon2"></div>
+                            <div class="restoran-icon3"></div>
+                            <div class="restoran-icon4"></div>
+                            <div class="restoran-icon5"></div>
+                            <div class="restoran-icon6"></div>
+                            <div class="restoran-icon7"></div>
+                            <div class="restoran-icon8"></div>
+                        </div>
+
+
+                        <div class="clear"></div>
+                    </div>
+                  <div class="clear"></div>
+                    <div class="one_restoran">
+                        <div class="some_restoran float_fl">
+                            <article class="catalog_item ">
+                                <a href="#"><img src="images/new_restaurant-1.jpg" alt="new_restaurant-1"/></a>
+                                <img class="logo_restoran" src="css/img/logo_restoran.png" alt=""/>
+                                <header>
+                                    <div>
+                                        <a href="#">English Breakfast</a>
+                                        <div class="clear"></div>
+                                        <small class="float_fl">ул. Новокузнецкая, д. 11, 5 этаж</small>
+                                        <div class="point_arrow float_fl"></div>
+                                        <small class="gray_text">Ресторан, Караоке, Банкетный зал, Бар</small>
+                                        <a href="" class="restoran_btn">Забронировать</a>
+                                    </div>
+                                </header>
+                                <div class="fade_text">
+                                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                                </div>
+                                <footer>
+                                    <div class="stars_rating float_fl">
+                                        <div class="value"></div>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                        <a href="#"></a>
+                                    </div>
+                                    <div class="rating ">
+                                        <ul>
+                                            <li>Кухня <span class="value">4.5</span></li>
+                                            <li>Сервис <span class="value">4.5</span></li>
+                                            <li>Интерьер <span class="value">4.5</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="float_fr catalog_item_big_right">
+                                        <a href="#" class="catalog_item_otzuv_link">
+                                            Отзывы
+                                        </a>
+                                        <span class="blue_text"> (7)</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="text">
+                                        <div>
+                                            Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                                        </div>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                        <div class="about_restoran float_fr">
+                            <span class="title">Кухня</span>
+                            <span>Европейская</span>
+                            <span>Русская</span>
+                            <span>Авторская</span>
+                            <span class="title">Счет</span>
+                            <span class="mrg_span">1000 — 3000 р.</span>
+                            <span class="mrg_span"> <img src="css/img/red_m.png" alt=""/>Октябрьская</span>
+                            <span class="mrg_span"> <img src="css/img/blue_m.png" alt=""/>Щелковская</span>
+                            <span class="mrg_span"> <img src="css/img/green_m.png" alt=""/>Полянка</span>
+
+                            <span class="tel">+7 495 221 22 22</span>
+                            <div class="blur">
+                                <div class="blur_bg_restoran"></div>
+                                <div class="show_link"><span class="black_link tel_show" >Показать</span></div>
+                            </div>
+                            <a href="#" class="bold_text booking_btn">Заказ и Бронирование</a>
+                        </div>
+                        <div class="vertical_block float_fr">
+                            <div class="restoran-icon1"></div>
+                            <div class="restoran-icon2"></div>
+                            <div class="restoran-icon3"></div>
+                            <div class="restoran-icon4"></div>
+                            <div class="restoran-icon5"></div>
+                            <div class="restoran-icon6"></div>
+                            <div class="restoran-icon7"></div>
+                            <div class="restoran-icon8"></div>
+                        </div>
+
+
+                        <div class="clear"></div>
+                    </div>
+				</div>
+              </div>
+
+
+
+          </div>
+      </section>
+
+
+
+	  <!-- FOOTER -->
+      <footer class="wrapper footer">
+        <div class="container">
+          <div class="footer_logo">
+            <a href="#">
+              <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+            </a>
+          </div>
+          <nav class="footer_nav">
+            <ul>
+              <li><a href="#">Афиша</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Рейтинги</a></li>
+              <li><a href="#">Фото-отчеты</a></li>
+              <li><a href="#">Отзывы</a></li>
+              <li><a href="#">Рецепт от Шефа</a></li>
+              <li><a href="#">Обзоры</a></li>
+              <li><a href="#">Полезное</a></li>
+              <li><a href="#">Критика</a></li>
+            </ul>
+          </nav>
+          <nav class="footer_services_nav">
+            <ul>
+              <li><a href="#">Рестораны</a></li>
+              <li><a href="#">Банкеты</a></li>
+              <li><a href="#">Свадьбы</a></li>
+              <li><a href="#">Мероприятия</a></li>
+            </ul>
+          </nav>
+          <div class="project_owner">
+            Project of company
+            <a href="#">
+              <img src="css/img/project_owner.png"  alt="project_owner"/>
+            </a>
+          </div>
+          <div class="footer_contacts">
+            <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+            <ul>
+              <li>
+                <a href="#">Реклама на сайте</a>
+              </li>
+              <li>
+                <a href="#">Контакты</a>
+              </li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+        </div>
+      </footer>
+	  <!-- END FOOTER -->
+    </div>
+    
+  </body>
+</html>

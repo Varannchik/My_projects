@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<title>Afisha</title>
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style_afisha.css">
+<link rel="stylesheet" href="css/and_style.css">
+<!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+<!--
+    Подключаем API карт
+    Параметры:
+        - load=package.standard - основные компоненты;
+        - lang=ru-RU - язык русский.
+-->
+<script src="http://api-maps.yandex.ru/2.0/?load=package.standard&amp;lang=ru-RU" type="text/javascript"></script>
+
+
+<script src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script type="text/javascript"  src="js/placeholder.js"></script>
+
+<!-- optionally include helper plugins -->
+<script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+<script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+<script src="js/jquery.nanoscroller.min.js"></script>
+<script src="js/jquery.highlight-4.closure.js"></script>
+
+<script src="js/common.js"></script>
+
+<script src="js/main_page.js"></script>
+
+<script src="js/and_js.js"></script>
+
+<script type="text/javascript" src="js/jquery.uniform.js"></script>
+
+
+
+
+
+<script>
+$(window).load(function() {
+
+    if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+
+    <!-- TABS -->
+    $('.afisha_tab_block ul.tab_afisha li').click(function(){
+        var attr=$(this).attr('data-href');
+        $('.afisha_tab_block ul.tab_afisha li').removeClass('active');
+        $(this).addClass('active');
+        $('div.afisha_tab_block').find('div.box').hide();
+        $('div.afisha_tab_block').find('div.box.'+attr).fadeIn();
+    });
+    <!-- end TABS -->
+
+    <!-- Изменение размера картинки -->
+    $('.content_tab_afisha').each(function(){
+        var h_block=$(this).height();
+        h_img=$(this).find('img').height();
+        mrg= (h_block-h_img)/2;
+
+        $(this).find('img').css('margin-top',mrg+"px");
+    });
+
+    $('.one_afisha').each(function(){
+        var h_block=$(this).height();
+        h_img=$('.afisha_picture').find('img').height();
+        mrg= (h_block-h_img)/2;
+
+        $('.afisha_picture').find('img').css('margin-top',mrg+"px");
+
+
+    });
+
+    <!-- end Изменение размера картинки -->
+
+    <!--Слайдер с датами-->
+
+    var size_specials_slider=Math.floor($(".main_page_slider_afisha").width()/300);
+    $(".main_page_slider_afisha").carouFredSel({
+        responsive: false,
+        auto:false,
+        width: '100%',
+        scroll: 1,
+        prev: '#recipes-prev',
+        next: '#recipes-next',
+        scroll:{fx:'none',items:size_specials_slider},
+        items: {
+            visible: {
+                min: 3,
+                max: 3
+            }
+        }
+    });
+    <!--end Слайдер с датами-->
+
+    <!--===== Слайдер Блюдо на 800 =====-->
+    $(".dish_slider").carouFredSel({
+        responsive: true,
+        auto:false,
+        width: '100%',
+        scroll: {
+            items:1
+        },
+        prev: '#prev_dish',
+        next: '#next_dish',
+        items: {
+            height: 478,
+            visible: {
+                min: 1,
+                max: 1
+            }
+        }
+    });
+    <!--===== end Слайдер Блюдо на 800 =====-->
+
+    $('.afisha_search').on('click',function(){
+        $(this).find('.search').addClass('active')
+    })
+
+
+
+
+    if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+
+    <!-- TABS -->
+    $('.afisha_tab_block ul.tab_afisha li').click(function(){
+        var attr=$(this).attr('data-href');
+        $('.afisha_tab_block ul.tab_afisha li').removeClass('active');
+        $(this).addClass('active');
+        $('div.afisha_tab_block').find('div.box').hide();
+        $('div.afisha_tab_block').find('div.box.'+attr).fadeIn();
+    });
+    <!-- end TABS -->
+
+    <!-- Изменение размера картинки -->
+    $('.content_tab_afisha').each(function(){
+        var h_block=$(this).height();
+        h_img=$(this).find('img').height();
+        mrg= (h_block-h_img)/2;
+
+        $(this).find('img').css('margin-top',mrg+"px");
+    });
+
+    $('.one_afisha').each(function(){
+        var h_block=$(this).height();
+        h_img=$('.afisha_picture').find('img').height();
+        mrg= (h_block-h_img)/2;
+
+        $('.afisha_picture').find('img').css('margin-top',mrg+"px");
+
+
+    });
+
+    <!-- end Изменение размера картинки -->
+
+    <!--Слайдер с датами-->
+
+    var size_specials_slider=Math.floor($(".main_page_slider_afisha").width()/300);
+    $(".main_page_slider_afisha").carouFredSel({
+        responsive: false,
+        auto:false,
+        width: '100%',
+        scroll: 7,
+        circular: false,
+        infinite: false,
+        prev: {
+            button:$('#recipes-prev'),
+            onBefore:function(e){
+                var scroll_num=e.scroll['items'];
+                console.log(scroll_num);
+                var left_li=$('.months').css('margin-left');
+                if(parseInt(left_li,10)!=0){
+                    position_month_text(-scroll_num);
+                    $('.months').animate({marginLeft:parseInt(left_li,10)+scroll_num*66 + "px"},500);
+                }
+            }
+        },
+        next:  {
+            button:$('#recipes-next'),
+            onBefore:function(e){
+                var scroll_num=e.scroll['items'];
+                console.log(scroll_num);
+                var left_li=$('.months').css('margin-left');
+                var w_m=$('.months').css('width');
+                if($('.caroufredsel_wrapper').width()-parseInt(left_li,10)+7*66<parseInt(w_m,10)){
+                    position_month_text(scroll_num);
+                    $('.months').animate({marginLeft:parseInt(left_li,10)-scroll_num*66 + "px"},500);
+                }
+                else
+                {
+                    position_month_text(scroll_num);
+                    $('.months').animate({marginLeft:-(parseInt(w_m,10)-$('.all_months').width()) + "px"},500);
+                }
+            }
+        },
+        items: {
+            visible: {
+                min: 8,
+                max: 15
+            }
+        }
+    });
+    resize_month_block();
+    position_month_text(0);
+
+
+    <!--месяца в слайдере-->
+
+    $('.main_page_slider_afisha li').on('click',function(){
+        $('.main_page_slider_afisha li').removeClass('active')
+        $(this).addClass('active');
+
+    });
+
+    <!--end Слайдер с датами-->
+
+    $('.afisha_search').on('click',function(){
+        $(this).find('.search').addClass('active')
+    })
+
+    /* Смена 2 рекламных блоков справа */
+    $('.more_ads_next_blue').on('click', function(){
+        var visible = $('.visible_add_block');
+        var hidden = $('.hidden_add_block');
+        var tmp = visible;
+
+        visible.find('.black_head').slideUp(200, function(){
+
+            visible.hide();
+            // hidden.show();
+            hidden.find('img').show();
+            hidden.fadeIn(300, function(){
+                hidden.find('.black_head').slideDown(200);
+
+                visible.removeClass('visible_add_block');
+                visible.addClass('hidden_add_block');
+
+                hidden.removeClass('hidden_add_block');
+                hidden.addClass('visible_add_block');
+            });
+
+
+        });
+
+        return false;
+    });
+
+    $('.more_ads_next_red').on('click', function(){
+        var visible = $('.visible_add_block');
+        var hidden = $('.hidden_add_block');
+        var tmp = visible;
+
+        visible.find('.black_head_red').slideUp(200, function(){
+
+            visible.hide();
+            // hidden.show();
+            hidden.find('img').show();
+            hidden.fadeIn(300, function(){
+                hidden.find('.black_head_red').slideDown(200);
+
+                visible.removeClass('visible_add_block');
+                visible.addClass('hidden_add_block');
+
+                hidden.removeClass('hidden_add_block');
+                hidden.addClass('visible_add_block');
+
+
+            });
+
+        });
+        visible.find('.footer_blue').slideUp(200, function(){
+
+            visible.hide();
+            // hidden.show();
+            hidden.find('img').show();
+            hidden.fadeIn(300, function(){
+                hidden.find('.footer_blue').slideDown(200);
+
+                visible.removeClass('visible_add_block');
+                visible.addClass('hidden_add_block');
+
+                hidden.removeClass('hidden_add_block');
+                hidden.addClass('visible_add_block');
+
+
+            });
+
+        });
+
+        return false;
+    });
+    /* END Смена 2 рекламных блоков справа */
+
+
+});
+
+function position_month_text(nav){
+    var w_one=nav*66;
+    $('.months li').each(function(){
+        var w_li=$(this).width();
+        var left_li=$(this).offset().left-w_one;
+
+        var w_parent=$('.all_months').width();
+        var left_parent=$('.all_months').offset().left;
+
+        var w_v;
+        var left_month;
+        if(left_li<left_parent && w_li+left_li<=left_parent){
+            left_month=0;
+            w_v=0;
+        }
+        else if(left_li<=left_parent && w_li+left_li>=left_parent && w_li+left_li<=left_parent+w_parent) {
+            w_v=w_li-(left_parent-left_li);
+            left_month=w_li/2-($(this).find('span').width()+20)/2+(left_parent-left_li)/2;
+        }
+        else if(left_li>=left_parent && w_li+left_li<=left_parent+w_parent){
+            w_v=w_li;
+            left_month=w_li/2-($(this).find('span').width()+20)/2;
+        }
+        else if(left_li>=left_parent && w_li+left_li>left_parent+w_parent && left_li<left_parent+w_parent){
+            w_v=(w_li-(w_li+left_li-(left_parent+w_parent)));
+            left_month=(w_li-(w_li+left_li-(left_parent+w_parent)))/2-($(this).find('span').width()+20)/2;
+        }
+        else if(left_li>=left_parent+w_parent && w_li+left_li>left_parent+w_parent){
+            w_v=0;
+            left_month=0;
+        }
+        else if(left_li<left_parent && w_li+left_li>left_parent+w_parent){
+            w_v=w_li-(w_li+left_li-(left_parent+w_parent))-(left_parent-left_li);
+            left_month=(w_li-(w_li+left_li-(left_parent+w_parent)))/2-($(this).find('span').width()+20)/2+(left_parent-left_li)/2;
+        }
+        if(w_v<$(this).find('span').width()+30){$(this).find('span').stop(true,true).fadeOut(200);}
+        else{$(this).find('span').stop(true,true).animate({left:left_month},500).fadeIn(200);}
+
+    })
+}
+
+$(window).resize(function(){
+    resize_month_block();
+    position_month_text(0);
+})
+
+function resize_month_block(){
+    <!--месяца в слайдере-->
+    var size_data=$('.caroufredsel_wrapper').width();
+    var left=$('.main_page_slider_afisha').css('left');
+
+    $('.all_months').width(size_data - (parseInt(left,10))*2);
+    $('.all_months').css('overflow','hidden');
+    $('.all_months').css('left',(parseInt(left,10))+40 +9+ "px");
+
+    var width_month=0;
+    $('.months li').each(function(){
+        var attr=$(this).attr('data-href');
+        var size=$('.main_page_slider_afisha li[data-href="'+attr+'"]').size();
+        $(this).css('width',size*66-6+"px");
+        width_month+=size*66;
+
+    });
+    $('.months').width(width_month);
+}
+
+</script>
+
+
+<script>
+    $(window).load(function(){
+        $(".nano").nanoScroller();
+    })
+</script>
+
+<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+<script src="js/ui/jquery.ui.core.js"></script>
+<script src="js/ui/jquery.ui.widget.js"></script>
+<script src="js/ui/jquery.ui.datepicker.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            autoSize: true,
+            altFormat: "DD-dd-MM"
+        });
+    });
+    jQuery(function($){
+        $.datepicker.regional['ru'] = {
+            closeText: 'Закрыть',
+            prevText: '&#x3c;Пред',
+            nextText: 'След&#x3e;',
+            currentText: 'Сегодня',
+            monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+                'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+            monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+                'Июл','Авг','Сен','Окт','Ноя','Дек'],
+            dayNames: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
+            dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+            dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+            weekHeader: 'Не',
+            dateFormat: 'dd.mm.yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''};
+        $.datepicker.setDefaults($.datepicker.regional['ru']);
+    });
+</script>
+<!--[if IE 8]>
+<script src="js/ie8.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+<!--[if lt IE 8]>
+<style>
+    #wrapper{display:none;}
+</style>
+<div style='text-align:center;'>
+    <br><br>
+    <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+
+<div class="popover_bg"></div>
+
+    <div id="wrapper">
+        <!-- HEADER -->
+        <header class="wrapper header">
+            <div class="container container_restoran">
+
+                <div class="free_order_block restoran_order">
+                    <div class="free_order">
+                        <a href="#" class="close"></a>
+                        <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                        <div class="phone">+7 495 221 22 22</div>
+                    </div>
+                </div>
+
+                <div class="header_logo header_logo_restoran">
+                    <a href="#">
+                        <img src="css/img/logo.png"  alt="logo"/>
+                    </a>
+                    <div class="header_lang">
+                        <a href="#">Eng</a>
+                    </div>
+                    <div class="city">
+                        <div class="name_city">
+                            <div class="blur_bg"></div>
+                            Архангельск
+                        </div>
+                        <ul>
+                            <li><a href="#">Москва</a></li>
+                            <li><a href="#">Белгород</a></li>
+                            <li><a href="#">Ставрополь</a></li>
+                            <li><a href="#">Курск</a></li>
+                            <li><a href="#">Железногорск</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+
+                </div>
+                <div class="header_rigth_info header_righ_info_restoran">
+                    <p class="text1">+7 495 221 22 22</p>
+                    <p class="text2">8 800 221 22 22</p>
+                    <a href="#" class="header_btn float_fr" >Вход / Регистрация</a>
+                </div>
+                <div class="header_center_small">
+                    <div class="float_fl header_center_block first"><img src="css/img/tarelka.png" alt="ico"/> <a href="" class="header_center_link"><span>Забронировать <br>Столик</span></a></div>
+                    <div class="float_fl header_center_block"><img src="css/img/bokal.png" alt="ico"/> <a href="" class="header_center_link"><span>Заказать<br>Банкет</span></a></div>
+                    <div class="float_fl header_center_block"><img src="css/img/comment_smile.png" alt="ico"/> <a href="" class="header_center_link"><span>Бесплатная<br>Консультация
+                        </span></a></div>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+            <nav class="container services_nav">
+                <ul>
+                    <li class="restaurant">
+                        <a href="#"><span>Рестораны</span></a>
+                    </li>
+                    <li class="feast">
+                        <a href="#"><span>Банкеты</span></a>
+                    </li>
+                    <li class="wedding">
+                        <a href="#"><span>Свадьбы</span></a>
+                    </li>
+                    <li class="night_life">
+                        <a href="#"><span>Ночная жизнь</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container restoran_nav_2">
+                <nav class="header_nav-2">
+                    <ul>
+                        <li><a href="#">Афиша</a></li>
+                        <li><a href="#">Рейтинги</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="#">Обзоры</a></li>
+                        <li><a href="#">Критика</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Фото-отчеты</a></li>
+                        <li><a href="#">Рецепт от Шефа</a></li>
+                        <li><a href="#">Полезное</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- END HEADER -->
+
+        <div class="banner">
+            <a href="#" class="banner_1"></a>
+        </div>
+        <div class="clear"></div>
+
+        <section class="wrapper">
+        <div class="container">
+        <!-- Реклама -->
+        <aside class="sidebar_right_reclama">
+
+        <div class="right_link_blue">
+            <div class="right_link_blue_tag"><a href="">Вечеринки</a><span>4462</span></div>
+            <div class="right_link_blue_tag"><a href="">Концерты</a><span>4462</span></div>
+            <div class="right_link_blue_tag"><a href="">События</a><span>462</span></div>
+            <div class="right_link_blue_tag"><a href="">Private</a><span>462</span></div>
+            <div class="right_link_blue_tag"><a href="">Светские события</a><span>462</span></div>
+            <div class="right_link_blue_tag"><a href="">Мода</a><span></span></div>
+            <div class="right_link_blue_tag"><a href="">Искусство </a><span>62</span></div>
+        </div>
+
+
+        <div class="ads_for_you_blue">
+            <span>Подборка для Вас</span>
+            <a href="#" class="more_ads_blue"><span class=" more_ads_next_blue"></span></a>
+            <span class="more_ad_text_blue">Еще</span>
+        </div>
+
+        <div class="clear"></div>
+        <div class="ad">
+            <article class="catalog_item bordered">
+                <div class="visible_add_block">
+                    <a href="#">
+                        <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                        <header class="black_head">
+                            <div>
+                                Лучшие места для мальчишника
+                                с Русланом и Черным джеком
+                            </div>
+                        </header>
+                    </a>
+                </div>
+                <div class="hidden_add_block">
+                    <a href="#">
+                        <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                        <header class="black_head">
+                            <div>
+                                Лучшие места для мальчишника
+                                с Русланом и Черным джеком Воробьем
+                            </div>
+                        </header>
+                    </a>
+                </div>
+            </article>
+
+            <article class="catalog_item bordered">
+                <div class="visible_add_block">
+                    <a href="#">
+                        <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                        <header class="black_head">
+                            <div>
+                                Лучшие места для мальчишника
+                                с Русланом и Черным джеком
+                            </div>
+                        </header>
+                    </a>
+                </div>
+                <div class="hidden_add_block">
+                    <a href="#">
+                        <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+                        <header class="black_head">
+                            <div>
+                                Лучшие места для мальчишника
+                                с Русланом и Черным джеком Воробьем
+                            </div>
+                        </header>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+
+
+        <div class="block_caption_restoran float_fl">Реклама</div>
+        <a class="float_fr link_reklama" href="">Разместить рекламу</a>
+        <div class="clear"></div>
+        <div class="ad">
+            <div class="float_fr right_side_bunner right_side_bunner_restoran">
+                <a href="#">
+                    <img src="images/banner-2.jpg"  alt="banner-2"/>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="ads_for_you_red">
+            <span>Фотоотчеты</span>
+            <a href="#" class="more_ads_red"><span class=" more_ads_next_red"></span></a>
+            <span class="more_ad_text_blue">Еще</span>
+        </div>
+        <div class="clear"></div>
+
+        <div class="ad">
+            <article class="catalog_item bordered_big">
+                <div class="visible_add_block">
+                    <a href="#">
+                        <img src="images/afisha_right.jpg"  alt="afisha_right"/>
+                        <header class="black_head_red">
+                            <span class="afisha_date">31 сентября</span>
+                            <div class="clear"></div>
+                            <span class="afisha_name">Клуб Рай</span>
+                        </header>
+                        <footer class="footer_blue">
+                            <span>Лучшие фото-события клуба и лучше девчонки</span>
+                        </footer>
+
+                    </a>
+                </div>
+                <div class="hidden_add_block">
+                    <a href="#">
+                        <img src="images/afisha_right.jpg"  alt="afisha_right"/>
+                        <header class="black_head_red">
+                            <span class="afisha_date">31 сентября</span>
+                            <div class="clear"></div>
+                            <span class="afisha_name">Клуб Рай</span>
+                        </header>
+                        <footer class="footer_blue">
+                            <span>Лучшие фото-события клуба и лучше девчонки</span>
+                        </footer>
+                    </a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <article class="catalog_item bordered">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <article class="catalog_item bordered">
+                <a href="#">
+                    <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                    <header>
+                        <div>
+                            Арбатский
+                            <small>ул. Арбат, д. 9, 2 этаж</small>
+                            <span class="info">?</span>
+                        </div>
+                    </header>
+                    <div class="fade_text">
+                        Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                    </div>
+                    <div class="blur_darck_bg"></div>
+                    <div class="stars_rating">
+                        <div class="value"></div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <footer>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </a>
+            </article>
+
+            <div class="clear"></div>
+
+        </div>
+        </aside>
+        <!-- End -->
+
+            <div class="afisha">
+                <div class="caption float_fl new_caption">Афиша</div>
+
+                 <div class="clear"></div>
+
+                <div class="header_search header_search_data float_fl">
+                <div class="search">
+                    <form>
+                        <div class="data_icon "></div>
+                        <div class="search_input_right">
+                            <input type="text" placeholder="Дата" class="placeholder" id="datepicker">
+                        </div>
+                        <div class="arrow_input"></div>
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+                <div class="restaurant_selector section_selector float_fl restaurant_selector_type">
+                <div class="selector_body">
+                    <header>
+                        <input type="hidden">
+                        <input type="text" placeholder="Тип события" class="placeholder">
+                    </header>
+                    <div class="drop_down">
+                        <div class="drop_down-slider nano">
+                            <div class="content">
+                                <ul>
+                                    <li class="placeholder">Выберите событие</li>
+                                    <li class="active">Пушкинский</li>
+                                    <li>Пушной</li>
+                                    <li>Пушники</li>
+                                    <li>ПушПушник</li>
+                                    <li>Пушкино</li>
+                                    <li>Пушики</li>
+                                    <li>Пушанцок</li>
+                                    <li>Амэт</li>
+                                    <li>Мальорум</li>
+                                    <li>Атоморюм</li>
+                                    <li>Докэндё</li>
+                                    <li>Лорэм</li>
+                                    <li>Бонорюм</li>
+                                    <li>Льюкяльиюч</li>
+                                    <li>Дэлььиката</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <footer><a href="#">Все фотоотчеты</a></footer>
+                    </div>
+                </div>
+            </div>
+                <div class="restaurant_selector section_selector float_fl restaurant_selector_type">
+                <div class="selector_body">
+                    <header>
+                        <input class="search">
+                        <input type="hidden">
+                        <input type="text" placeholder="Заведение" class="placeholder">
+                    </header>
+                    <div class="drop_down">
+                        <div class="drop_down-slider nano">
+                            <div class="content">
+                                <ul>
+                                    <li class="placeholder">Выберите событие</li>
+                                    <li class="active">Пушкинский</li>
+                                    <li>Пушной</li>
+                                    <li>Пушники</li>
+                                    <li>ПушПушник</li>
+                                    <li>Пушкино</li>
+                                    <li>Пушики</li>
+                                    <li>Пушанцок</li>
+                                    <li>Амэт</li>
+                                    <li>Мальорум</li>
+                                    <li>Атоморюм</li>
+                                    <li>Докэндё</li>
+                                    <li>Лорэм</li>
+                                    <li>Бонорюм</li>
+                                    <li>Льюкяльиюч</li>
+                                    <li>Дэлььиката</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <footer><a href="#">Все фотоотчеты</a></footer>
+                    </div>
+                </div>
+            </div>
+                <div class="header_search float_fl afisha_search">
+                <div class="search">
+                    <form>
+                        <div class="search_input_right">
+                            <input type="text" placeholder="Интересные места" class="placeholder">
+                        </div>
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+                <button class="afisha_pink float_fr">Найти</button>
+
+                <div class="clear"></div>
+
+
+
+                <div class="celendar">
+                    <div class="slider_data">
+                    <div class="recipes">
+                        <header>
+                            <div class="slider_buttons size-h21">
+                                <a href="#" class="prev" id="recipes-prev"></a>
+                                <a href="#" class="next" id="recipes-next"></a>
+                            </div>
+                        </header>
+
+                        <div class="main_page_slider6_body months_slider">
+                            <div class="list_carousel">
+                                <ul class="main_page_slider_afisha">
+                                    <li data-href="september">ПН <span>25</span></li>
+                                    <li data-href="september">ВТ <span>26</span></li>
+                                    <li data-href="september">СР <span>27</span></li>
+                                    <li data-href="september">ЧТ <span>28</span></li>
+                                    <li data-href="september" class="red">ПТ <span>29</span></li>
+                                    <li data-href="september" class="red">СБ <span>30</span></li>
+                                    <li data-href="october" class="red active">ВС <span>1</span></li>
+                                    <li data-href="october">ПН <span>2</span></li>
+                                    <li data-href="october">ВТ <span>3</span></li>
+                                    <li data-href="october">СР <span>4</span></li>
+                                    <li data-href="october">ЧТ <span>5</span></li>
+                                    <li data-href="october" class="red">ПТ <span>6</span></li>
+                                    <li data-href="october" class="red">СБ <span>7</span></li>
+                                    <li data-href="october" class="red">ВС <span>8</span></li>
+                                    <li data-href="october">ПН <span>9</span></li>
+                                    <li data-href="october">ВТ <span>10</span></li>
+                                    <li data-href="october">СР <span>11</span></li>
+                                    <li data-href="october">ЧТ <span>12</span></li>
+                                    <li data-href="october" class="red">ПТ <span>13</span></li>
+                                    <li data-href="october" class="red">СБ <span>14</span></li>
+                                    <li data-href="october" class="red">ВС <span>15</span></li>
+                                    <li data-href="october">Пн <span>16</span></li>
+                                    <li data-href="october">Вт <span>17</span></li>
+                                    <li data-href="october">СР <span>18</span></li>
+                                    <li data-href="october">ЧТ <span>19</span></li>
+                                    <li data-href="october" class="red">ПТ <span>20</span></li>
+                                    <li data-href="october" class="red">СБ <span>21</span></li>
+                                    <li data-href="october" class="red">ВС <span>22</span></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                    <div class="all_months">
+                    <ul class="months">
+                        <li data-href="september"><span>Сентябрь</span></li>
+                        <li data-href="october"><span>Октябрь</span></li>
+                    </ul>
+                </div>
+                </div>
+
+
+                <div class="clear10"></div>
+
+                <div class="one_afisha">
+                    <div class="time_afisha">
+                        <div class="data float_fl">10/08</div>
+                        <div class="data data_time float_fr">20:00</div>
+                        <div class="clear"></div>
+                        <h1>Клуб Рай</h1>
+                        <div class="stars_rating float_fl">
+                            <div class="value"></div>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="black_link tel_show">Показать на карте</span>
+                        <div class="clear"></div>
+                        <span>ул. Новокузнецкая, д. 11, 5 этаж</span>
+                        <div class="rating">
+                            <ul>
+                                <li>Кухня <span class="value">4.5</span></li>
+                                <li>Сервис <span class="value">4.5</span></li>
+                                <li>Интерьер <span class="value">4.5</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="afisha_picture">
+                        <img src="images/afisha.jpg" alt=""/>
+                        <div class="comment">Вечеринка в стиле Чикаго</div>
+                        <div class="btn_one_afisha">
+                            <a class="pink_btn" href="">Ресторан</a>
+                            <a class="blue_btn_afisha" href="">Дегустации</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
+                <!--====== РЕЙТИНГ СЛЕВА, СПРАВА ТЕКСТ =====-->
+                <div class="rating_big_block">
+                    <div class="fl rating_block with_margin">
+                        <div class="top_rating_block">
+                            <div class="top_rating_block_left">
+                                <span class="rating">Рейтинг</span><br>
+                                <span class="num">9.5</span><br>
+                                <span class="num_rating">2 голоса</span><br>
+                                <button class="rate_blue">Оценить</button>
+                            </div>
+                            <div class="top_rating_block_right">
+                                <div class="im_go_block">
+                                    <div class="im_go">Я иду!</div>
+                                    <div class="go_with_me">Идут 15</div>
+                                </div>
+
+                                <div class="ya_share">
+
+                                    <span id="ya_share1"></span>
+
+                                    <script type="text/javascript" src="//yandex.st/share/share.js"
+                                            charset="utf-8"></script>
+                                    <div class="yashare-auto-init" data-yashareL10n="ru"
+                                         data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,twitter,facebook,lj"
+
+                                            ></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="booking_table_btn_and_tell">
+                            <a href="#" class="btn purple_btn">Забронировать столик</a>
+                            <div class="tell_and_caption">
+                                <span class="tellephone">+7 495 221 22 22</span><br>
+                                <span class="caption">Бесплатная консультация</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="rating_text">
+                        <p>
+                            В четверг, 31 октября, в ресторане «Лодка» состоится завораживающее неоновое шоу в честь Хеллоуина. Окунитесь в атмосферу волшебства и под ритмы танцевальной музыки позвольте себе расслабиться и дать волю эмоциям!
+                        </p>
+
+                        <p>
+                            Хэллоуин, или канун Дня всех святых, отмечают по всему свету в конце октября, в последний день месяца. Корни праздника Хеллоуин восходят к верованиям древних кельтов, проживавших на территории современной Ирландии.
+                        </p>
+
+                        <p>
+                            В отличие от многих других дохристианских праздников, этот типичный языческий праздник с богатой историей не канул в Лету. Напротив, он распространился по всему миру, и широко отмечается современной публикой.
+                        </p>
+
+                        <p class="event_time">
+                            Сбор гостей — в 20.00. <br>
+                            Начало — в 21.00
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--====== END РЕЙТИНГ СЛЕВА, СПРАВА ТЕКСТ =====-->
+
+                <!--==========  Слайдер ==========-->
+                <div class="main_page_slider4_body selection49 dish">
+                    <div class="list_carousel">
+                        <ul class="dish_slider">
+                            <li>
+                                <article>
+                                    <a href="#">
+                                        <div class="image_slider_item">
+                                            <img src="images/promo_restaurant_main_block.jpg"  alt="review_restaurant-1"/>
+                                            <div class="image_slider_item_top"></div>
+                                            <div class="caption">Жаркое по домашнему</div>
+                                            <div class="caption_price"><span>800 руб.</span></div>
+                                        </div>
+                                    </a>
+                                </article>
+                            </li>
+
+                            <li>
+                                <article>
+                                    <a href="#">
+                                        <div class="image_slider_item">
+                                            <img src="images/promo_restaurant_main_block.jpg"  alt="review_restaurant-1"/>
+                                            <div class="image_slider_item_top"></div>
+                                            <div class="caption">Жаркое по домашнему</div>
+                                            <div class="caption_price"><span>800 руб.</span></div>
+                                        </div>
+                                    </a>
+                                </article>
+                            </li>
+                        </ul>
+
+                        <a href="#" id="prev_dish"></a>
+                        <a href="#" id="next_dish"></a>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+                <!--==========  End Слайдер ==========-->
+
+                <!--=========  Ркомедруем посетить  =========-->
+                <div class="recomend_for_visit">
+                    <span class="title">Рекомендуем посетить: </span>
+
+                    <div class="el">
+                        <span class="date">15/10</span><span class="time_for_visit">22:00</span><a href="#">Где еще можно полакомиться морскими гадами отечественного</a>
+                    </div>
+
+                    <div class="el">
+                        <span class="date">15/10</span><span class="time_for_visit">22:00</span><a href="#">Где еще можно полакомиться морскими гадами отечественного</a>
+                    </div>
+
+                    <div class="el">
+                        <span class="date">15/10</span><span class="time_for_visit">22:00</span><a href="#">Где еще можно полакомиться морскими гадами отечественного</a>
+                    </div>
+
+                    <div class="el">
+                        <span class="date">15/10</span><span class="time_for_visit">22:00</span><a href="#">Где еще можно полакомиться морскими гадами отечественного</a>
+                    </div>
+                </div>
+                <!--=========  END Ркомедруем посетить  =========-->
+
+
+                <div class="clear10"></div>
+
+
+                <!--==== Отзывы ====-->
+                <div class="container last for_internal_afisha">
+                <div class="details_top">
+                    <span class="part_title fl">Комментарии</span>
+                    <div class="fr comments_label">
+                        <a href="#" class="btn_new blue ml10 add_review">Добавить комментарий</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+                <!-- Отзыв -->
+                <div class="comment_block_wrapper">
+                    <div class="comment_head">
+                        <div class="ava_wrapper">
+                            <img src="images/ava.jpg" alt="">
+                        </div>
+                        <div class="inline_block">
+                            <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                        </div>
+                        <div class="fr">
+                            <a href="#" class="subscribe">Подписаться</a>
+                            <div class="like_dislike_block with_border">
+                                <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                                <div class="vertical_line"></div>
+                                <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="comment_block">
+                        <div class="comment_triangle"></div>
+
+                        <span class="caption positive rp">Ресторан шикарный!</span>
+                        <div class="fr">
+                            <div class="stars_rating big float_fl in_big_comment_block">
+                                <div class="value"></div>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </div>
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li>Кухня <span class="value negative">1</span></li>
+                                    <li>Сервис <span class="value neutral">4</span></li>
+                                    <li>Интерьер <span class="value positive">5</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="clear"></div>
+
+                        <div class="comment">
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                            In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                            makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                            a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                        </div>
+
+
+                        <div class="comment_down_block">
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                    <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                    <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                </ul>
+                            </div>
+                            <div class="main_comment_buttons float_fr">
+                                <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Отзыв-->
+
+                <!-- Отзыв (со слайдером) -->
+                <div class="comment_block_wrapper">
+                    <div class="comment_head">
+                        <div class="ava_wrapper">
+                            <img src="images/ava.jpg" alt="">
+                        </div>
+                        <div class="inline_block">
+                            <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                        </div>
+                        <div class="fr">
+                            <a href="#" class="subscribe">Подписаться</a>
+                            <div class="like_dislike_block with_border">
+                                <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                                <div class="vertical_line"></div>
+                                <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="comment_block">
+                        <div class="comment_triangle"></div>
+
+                        <span class="caption positive rp">Ресторан шикарный!</span>
+                        <div class="fr">
+                            <div class="stars_rating big float_fl in_big_comment_block">
+                                <div class="value"></div>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </div>
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li>Кухня <span class="value negative">1</span></li>
+                                    <li>Сервис <span class="value negative">2</span></li>
+                                    <li>Интерьер <span class="value positive">5</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="clear"></div>
+
+                        <div class="comment">
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                            In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                            makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                            a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                        </div>
+
+                        <!--========   Слайдер   =========-->
+                        <div class="slide_right_buttons ev">
+                            <a href="#" class="comment_arrow_r" id="comment-next"></a>
+                            <a href="#" class="comment_arrow_l" id="comment-prev"></a>
+                        </div>
+
+
+                        <div class="main_page_slider2_body comment_sl">
+                            <div class="list_carousel">
+                                <ul class="restaurant_promo_comment_slider">
+
+                                    <li>
+                                        <div class="comment_slider_block">
+                                            <img src="images/events.jpg"  alt=""/>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="comment_slider_block">
+                                            <img src="images/events.jpg"  alt=""/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment_slider_block">
+                                            <img src="images/events.jpg"  alt=""/>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment_slider_block">
+                                            <img src="images/events.jpg"  alt=""/>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--========   End Слайдер   =========-->
+
+                        <div class="comment_down_block">
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                    <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                    <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                </ul>
+                            </div>
+                            <div class="main_comment_buttons float_fr">
+                                <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Отзыв(со слайдером) -->
+
+
+                <!-- Отзыв(с ответами) -->
+                <div class="comment_block_wrapper">
+                    <div class="comment_head">
+                        <div class="ava_wrapper">
+                            <img src="images/ava.jpg" alt="">
+                        </div>
+                        <div class="inline_block">
+                            <span class="date">18 окт 2013</span> <br>
+                          <span class="bottom_line">
+                              <span class="otsuv_name float_fl">Руслан Александрович</span>
+                              <span class="elite_label float_fl">ELITE</span>
+                              <span class="blue_comment">25</span>
+                          </span>
+                        </div>
+                        <div class="fr">
+                            <a href="#" class="subscribe">Подписаться</a>
+                            <div class="like_dislike_block with_border">
+                                <span>52 <a href="#"><span class="like_btn"></span></a></span>
+                                <div class="vertical_line"></div>
+                                <span class="fr">1 <a href="#"><span class="dislike_btn"></span></a></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="comment_block with_answers">
+                        <div class="comment_triangle"></div>
+
+                        <span class="caption positive rp">Ресторан шикарный!</span>
+                        <div class="fr">
+                            <div class="stars_rating big float_fl in_big_comment_block">
+                                <div class="value"></div>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                                <a href="#"></a>
+                            </div>
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li>Кухня <span class="value negative">1</span></li>
+                                    <li>Сервис <span class="value negative">2</span></li>
+                                    <li>Интерьер <span class="value positive">5</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="clear"></div>
+
+                        <div class="comment">
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                            It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                            I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                            Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                            It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!
+                            In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all
+                            makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not
+                            a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.Now that we know who you are, I know who I am.
+                        </div>
+
+
+                        <div class="comment_down_block">
+                            <div class="rating float_fl">
+                                <ul>
+                                    <li class="comment_down_block_like"><span class="comment_down_block_btn_text">Круто!</span><span class="value blue">1</span></li>
+                                    <li class="comment_down_block_smile"><span class="comment_down_block_btn_text">Смешно!</span><span class="value blue">135</span></li>
+                                    <li class="comment_down_block_warning"><span class="comment_down_block_btn_text">Полезно!</span><span class="value blue">1345</span></li>
+                                </ul>
+                            </div>
+                            <div class="main_comment_buttons float_fr">
+                                <a href="#" class="btn blue_btn float_fl">Ответить</a>
+                            </div>
+                        </div>
+
+
+                        <div class="answer first">
+                            <div class="comment_head">
+                                <div class="ava_wrapper">
+                                    <img src="images/ava.jpg" alt="">
+                                </div>
+                                <div class="inline_block">
+                                    <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                                </div>
+                            </div>
+
+                            <div class="comment">
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            </div>
+                        </div>
+
+                        <div class="answer">
+                            <div class="comment_head">
+                                <div class="ava_wrapper">
+                                    <img src="images/ava.jpg" alt="">
+                                </div>
+                                <div class="inline_block">
+                                    <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                                </div>
+                            </div>
+
+                            <div class="comment">
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            </div>
+                        </div>
+
+                        <div class="answer">
+                            <div class="comment_head">
+                                <div class="ava_wrapper">
+                                    <img src="images/ava.jpg" alt="">
+                                </div>
+                                <div class="inline_block">
+                                    <span class="date">18 окт 2013</span> <br>
+                                  <span class="bottom_line">
+                                      <span class="otsuv_name float_fl">Руслан Александрович</span>
+                                  </span>
+                                </div>
+                            </div>
+
+                            <div class="comment">
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                                I'm not a mistake! It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake!
+                                It all makes sense! In a comic. I'm not a mistake! It all makes sense. Now that we know who you are,
+                                I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense.
+                                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake!
+                                It all makes sense. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Отзыв(с ответами) -->
+
+                </div>
+                <!--==== End Отзывы ====-->
+
+            </div>
+
+            </div>
+
+            <!--</div>-->
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+        <footer class="wrapper footer">
+            <div class="container">
+                <div class="footer_logo">
+                    <a href="#">
+                        <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+                    </a>
+                </div>
+                <nav class="footer_nav">
+                    <ul>
+                        <li><a href="#">Афиша</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Рейтинги</a></li>
+                        <li><a href="#">Фото-отчеты</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="#">Рецепт от Шефа</a></li>
+                        <li><a href="#">Обзоры</a></li>
+                        <li><a href="#">Полезное</a></li>
+                        <li><a href="#">Критика</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer_services_nav">
+                    <ul>
+                        <li><a href="#">Рестораны</a></li>
+                        <li><a href="#">Банкеты</a></li>
+                        <li><a href="#">Свадьбы</a></li>
+                        <li><a href="#">Мероприятия</a></li>
+                    </ul>
+                </nav>
+                <div class="project_owner">
+                    Project of company
+                    <a href="#">
+                        <img src="css/img/project_owner.png"  alt="project_owner"/>
+                    </a>
+                </div>
+                <div class="footer_contacts">
+                    <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+                    <ul>
+                        <li>
+                            <a href="#">Реклама на сайте</a>
+                        </li>
+                        <li>
+                            <a href="#">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+            </div>
+        </footer>
+        <!-- END FOOTER -->
+    </div>
+
+</body>
+</html>

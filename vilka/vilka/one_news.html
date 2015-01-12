@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<!-- vk -->
+
+
+
+<!-- end vk -->
+
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+    <title>One News</title>
+	
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/and_style.css">
+      <link rel="stylesheet" href="css/style_afisha.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+
+      <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+
+	<script src="js/jquery-1.7.2.js"></script>
+
+
+
+      <script src="js/ui/jquery.ui.core.js"></script>
+      <script src="js/ui/jquery.ui.widget.js"></script>
+      <script src="js/ui/jquery.ui.datepicker.js"></script>
+
+	<script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+	<script type="text/javascript"  src="js/placeholder.js"></script>
+
+	<!-- optionally include helper plugins -->
+	<script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+	<script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+	
+    <script src="js/common.js"></script>
+	
+	<script src="js/main_page.js"></script>
+      <script src="js/popup.js"></script>
+      <script src="js/and_js.js"></script>
+
+
+      <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+
+
+      <script>
+          $(window).load(function() {
+              if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+              if($('input[type="radio"]').size()>0) $('input[type="radio"]').uniform();
+
+
+              $('.tel_show').click(function(){
+                  $(this).closest('.blur').hide(100)
+              });
+
+
+              $(".nano").nanoScroller();
+          });
+      </script>
+
+    <!--[if IE 8]>
+      <script src="js/ie8.js"></script>
+    <![endif]-->
+
+
+
+      <script>
+          $(function() {
+
+              $( "#datepicker" ).datepicker({
+                  autoSize: true,
+                  dateFormat: "DD, d MM"
+              });
+
+//              $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
+
+
+              $('.city ul li a').on('click',function(){
+
+                  var val = $(this).text();
+
+                  $(this).closest('.city').find('.name_city').text(val);
+                  $(this).closest('.city').find('input').val(val);
+                  $(this).closest('.city').find('ul').hide();
+                  //console.log(val);
+                  return false;
+              });
+
+          });
+      </script>
+
+  </head>
+
+  <body>
+
+<!-- facebook-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_EN/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- End facebook-->
+
+
+
+  <!--[if lt IE 8]>
+      <style>
+          #wrapper{display:none;}
+      </style>
+      <div style='text-align:center;'>
+          <br><br>
+          <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+          <br><br><br>
+          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+              <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+          </a>
+      </div>
+  <![endif]-->
+
+
+
+  <!--==== pop_up ====-->
+  <div class="modal table_booking">
+      <button class="close_popup_btn"></button>
+      <div class="pop_up_top_caption">
+          <div class="fl">
+              Услуга бронирования
+              предоставляется бесплатно
+          </div>
+          <div class="fr">
+              <a href="#" class="how_its_work">Как это работает?</a>
+          </div>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="pop_up_steps">
+          <div class="pop_up_step step1 active">
+              <i class="triangle"></i>
+              <div class="step_number fl">1</div>
+              <div class="step_text fl">Выбор <br>заведения</div>
+          </div>
+
+          <div class="pop_up_step step2">
+              <i class="triangle"></i>
+              <div class="step_number fl">2</div>
+              <div class="step_text fl">Контактная <br> информация</div>
+          </div>
+
+          <div class="pop_up_step step3">
+              <i class="triangle"></i>
+              <i class="finish"></i>
+              <div class="step_number fl">3</div>
+              <div class="step_text fl">Заявка <br> принята</div>
+          </div>
+
+          <div class="clear"></div>
+      </div>
+
+      <div class="step1_block">
+
+          <div class="fl fl_in_popup">
+              <!-- select -->
+              <div class="section_selection for49 in_popup">
+                  <div class="section_selector for49">
+                      <div class="selector_body">
+                          <header>
+                              <input type="hidden">
+                              <input type="text" placeholder="Выберите ресторан" class="placeholder">
+                          </header>
+                          <div class="drop_down">
+                              <div class="drop_down-slider nano">
+                                  <div class="content promo_page">
+                                      <ul class="change_caption" data-caption_id="#main_interesting_caption" id="main_interesting_category">
+                                          <li class="placeholder">Выберите ресторан</li>
+
+                                          <li class="active" data-caption="">Ресторан1</li>
+                                          <li data-caption="">Ресторан2</li>
+                                          <li data-caption="">Ресторан3</li>
+                                          <li data-caption="">Ресторан4</li>
+                                          <li data-caption="">Ресторан5</li>
+                                          <li data-caption="">Ресторан6</li>
+                                          <li data-caption="">Ресторан7</li>
+                                          <li data-caption="">Ресторан8</li>
+                                          <li data-caption="">Ресторан9</li>
+
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- End select -->
+
+              <!-- calendar block -->
+              <div class="calendar_block">
+                  <div class="popup_sub_title">Дата брони</div>
+
+                  <div class="datepicker_block lite_placeholder">
+                      <i class="datepicker_block_arrow"></i>
+                      <i class="datepicker_block_calendar"></i>
+                      <input type="text" id="datepicker" class="change_booking_data" placeholder="Выберите дату">
+                  </div>
+
+              </div>
+              <!-- End calendar block -->
+
+              <!-- person block -->
+              <div class="calendar_block">
+                  <div class="popup_sub_title person_num_etc">Количество персон</div><div class="popup_sub_title fr person_num_etc">Время</div>
+                  <div class="clear"></div>
+
+
+                  <div class="input_with_plus_minus">
+                      <input placeholder="0" value="0">
+                      <div class="input_val_plus"></div>
+                      <div class="input_val_minus"></div>
+                  </div>
+                  <div class="pop_up_radio_block">
+                      <!--<input type="radio" name="smoking_type" class="table_type_input"> <label class="table_type_label"><span class="smoking"></span></label>-->
+                      <input type="radio" name="smoking_type" id="type1"> <label for="type1" class="table_type_label"><span class="smoking"></span></label>
+                      <input type="radio" name="smoking_type" id="type2"> <label for="type2" class="table_type_label"><span class="no_smoking"></span></label>
+                  </div>
+
+
+
+                  <div class="time">
+                      <input placeholder="16" class="time_inputs"> <span>:</span> <input placeholder="00" class="minutes time_inputs">
+                  </div>
+
+              </div>
+              <!-- End person block -->
+          </div>
+
+          <div class="fr">
+              <article class="catalog_item bordered in_popup">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              <span class="rest_name_in_popup">English Breakfast</span>
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                          </div>
+                      </header>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating small static stars_in_popup">
+                          <div class="value" style="width: 72%"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+          </div>
+
+          <div class="clear"></div>
+
+          <div class="tell_and_nav">
+              <div class="inline_block">
+                  <span class="popup_down_caption">Забронировать по телефону:</span><br>
+                  <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+              </div>
+              <div class="inline_block fr">
+                  <button class="popup_btn next" id="to_step2"><i></i>Далее</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="step2_block">
+
+          <div class="fl fl_in_popup">
+
+              <!-- form block -->
+              <div class="calendar_block lite_placeholder">
+                  <input class="input_for_popup" placeholder="ФИО">
+                  <input class="input_for_popup" placeholder="Телефон">
+                  <textarea class="textarea_for_popup" placeholder="Пожелание к заказу"></textarea>
+
+                  <div class="checkbox_block big">
+                      <input type="checkbox" id="check1" class="styled">
+                      <label for="check1">Я хочу получать уведомления о статусе заказа по смс</label>
+                  </div>
+              </div>
+              <!-- End form block -->
+          </div>
+
+          <div class="fr">
+              <article class="catalog_item bordered in_popup">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              <span class="rest_name_in_popup">English Breakfast</span>
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                          </div>
+                      </header>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating small static stars_in_popup">
+                          <div class="value" style="width: 72%"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+          </div>
+
+          <div class="clear"></div>
+
+          <div class="tell_and_nav">
+              <div class="inline_block">
+                  <span class="popup_down_caption">Забронировать по телефону:</span><br>
+                  <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+              </div>
+              <div class="inline_block fr">
+                  <button class="popup_btn prev" id="back_to_step1"><i></i>Назад</button>
+                  <button class="popup_btn next" id="to_step3"><i></i>Далее</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="step3_block">
+
+          <div class="fl fl_in_popup">
+
+              <!-- form block -->
+              <div class="calendar_block lite_placeholder">
+                  <span class="popup_down_caption no_margin">Дата брони</span><br>
+                  <span class="popup_itog_date">Понедельник, 30 сентября</span>
+
+                  <div class="fl itog_block small">
+                      <span class="popup_down_caption no_margin in_popup_small_itog">Кол-во персон</span><br>
+                      <span class="itog_huge_text">3</span>
+                  </div>
+                  <div class="fl itog_block small left">
+                      <span class="popup_down_caption no_margin in_popup_small_itog">Время</span><br>
+                      <span class="itog_huge_text">16:00</span>
+                  </div>
+
+                  <div class="clear"></div>
+
+                  <div class="itog_block big">
+                      <span class="smoking"></span>
+                      <span class="popup_down_caption t1">Зал для курящих</span>
+                  </div>
+
+
+              </div>
+              <!-- End form block -->
+          </div>
+
+          <div class="fr">
+              <article class="catalog_item bordered in_popup">
+                  <a href="#">
+                      <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                      <header>
+                          <div>
+                              <span class="rest_name_in_popup">English Breakfast</span>
+                              <small>ул. Арбат, д. 9, 2 этаж</small>
+                          </div>
+                      </header>
+                      <div class="blur_darck_bg"></div>
+                      <div class="stars_rating small static stars_in_popup">
+                          <div class="value" style="width: 72%"></div>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                      </div>
+                      <footer>
+                          <div class="rating">
+                              <ul>
+                                  <li>Кухня <span class="value">4.5</span></li>
+                                  <li>Сервис <span class="value">4.5</span></li>
+                                  <li>Интерьер <span class="value">4.5</span></li>
+                              </ul>
+                          </div>
+                      </footer>
+                  </a>
+              </article>
+          </div>
+
+          <div class="clear"></div>
+
+          <div class="tell_and_nav">
+              <div class="inline_block">
+                  <span class="popup_down_caption">Забронировать по телефону:</span><br>
+                  <span class="popup_telephone">+7 495 221 22 22</span><span class="free_usl">Бесплатная услуга</span>
+              </div>
+              <div class="inline_block fr">
+                  <button class="popup_booking_finish_btn">Забронировать</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="modal finish_table_booking">
+      <button class="finish_table_booking_btn"><span class="finish_booking_ok"></span> <span class="btn_name">Ваша заявка принята</span></button>
+  </div>
+
+  <div class="background_window"></div>
+  <!--==== end pop_up ====-->
+
+<div class="popover_bg"></div>
+
+
+  <div id="wrapper">
+  <!-- HEADER -->
+  <header class="wrapper header">
+      <div class="container container_restoran">
+
+          <div class="free_order_block restoran_order">
+              <div class="free_order">
+                  <a href="#" class="close"></a>
+                  <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                  <div class="phone">+7 495 221 22 22</div>
+              </div>
+          </div>
+
+          <div class="header_logo header_logo_restoran">
+              <a href="#">
+                  <img src="css/img/logo.png"  alt="logo"/>
+              </a>
+              <div class="header_lang">
+                  <a href="#">Eng</a>
+              </div>
+              <div class="city">
+                  <div class="name_city">
+                      <div class="blur_bg"></div>
+                      Архангельск
+                  </div>
+                  <ul>
+                      <li><a href="#">Москва</a></li>
+                      <li><a href="#">Белгород</a></li>
+                      <li><a href="#">Ставрополь</a></li>
+                      <li><a href="#">Курск</a></li>
+                      <li><a href="#">Железногорск</a></li>
+                  </ul>
+              </div>
+              <div class="clear"></div>
+
+          </div>
+          <div class="header_rigth_info header_righ_info_restoran">
+              <p class="text1">+7 495 221 22 22</p>
+              <p class="text2">8 800 221 22 22</p>
+              <a href="#" class="header_btn float_fr" >Вход / Регистрация</a>
+          </div>
+          <div class="header_center_small">
+              <div class="float_fl header_center_block first"><img src="css/img/tarelka.png" alt="ico"/> <a href="" class="header_center_link"><span>Забронировать <br>Столик</span></a></div>
+              <div class="float_fl header_center_block"><img src="css/img/bokal.png" alt="ico"/> <a href="" class="header_center_link"><span>Заказать<br>Банкет</span></a></div>
+              <div class="float_fl header_center_block"><img src="css/img/comment_smile.png" alt="ico"/> <a href="" class="header_center_link"><span>Бесплатная<br>Консультация
+                </span></a></div>
+          </div>
+
+      </div>
+      <div class="clear"></div>
+      <nav class="container services_nav">
+          <ul>
+              <li class="restaurant">
+                  <a href="#"><span>Рестораны</span></a>
+              </li>
+              <li class="feast">
+                  <a href="#"><span>Банкеты</span></a>
+              </li>
+              <li class="wedding">
+                  <a href="#"><span>Свадьбы</span></a>
+              </li>
+              <li class="night_life">
+                  <a href="#"><span>Ночная жизнь</span></a>
+              </li>
+          </ul>
+      </nav>
+      <div class="container restoran_nav_2">
+          <nav class="header_nav-2">
+              <ul>
+                  <li><a href="#">Афиша</a></li>
+                  <li><a href="#">Рейтинги</a></li>
+                  <li><a href="#">Отзывы</a></li>
+                  <li><a href="#">Обзоры</a></li>
+                  <li><a href="#">Критика</a></li>
+                  <li><a href="#">Новости</a></li>
+                  <li><a href="#">Фото-отчеты</a></li>
+                  <li><a href="#">Рецепт от Шефа</a></li>
+                  <li><a href="#">Полезное</a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  <!-- END HEADER -->
+
+     <section class="wrapper">
+        <div class="container with_ads_left">
+            <div class="rest_block">
+
+                <div class="clear"></div>
+
+
+                <div class="clear"></div>
+                <div class="banner">
+                    <a href="#" class="banner_1"></a>
+                    <!--<div class="banner_height"></div>-->
+                </div>
+                <div class="clear"></div>
+
+
+                <div class="bread_crumbs">
+                    <a href="#">Главная</a>
+                    <a href="#">Новости</a>
+                </div>
+
+                <div class="fr pr_nxt_new_btn_top_block">
+                    <button class="pr_nxt_new_btn prev">Предыдущая</button>
+                    <button class="pr_nxt_new_btn next">Следующая</button>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="news_title_block">
+                    <span class="part_title_small for_one_news">Открылся новый ресторан Figure of Food</span>
+                </div>
+
+               <div class="one_news_top_line">
+                   <span class="date">10 янв 2013</span>
+
+                   <div class="one_news_top_line_comments">
+                       <span class="comm_text">
+                           <span class="num">76</span>
+                           <span class="comm">комментариев</span>
+                       </span>
+
+                   </div>
+                   <!--<span class="caption blue_caption float_fl for_news ">52</span>-->
+
+                   <div class="social_block">
+                       <div class="fb_share">
+                           <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                       </div>
+
+                       <div class="twitter_share">
+                           <a href="https://twitter.com/share" class="twitter-share-button" data-via="Andrey_Attract">Tweet</a>
+                           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                       </div>
+
+                       <div class="g_plus_share">
+                           <!-- Place this tag where you want the +1 button to render. -->
+                           <div class="g-plusone" data-size="medium"></div>
+                       </div>
+
+                       <div class="vk_share">
+                           <span class="vk_like"></span>
+                       </div>
+
+                   </div>
+               </div>
+
+                <div class="clear"></div>
+
+
+                <div class="news_wpapper">
+                    <img src="images/news_item-1.jpg"  alt="news_item-1"/>
+
+                    <p>
+                        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee. Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to
+                        And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, keeper and the.
+                    </p>
+
+                    <p>
+                        My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?
+                    </p>
+
+                    <p>
+                        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?
+                    </p>
+
+                    <p>
+                        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.My money's in that office, right? If she start giving me some bullshit about it ain't there, and we got to go someplace else and get it, I'm gonna shoot you in the head then and there. Then I'm gonna shoot that bitch in the kneecaps, find out where my goddamn money is. She gonna tell me too. Hey, look at me when I'm talking to you, motherfucker. You listen: we go in there, and that nigga Winston or anybody else is in there, you the first motherfucker to get shot. You understand?
+                    </p>
+
+                    <p>
+                        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
+                    </p>
+                </div>
+
+
+                <div class="fr pr_nxt_new_btn_bottom_block">
+                    <button class="pr_nxt_new_btn prev">Предыдущая</button>
+                    <button class="pr_nxt_new_btn next">Следующая</button>
+                </div>
+
+                <div class="clear"></div>
+
+                <!-- Ресторанная критика -->
+                <div class="block_caption">Ресторанная критика</div>
+                <div class="crit">
+                    <div class="slide_right_buttons black">
+                        <a href="#" class="slider_nav_next" id="crit-next"></a>
+                        <a href="#" class="slider_nav_prev" id="crit-prev"></a>
+                        <a href="#" class="more">Все</a>
+                    </div>
+
+                    <div class="main_page_slider3_body">
+                        <div class="list_carousel">
+                            <ul   class="main_page_slider3">
+                                <li>
+                                    <article>
+                                        <a href="#">
+                                            <div class="text_article crit_item">
+                                                <img src="images/crit_item-1.jpg"  alt="crit_item-1"/>
+                                                <div class="date">
+                                                    <div class="crit_rating val-7"></div>
+                                                    10 янв 2013
+                                                </div>
+                                                <div class="text">
+                                                    <div class="name">
+                                                        Figure of Food
+                                                        <br>
+                                                        <span class="blue">Великолепный интерьер</span>
+                                                    </div>
+                                                    <p>
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <a href="#">
+                                            <div class="text_article crit_item">
+                                                <img src="images/crit_item-2.jpg"  alt="crit_item-1"/>
+                                                <div class="date">
+                                                    <div class="crit_rating val-2"></div>
+                                                    10 янв 2013
+                                                </div>
+                                                <div class="text">
+                                                    <div class="name">
+                                                        United Colors of Food
+                                                        <br>
+                                                        <span class="blue">Ужасная организация пространства</span>
+                                                    </div>
+                                                    <p>
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <a href="#">
+                                            <div class="text_article crit_item">
+                                                <img src="images/crit_item-1.jpg" width="433" height="341" alt="crit_item-1"/>
+                                                <div class="date">
+                                                    <div class="crit_rating val-7"></div>
+                                                    10 янв 2013
+                                                </div>
+                                                <div class="text">
+                                                    <div class="name">
+                                                        Figure of Food
+                                                        <br>
+                                                        <span class="blue">Великолепный интерьер</span>
+                                                    </div>
+                                                    <p>
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </li>
+                                <li>
+                                    <article>
+                                        <a href="#">
+                                            <div class="text_article crit_item">
+                                                <img src="images/crit_item-2.jpg" width="433" height="341" alt="crit_item-1"/>
+                                                <div class="date">
+                                                    <div class="crit_rating val-2"></div>
+                                                    10 янв 2013
+                                                </div>
+                                                <div class="text">
+                                                    <div class="name">
+                                                        United Colors of Food
+                                                        <br>
+                                                        <span class="blue">Ужасная организация пространства</span>
+                                                    </div>
+                                                    <p>
+                                                        Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic. I'm not a mistake! It all makes sense…
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+            </div>
+        </div>
+
+        <!-- Реклама -->
+        <aside class="sidebar_right ad_hide in_news_ad">
+
+        <div class="ad_wrapper">
+        <div class="ad">
+        <div class="block_caption_restoran float_fl">Реклама</div>
+        <a class="float_fr link_reklama" href="">Разместить рекламу</a>
+        <div class="clear"></div>
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+
+
+        <div class="float_fr right_side_bunner right_side_bunner_restoran">
+            <a href="#">
+                <img src="images/banner-2.jpg"  alt="banner-2"/>
+            </a>
+        </div>
+
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+
+        <article class="catalog_item bordered in_promo_page">
+            <a href="#">
+                <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+                <header>
+                    <div>
+                        Арбатский
+                        <small>ул. Арбат, д. 9, 2 этаж</small>
+                        <span class="info">?</span>
+                    </div>
+                </header>
+                <div class="fade_text">
+                    Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+                </div>
+                <div class="blur_darck_bg"></div>
+                <div class="stars_rating">
+                    <div class="value"></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <footer>
+                    <div class="rating">
+                        <ul>
+                            <li>Кухня <span class="value">4.5</span></li>
+                            <li>Сервис <span class="value">4.5</span></li>
+                            <li>Интерьер <span class="value">4.5</span></li>
+                        </ul>
+                    </div>
+                </footer>
+            </a>
+        </article>
+        </div>
+        </div>
+        </aside>
+        <!-- End -->
+
+
+      </section>
+
+  <div class="clear"></div>
+
+
+
+  <footer class="wrapper footer">
+      <div class="container">
+          <div class="footer_logo">
+              <a href="#">
+                  <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+              </a>
+          </div>
+          <nav class="footer_nav">
+              <ul>
+                  <li><a href="#">Афиша</a></li>
+                  <li><a href="#">Новости</a></li>
+                  <li><a href="#">Рейтинги</a></li>
+                  <li><a href="#">Фото-отчеты</a></li>
+                  <li><a href="#">Отзывы</a></li>
+                  <li><a href="#">Рецепт от Шефа</a></li>
+                  <li><a href="#">Обзоры</a></li>
+                  <li><a href="#">Полезное</a></li>
+                  <li><a href="#">Критика</a></li>
+              </ul>
+          </nav>
+          <nav class="footer_services_nav">
+              <ul>
+                  <li><a href="#">Рестораны</a></li>
+                  <li><a href="#">Банкеты</a></li>
+                  <li><a href="#">Свадьбы</a></li>
+                  <li><a href="#">Мероприятия</a></li>
+              </ul>
+          </nav>
+          <div class="project_owner">
+              Project of company
+              <a href="#">
+                  <img src="css/img/project_owner.png"  alt="project_owner"/>
+              </a>
+          </div>
+          <div class="footer_contacts">
+              <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+              <ul>
+                  <li>
+                      <a href="#">Реклама на сайте</a>
+                  </li>
+                  <li>
+                      <a href="#">Контакты</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="clear"></div>
+          <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+      </div>
+  </footer>
+    </div>
+
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+
+  </body>
+</html>

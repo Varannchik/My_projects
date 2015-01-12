@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <title>Article</title>
+
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_afisha.css">
+    <link rel="stylesheet" href="css/style_article.css">
+    <link rel="stylesheet" href="css/and_style.css">
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+    <!--
+        Подключаем API карт
+        Параметры:
+            - load=package.standard - основные компоненты;
+            - lang=ru-RU - язык русский.
+    -->
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&amp;lang=ru-RU" type="text/javascript"></script>
+
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript"  src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript"  src="js/placeholder.js"></script>
+
+    <!-- optionally include helper plugins -->
+    <script type="text/javascript"  src="js/helper-plugins/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript"  src="js/helper-plugins/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript"  src="js/helper-plugins/jquery.transit.min.js"></script>
+    <script type="text/javascript"  src="js/helper-plugins/jquery.ba-throttle-debounce.min.js"></script>
+
+
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/jquery.highlight-4.closure.js"></script>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/main_page.js"></script>
+
+
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+    <script>
+		var slider_timer;
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+            if($('input[type="radio"]').size()>0) $('input[type="radio"]').uniform();
+
+
+
+            <!--slider-->
+            $('.slider_element li').on('click',function(){
+				var active=$(this);
+				var all=$('.slider_element li');
+				var index=all.index(active);
+				var article_slider = $(".article_slider");
+				article_slider.trigger("finish");
+				article_slider.trigger("slideTo", index);
+				$('.slider_element li').removeClass('active');
+				$(this).addClass('active');
+            });
+            <!--End slider-->
+
+            <!--менюшка-выпадалка-->
+            $('.big_nav li').on('click', function(){
+                $('.big_nav li').not(this).find('a').removeClass('active');
+                $(this).find('a').addClass('active');
+                return false;
+            });
+            <!--End менюшка-выпадалка-->
+			
+			$('.article_slider').carouFredSel({
+            responsive: true,
+            auto:5000,
+            width: '100%',
+            scroll:{
+                items: 1,
+                fx:'uncover',
+                duration: 500,
+				onBefore:function(){$('.text_slider').animate({top:'-100px'},300);					var active=$('.slider_element li.active');
+					var all=$('.slider_element li');
+					var size=$('.slider_element li').size();
+					var index=all.index(active)+1;
+					if(index>=size){index=0;}
+					$('.slider_element li').removeClass('active');
+					$('.slider_element li').eq(index).addClass('active');	},
+				onAfter:function(e,event){$('.text_slider').animate({top:'10px'},300);
+					
+				}
+            },
+            items: {
+                height: 175,
+                visible: {
+                    min: 1,
+                    max: 1
+                }
+            }
+        });
+        });
+
+    </script>
+
+
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom/css/flick/jquery-ui-1.10.3.custom.css">
+    <script src="js/ui/jquery.ui.core.js"></script>
+    <script src="js/ui/jquery.ui.widget.js"></script>
+    <script src="js/ui/jquery.ui.datepicker.js"></script>
+
+    <!--[if IE 8]>
+    <script src="js/ie8.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!--[if lt IE 8]>
+<style>
+    #wrapper{display:none;}
+</style>
+<div style='text-align:center;'>
+    <br><br>
+    <header><a href="index.html" class="logo" style="float:none;"><img src="css/img/logo.png" alt=""></a></header>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+
+<div class="popover_bg"></div>
+
+<div id="wrapper">
+<!-- HEADER -->
+<header class="wrapper header">
+    <div class="container container_restoran">
+
+        <div class="free_order_block restoran_order">
+            <div class="free_order">
+                <a href="#" class="close"></a>
+                <a href="#" class="order">Бесплатно<br><small>Заказать столик</small></a>
+                <div class="phone">+7 495 221 22 22</div>
+            </div>
+        </div>
+
+        <div class="header_logo header_logo_restoran">
+            <a href="#">
+                <img src="css/img/logo.png"  alt="logo"/>
+            </a>
+            <div class="header_lang">
+                <a href="#">Eng</a>
+            </div>
+            <div class="city">
+                <div class="name_city">
+                    <div class="blur_bg"></div>
+                    Архангельск
+                </div>
+                <ul>
+                    <li><a href="#">Москва</a></li>
+                    <li><a href="#">Белгород</a></li>
+                    <li><a href="#">Ставрополь</a></li>
+                    <li><a href="#">Курск</a></li>
+                    <li><a href="#">Железногорск</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <div class="header_rigth_info header_righ_info_restoran">
+            <p class="text1">+7 495 221 22 22</p>
+            <p class="text2">8 800 221 22 22</p>
+            <a href="#" class="header_btn float_fr" >Вход / Регистрация</a>
+        </div>
+        <div class="header_center_small">
+            <div class="float_fl header_center_block first"><img src="css/img/tarelka.png" alt="ico"/> <a href="" class="header_center_link"><span>Забронировать <br>Столик</span></a></div>
+            <div class="float_fl header_center_block"><img src="css/img/bokal.png" alt="ico"/> <a href="" class="header_center_link"><span>Заказать<br>Банкет</span></a></div>
+            <div class="float_fl header_center_block"><img src="css/img/comment_smile.png" alt="ico"/> <a href="" class="header_center_link"><span>Бесплатная<br>Консультация
+                </span></a></div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+    <nav class="container services_nav">
+        <ul>
+            <li class="restaurant">
+                <a href="#"><span>Рестораны</span></a>
+            </li>
+            <li class="feast">
+                <a href="#"><span>Банкеты</span></a>
+            </li>
+            <li class="wedding">
+                <a href="#"><span>Свадьбы</span></a>
+            </li>
+            <li class="night_life">
+                <a href="#"><span>Ночная жизнь</span></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container restoran_nav_2">
+        <nav class="header_nav-2">
+            <ul>
+                <li><a href="#">Афиша</a></li>
+                <li><a href="#">Рейтинги</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Обзоры</a></li>
+                <li><a href="#">Критика</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Фото-отчеты</a></li>
+                <li><a href="#">Рецепт от Шефа</a></li>
+                <li><a href="#">Полезное</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- END HEADER -->
+
+<div class="banner">
+    <a href="#" class="banner_1"></a>
+</div>
+<div class="clear"></div>
+
+<section class="wrapper">
+<div class="container">
+<!-- Реклама -->
+<aside class="sidebar_right_reclama">
+<div class="right_link">
+    <a href="#">Удивительные рестораны</a>
+    <a href="#">Секс и отношения</a>
+    <a href="#">Звезды</a>
+    <a href="#">Мода</a>
+    <a href="#">Красота</a>
+    <a href="#">Похудей!</a>
+    <a href="#">Готовим дома</a>
+    <a href="#"></a>
+</div>
+<div class="block_caption_restoran float_fl">Реклама</div>
+<a class="float_fr link_reklama" href="">Разместить рекламу</a>
+<div class="clear"></div>
+<div class="ad">
+
+<div class="clear"></div>
+
+<div class="float_fr right_side_bunner right_side_bunner_restoran">
+    <a href="#">
+        <img src="images/banner-2.jpg"  alt="banner-2"/>
+    </a>
+</div>
+<div class="clear"></div>
+
+    <div class="green_menu">
+        <header class="green_header">
+            <div class="text_gree_block">
+                <img src="css/img/spoon@vilka.png" alt=""/>
+            <span>
+                Рецепты
+            </span>
+            </div>
+        </header>
+        <a href=""><img src="css/img/arrow_green_block.png" alt=""/>От редакции</a>
+        <a href=""><img src="css/img/arrow_green_block.png" alt=""/>От пользователей</a>
+        <a href=""><img src="css/img/arrow_green_block.png" alt=""/>От звезд</a>
+    </div>
+    <div class="clear"></div>
+
+<article class="catalog_item bordered">
+    <a href="#">
+        <img src="images/catalog_item-2.jpg"  alt="catalog_item-1"/>
+        <header>
+            <div>
+                Арбатский
+                <small>ул. Арбат, д. 9, 2 этаж</small>
+                <span class="info">?</span>
+            </div>
+        </header>
+        <div class="fade_text">
+            Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+        </div>
+        <div class="blur_darck_bg"></div>
+        <div class="stars_rating">
+            <div class="value"></div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <footer>
+            <div class="rating">
+                <ul>
+                    <li>Кухня <span class="value">4.5</span></li>
+                    <li>Сервис <span class="value">4.5</span></li>
+                    <li>Интерьер <span class="value">4.5</span></li>
+                </ul>
+            </div>
+        </footer>
+    </a>
+</article>
+
+<article class="catalog_item bordered">
+    <a href="#">
+        <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+        <header>
+            <div>
+                Арбатский
+                <small>ул. Арбат, д. 9, 2 этаж</small>
+                <span class="info">?</span>
+            </div>
+        </header>
+        <div class="fade_text">
+            Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+        </div>
+        <div class="blur_darck_bg"></div>
+        <div class="stars_rating">
+            <div class="value"></div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <footer>
+            <div class="rating">
+                <ul>
+                    <li>Кухня <span class="value">4.5</span></li>
+                    <li>Сервис <span class="value">4.5</span></li>
+                    <li>Интерьер <span class="value">4.5</span></li>
+                </ul>
+            </div>
+        </footer>
+    </a>
+</article>
+
+    <article class="catalog_item bordered">
+        <a href="#">
+            <img src="images/catalog_item-1.jpg"  alt="catalog_item-1"/>
+            <header>
+                <div>
+                    Арбатский
+                    <small>ул. Арбат, д. 9, 2 этаж</small>
+                    <span class="info">?</span>
+                </div>
+            </header>
+            <div class="fade_text">
+                Ресторан-бар Облака предлагает удобно расположиться на одной из двух теплых веранд в удобных креслах и диванах из ротанга или в воздушных белоснежных кабинах в зоне chill-out. Накрывшись теплым пледом…
+            </div>
+            <div class="blur_darck_bg"></div>
+            <div class="stars_rating">
+                <div class="value"></div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <footer>
+                <div class="rating">
+                    <ul>
+                        <li>Кухня <span class="value">4.5</span></li>
+                        <li>Сервис <span class="value">4.5</span></li>
+                        <li>Интерьер <span class="value">4.5</span></li>
+                    </ul>
+                </div>
+            </footer>
+        </a>
+    </article>
+
+    <div class="interview">
+        <header>Опрос недели</header>
+        <div class="blue_radio_block">
+            <p>Покупаете ли вы одежду в Интернете?</p>
+            <input type="radio" name="vote_type" id="type1"> <label for="type1" class="blue_type_label">Да, мне нравится онлайн-шопиг - я все так покупаю</label><div class="clear"></div>
+            <input type="radio" name="vote_type" id="type2"> <label for="type2" class="blue_type_label">После неудачного опыта я стараюсь ничего не покупать в Интернете</label><div class="clear"></div>
+            <input type="radio" name="vote_type" id="type3"> <label for="type3" class="blue_type_label">Я заказываю вещи очень редко, если не могу подобное найти в магазинах</label><div class="clear"></div>
+            <input type="radio" name="vote_type" id="type4"> <label for="type4" class="blue_type_label">Нет, я ни разу не пользовалась услугами Интернет-магазинов</label><div class="clear"></div>
+            <button class="vote float_fl">Голосовать</button>
+            <a href="#" class="float_fr">Архив</a>
+            <a href="#" class="float_fr">Результаты</a>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</div>
+</aside>
+<!-- End -->
+
+<div class="article article2">
+    <div class="articles_nav">
+        <ul class="big_nav">
+            <li>
+                <a href="#" class="active"><i></i>Удивительные рестораны</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Секс и отношения</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>           
+            </li>
+            <li>
+                <a href="#"><i></i>Звезды</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Мода</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Красота</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Похудей!</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Готовим дома</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i></i>Путешествия</a>
+                <ul class="small_menu">
+                    <li><a href="#">Светская жизнь</a></li>
+                    <li><a href="#">Интервью</a></li>
+                    <li><a href="#">Великие истории любви</a></li>
+                    <li><a href="#">Зведный совет</a></li>
+                    <li><a href="#">История успеха</a></li>
+                </ul></li>
+        </ul>
+    </div>
+
+    <div class="slider_closes" >
+         <div class="slider_general" >
+             
+			  <ul class="article_slider">
+				  <li>
+					  <p class="text_slider"> Как выбрать себе одежду по фигуре </p>
+					  <img src="images/slider_article.jpg" alt="">
+				  </li>
+
+				  <li>
+					  <p class="text_slider"> Как выбрать себе одежду по фигуре2 </p>
+					  <img src="images/slider_article.jpg" alt="">
+				  </li>
+
+				  <li>
+					  <p class="text_slider"> Как выбрать себе одежду по фигуре3 </p>
+					  <img src="images/slider_article.jpg" alt="">
+				  </li>
+
+				  <li>
+					  <p class="text_slider"> Как выбрать себе одежду по фигуре4 </p>
+					  <img src="images/slider_article.jpg" alt="">
+				  </li>
+
+				  <li>
+					  <p class="text_slider"> Как выбрать себе одежду по фигуре5 </p>
+					  <img src="images/slider_article.jpg" alt="">
+				  </li>
+			  </ul>			 
+
+         </div>
+        <ul class="slider_element">
+            <li class="active" data-title="Как выбрать себе одежду по фигуре1" data-img="slider_image1"><img src="images/img_article1.jpg" alt=""/></li>
+            <li data-title="Как выбрать себе одежду по фигуре2" data-img="slider_image2"><img src="images/img_article2.jpg" alt=""/></li>
+            <li data-title="Как выбрать себе одежду по фигуре3" data-img="slider_image3"><img src="images/img_article3.jpg" alt=""/></li>
+            <li data-title="Как выбрать себе одежду по фигуре4" data-img="slider_image4"><img src="images/img_article4.jpg" alt=""/></li>
+            <li data-title="Как выбрать себе одежду по фигуре5" data-img="slider_image5"><img src="images/img_article5.jpg" alt=""/></li>
+        </ul>
+    </div>
+
+    <div class="clear"></div>
+    <h1>Статьи</h1>
+
+    <div class="one_article">
+        <a href="#" class="picture_article float_fl"><img src="images/news_item-1.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013 /</span>
+            <a href="#" class="float_fl">Модные тенденции</a>
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-2.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013 </span>
+
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-3.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013</span>
+
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-1.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013 /</span>
+            <a href="#" class="float_fl">Модные тенденции</a>
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-2.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013 </span>
+
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-3.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013</span>
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="one_article">
+        <a  href="#" class="picture_article float_fl"><img src="images/news_item-1.jpg" alt=""/></a>
+        <div class="some_article">
+            <span class="date float_fl">10 янв 2013 /</span>
+            <a href="#" class="float_fl">Модные тенденции</a>
+            <a href="" class="one_news_top_line_comments"><span class="comm_text">76</span></a>
+            <a href="#" class="name_article">Открылся новый ресторан Figure of Food</a>
+            <div class="line_gray"></div>
+            <p class="some_text">Анастасия Волочкова, которая славится своим экстравагантным стилем, решила одеть и дочь Ариадну на свой вкус. В своем микроблоге Волочкова опубликовала несколько фотографии, на которых ее 8-летняя дочка позирует в замысловатых нарядах. Все в лучших традициях Анастасии – рюши, кружева, стразы и пайетки …</p>
+            <div class="line_gray"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+
+
+    <div class="clear"></div>
+    <div class="main_comment_expand">
+        <a href="#"><span>Показать еще</span></a>
+    </div>
+    <div class="clear"></div>
+    <div class="paginator paginator_center">
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li><img src="images/paginator_arrow.png" alt=""/></li>
+            <li class="none">...</li>
+            <li>70</li>
+        </ul>
+    </div>
+</div>
+
+
+
+</div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="wrapper footer">
+    <div class="container">
+        <div class="footer_logo">
+            <a href="#">
+                <img src="css/img/logo-footer.png"  alt="logo-footer"/>
+            </a>
+        </div>
+        <nav class="footer_nav">
+            <ul>
+                <li><a href="#">Афиша</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Рейтинги</a></li>
+                <li><a href="#">Фото-отчеты</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Рецепт от Шефа</a></li>
+                <li><a href="#">Обзоры</a></li>
+                <li><a href="#">Полезное</a></li>
+                <li><a href="#">Критика</a></li>
+            </ul>
+        </nav>
+        <nav class="footer_services_nav">
+            <ul>
+                <li><a href="#">Рестораны</a></li>
+                <li><a href="#">Банкеты</a></li>
+                <li><a href="#">Свадьбы</a></li>
+                <li><a href="#">Мероприятия</a></li>
+            </ul>
+        </nav>
+        <div class="project_owner">
+            Project of company
+            <a href="#">
+                <img src="css/img/project_owner.png"  alt="project_owner"/>
+            </a>
+        </div>
+        <div class="footer_contacts">
+            <a href="tel:+74958008080" class="phone">+7 495 800 80 80</a>
+            <ul>
+                <li>
+                    <a href="#">Реклама на сайте</a>
+                </li>
+                <li>
+                    <a href="#">Контакты</a>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="copyright">© 2013 Вилка. Все права защищены <span class="age">16+</span></div>
+    </div>
+</footer>
+<!-- END FOOTER -->
+</div>
+
+</body>
+</html>

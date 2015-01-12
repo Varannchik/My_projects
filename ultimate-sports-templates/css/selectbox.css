@@ -1,0 +1,97 @@
+.selectbox {
+	vertical-align: middle;
+	cursor: pointer;
+    width: 100%;
+}
+.selectbox .select {
+    color: #fff;
+    padding: 0 10px;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+    border: none;
+    text-transform: uppercase;
+    width: 100%;
+    height: 35px;
+    background: transparent;
+
+}
+/*.selectbox .select:hover {*/
+	/*background-color: #E6E6E6;*/
+	/*background-position: 0 -10px;*/
+/*}*/
+/*.selectbox .select:active {*/
+	/*background: #f5f5f5;*/
+	/*box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);*/
+/*}*/
+.selectbox.focused .select {
+	border: 1px solid #5794BF;
+}
+.selectbox .select .text {
+	display: block;
+	width: 100%;
+    line-height: 35px;
+    text-align: left;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+/*.selectbox .trigger {*/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*right: 0;*/
+	/*width: 34px;*/
+	/*height: 100%;*/
+	/*border-left: 1px solid #CCC;*/
+/*}*/
+.selectbox .trigger .arrow {
+	position: absolute;
+	top: 17px;
+	right: 30px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 3px solid #fff;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	/*opacity: 0.3;*/
+	/*filter: alpha(opacity=30);*/
+}
+.selectbox:hover .arrow {
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+.selectbox .dropdown {
+	top: 35px!important;
+    height: auto;
+	width: 100%;
+	margin: 0;
+    padding: 4px 0;
+    background: #373737;
+    border: none;
+
+}
+.selectbox li {
+    font-size:12px;
+    padding: 0 15px;
+    line-height: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+	color: #fff;
+    background: none;
+}
+/*.selectbox li.selected {*/
+	/*background: #A3ABB1;*/
+	/*color: #FFF;*/
+/*}*/
+.selectbox li:hover {
+	background: #A3ABB1;
+	color: #FFF;
+}
+/*.selectbox li.disabled {*/
+	/*color: #AAA;*/
+/*}*/
+/*.selectbox li.disabled:hover {*/
+	/*background: none;*/
+/*}*/

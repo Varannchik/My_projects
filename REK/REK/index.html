@@ -1,0 +1,401 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,   user-scalable=false" />
+    <link href="images/favicon.png" type="image/png" rel="icon">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+	<!--[if IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+
+    <link rel="stylesheet" href="css/touchcarousel.css" />
+    <script src="js/jquery.touchcarousel-1.1.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 1600,
+                autoScaleSliderHeight: 424,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: true,
+                    pauseOnHover: true,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+
+            $("#carousel-image-text-horizontal").touchCarousel({
+                itemsPerMove: 1,
+                pagingNav: true,
+                scrollbar: false,
+                scrollToLast: true,
+                loopItems: false
+            });
+        });
+    </script>
+
+    <title>РЕК</title>
+
+
+</head>
+
+<body class="main_page">
+  	<!--[if lt IE 8]> 
+		<style>
+			.wrapper,footer{display:none;}
+		</style>
+		<div style='text-align:center;'>
+            <header style="text-align:center;padding:20px"><a href="index.html" class="logo" style="float:none;"><img src="images/logo.png" alt=""></a></header>
+			<br><br><br>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+				<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+	<![endif]-->
+
+
+	<div class="wrapper">
+		<header>
+			<div class="header_body">
+				<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+				<div class="header_btn">
+                    <div class="search_block">
+                        <div id="sb-search" class="sb-search">
+                            <form>
+                                <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div>
+					<div class="btn red login_btn">Вход</div>
+				</div>
+
+				<div class="menu">             
+					<nav>
+						<ul>
+							<li class="active"><a href="index.html">Новости</a></li>
+							<li><a href="#">Услуги</a></li>
+							<li><a href="#">Портфолио</a></li>
+							<li><a href="#">Дикторы</a></li>
+							<li><a href="#">Студии</a></li>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</nav>                    
+				</div>				
+			</div>
+		</header>
+		
+        <div id="main_page_slider" class="royalSlider heroSlider rsMinW">
+            <div class="rsContent">
+                <div class="slider_content">
+                    <img src="images/main_slider.jpg" alt="" style="width:100%">
+                    <div class="slider_text">
+                        <div class="slider_text1">WELCOME TO <span>Recsquare</span></div>
+                        <div class="slider_text2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rsContent">
+                <div class="slider_content">
+                    <img src="images/main_slider.jpg" alt="" style="width:100%">
+                    <div class="slider_text">
+                        Slide2
+                    </div>
+                </div>
+            </div>
+            <div class="rsContent">
+                <div class="slider_content">
+                    <img src="images/main_slider.jpg" alt="" style="width:100%">
+                    <div class="slider_text">
+                        Slide3
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div class="contant">
+            <a href="#" class="red_title_link">Все новости »</a>
+            <h2>Новости</h2>
+            <div class="main_news">
+                <div class="main_news1">
+                    <div class="main_news1">
+                        <div class="main_news1_image">
+                            <img src="images/main_new1.jpg" alt="">
+                        </div>
+                        <div class="main_news1_contant">
+                            <div class="main_news_contant">
+                                <div class="main_news_title">Lorem Ipsum is simply dummy text of the printing...</div>
+                                <div class="main_news_line"></div>
+                                <div class="main_news_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. <a href="#">Подробнее »</a></div>
+                                <div class="main_news_data">
+                                    18 июня 2013
+                                </div>
+                                <a href="#" class="main_news_comment">
+                                    Комментарии 2
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_news_left">
+                        <div class="main_news2_image">
+                            <img src="images/main_new2.jpg" alt="">
+                        </div>
+                        <div class="main_news2">
+                            <div class="main_news2_contant">
+                                <div class="main_news_contant">
+                                    <div class="main_news_title">Lorem Ipsum is simply dummy text of the printing...</div>
+                                    <div class="main_news_line"></div>
+                                    <div class="main_news_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. <a href="#">Подробнее »</a></div>
+                                    <div class="main_news_data">
+                                        18 июня 2013
+                                    </div>
+                                    <a href="#" class="main_news_comment">
+                                        Комментарии 2
+                                    </a>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main_news3">
+                            <div class="main_news3_image">
+                                <img src="images/main_new3.jpg" alt="">
+                            </div>
+                            <div class="main_news3_contant">
+                                <div class="main_news_contant">
+                                    <div class="main_news_title">Lorem Ipsum is simply dummy text of the printing...</div>
+                                    <div class="main_news_line"></div>
+                                    <div class="main_news_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. <a href="#">Подробнее »</a></div>
+                                    <div class="main_news_data">
+                                        18 июня 2013
+                                    </div>
+                                    <a href="#" class="main_news_comment">
+                                        Комментарии 2
+                                    </a>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_news4">
+                        <div class="main_news4_image">
+                            <img src="images/main_new4.jpg" alt="">
+                        </div>
+                        <div class="main_news4_contant">
+                            <div class="main_news_contant">
+                                <div class="main_news_title">Lorem Ipsum is simply dummy text of the printing...</div>
+                                <div class="main_news_line"></div>
+                                <div class="main_news_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. <a href="#">Подробнее »</a></div>
+                                <div class="main_news_data">
+                                    18 июня 2013
+                                </div>
+                                <a href="#" class="main_news_comment">
+                                    Комментарии 2
+                                </a>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="clear10"></div>
+
+            <div class="gray_line"></div>
+
+            <a href="#" class="red_title_link">Все работы »</a>
+            <h2>Последние работы</h2>
+
+            <div class="main_portfolio_content">
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio1.jpg" alt="">
+                        <div class="music_label"><div class="portfolio_label_text">Радиоролик ресторана Тинатин<span>Аудио</span></div></div>
+                    </div>
+                </a>
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio2.jpg" alt="">
+                        <div class="music_label"><div class="portfolio_label_text">Радиоролик ресторана Тинатин<span>Аудио</span></div></div>
+                    </div>
+                </a>
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio3.jpg" alt="">
+                        <div class="video_label"><div class="portfolio_label_text">Видеоролик ресторана Тинатин<span>Видео</span></div></div>
+                    </div>
+                </a>
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio1.jpg" alt="">
+                        <div class="music_label"><div class="portfolio_label_text">Радиоролик ресторана Тинатин<span>Аудио</span></div></div>
+                    </div>
+                </a>
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio2.jpg" alt="">
+                        <div class="music_label"><div class="portfolio_label_text">Радиоролик ресторана Тинатин<span>Аудио</span></div></div>
+                    </div>
+                </a>
+                <a href="#" class="main_portfolio_block">
+                    <div class="main_portfolio_item">
+                        <img src="images/portfolio3.jpg" alt="">
+                        <div class="video_label"><div class="portfolio_label_text">Видеоролик ресторана Тинатин<span>Видео</span></div></div>
+                    </div>
+                </a>
+
+                <div class="clear"></div>
+            </div>
+
+            <div class="gray_line"></div>
+
+            <a href="#" class="red_title_link">Все дикторы »</a>
+            <h2 class="gray_title">Лучшие дикторы</h2>
+
+			<div id="carousel-image-text-horizontal" class="touchcarousel  three-d">
+                <ul class="touchcarousel-container">
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor1.jpg" alt=""></span>
+                            <span class="slider_block_text">Elena Solov'eva</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor2.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor3.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor1.jpg" alt=""></span>
+                            <span class="slider_block_text">Elena Solov'eva</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor2.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor3.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor3.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor1.jpg" alt=""></span>
+                            <span class="slider_block_text">Elena Solov'eva</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor2.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                    <li class="touchcarousel-item">
+                        <a href="#" class="slider_block">
+                            <span class="slider_block_image"><img src="images/dictor3.jpg" alt=""></span>
+                            <span class="slider_block_text">Sergey Chonishvili</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+			
+        </div>
+		<div class="footer_back"></div>
+	</div>
+	
+	<footer>
+		<div class="footer_body footer_content">
+            <div class="footer_text">
+                <div class="footer_title">Услуги</div>
+                <ul>
+                    <li>Производство рекламных аудио/видео роликов</li>
+                    <li>Копирайт: рекламные ролики, слоганы, тексты презентаций</li>
+                    <li>Запись дикторов, актёров, вокалистов, музыки. </li>
+                    <li>Студия звукозаписи в аренду</li>
+                    <li>Видеостудия в аренду</li>
+                </ul>
+            </div>
+            <div class="footer_contacts">
+                <div class="footer_title">Контакты</div>
+                <div class="footer_address">
+                    <strong>Address:</strong><br>
+                    103 N. Lakeshore Blvd <br>
+                    Marquette, Michigan 49855<br>
+                </div>
+                <div class="footer_phone">
+                    <strong>Phone:</strong><br>
+                    000-000-000-00
+                </div>
+                <div class="footer_email">
+                    <strong>Email:</strong><br>
+                    <a href="#">mail@mail.com</a>
+                </div>
+            </div>
+            <div class="footer_social">
+                <div class="footer_title">Будьте с нами</div>
+                <a href="" class="social_vkontakte"></a>
+                <a href="" class="social_facebook"></a>
+                <a href="" class="social_twitter"></a>
+            </div>
+            <div class="clear"></div>
+		</div>
+        <div class="footer_copyright"><div class="footer_body">Copyright © 2013. RecSquare. Все права защищены.</div></div>
+	</footer>
+
+    <script src="js/classie.js"></script>
+    <script src="js/uisearch.js"></script>
+    <script>
+        new UISearch( document.getElementById( 'sb-search' ) );
+    </script>
+
+</body>
+</html>

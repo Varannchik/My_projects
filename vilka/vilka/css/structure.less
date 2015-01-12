@@ -1,0 +1,135 @@
+/* Wrapper
+-----------------------------------------------------------------------------*/
+#wrapper {
+  max-width: 1600px;
+  min-width: 1024px;
+  margin: 0 auto;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.3);
+  background: #fff;
+}
+  .wrapper {
+    > .container {
+      width: 100%;
+      padding: 0 25px;
+      margin: 0 auto;
+      .bs;
+      .clear_fix;
+      &.pad-0 {
+        padding: 0;
+      }
+    }
+  }
+
+/* Header
+-----------------------------------------------------------------------------*/
+.header {
+  > .container {
+    &:first-child {
+      //background-color: #f9f9f9;
+     // box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+      + .container {
+        padding-top: 26px;
+        padding-bottom: 27px;
+      }
+    }
+  }
+}
+
+/* Has sidebar
+-----------------------------------------------------------------------------*/
+div[class*=has_sidebar], section[class*=has_sidebar] {
+  width: 100%;
+  .clear_fix;
+  .pr;
+  .middle_container {
+    width: 100%;
+    .fl;
+    .middle_content {
+      padding: 0;
+    }
+  }
+  &.has_sidebar-left {
+    .middle_content {
+      padding: 0 0 0 270px;
+    }
+  }
+  &.has_sidebar-right {
+    .middle_content {
+      padding: 0 270px 0 0;
+    }
+  }
+  &.has_sidebar-both {
+    .middle_content {
+      padding: 0 270px 0 270px;
+    }
+  }
+  &.has_sidebar-both-right {
+    .middle_content {
+      padding: 0 520px 0 0;
+    }
+    .sidebar_left {
+      margin-left: -500px;
+      &.before_content {
+        left: 100%;
+      }
+    }
+  } 
+  &.has_sidebar-both-left {
+    .middle_content {
+      padding: 0 0 0 520px;
+    }
+    .sidebar_right {
+      margin-left: -100%;
+      left: 250px;
+      &.before_content {
+        .fl;
+        margin-left: 0;
+        + .middle_container {
+          margin-left: -250px;
+        }
+      }
+    }
+  }
+}
+.sidebar_left {
+  width: 250px;
+  margin-left: -100%;
+  .fl;
+  .pr;
+  &.before_content {
+    margin-left: 0;
+    margin-right: -250px;
+  }
+}
+.sidebar_right {
+  width: 260px;
+  margin-right: -3px;
+  margin-left: -260px;
+  .fl;
+  .pr;
+  &.before_content {
+    float: right;
+    margin-right: 0;
+  }
+}
+
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer {
+  background: #f9f9f9;
+  .pr;
+  > .container {
+    
+  }
+}
+
+
+.float_fl{
+  float: left;
+}
+.float_fr{
+  float: right;
+}

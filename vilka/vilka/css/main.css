@@ -1,0 +1,164 @@
+.content_popover  input.input  {
+	font-size: 16px;
+	font-weight: 400;
+	padding: 3px 15px 3px 15px;
+	letter-spacing: 0.3px;
+	border: none;
+	width: 270px;
+	text-align: left;
+	line-height: 37px;
+	height:37px;
+	background: #fff;
+	border: 1px solid#dbdbdb;
+	border-radius: 7px;
+	margin: 0px 0px 11px;
+}
+input.input:focus
+{
+	border-color:#348efd;
+}
+input.input.error
+{
+	border-color:#ff4444;
+	margin-bottom:0px;
+	color:#ff4444;
+}
+.error_text
+{
+	font-size:13px;
+	color:#ff4444;
+	margin-bottom:11px;
+}
+.regist_content_block
+{
+	min-height:393px;
+}
+.reg,.enter
+{
+	height:auto;
+}
+.enter {
+	padding: 20px 35px 28px 30px;
+}
+.reg .gray_btn,.enter .gray_btn
+{
+	margin-bottom:0px;
+}
+
+.main_comment_container
+{
+	position:relative;
+}
+.main_comment_nav
+{
+	z-index:1;
+}
+.main_comment_buttons 
+{
+	margin-top: -25px;
+	position: relative;
+	z-index: 2;
+	clear: both;
+}
+.restoran_promo_slider_block
+{
+	position:relative;
+}
+.more_link {
+    border-radius: 3px;
+    width: 58px;
+    height: 50px;
+    background: url(img/bg-slider_next-h21-white.png) center center no-repeat #bf1a65;
+    float: right;
+}
+.restoran_promo_slider_active
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index: 9999;
+}
+.restoran_promo_slider_active > div
+{
+	box-shadow:0px 0px 20px #bbbaba;
+	height:100% !important;	
+}
+.restoran_promo_slider_short_text
+{
+	height:54px;
+	overflow:hidden;
+	line-height: 18px;
+}
+.restoran_promo_slider_text
+{
+	height:162px;
+	display:none;
+	font-size: 14px;
+	line-height: 18px;
+	color: #5d5d5d;
+	margin: 0;
+	overflow:hidden;
+}
+.restoran_promo_slider_active .restoran_promo_slider_short_text
+{
+	display:none;
+}
+.restoran_promo_slider_short_text 
+{
+	margin-bottom:0px !important;
+}
+.restoran_promo_slider_active .restoran_promo_slider_text
+{
+	display:block;
+}	
+.restoran_promo_slider_active  .news_item  .text,.restoran_promo_slider_active  .news_item  .date
+{
+	background:#ffffff;
+}
+.restoran_promo_slider_block .news_item 
+{
+	cursor:pointer;
+}
+.restoran_promo_slider_text.nano > .pane
+{
+	right:0px !important
+}
+.restoran_promo_slider_text.nano > .content
+{
+	padding-right:15px;
+}
+.events_block_caption
+{
+	width:100%;
+	height:auto !important;
+	padding:0px !important;
+}
+.events_block_caption .restoran_promo_slider_text
+{
+	color:#ffffff;
+}
+.events_block_caption > div
+{
+	padding: 15px 23px 15px 16px;
+	width:auto !important;
+}
+.rest_promo_main_slider li > img
+{
+	width:100%;
+}
+.rest_promo_main_slider_block
+{
+	position:relative;
+}
+.blue_arrow_left, .blue_arrow_right
+{
+	z-index:10;
+}
+.blue_arrow_right
+{
+	right:30px;
+}
+.promo_restaurant_main_block_bottom_wrapper
+{
+	left:0px;
+}
