@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,   user-scalable=false" />
+    <!--[if IE 8]><link rel="stylesheet" href="css/ie8.css" type="text/css" media="screen" /><![endif]-->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+
+
+
+    <link rel="stylesheet" href="css/touchcarousel.css" />
+    <script src="js/jquery.touchcarousel-1.1.min.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(){
+
+            var size_specials_slider=Math.floor($(".gellary_slider").width()/190);
+            size_specials_slider=(size_specials_slider<1) ? 1 : size_specials_slider;
+            $(".gellary_slider li").width(Math.floor($(".gellary_slider").width()/size_specials_slider));
+            if($(".gellary_slider li").size()>5){
+                $(".gellary_slider").touchCarousel({
+                    itemsPerMove: 1,
+                    pagingNav: true,
+                    scrollbar: false,
+                    colums:size_specials_slider
+
+                });
+            }
+
+        })
+    </script>
+
+
+
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+    <script>
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+        });
+    </script>
+
+
+
+    <title>Main</title>
+    <link href="css/core-ui-select.css" media="screen" rel="stylesheet" type="text/css">
+                <link href="css/jquery.scrollpane.css" media="screen" rel="stylesheet" type="text/css">
+                <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.scrollpane.js"></script>
+    <script src="js/jquery.core-ui-select.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.fine_select').coreUISelect({
+                jScrollPane : {
+                    verticalDragMinHeight: 20,
+                    verticalDragMaxHeight: 20,
+                    showArrows : true
+                }
+            });
+        });
+    </script>
+   <!-- Слайдер на главной -->
+
+
+
+    <link href="css/royalslider.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.royalslider.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#main_page_slider').royalSlider({
+                arrowsNav: true,
+                loop: true,
+                keyboardNavEnabled: true,
+                controlsInside: false,
+                imageScaleMode: 'fill',
+                arrowsNavAutoHide: false,
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 1285,
+                autoScaleSliderHeight: 408,
+                controlNavigation: 'bullets',
+                thumbsFitInViewport: false,
+                navigateByClick: false,
+                startSlideId: 0,
+                autoScaleSlider: true,
+                autoPlay: {
+                    // autoplay options go gere
+                    enabled: true,
+                    pauseOnHover: true,
+                    delay: 5000
+                },
+                transitionType:'move',
+                globalCaption: true,
+                sliderDrag:true,
+                sliderTouch:true,
+                deeplinking: {
+                    enabled: true,
+                    change: false
+                }
+            });
+
+            $("#carousel-image-text-horizontal").touchCarousel({
+                itemsPerMove: 1,
+                pagingNav: true,
+                scrollbar: false,
+                scrollToLast: true,
+                loopItems: false
+            });
+        });
+    </script>
+   <!-- end Слайдер на главной -->
+
+    
+
+    <!-- popap -->
+    <script>
+        $(function(){
+            $('#regestration').bind('click',function(){
+                popup_open('.popover_registration');
+                return false;
+            });
+
+            $('#sing').bind('click',function(){
+                popup_open('.popover_sing');
+                return false;
+            });
+
+            $('.close,.popover_bg').bind('click',function(){
+                $('.popover_registration, .popover_sing, .popover_like').hide(100);
+                $('.popover_bg').hide(100);
+                return false;
+            });
+        })
+
+        function popup_open(name)
+        {
+            $('.popover_bg').hide();
+            $('.popover_registration,.popover_sing').hide();
+            $('.popover_bg').show();
+            var height=$(name).height();
+            var width=$(name).width();
+            var top=$(window).scrollTop()+$("body").height()/2-height/2-10;
+            var left=$("body").width()/2-width/2;
+            if(top<$(window).scrollTop()+10){top=$(window).scrollTop()+10}
+            $(name).css({"left":left,"top":top});
+            $(".popover_bg").show();
+            $(name).fadeIn('200');
+        }
+    </script>
+
+    <!-- end popap -->
+
+
+
+</head>
+
+<body>
+<!--[if lt IE 8]>
+    <style>
+        .wrapper,footer{display:none;}
+    </style>
+    <div style='text-align:center;'>
+        <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+        <br><br><br>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+<![endif]-->
+<div class="popover_bg"></div>
+    <div class="wrapper">
+        <header>
+            <div class="header_body">
+                <div class="main_menu fl ">
+                    <ul>
+                        <li id="regestration">الاشتراك</li>
+                        <li id="sing">دخول</li>
+                    </ul>
+                </div>
+                <div class="fr logo">
+                    <a href="#"><img src="images/logo.png" alt=""/></a>
+                    <span class="header_title">حفر للاعلانات</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </header>
+
+        <!-- popover verno -->
+        <div class="popover_like green_line">
+            <img class="close" src="images/close.png" alt=""/>
+            <p>هل تريد المدينة بأكملها أن</p>
+
+
+
+           <div class="gray_bg">
+
+                    <div class="button_small fr mrg_small_btn">
+                <button class="button btn green_gradient green_shadow button_form">حسنا</button>
+            </div>
+            <div class="button_small fr">
+                <button class="button btn orange_gradient orange_shadow button_form">إلغاء</button>
+            </div>
+
+           </div>
+        </div>
+        <!-- end popover verno-->
+
+        <!-- popover login -->
+        <div class="popover_registration green_line">
+            <img class="close" src="images/close.png" alt=""/>
+            <div class="title">
+                <div class="dot_line">
+                    <span>دخولت</span>
+                </div>
+            </div>
+            <div class="button">
+                <a href="#" class="btn blue_gradient blue_shadow"><img src="images/icon_fase_btn.png" alt="ico"/>تسجيل الدخول مع الفيسبوك</a>
+            </div>
+            <div class="clear10"></div>
+            <div class="button">
+                <a href="#" class="btn light_blue_gradient tweet_shadow"><img src="images/icon_tweet_btn.png" alt="ico"/>تسجيل الدخول مع الفيسبوك</a>
+            </div>
+            <div class="clear10"></div>
+            <div class="title_small_line">
+                <div class="line">
+                    <span>دخولت</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="البريد الالكتروني"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="كلمة المرور"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <a href="">هل نسيت كلمة المرور؟</a>
+            <div class="clear"></div>
+
+            <div class="checkbox_block login_remember">
+                <input type="checkbox" id="check10" class="styled">
+                <label for="check10">تذكرني</label>
+            </div>
+            <div class="clear10"></div>
+            <div class="button_small">
+                <button class="button btn green_gradient green_shadow button_form">
+          دخول
+                </button>
+            </div>
+        </div>
+        <!-- end popover login -->
+
+        <!-- popover sing up -->
+        <div class="popover_sing orange_line">
+            <img class="close" src="images/close.png" alt=""/>
+            <div class="title">
+                <div class="dot_line">
+                    <span>دخولت</span>
+                </div>
+            </div>
+            <div class="button">
+                <a href="#" class="btn blue_gradient blue_shadow"><img src="images/icon_fase_btn.png" alt="ico"/>تسجيل الدخول مع الفيسبوك</a>
+            </div>
+            <div class="clear10"></div>
+            <div class="title_small_line">
+                <div class="line">
+                    <span>دخولت</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="البريد الالكتروني"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="كلمة المرور"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="كلمة المرور"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+            <div class="input_main_block">
+                <div class="input_block">
+                    <input type="text" class="placeholder" placeholder="كلمة المرور"/>
+                </div>
+            </div>
+            <div class="clear10"></div>
+
+            <div class="button_small">
+                <button class="button btn orange_gradient orange_shadow button_form">
+                      دخول
+                </button>
+            </div>
+        </div>
+        <!-- end popover sing up -->
+
+       <!--<img class="img_bg" src="images/main_bg.jpg" alt="bg"/>-->
+
+        <div class="main_slider">
+
+            <div id="main_page_slider" class="royalSlider heroSlider rsMinW">
+                <div class="rsContent">
+                    <div class="slider_content">
+                        <img src="images/main_slider1.jpg" alt="" >
+                        <div class="slider_text">
+                            <p class="slider_text2">اجعل اعلانك ظاهراً بوضعه هنا</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rsContent">
+                    <div class="slider_content">
+                        <img src="images/main_slider2.jpg" alt="" >
+                        <div class="slider_text">
+                            <p class="slider_text2">اجعل اعلانك ظاهراً بوضعه هنا</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rsContent">
+                    <div class="slider_content">
+                        <img src="images/main_slider1.jpg" alt="" >
+                        <div class="slider_text">
+                            <p class="slider_text2">اجعل اعلانك ظاهراً بوضعه هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="content mrg_top">
+                <div class="group_small_block">
+                    <div class="small_block orange_line ">
+                    <p class="text_name">هل تريد الترويج لاعمالك من خلال مشاركتنا بالنجاح؟ </p>
+                    <p>أبجد هوز هو المعيار "الأسماك" للنصوص في اللاتينية منذ بداية القرن السادس عشر. في الواقع عندما خلقت طابعة غير معروف مجموعة كبيرة من الخطوط والأحجام</p>
+                    <div class="clear10"></div>
+                    <div class="button">
+                        <div class="btn orange_gradient orange_shadow"><img src="images/hands.png" alt="ico"/>شاركنا</div>
+                    </div>
+                </div>
+                <div class="small_block green_line">
+                    <p class="text_name">ابحث على حفر</p>
+
+
+                    <div class="profile_form ">
+                        <div  class="fr b-row" >
+                            <select class="fine_select">
+                                <option>فئة الإعلان</option>
+                                <option>1</option>
+                                <option>2</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="clear10"></div>
+                    <div class="input_main_block">
+                        <div class="input_block">
+                            <input type="text" class="placeholder" placeholder="ابحث عن كلمة"/>
+                        </div>
+                    </div>
+                    <div class="clear10"></div>
+                    <div class="clear5"></div>
+                    <div class="button">
+                        <button class="btn green_gradient green_shadow button_form"><img src="images/search.png" alt="ico"/>بحث الإعلانات</button>
+                    </div>
+                </div>
+                <div class="small_block small_block_last orange_line ">
+                    <p class="text_name">هل تريد المدينة بأكملها أن ترى الإعلان الخاص بك؟</p>
+                    <p>أبجد هوز هو المعيار "الأسماك" للنصوص في اللاتينية منذ بداية القرن السادس عشر. في الواقع عندما خلقت طابعة غير معروف مجموعة كبيرة من الخطوط والأحجام</p>
+                    <div class="clear10"></div>
+                    <div class="button">
+                        <div class="btn orange_gradient orange_shadow"><img src="images/tel.png" alt="ico"/>أضف إعلانك مجاناً</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear10"></div>
+
+        <div class="content">
+            <div class="title">
+                <div class="dot_line">
+                    <span>فئات الإعلانات</span>
+                </div>
+            </div>
+            <div class="block_category for_1">
+                <span class="icon icon_bag fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سوق العمل و التوظيف (55) </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">محاسبة و مالية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">خدمات طبية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  خدمات طبية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href=""> تصميم و انتاج فني</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  تطوير و برمجة مواقع</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  عقارات تجارية للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+            <div class="block_category for_1 last_for_2">
+                <span class="icon icon_home fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سسوق العقارات و الإسكان (75)</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">م  شقق للبيع</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">  منازل للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">    شقق للإيجار</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  منازل للإيجار </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">    منازل و شقق مفروشة </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  شبكات كومبيوتر و حماية</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+            <div class="block_category for_1 block_category_last">
+                <span class="icon icon_car fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سوق السيارات و المركبات (8)</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">سيارات للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">م  سيارات بري - جيب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات رياضية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات عائلية - فان </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  سيارات نقل - بيك أب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  دراجات نارية</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+
+            <div class="block_category down_block for_1 last_for_2">
+                <span class="icon icon_shop fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سوق السيارات و المركبات (8)</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">سيارات للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">م  سيارات بري - جيب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات رياضية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات عائلية - فان </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  سيارات نقل - بيك أب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  دراجات نارية</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+            <div class="block_category down_block for_1">
+                <span class="icon icon_setting fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سوق السيارات و المركبات (8)</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">سيارات للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">م  سيارات بري - جيب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات رياضية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات عائلية - فان </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  سيارات نقل - بيك أب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  دراجات نارية</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+            <div class="block_category block_category_last for_1 last down_block last_for_2">
+                <span class="icon icon_people fr"></span>
+                <div class="category fr">
+                    <ul>
+                        <li><a href="#">سوق السيارات و المركبات (8)</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li> <a href="#">سيارات للبيع </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="#">م  سيارات بري - جيب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات رياضية </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">سيارات عائلية - فان </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  سيارات نقل - بيك أب </a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                        <li><a href="">  دراجات نارية</a><img class="arrow" src="images/arrow_link.png" alt=""/></li>
+                    </ul>
+                    <a href="" class="link_category">عرض المزيد</a>
+                </div>
+            </div>
+        </div>
+        <div class="clear10"></div>
+        <div class="slider_logo">
+            <div class="title">
+                <div class="dot_line">
+                    <span>شركائنا</span>
+                </div>
+            </div>
+
+
+           <div class="logo_carusel">
+               <div class="gellary_slider  touchcarousel  three-d">
+                   <ul   class="touchcarousel-container">
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo1.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo2.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo3.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo4.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo5.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo1.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo2.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo3.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo4.png" alt="">
+                           </div>
+                       </li>
+                       <li   class="touchcarousel-item">
+                           <div class="gellary_slider_photo">
+                               <img src="images/slider_logo5.png" alt="">
+                           </div>
+                       </li>
+                   </ul>
+               </div>
+
+           </div>
+
+
+        </div>
+        <div class="content">
+            <div class="social">
+                <div class="title">
+                    <div class="dot_line">
+                        <span>الاشتراك ومتابعتنا</span>
+                    </div>
+                </div>
+                <div class="big_input ">
+                    <div class="input_main_block fr input_main_block_general">
+                        <div class="input_block ">
+                            <input type="text" class="placeholder" placeholder="إضافة عنوان البريد الإلكتروني"/>
+                        </div>
+                    </div>
+                    <div class="btn green_gradient green_shadow pad fr social_btn main_btn">اشترك الآن</div>
+                </div>
+                <div class="clear10"></div>
+
+            </div>
+            <div class="clear10"></div>
+        </div>
+        <div class="footer_back"></div>
+    </div>
+
+    <footer>
+        <div class="footer_body">
+            <div class="social_big fl">
+                <div class="img_social fr">
+                    <a href="#">
+                        <img class="google " src="images/inst.png" alt="icon"/>
+                    </a>
+                    <a href="#">
+                        <img class="google " src="images/icon_facebok.png" alt="icon"/>
+                    </a>
+                    <a href="#">
+                        <img class="google " src="images/tweeter.png" alt="icon"/>
+                    </a>
+                    <a href="#">
+                        <img class="google " src="images/icon_google.png" alt="icon"/>
+                    </a>
+                </div>
+            </div>
+            <div class="footer_text">
+                <ul class="footer_link">
+                    <li><a href="">من نحن</a></li>
+                    <li><a href="">الاتصال بنا</a></li>
+                    <li><a href="">قواعد الاستخدام</a></li>
+                    <li><a href="">اسئلة متكررة</a></li>
+                </ul>
+                <p> &copy; جميع الحقوق محفوظة لحفر للاعلان 2013</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+/* сброс стилей */
+/*===== 02.10.13 13:10 =====*/
+/*=========================*/
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  { outline: none; }
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.flexslider a img { outline: none; border: none; }
+
+.flexslider {
+    margin: 0;
+    padding: 0;
+}
+/* end сброс стилей */
+
+
+/* исключаем показ слайдов изображений которые находятся вне основной области */
+/*===== 02.10.13 13:10 =====*/
+/*=========================*/
+.flexslider .slides > li {
+    display: none;
+    -webkit-backface-visibility: hidden;
+}
+
+.flexslider .slides img {
+    width: 100%;
+    display: block;
+
+}
+/* end исключаем показ слайдов изображений которые находятся вне основной области */
+
+
+/* стиль который «чистит» последующие положения слайдов */
+/*===== 02.10.13 13:11 =====*/
+/*=========================*/
+.slides:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+html[xmlns] .slides { display: block; }
+* html .slides { height: 1%; }
+/* end стиль который «чистит» последующие положения слайдов */
+
+
+/* стиль для слайдера */
+/*===== 02.10.13 13:12 =====*/
+/*=========================*/
+.flexslider {
+    position: relative;
+    zoom: 1;
+    max-width: 1285px;
+    margin: 0 auto;
+
+}
+/* end стиль для слайдера */
+
+
+/* это позволит избежать проблем изменения размера в браузерах на мобильных устройствах */
+/*===== 02.10.13 13:12 =====*/
+/*=========================*/
+.flex-container {
+    min-width: 150px;
+    max-width: 1285px;
+}
+
+.flexslider .slides { zoom: 1; }
+/* end это позволит избежать проблем изменения размера в браузерах на мобильных устройствах */
+
+/* Навигация слайдера */
+/*===== 02.10.13 13:13 =====*/
+/*=========================*/
+.flex-direction-nav a {
+    display: block;
+    position: absolute;
+    margin: -17px 0 0 0;
+    width: 35px;
+    height: 35px;
+    top: 50%;
+    cursor: pointer;
+    text-indent: -9999px;
+
+}
+/* end Навигация слайдера */
+
+/* Стрелки слайдера */
+/*===== 02.10.13 13:13 =====*/
+/*=========================*/
+.flex-direction-nav a:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 34px;
+    top: 11px;
+    left: 11px;
+
+}
+
+.flex-direction-nav a:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 34px;
+    top: 35px;
+
+
+
+}
+.flex-direction-nav .flex-next {
+    background: url(../images/right_arrow.png) no-repeat;
+    right: 15px;
+
+}
+.flex-direction-nav .flex-next:hover{
+    background: url(../images/right_arrow_active.png) no-repeat;
+}
+
+.flex-direction-nav .flex-prev {
+    background: url(../images/left_arrow.png) no-repeat;
+    left: 25px;
+}
+.flex-direction-nav .flex-prev:hover{
+    background: url(../images/left_arrow_active.png) no-repeat;
+}
+
+
+
+/* end Стрелки слайдера */
+
+/* Кнопки управления под слайдером */
+/*===== 02.10.13 13:15 =====*/
+/*=========================*/
+.flexslider .flex-control-nav {
+    position: relative;
+
+    bottom: 40px;
+    left: 20px;
+    float: left;
+    margin: 0 0 0 -10px;
+}
+
+.flex-control-nav li {
+    display: inline-block;
+    zoom: 1;
+}
+
+.flex-control-paging li a {
+    display: block;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 12px;
+    height: 12px;
+    margin: 0 3px;
+    background-color: #b6b6b6 \9;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: inset 0 0 0 2px #b6b6b6;
+    -moz-box-shadow: inset 0 0 0 2px #b6b6b6;
+    box-shadow: inset 0 0 0 2px #b6b6b6;
+}
+
+.flex-control-paging li a.flex-active {
+    background-color: #7ac142;
+    box-shadow: none;
+}
+/* end Кнопки управления под слайдером */
+
+/* Подпись к картинкам */
+/*===== 02.10.13 13:16 =====*/
+/*=========================*/
+.flexslider .slides p {
+    display: block;
+    position: absolute;
+    width: 100%;
+    padding: 10px 0;
+    top:0;
+    background: rgba(0,0,0, 0.5);
+
+}
+.flexslider .slides p img{
+    display: block;
+    width: auto;
+    margin: 0 20px;
+}
+/* end Подпись к картинкам */
+
+/* Подпись к картинкам слйдер на странице category*/
+/*===== 02.10.13 13:16 =====*/
+/*=========================*/
+.category_slider .flexslider .slides p {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    padding: 10px 0;
+    top:auto;
+    bottom: 0;
+    background: rgba(0,0,0, 0.5);
+
+}
+.category_slider .flexslider .slides p img{
+    display: block;
+    width: auto;
+    margin: 0 20px;
+
+
+}
+/* end Подпись к картинкам */
+
+@media (max-width:500px){
+    .category_slider .flexslider .slides p img {
+        display: block;
+        width: 70px;
+        margin: 0 10px;
+    }
+    .category_slider .flexslider .slides p{
+        height: 20px;
+    }
+    .flexslider .flex-control-nav {
+        position: relative;
+        bottom: 20px;
+        left: 20px;
+        float: left;
+        margin: 0 0 0 -10px;
+    }
+    .flexslider .slides p {
+        display: block;
+        position: absolute;
+        width: 100%;
+        padding: 10px 0;
+        height: 20px;
+        top:0;
+        background: rgba(0,0,0, 0.5);
+
+    }
+    .flexslider .slides p img{
+        display: block;
+        width: 70px;
+        margin: 0 20px;
+    }
+}

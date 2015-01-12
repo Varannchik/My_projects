@@ -1,0 +1,28 @@
+.small_block_category{
+    border: 1px solid #dcdcdc;
+}
+.right_block {
+   border: 1px solid #dcdcdc;
+}
+.tab_content {
+    border: 1px solid #dcdcdc;
+}
+.big_right_block_category {
+    border: 1px solid #dcdcdc;
+}
+.orange_line {
+    border-top: 3px;
+    border-top-style: solid;
+    border-top-color: #f7941e;
+
+}
+.green_line {
+
+    border-top: 3px;
+    border-top-style: solid;
+    border-top-color: #7ac142;
+}
+.small_left_block {
+    width: 197px;
+}
+

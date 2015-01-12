@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,   user-scalable=false" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/slider_partners.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 8]><link href="css/ie8.css" rel="stylesheet"  type="text/css" media="screen" /><![endif]-->
+
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+
+    <link href="css/core-ui-select.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="css/jquery.scrollpane.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.scrollpane.js"></script>
+    <script src="js/jquery.core-ui-select.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.tabs').click(function(){
+                $('.fine_select').coreUISelect({
+                    jScrollPane : {
+                        verticalDragMinHeight: 20,
+                        verticalDragMaxHeight: 20,
+                        showArrows : true
+                    }
+                });
+            })
+            $('.fine_select').coreUISelect({
+                jScrollPane : {
+                    verticalDragMinHeight: 20,
+                    verticalDragMaxHeight: 20,
+                    showArrows : true
+                }
+            });
+        });
+
+    </script>
+
+
+    <script type="text/javascript" src="js/jquery.uniform.js"></script>
+    <script>
+
+        $(window).load(function() {
+            if($('input[type="checkbox"]').size()>0) $('input[type="checkbox"]').uniform();
+        });
+    </script>
+
+
+
+
+    <title>Profile</title>
+   <!-- tab menu -->
+        <script>
+            (function($) {
+                $(function() {
+					$('.first_tab ul.tabs li').click(function(){
+						var attr=$(this).attr('data-href');
+						$('.first_tab ul.tabs li').removeClass('active');
+						$(this).addClass('active');
+						$('div.first_tab').find('div.box').hide();					
+						$('div.first_tab').find('div.box.'+attr).fadeIn();					
+					})
+					
+					$('.second_tab ul.tabs li').click(function(){
+						var attr=$(this).attr('data-href');
+						$('.second_tab ul.tabs li').removeClass('active');
+						$(this).addClass('active');
+						$('div.second_tab').find('div.box').hide();					
+						$('div.second_tab').find('div.box.'+attr).fadeIn();						
+					})					
+
+                })
+            })(jQuery)
+        </script>
+
+   <!-- end tab menu -->
+
+    <!-- Слайдер -->
+        <script >
+            $(window).load(function() {
+                $('.flexslider').flexslider();
+            });
+        </script>
+    <!-- end Слайдер -->
+
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('.close_picture').live('click',function(){
+                $(this).closest('.picture_block').hide(100);
+            });
+           
+        });
+    </script>
+    <script>
+        $(function(){
+            $('.on_size_image').bind('click',function(){
+                popup_open('.popover_img');
+
+                return false;
+
+            });
+            $('.close').bind('click',function(){
+                $('.popover_img').hide(100);
+                $('.popover_bg').hide(100);
+                return false;
+
+            });
+        })
+        function popup_open(name)
+        {
+            $('.popover_bg').hide();
+            $('.popover_registration,.popover_sing').hide();
+
+            $('.popover_bg').show();
+
+            var height=$(name).height();
+
+            var width=$(name).width();
+
+
+            var top=$(window).scrollTop()+$("body").height()/2-height/2-10;
+
+            var left=$("body").width()/2-width/2;
+
+            if(top<$(window).scrollTop()+10){top=$(window).scrollTop()+10}
+
+            $(name).css({"left":left,"top":top});
+
+            $(".popover_bg").show();
+            $(name).fadeIn('200');
+
+        }
+    </script>
+
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<style>
+    .wrapper,footer{display:none;}
+</style>
+<div style='text-align:center;'>
+    <div style="background:#fff;padding:15px;"><a href="index.html" class="logo" style="float:none; display:block;"><img src="images/logo.png" alt=""></a></div>
+    <br><br><br>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+        <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a  faster, safer browsing experience, upgrade for free today." />
+    </a>
+</div>
+<![endif]-->
+<div class="popover_bg"></div>
+    <div class="wrapper">
+        <header>
+            <div class="header_body">
+                <div class="main_menu fl ">
+                    <img src="images/prifile_small.png" alt=""/>
+                    <span>الاسم المفضل</span>
+                    <img src="images/setting.png" alt=""/>
+                    <img src="images/exit.png" alt=""/>
+
+                </div>
+                <div class="fr logo">
+                    <a href="#"><img src="images/logo.png" alt=""/></a>
+                    <span class="header_title">حفر للاعلانات</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </header>
+
+
+        <div class="blue_menu">
+            <div class="content">
+                <a href="#">الصفحة الرئيسية</a>
+                <span class="slesh">/</span> <span>سيارات وسوق المركبات</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="title_line">
+                <div class="dot_line">
+                    <span><img  src="images/profile_icon.png" alt="icon"/> الاسم المفضل</span>
+                </div>
+            </div>
+
+            <div class="first_tab">
+                <ul class="tabs">
+                    <li class="active" data-href="first_tab1">البيانات الشخصية</li>
+                    <li data-href="first_tab2">إعدادات</li>
+                </ul>
+
+                <div class="tab_content">
+                    <div class="box visible first_tab1">
+                        <div class="contact_block contact_block_mrg" >
+                            <span class="icon_partners icon_map "></span>
+                            <div class="text ">
+                                <p>المركز الرئيسي : الرياض</p>
+                                <p>طريق مكة – حي الهدا</p>
+                                <p>مقابل الحي الدبلوماسي</p>
+                                <p>ص . ب: 301490 الرياض 11372</p>
+                            </div>
+                        </div>
+
+                        <div class="contact_block contact_block_mrg" >
+                            <span class="icon_partners icon_tel"></span>
+                            <div class="text ">
+                                <p>800 2440 455</p>
+                            </div>
+                        </div>
+
+                        <div class="contact_block contact_block_mrg" >
+                            <span class="icon_partners icon_mail"></span>
+                            <div class="text">
+                                <a href="mailto:mail@mail.com">mail@mail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact_block contact_block_mrg" >
+                            <span class="icon_partners icon_flag"></span>
+                            <div class="text">
+                                <p>سوق العقارات و الإسكان, سوق السيارات و المركبات</p>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+						
+                    </div>
+
+                    <div class="box first_tab2">
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div  class="profile_input fr " >
+                                <select class="fine_select" >
+                                    <option> </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+
+                        <div class="checkbox_block login_remember mrg_right">
+                            <input type="checkbox" id="check" >
+                            <label for="check">تلقي النشرة الشهرية والحصول على التحديثات على مشاريع في منطقتك</label>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form_check">
+                            <span class="fr">اهتماماتي:</span>
+                            <div class="check_block_profile1 fr ">
+                                <div class="checkbox_block login_remember ">
+                                    <input type="checkbox" id="check1" class="styled">
+                                    <label for="check1">سوق العمل و التوظيف</label>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="checkbox_block login_remember  ">
+                                    <input type="checkbox" id="check2" class="styled">
+                                    <label for="check2">سوق العمل و التوظيف</label>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="checkbox_block login_remember">
+                                    <input type="checkbox" id="check3" class="styled">
+                                    <label for="check3">سوق العمل و التوظيف</label>
+                                </div>
+                            </div>
+                            <div class=" check_block_profile1 check2 fr ">
+                                <div class="checkbox_block login_remember ">
+                                    <input type="checkbox" id="check4" class="styled">
+                                    <label for="check4">سوق العمل و التوظيف</label>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="checkbox_block login_remember  ">
+                                    <input type="checkbox" id="check5" class="styled">
+                                    <label for="check5">سوق العمل و التوظيف</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="clear10"></div>
+                        <div class="button_small ">
+                            <button class="button btn green_gradient green_shadow button_form">
+                                <img src="images/ok.png" alt="ico"/>حفظ
+                            </button>
+                        </div>
+                        <div class="clear10"></div>
+						
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="second_tab">
+                <ul class="tabs">
+                    <li data-href='second_tab1'>الإعلانات بالموقع</li>
+                    <li class="active"data-href='second_tab2'>إعلانات منتهية الصلاحية</li>
+                    <li  data-href='second_tab3'>إضافة إعلان</li>
+                </ul>
+                <div class="tab_content">
+                    <div class="box second_tab1">
+                        <div class=" line_block_profile">
+                            <span class="bin  fl"></span>
+                            <span class="gray_search fl"></span>
+                            <span class="note fl"></span>
+                            <div class="on_size_image">
+                                <img src="images/category2.jpg" alt="">
+                            </div>
+
+                            <div class="image_center_text">
+                                <a href="#" class="">2008 بويك لوسيرن CXL كريستال الأحمر تينت معطف V6 سيدان</a>
+                                <p>لصناعة السيارات في قبالة المصابيح الأمامية الركاب وسادة هوائية للأبواب أقفال 4 عجلات قرص الفرامل سادة هوائية للسائق تشغيل أضواء النهار كهربائيا</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="line_block_profile">
+                            <span class="bin  fl"></span>
+                            <span class="gray_search fl"></span>
+                            <span class="note fl"></span>
+                            <div class="on_size_image">
+                                <img src="images/category3.jpg" alt="">
+                            </div>
+                            <div class="image_center_text">
+                                <a href="#">2008 بويك لوسيرن CXL كريستال الأحمر تينت معطف V6 سيدان</a>
+                                <p>لصناعة السيارات في قبالة المصابيح الأمامية الركاب وسادة هوائية للأبواب أقفال 4 عجلات قرص الفرامل سادة هوائية للسائق تشغيل أضواء النهار كهربائيا</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class=" line_block_profile">
+                            <span class="bin fl"></span>
+                            <span class="gray_search fl"></span>
+                            <span class="note fl"></span>
+                            <div class="on_size_image">
+                                <img src="images/category2.jpg" alt="">
+                            </div>
+                            <div class="image_center_text">
+                                <a href="#">2008 بويك لوسيرن CXL كريستال الأحمر تينت معطف V6 سيدان</a>
+                                <p>لصناعة السيارات في قبالة المصابيح الأمامية الركاب وسادة هوائية للأبواب أقفال 4 عجلات قرص الفرامل سادة هوائية للسائق تشغيل أضواء النهار كهربائيا</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="box visible second_tab2">
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div  class="profile_input fr " >
+                                <select class="fine_select">
+                                    <option> </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div  class="profile_input fr error" >
+                                <select class="fine_select" >
+                                    <option> </option>
+                                    <option>10</option>
+                                    <option>2</option>
+                                </select>
+                                <div class="text_error"> error error</div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block error ">
+                                        <input type="text" class="placeholder " placeholder=""/>
+                                    </div>
+                                </div>
+                                <div class="text_error"> error error</div>
+                            </div>
+
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="text_enter_profile profile_input fr">
+                                <div class="textarea_block error">
+                                    <textarea class="plaseholder"  placeholder=""></textarea>
+                                </div>
+                                <div class="text_error"> error error</div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder="000 000 000"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder="mail@mail.com"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+
+                        <div class=" profile_form">
+                            <span class="fr">صور:</span>
+                            <div  class="profile_input_picture fr " >
+
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category3.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category2.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category3.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category2.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category3.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+                                <div class="fr picture_block">
+                                    <div class="on_size_image ">
+                                        <img src="images/category2.jpg" alt="">
+                                    </div>
+                                    <div class="close_picture"></div>
+                                </div>
+
+                                <div class="btn_gray gray_gradient gray_shadow fr">+</div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="button_small btn_profile fr ">
+                            <button class="button btn green_gradient green_shadow button_form">
+                                <img src="images/star.png" alt="ico"/>تعزيز م
+                            </button>
+                        </div>
+                        <div class="button_small btn_profile fr ">
+                            <button class="button btn orange_gradient orange_shadow button_form">
+                               <img src="images/ok.png" alt="ico"/>حفظ
+                            </button>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class=" line_block_profile">
+                            <span class="bin fl"></span>
+                            <span class="gray_search fl"></span>
+                            <span class="note fl"></span>
+                            <div class="on_size_image">
+                                <img src="images/category2.jpg" alt="">
+                            </div>
+                            <div class="image_center_text">
+                                <a href="">2008 بويك لوسيرن CXL كريستال الأحمر تينت معطف V6 سيدان</a>
+                                <p>لصناعة السيارات في قبالة المصابيح الأمامية الركاب وسادة هوائية للأبواب أقفال 4 عجلات قرص الفرامل سادة هوائية للسائق تشغيل أضواء النهار كهربائيا</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="box  second_tab3">
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div  class="profile_input fr " >
+                                <select class="fine_select" >
+                                    <option> </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div class="profile_input fr " >
+                                <select class="fine_select" >
+                                    <option> </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="text_enter_profile profile_input fr">
+                                <div class="textarea_block ">
+                                    <textarea class="plaseholder"  placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text" class="placeholder" placeholder="000 000 000"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="profile_form">
+                            <span class="fr">العنوان:</span>
+                            <div class="profile_input fr">
+                                <div class="input_main_block">
+                                    <div class="input_block ">
+                                        <input type="text"  class="placeholder" placeholder="mail@mail.com"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class=" profile_form">
+                            <span class="fr">الفئة الرئيسة:</span>
+                            <div  class="profile_input fr " >
+                                <select class="fine_select" >
+                                    <option> </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class=" profile_form">
+                            <span class="fr">صور:</span>
+                            <div  class="profile_input fr " >
+
+                               <div class="fr picture_block">
+                                        <div class="on_size_image ">
+                                            <img src="images/category3.jpg" alt="">
+                                        </div>
+                                        <div class="close_picture"></div>
+                               </div>
+                                <div class="btn_gray gray_gradient gray_shadow fr">+</div>
+                            </div>
+                        </div>
+                        <div class="clear10"></div>
+                        <div class="button_small btn_profile fr ">
+                            <button class="button btn green_gradient green_shadow button_form">
+                                <img src="images/star.png" alt="ico"/>تعزيز م
+                            </button>
+                        </div>
+                        <div class="button_small btn_profile fr ">
+                            <button class="button btn orange_gradient orange_shadow button_form">
+                                <img src="images/ok.png" alt="ico"/>حفظ
+                            </button>
+                        </div>
+                        <div class="clear10"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="clear10"></div>
+        <div class="popover_img green_line">
+            <span>اسم الصورة</span>
+            <img class="close" src="images/close.png" alt=""/>
+            <div class="clear10"></div>
+            <img src="images/popover_images.png" alt=""/>
+        </div>
+
+
+
+        <div class="footer_back"></div>
+    </div>
+
+    <footer>
+        <div class="footer_body">
+            <div class="footer_text">
+                <p> &copy; جميع الحقوق محفوظة لحفر للاعلان 2013</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
