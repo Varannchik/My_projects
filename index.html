@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Резюме : Front-end developer">
+    <meta name="viewport" content="width=640">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
 
-    <title>Резюме</title>
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Резюме by Varannchik</title>
   </head>
 
   <body>
+    <a id="forkme_banner" href="https://github.com/Varannchik/My_projects">View on GitHub</a>
+    <div class="shell">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Varannchik/My_projects">View on GitHub</a>
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Резюме</h1>
+            <h2>Front-end developer</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
 
-          <h1 id="project_title">Резюме</h1>
-          <h2 id="project_tagline">Front-end developer</h2>
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/Varannchik/My_projects/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/Varannchik/My_projects/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Varannchik/My_projects/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Varannchik/My_projects/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
         <p><strong>Варакута Анна Владимировна</strong></p>
 
 <hr>
@@ -39,12 +54,19 @@
 
 <hr>
 
-<p><em><strong>Семейное положение:</strong></em> замужем, дети 5 и 9 лет.
-_*<em>Телефон: *</em>_050 563 50 93, E-mail: <a href="mailto:varann@inbox.ru">varann@inbox.ru</a></p>
+<p><em><strong>Семейное положение:</strong></em> замужем, дети 5 и 9 лет.</p>
+
+<hr>
+
+<p>_*<em>Телефон: *</em>_050 563 50 93, E-mail: <a href="mailto:varann@inbox.ru">varann@inbox.ru</a></p>
+
+<hr>
 
 <p><em><strong>Образование:</strong></em>
 2001 г. – 2005 г. ДонНУ, бакалавр, специальность: математик.
 2005 г. - 2006 г. ДонНУ, магистр, преподаватель математики и информатики.</p>
+
+<hr>
 
 <p><em>*<em>Профессиональные навыки: *</em></em>
 2006 - 2013 гг. Верстка и дизайн глянцевых журналов, каталогов, буклетов, визиток, работа в рекламном агентстве "А1".
@@ -52,6 +74,8 @@ _*<em>Телефон: *</em>_050 563 50 93, E-mail: <a href="mailto:varann@inbox
 август 2013 г. - февраль 2014 г. front-end devloper в веб студии «Attract Group».
 март 2014 г. - сентябрь 2014 г. удаленная работа со студией «Freshlime», частные заказы.
 октябрь 2014 г. - декабрь 2014 г. front-end devloper в веб студии Digital Yaponochka.</p>
+
+<hr>
 
 <p><em><strong>Примеры работ:</strong></em>
 <a href="http://blagoustriy.info/">http://blagoustriy.info/</a> -фиксированный
@@ -64,21 +88,29 @@ _*<em>Телефон: *</em>_050 563 50 93, E-mail: <a href="mailto:varann@inbox
 
 <p>еще проекты можно посмотреть в прикрепленном архиве в шапке странички</p>
 
+<hr>
+
 <p><em><strong>Знание языков:</strong></em> украинский, русский – родные, английский – средний.</p>
+
+<hr>
 
 <p><em><strong>Личные качества:</strong></em> аналитическое мышление, умение быстро ориентироваться в сложившейся ситуации и самостоятельно принимать решения, быстрая обучаемость, ответственность, целеустремленность, настойчивость и стремление к профессиональному росту, коммуникабельность.</p>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Резюме maintained by <a href="https://github.com/Varannchik">Varannchik</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Varannchik">Varannchik</a> can be found on <a href="https://github.com/Varannchik/My_projects">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
       </footer>
+
     </div>
 
     
-
   </body>
 </html>
