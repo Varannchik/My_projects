@@ -6,7 +6,7 @@ _**Date of birth:**_ 26 09 1982.
 ***
 
 
-**_Phone:_** +46 72 948-01-84, E-mail: varann@inbox.ru
+**_Phone:_** +38 050 563 50 93, E-mail: varannchik@gmail.com
 
 ***
 
@@ -42,6 +42,8 @@ _**Experience:**_
 
 **March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, Trainee (textilslöjd).
 
+**September 2016 - February 2017** _By Centrum Service_, Föreståndare, kassatjänst.
+
 
 ***
 
@@ -49,6 +51,6 @@ _**Experience:**_
 
 ***
 
-_**Language:**_ Russian/Ukrainian - native language, Swedish, english - beginner.
+_**Language:**_ Russian/Ukrainian - native language, Swedish, english - intermediate.
 
 
