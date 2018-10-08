@@ -49,7 +49,7 @@ _**Experience:**_
 
 http://uccicreative.com/ (design and front-end)
 
-[http://vectortrade.ae/](http://vectortrade.ae/)
+[](http://vectortrade.ae/)
 
 ***
 
