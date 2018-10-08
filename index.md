@@ -3,7 +3,7 @@
 ***
 
 _**Date of birth:**_ 26 09 1982. 
-***
+
 
 
 **_Phone:_** +38 050 563 50 93, E-mail: varannchik@gmail.com
