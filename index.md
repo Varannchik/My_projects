@@ -28,19 +28,19 @@ HTML, CSS/CSS3, LESS, JS/Jquery, Bootstrap, cms OpenCart,  git and svn.  Photosh
 
 _**Experience:**_
 
-**2006 - 2013** _Advertising Agency «A1»_, Page layout designer.
+**2006 - 2013** _Advertising Agency «A1»_, page layout designer.
 
 **2013**_ Digital agency «Smena»_, front-end developer.
 
-**2013  - 2014**_ Web studio «Attract group»_, front-end developer .
+**2013  - 2014** Web studio «Attract group», front-end developer .
 
 **2014  - 2015** freelance,  front-end devloper.
 
 **October 2015 - January 2016** _By skola (Avesta kommun)_, Trainee.
 
-**March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, Assistent.
+**March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, sssistent.
 
-**September 2016 - February 2017** _By Centrum Service_, Sales Manager.
+**September 2016 - February 2017** _By Centrum Service_, sales Manager.
 
 **2016  - Until now** freelance,  front-end devloper.
 
