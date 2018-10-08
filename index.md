@@ -30,7 +30,7 @@ _**Experience:**_
 
 **2006 - 2013** _Advertising Agency «A1»_, page layout designer.
 
-**2013**_ Digital agency «Smena»_, front-end developer.
+**2013**_ Digital agency «Smena», front-end developer.
 
 **2013  - 2014** Web studio «Attract group», front-end developer .
 
