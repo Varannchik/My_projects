@@ -47,9 +47,9 @@ _**Experience:**_
 
 **_Work examples:_** See the archive in header.
 
-[](http://uccicreative.com/) design and front-end
+[http://uccicreative.com/](http://uccicreative.com/) design and front-end
 
-[](http://vectortrade.ae/)
+[http://vectortrade.ae/](http://vectortrade.ae/)
 
 ***
 
