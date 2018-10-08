@@ -34,20 +34,22 @@ _**Experience:**_
 
 **2013  - 2014**_ Web studio «Attract group»_, front-end developer .
 
-**2014**  _Web studio «Freshlime»_, front-end developer (freelance)  .
+**2014  - 2015** freelance,  front-end devloper.
 
-**2014  - 2015**  _Web studio «Digital Yaponochka»_,  front-end devloper.
+**October 2015 - January 2016** _By skola (Avesta kommun)_, Trainee.
 
-**October 2015 - January 2016** _By skola (Avesta kommun)_, Trainee (textilslöjd, matematik,naturorienternade).
+**March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, Assistent.
 
-**March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, Trainee (textilslöjd).
+**September 2016 - February 2017** _By Centrum Service_, Sales Manager.
 
-**September 2016 - February 2017** _By Centrum Service_, Föreståndare, kassatjänst.
+**2016  - Until now** freelance,  front-end devloper.
 
 
 ***
 
 **_Work examples:_** See the archive in header.
+http://uccicreative.com/ (design and front-end)
+http://vectortrade.ae/
 
 ***
 
