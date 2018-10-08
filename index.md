@@ -30,19 +30,17 @@ _**Experience:**_
 
 **2006 - 2013** _Advertising Agency «A1»_, page layout designer.
 
-**2013**_ Digital agency «Smena», front-end developer.
+**2013** Digital agency «Smena», front-end developer.
 
 **2013  - 2014** Web studio «Attract group», front-end developer .
 
 **2014  - 2015** freelance,  front-end devloper.
 
-**October 2015 - January 2016** _By skola (Avesta kommun)_, Trainee.
+**2015 - 2016** _By skola (Avesta kommun)_, trainee.  _Fors skola (Avesta kommun)_, sssistent.
 
-**March 2016 - Junе 2016** _Fors skola (Avesta kommun)_, sssistent.
+**2016 - 2017** _By Centrum Service_, sales Manager.
 
-**September 2016 - February 2017** _By Centrum Service_, sales Manager.
-
-**2016  - Until now** freelance,  front-end devloper.
+**2017  - Until now** freelance,  front-end devloper.
 
 
 ***
@@ -55,6 +53,6 @@ http://vectortrade.ae/
 
 ***
 
-_**Language:**_ Russian/Ukrainian - native language, Swedish, english - intermediate.
+_**Language:**_ Russian, Ukrainian - native language, Swedish, English - intermediate.
 
 
