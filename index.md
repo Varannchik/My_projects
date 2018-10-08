@@ -36,9 +36,9 @@ _**Experience:**_
 
 **2014  - 2015** freelance,  front-end devloper.
 
-**2015 - 2016** _By skola (Avesta kommun)_, trainee.  _Fors skola (Avesta kommun)_, sssistent.
+**2015 - 2016** _By skola (Avesta kommun)_, trainee.  _Fors skola (Avesta kommun)_, assistent.
 
-**2016 - 2017** _By Centrum Service_, sales Manager.
+**2016 - 2017** _By Centrum Service_, sales manager.
 
 **2017  - Until now** freelance,  front-end devloper.
 
