@@ -28,7 +28,7 @@ HTML, CSS/CSS3, LESS, JS/Jquery, Bootstrap, cms OpenCart,  git and svn.  Photosh
 
 _**Experience:**_
 
-****2006 - 2013**** _Advertising Agency «A1»_, Page layout designer.
+**2006 - 2013** _Advertising Agency «A1»_, Page layout designer.
 
 **2013**_ Digital agency «Smena»_, front-end developer.
 
