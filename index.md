@@ -21,7 +21,7 @@ _**Date of birth:**_ 26 09 1982.
 
 _**Skills:**_
 
-HTML, CSS/CSS3, LESS, JS/Jquery, cms OpenCart,  git and svn.  Photoshop, InDesign, Illustrator, Corel.
+HTML, CSS/CSS3, LESS, JS/Jquery, Bootstrap, cms OpenCart,  git and svn.  Photoshop, InDesign, Illustrator, Corel.
 
 
 ***
