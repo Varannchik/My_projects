@@ -13,15 +13,15 @@ _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate
 
 [http://vectortrade.ae/](http://vectortrade.ae/) design and front-end
 
-[https://varannchik.github.io/ads/] (https://varannchik.github.io/ads/)
+[https://varannchik.github.io/ads/](https://varannchik.github.io/ads/)
 
-[https://varannchik.github.io/AdWH/] (https://varannchik.github.io/AdWH/)
+[https://varannchik.github.io/AdWH/](https://varannchik.github.io/AdWH/)
 
 [https://varannchik.github.io/broadwaysupercars/](https://varannchik.github.io/broadwaysupercars/) 
 
-[https://varannchik.github.io/restoran/] (https://varannchik.github.io/restoran/)
+[https://varannchik.github.io/restoran/](https://varannchik.github.io/restoran/)
 
-[https://varannchik.github.io/ultimate-sports-templates/] (https://varannchik.github.io/ultimate-sports-templates/)
+[https://varannchik.github.io/ultimate-sports-templates/](https://varannchik.github.io/ultimate-sports-templates/)
 
 ***
 
