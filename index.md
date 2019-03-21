@@ -27,5 +27,8 @@ _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate
 
 ***
 
+**_Last examples:_**
+[https://varannchik.github.io/Gold_one_page/](https://varannchik.github.io/Gold_one_page/)
+***
 
 
