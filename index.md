@@ -15,6 +15,8 @@ _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate
 
 [http://vectortrade.ae/](http://vectortrade.ae/) design and front-end
 
+[https://varannchik.github.io/korpachoff/](https://varannchik.github.io/korpachoff/index.html) grid, flex, svg
+
 [https://varannchik.github.io/ads/](https://varannchik.github.io/ads/)
 
 [https://varannchik.github.io/AdWH/](https://varannchik.github.io/AdWH/)
@@ -27,10 +29,5 @@ _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate
 
 ***
 
-**_Last examples:_**
-
-[https://varannchik.github.io/korpachoff/](https://varannchik.github.io/korpachoff/index.html) grid, flex, svg
-
-***
 
 
