@@ -27,6 +27,14 @@ _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate
 
 [https://varannchik.github.io/ultimate-sports-templates/](https://varannchik.github.io/ultimate-sports-templates/)
 
+[https://h24.ua/](https://h24.ua/)
+
+[https://e-tender.ua/](https://e-tender.ua/)
+
+[https://e-docs.ua/](https://e-docs.ua/)
+
+[https://uaplatform.com.ua/](https://uaplatform.com.ua/)
+
 ***
 
 
