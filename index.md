@@ -14,8 +14,6 @@ _**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart, WordP
 
 [http://uccicreative.com/](http://uccicreative.com/) design and front-end
 
-[http://vectortrade.ae/](http://vectortrade.ae/) design and front-end
-
 [https://varannchik.github.io/korpachoff/](https://varannchik.github.io/korpachoff/index.html) grid, flex, svg
 
 [https://varannchik.github.io/ads/](https://varannchik.github.io/ads/)
@@ -33,8 +31,6 @@ _**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart, WordP
 [https://e-tender.ua/](https://e-tender.ua/) Laravel
 
 [https://e-docs.ua/](https://e-docs.ua/) WordPress
-
-[https://uaplatform.com.ua/](https://uaplatform.com.ua/) WordPress
 
 [https://e-tech.ua/](https://e-tech.ua/)
 
