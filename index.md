@@ -8,7 +8,7 @@
 _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate, English - pre-intermediate.
 
 ***
-_**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart , WordPress, Node.js, React, Git, MongoDB, MySQL
+_**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart , WordPress, Node.js, React, Angular, Vue.js, Git, MongoDB, MySQL, Zapier
 
 **_Work examples:_** 
 
@@ -28,15 +28,17 @@ _**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart , Word
 
 [https://varannchik.github.io/ultimate-sports-templates/](https://varannchik.github.io/ultimate-sports-templates/)
 
-[https://h24.ua/](https://h24.ua/)
+[https://h24.ua/](https://h24.ua/) Angular
 
-[https://e-tender.ua/](https://e-tender.ua/)
+[https://e-tender.ua/](https://e-tender.ua/) Laravel
 
-[https://e-docs.ua/](https://e-docs.ua/)
+[https://e-docs.ua/](https://e-docs.ua/) WordPress
 
-[https://uaplatform.com.ua/](https://uaplatform.com.ua/)
+[https://uaplatform.com.ua/](https://uaplatform.com.ua/) WordPress
 
 [https://e-tech.ua/](https://e-tech.ua/)
+
+[https://rapidfit.com/](https://rapidfit.com/) Vue.js
 
 ***
 
