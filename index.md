@@ -8,7 +8,7 @@
 _**Language:**_ Russian, Ukrainian - native language, Swedish - pre-intermediate, English - pre-intermediate.
 
 ***
-_**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart , WordPress, Node.js, React, Angular, Vue.js, Git, MongoDB, MySQL, Zapier
+_**Skills:**_ HTML, CSS/Less/Sass/Scss, JS, Ajax, Bootstrap, cms OpenCart, WordPress, Drupal, Node.js, React, Angular, Vue.js, Git, MongoDB, MySQL, Zapier
 
 **_Work examples:_** 
 
